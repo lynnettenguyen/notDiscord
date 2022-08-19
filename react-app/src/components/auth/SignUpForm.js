@@ -45,6 +45,7 @@ const SignUpForm = () => {
 
   return (
     <div className='main-form-outer'>
+      <div className='form-image'></div>
     <div className='outer-form'>
       <form onSubmit={onSignUp}>
         <div className='form-header'>
