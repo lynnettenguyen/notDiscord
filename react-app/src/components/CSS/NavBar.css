@@ -3,6 +3,15 @@
     align-items: center;
     justify-content: space-between;
     background-color: #404EED;
-    background-image: url('../Images/svgexport-5.svg');
-    height: 500px;
+    height: 5em;
+    padding-left: 5em;
+    padding-right: 5em;
+}
+
+.login-button {
+    padding: .5em 1em;
+    background-color: white;
+    border-radius: 1em;
+    text-decoration: none;
+    color: black;
 }
