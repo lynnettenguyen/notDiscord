@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -45,21 +46,15 @@ const SignUpForm = () => {
   return (
     <form onSubmit={onSignUp}>
       <div>
+        Create an account
+      </div>
+      <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
+        <label>EMAIL</label>
         <input
           type='text'
           name='email'
@@ -68,7 +63,16 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label>USERNAME</label>
+        <input
+          type='text'
+          name='username'
+          onChange={updateUsername}
+          value={username}
+        ></input>
+      </div>
+      <div>
+        <label>PASSWORD</label>
         <input
           type='password'
           name='password'
@@ -77,7 +81,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>REPEAT PASSWORD</label>
         <input
           type='password'
           name='repeat_password'
@@ -86,7 +90,10 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button type='submit'>Continue</button>
+      <div>
+      <NavLink to='/login'>Already Have an account?</NavLink>
+      </div>
     </form>
   );
 };
