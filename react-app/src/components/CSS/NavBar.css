@@ -1,3 +1,8 @@
 .NavBar-Container {
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #404EED;
+    background-image: url('../Images/svgexport-5.svg');
+    height: 500px;
 }
