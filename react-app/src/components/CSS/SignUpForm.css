@@ -1,21 +1,10 @@
 .main-form-outer {
-  background-color: #5865F2;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-.form-image {
-  background: url('../Images/main_forms.svg');
-  background-repeat: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;
+  background-image: url('../Images/main_forms.svg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 2
 }
 
 .outer-form {
@@ -24,7 +13,6 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 479px;
   padding: 30px;
   position: absolute;
   top: 50%;
