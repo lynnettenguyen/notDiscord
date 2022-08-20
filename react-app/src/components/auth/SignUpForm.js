@@ -113,7 +113,7 @@ const SignUpForm = () => {
           <div className='redirect-login'>
             <NavLink id='navLink-login' to='/login'>Already have an account?</NavLink>
           </div>
-          <div className='form-terms'>By registering, you agree to notDiscord's Terms of Service and Privacy Policy.</div>
+          <div className='form-terms'>By registering, you agree to !Discord's Terms of Service and Privacy Policy.</div>
         </form>
       </div>
     </div>

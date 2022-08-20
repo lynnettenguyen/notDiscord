@@ -17,7 +17,7 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       // setErrors(data);
-      setErrors(['Invalid credentials'])
+      setErrors(['Email and/or password could not be validated'])
     }
   };
 
@@ -40,10 +40,10 @@ const LoginForm = () => {
           <div className='form-header'>
             Welcome back!
           </div>
-            <div className='login-caption'>We're so excited to see you again!</div>
+          <div className='login-caption'>We're so excited to see you again!</div>
           <div className='form-section'>
             <div className='form-label'>
-            <label htmlFor='email'>EMAIL</label>
+              <label htmlFor='email'>EMAIL</label>
             </div>
             <input
               name='email'
@@ -56,7 +56,7 @@ const LoginForm = () => {
           </div>
           <div className='form-section'>
             <div className='form-label'>
-            <label htmlFor='password'>PASSWORD</label>
+              <label htmlFor='password'>PASSWORD</label>
             </div>
             <input
               name='password'
@@ -66,18 +66,18 @@ const LoginForm = () => {
               onChange={updatePassword}
               required
             />
-            <div className='login-errors'>
-              {errors.map((error, ind) => (
-                <li className='login-errors-inner' key={ind}>{error}</li>
-              ))}
-            </div>
-            <div className='form-button-outer'>
-              <button className='form-button-login' type='submit'>Log In</button>
-            </div>
-            <div className='redirect-register'>
-              <span className='redirect-span'>Need an Account?</span>
-              <NavLink to='/register'>Register</NavLink>
-            </div>
+          </div>
+          <div className='login-errors'>
+            {errors.map((error, ind) => (
+              <li className='login-errors-inner' key={ind}>{error}</li>
+            ))}
+          </div>
+          <div className='form-button-outer'>
+            <button className='form-button-login' type='submit'>Log In</button>
+          </div>
+          <div className='redirect-register'>
+            <span className='redirect-span'>Need an Account?</span>
+            <NavLink id='navLink-login' to='/register'>Register</NavLink>
           </div>
         </form>
       </div>
