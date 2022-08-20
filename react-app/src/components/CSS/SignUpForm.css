@@ -1,5 +1,5 @@
 .main-form-outer {
-  background-image: url('../Images/main_forms.svg');
+  background-image: url('../images/main_forms.svg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -10,6 +10,7 @@
 .outer-form {
   background: #36393f;
   box-sizing: border-box;
+  width: 480px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -18,4 +19,76 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.form-header {
+  font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.form-label {
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #B9BBBE;
+  margin: 0 0 8px 0;
+  box-sizing: border-box;
+}
+
+.form-input {
+  width: 416px;
+  height: 40px;
+  border-radius: 3px;
+  border: none;
+  background-color: #202225;
+  font-size: 18px;
+  color: #DCDDDE;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-section {
+  height: 64px;
+  margin: 0 0 20px 0;
+}
+
+.form-button {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  background-color: #5865F2;
+  border: none;
+  color: white;
+  width: 416px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.redirect-login>Navlink,
+a:-webkit-any-link {
+  cursor: pointer;
+  font-family: WhitneyBold, Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color: #00AFF4;
+  font-size: 14px;
+}
+
+.redirect-login {
+  margin-bottom: 18px;
+}
+
+.redirect-login>Navlink,
+a:-webkit-any-link:hover {
+  text-decoration: underline;
+}
+
+.form-terms {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  color: #A3A6AA;
+  font-size: 12px;
 }
