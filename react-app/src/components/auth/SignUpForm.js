@@ -50,9 +50,9 @@ const SignUpForm = () => {
           <div className='form-header'>
             Create an account
           </div>
-          <div>
+          <div className='login-errors'>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className='login-errors-inner' key={ind}>{error}</div>
             ))}
           </div>
           <div className='form-section'>
@@ -65,6 +65,7 @@ const SignUpForm = () => {
               name='email'
               onChange={updateEmail}
               value={email}
+              required
             ></input>
           </div>
           <div className='form-section'>
@@ -77,6 +78,7 @@ const SignUpForm = () => {
               name='username'
               onChange={updateUsername}
               value={username}
+              required
             ></input>
           </div>
           <div className='form-section'>
@@ -89,6 +91,7 @@ const SignUpForm = () => {
               name='password'
               onChange={updatePassword}
               value={password}
+              required
             ></input>
           </div>
           <div className='form-section'>

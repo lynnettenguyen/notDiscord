@@ -40,9 +40,9 @@ const LoginForm = () => {
             Welcome back!
           </div>
             <div className='login-caption'>We're so excited to see you again!</div>
-          <div>
+          <div className='login-errors'>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className='login-errors-inner' key={ind}>{error}</div>
             ))}
           </div>
           <div className='form-section'>
@@ -55,6 +55,7 @@ const LoginForm = () => {
               type='text'
               value={email}
               onChange={updateEmail}
+              required
             />
           </div>
           <div className='form-section'>
@@ -67,12 +68,13 @@ const LoginForm = () => {
               type='password'
               value={password}
               onChange={updatePassword}
+              required
             />
             <div className='form-button-outer'>
               <button className='form-button-login' type='submit'>Log In</button>
             </div>
             <div className='redirect-register'>
-              <span class='redirect-span'>Need an Account?</span>
+              <span className='redirect-span'>Need an Account?</span>
               <NavLink to='/register'>Register</NavLink>
             </div>
           </div>
