@@ -20,7 +20,7 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
-    }
+    } else setErrors(['password: password does not match'])
   };
 
   const updateUsername = (e) => {
@@ -60,7 +60,7 @@ const SignUpForm = () => {
               <label>EMAIL</label>
             </div>
             <input
-              type='text'
+              type='email'
               className='form-input'
               name='email'
               onChange={updateEmail}
