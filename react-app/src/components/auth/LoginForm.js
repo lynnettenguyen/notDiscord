@@ -75,6 +75,9 @@ const LoginForm = () => {
           <div className='form-button-outer'>
             <button className='form-button-login' type='submit'>Log In</button>
           </div>
+          <div className='form-button-outer'>
+            <button className='form-button-login' type='submit' onClick={() => { setEmail("demo@aa.io"); setPassword("password") }}>Demo User</button>
+          </div>
           <div className='redirect-register'>
             <span className='redirect-span'>Need an Account?</span>
             <NavLink id='navLink-login' to='/register'>Register</NavLink>
