@@ -54,7 +54,7 @@ def logout():
     return {'message': 'User logged out'}
 
 
-@auth_routes.route('/signup', methods=['POST'])
+@auth_routes.route('/register', methods=['POST'])
 def sign_up():
     """
     Creates a new user and logs them in
