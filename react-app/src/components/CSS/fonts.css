@@ -17,3 +17,8 @@
   font-family: WhitneyBold;
   src: url('../fonts/Whitney/whitney-bold.otf');
 }
+
+@font-face {
+  font-family: WhitneyLight;
+  src: url('../fonts/Whitney/whitney-light.otf');
+}

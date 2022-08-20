@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
+import "../CSS/SignUpForm.css"
 import "../CSS/LoginForm.css"
 
 const LoginForm = () => {
@@ -33,40 +34,46 @@ const LoginForm = () => {
 
   return (
     <div className='main-form-outer'>
-      <div className='login-form'>
+      <div className='outer-form-login'>
         <form onSubmit={onLogin}>
           <div className='form-header'>
-            <h3>Welcome back!</h3>
-            <div>We're so excited to see you again!</div>
+            Welcome back!
           </div>
+            <div className='login-caption'>We're so excited to see you again!</div>
           <div>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
           </div>
           <div className='form-section'>
-            <label className='form-label' htmlFor='email'>Email</label>
+            <div className='form-label'>
+            <label htmlFor='email'>EMAIL</label>
+            </div>
             <input
               name='email'
               className='form-input'
               type='text'
-              placeholder='Email'
               value={email}
               onChange={updateEmail}
             />
           </div>
           <div className='form-section'>
-            <label className='form-label' htmlFor='password'>Password</label>
+            <div className='form-label'>
+            <label htmlFor='password'>PASSWORD</label>
+            </div>
             <input
               name='password'
               className='form-input'
               type='password'
-              placeholder='Password'
               value={password}
               onChange={updatePassword}
             />
-            <div className='form-button-div'>
-              <button className='form-button' type='submit'>Login</button>
+            <div className='form-button-outer'>
+              <button className='form-button-login' type='submit'>Log In</button>
+            </div>
+            <div className='redirect-register'>
+              <span class='redirect-span'>Need an Account?</span>
+              <NavLink to='/register'>Register</NavLink>
             </div>
           </div>
         </form>
