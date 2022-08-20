@@ -45,7 +45,6 @@ const SignUpForm = () => {
 
   return (
     <div className='main-form-outer'>
-      <div className='form-image'></div>
       <div className='outer-form'>
         <form onSubmit={onSignUp}>
           <div className='form-header'>
@@ -56,8 +55,10 @@ const SignUpForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div>
-            <label className='form-label'>EMAIL</label>
+          <div className='form-section'>
+            <div className='form-label'>
+              <label>EMAIL</label>
+            </div>
             <input
               type='text'
               className='form-input'
@@ -66,8 +67,10 @@ const SignUpForm = () => {
               value={email}
             ></input>
           </div>
-          <div>
-            <label className='form-label'>USERNAME</label>
+          <div className='form-section'>
+            <div className='form-label'>
+              <label>USERNAME</label>
+            </div>
             <input
               type='text'
               className='form-input'
@@ -76,8 +79,10 @@ const SignUpForm = () => {
               value={username}
             ></input>
           </div>
-          <div>
-            <label className='form-label'>PASSWORD</label>
+          <div className='form-section'>
+            <div className='form-label'>
+              <label>PASSWORD</label>
+            </div>
             <input
               type='password'
               className='form-input'
@@ -86,8 +91,10 @@ const SignUpForm = () => {
               value={password}
             ></input>
           </div>
-          <div>
-            <label className='form-label'>REPEAT PASSWORD</label>
+          <div className='form-section'>
+            <div className='form-label'>
+              <label>REPEAT PASSWORD</label>
+            </div>
             <input
               type='password'
               className='form-input'
@@ -100,10 +107,10 @@ const SignUpForm = () => {
           <div className='form-button-outer'>
             <button className='form-button' type='submit'>Continue</button>
           </div>
-          <div>
-            <NavLink to='/login'>Already Have an account?</NavLink>
+          <div className='redirect-login'>
+            <NavLink to='/login'>Already have an account?</NavLink>
           </div>
-          <div>By registering, you agree to notDiscord's Terms of Service and Privacy Policy.</div>
+          <div className='form-terms'>By registering, you agree to notDiscord's Terms of Service and Privacy Policy.</div>
         </form>
       </div>
     </div>
