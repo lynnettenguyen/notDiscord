@@ -91,7 +91,7 @@ a:-webkit-any-link {
   margin-bottom: 18px;
 }
 
-.redirect-login>Navlink,
+.redirect-login>NavLink,
 a:-webkit-any-link:hover {
   text-decoration: underline;
 }
