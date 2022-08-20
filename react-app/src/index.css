@@ -19,3 +19,8 @@ body {
 #root {
     width: 1600px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
