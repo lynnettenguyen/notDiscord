@@ -9,11 +9,12 @@ class Server(db.Model):
     server_pic = db.Column(db.String(255))
 
     user = db.relationship("User", back_populates='server')
+    channel = db.relationship("Channel", back_populates='server')
 
     def to_dict(self):
         return {
             'id': self.id,
             'owner_id': self.owner_id,
-            'name': self.email,
+            'name': self.name,
             'server_pic': self.server_pic
         }
