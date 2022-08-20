@@ -16,7 +16,8 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      // setErrors(data);
+      setErrors(['Invalid credentials'])
     }
   };
 
@@ -40,11 +41,6 @@ const LoginForm = () => {
             Welcome back!
           </div>
             <div className='login-caption'>We're so excited to see you again!</div>
-          <div className='login-errors'>
-            {errors.map((error, ind) => (
-              <div className='login-errors-inner' key={ind}>{error}</div>
-            ))}
-          </div>
           <div className='form-section'>
             <div className='form-label'>
             <label htmlFor='email'>EMAIL</label>
@@ -52,7 +48,7 @@ const LoginForm = () => {
             <input
               name='email'
               className='form-input'
-              type='text'
+              type='email'
               value={email}
               onChange={updateEmail}
               required
@@ -70,6 +66,11 @@ const LoginForm = () => {
               onChange={updatePassword}
               required
             />
+            <div className='login-errors'>
+              {errors.map((error, ind) => (
+                <li className='login-errors-inner' key={ind}>{error}</li>
+              ))}
+            </div>
             <div className='form-button-outer'>
               <button className='form-button-login' type='submit'>Log In</button>
             </div>

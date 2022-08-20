@@ -20,7 +20,7 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
-    } else setErrors(['password: password does not match'])
+    } else setErrors(['password: Password does not match'])
   };
 
   const updateUsername = (e) => {
@@ -50,11 +50,6 @@ const SignUpForm = () => {
           <div className='form-header'>
             Create an account
           </div>
-          <div className='login-errors'>
-            {errors.map((error, ind) => (
-              <div className='login-errors-inner' key={ind}>{error}</div>
-            ))}
-          </div>
           <div className='form-section'>
             <div className='form-label'>
               <label>EMAIL</label>
@@ -66,7 +61,7 @@ const SignUpForm = () => {
               onChange={updateEmail}
               value={email}
               required
-            ></input>
+            />
           </div>
           <div className='form-section'>
             <div className='form-label'>
@@ -79,7 +74,7 @@ const SignUpForm = () => {
               onChange={updateUsername}
               value={username}
               required
-            ></input>
+            />
           </div>
           <div className='form-section'>
             <div className='form-label'>
@@ -92,7 +87,7 @@ const SignUpForm = () => {
               onChange={updatePassword}
               value={password}
               required
-            ></input>
+            />
           </div>
           <div className='form-section'>
             <div className='form-label'>
@@ -105,8 +100,13 @@ const SignUpForm = () => {
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
-            ></input>
-          </div>
+            />
+              </div>
+            <div className='signup-errors'>
+              {errors.map((error, ind) => (
+                <li className='signup-errors-inner' key={ind}>{error.split(":")[1]}</li>
+              ))}
+            </div>
           <div className='form-button-outer'>
             <button className='form-button' type='submit'>Continue</button>
           </div>
