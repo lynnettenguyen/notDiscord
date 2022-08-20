@@ -1,10 +1,14 @@
 .main-form-outer {
-  background-image: url('../images/main_forms.svg');
+  background: url('../images/form.svg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .outer-form {
@@ -19,7 +23,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: auto;
 }
 
 .form-header {
