@@ -1,34 +1,45 @@
-.main-form-outer {
-  background-image: url('../images/main_forms.svg');
-  width: auto;
-  height: auto;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
+.login-caption {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+  font-size: 15.5px;
+  text-align: center;
+  line-height: 20px;
+  margin: 0 0 10px 0;
 }
 
-/* .form-image {
-  background: url('../Images/main_forms.svg');
-  width: auto;
-  height: auto;
-  position: fixed;
-} */
+.form-button-login {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  background-color: #5865F2;
+  border: none;
+  color: white;
+  width: 416px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin: 24px 0 15px 0;
+}
 
-.login-form {
+.outer-form-login {
+  background: #36393f;
+  box-sizing: border-box;
+  width: 480px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  padding: 30px;
   position: absolute;
-  width: 450px;
-  padding: 32px;
-  box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
-  box-sizing: border-box;
-  background: #36393f;
-  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  height: 370px;
+}
+
+.redirect-register {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #B9BBBE;
+}
+
+.redirect-span {
+  margin-right: 5px;
 }

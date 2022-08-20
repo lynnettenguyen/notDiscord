@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './CSS/NavBar.css';
-import svg1 from './Images/svgexport-5.svg'
+import svg1 from './images/svgexport-5.svg'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -19,7 +19,7 @@ const NavBar = () => {
 
         {user && (
           <>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
+        <NavLink to='/register' exact={true} activeClassName='active'>Sign Up</NavLink>
         {/* <NavLink to='/users' exact={true} activeClassName='active'>Users</NavLink> */}
         <LogoutButton />
           </>

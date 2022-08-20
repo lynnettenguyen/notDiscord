@@ -4,7 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  z-index: 2
+  z-index: 2;
 }
 
 .outer-form {
@@ -19,6 +19,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  height: auto;
 }
 
 .form-header {
@@ -28,6 +29,12 @@
   font-weight: 600;
   text-align: center;
   margin-bottom: 12px;
+}
+
+.login-caption {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #B9BBBE;
 }
 
 .form-label {
@@ -40,12 +47,13 @@
 }
 
 .form-input {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
   width: 416px;
   height: 40px;
   border-radius: 3px;
   border: none;
   background-color: #202225;
-  font-size: 18px;
+  font-size: 16px;
   color: #DCDDDE;
   padding: 10px;
   box-sizing: border-box;
@@ -75,7 +83,8 @@ a:-webkit-any-link {
   font-family: WhitneyBold, Arial, Helvetica, sans-serif;
   text-decoration: none;
   color: #00AFF4;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: bolder;
 }
 
 .redirect-login {
