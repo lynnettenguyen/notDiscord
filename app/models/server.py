@@ -9,7 +9,7 @@ class Server(db.Model):
     server_pic = db.Column(db.String(255))
 
     user = db.relationship("User", back_populates='server')
-    channel = db.relationship("Channel", back_populates='server')
+    channel = db.relationship("Channel", back_populates='server', cascade="all, delete")
 
     def to_dict(self):
         return {

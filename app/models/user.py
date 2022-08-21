@@ -15,6 +15,9 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(255))
 
     server = db.relationship('Server', back_populates='user')
+    channel_message = db.relationship('ChannelMessage', back_populates='user')
+    direct_message_sender = db.relationship('DirectMessage', back_populates='sender')
+    direct_message_recipient = db.relationship('DirectMessage', back_populates='recipient')
 
     @property
     def password(self):
