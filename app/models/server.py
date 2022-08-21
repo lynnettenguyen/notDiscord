@@ -8,8 +8,8 @@ class Server(db.Model):
     name = db.Column(db.String(255))
     server_pic = db.Column(db.String(255))
 
-    user = db.relationship("User", back_populates='server')
-    channel = db.relationship("Channel", back_populates='server')
+    user = db.relationship("User", back_populates='servers')
+    channels = db.relationship("Channel", back_populates='server', cascade="all, delete")
 
     def to_dict(self):
         return {

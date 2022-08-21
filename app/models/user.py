@@ -14,7 +14,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String(255))
 
-    server = db.relationship('Server', back_populates='user')
+    servers = db.relationship('Server', back_populates='user')
+    channel_messages_sent = db.relationship('ChannelMessage', back_populates='user')
+    dm_sender = db.relationship('DirectChat', back_populates='sender', foreign_keys='DirectChat.sender_id')
+    dm_recipient = db.relationship('DirectChat', back_populates='recipient', foreign_keys='DirectChat.recipient_id')
 
     @property
     def password(self):
