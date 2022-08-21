@@ -2,11 +2,11 @@
 
 <<<<<<<< HEAD:migrations/versions/20220821_145927_create_models.py
 Revision ID: 4f9ca8b7ab91
-Revises: 
+Revises:
 Create Date: 2022-08-21 14:59:27.849940
 ========
 Revision ID: 058f3f7390f9
-Revises: 
+Revises:
 Create Date: 2022-08-21 14:46:07.024524
 >>>>>>>> main:migrations/versions/20220821_144607_create_all_models.py
 
@@ -16,11 +16,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/20220821_145927_create_models.py
 revision = '4f9ca8b7ab91'
-========
-revision = '058f3f7390f9'
->>>>>>>> main:migrations/versions/20220821_144607_create_all_models.py
 down_revision = None
 branch_labels = None
 depends_on = None
