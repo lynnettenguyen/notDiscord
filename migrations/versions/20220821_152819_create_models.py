@@ -1,20 +1,38 @@
 """create models
 
+<<<<<<< HEAD
 <<<<<<< HEAD:migrations/versions/20220821_144607_create_all_models.py
 <<<<<<<< HEAD:migrations/versions/20220821_145927_create_models.py
 Revision ID: 4f9ca8b7ab91
-Revises: 
+Revises:
 Create Date: 2022-08-21 14:59:27.849940
 ========
 Revision ID: 058f3f7390f9
-Revises: 
+Revises:
 Create Date: 2022-08-21 14:46:07.024524
 >>>>>>>> main:migrations/versions/20220821_144607_create_all_models.py
 =======
 Revision ID: b181a714eea6
-Revises: 
+Revises:
 Create Date: 2022-08-21 15:28:19.686250
 >>>>>>> 1b4613a (reseeded):migrations/versions/20220821_152819_create_models.py
+=======
+<<<<<<<< HEAD:migrations/versions/20220821_145927_create_models.py
+<<<<<<<< HEAD:migrations/versions/20220821_145927_create_models.py
+Revision ID: 4f9ca8b7ab91
+Revises:
+Create Date: 2022-08-21 14:59:27.849940
+========
+Revision ID: 058f3f7390f9
+Revises:
+Create Date: 2022-08-21 14:46:07.024524
+>>>>>>>> main:migrations/versions/20220821_144607_create_all_models.py
+========
+Revision ID: b181a714eea6
+Revises:
+Create Date: 2022-08-21 15:28:19.686250
+>>>>>>>> main:migrations/versions/20220821_152819_create_models.py
+>>>>>>> main
 
 """
 from alembic import op
@@ -22,15 +40,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/20220821_144607_create_all_models.py
-<<<<<<<< HEAD:migrations/versions/20220821_145927_create_models.py
 revision = '4f9ca8b7ab91'
-========
-revision = '058f3f7390f9'
->>>>>>>> main:migrations/versions/20220821_144607_create_all_models.py
-=======
-revision = 'b181a714eea6'
->>>>>>> 1b4613a (reseeded):migrations/versions/20220821_152819_create_models.py
 down_revision = None
 branch_labels = None
 depends_on = None
