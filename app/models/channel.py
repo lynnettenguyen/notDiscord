@@ -10,8 +10,8 @@ class Channel(db.Model):
     topic = db.Column(db.String(255))
     channel_pic = db.Column(db.String(255))
 
-    server = db.relationship("Server", back_populates='channel')
-    channel_message = db.relationship("ChannelMessage", back_populates='channel', cascade="all, delete")
+    server = db.relationship("Server", back_populates='channels')
+    channel_messages = db.relationship("ChannelMessage", back_populates='channel', cascade="all, delete")
 
     def to_dict(self):
         return {
