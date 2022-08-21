@@ -1,0 +1,123 @@
+.main-form-outer {
+  background: url('./images/form.svg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.outer-form {
+  background: #36393f;
+  box-sizing: border-box;
+  width: 480px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-header {
+  font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.login-caption {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #B9BBBE;
+}
+
+.form-label {
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #B9BBBE;
+  margin: 0 0 8px 0;
+  box-sizing: border-box;
+}
+
+.form-input {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+  width: 416px;
+  height: 40px;
+  border-radius: 3px;
+  border: none;
+  background-color: #202225;
+  font-size: 16px;
+  color: #DCDDDE;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none
+}
+
+.form-section {
+  height: 64px;
+  margin: 0 0 20px 0;
+}
+
+.form-button {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  background-color: #5865F2;
+  border: none;
+  color: white;
+  width: 416px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+#navLink-login {
+  cursor: pointer;
+  font-family: WhitneyBold, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bolder;
+  color: #00AFF4;
+}
+
+#navLink-login:hover{
+  text-decoration: underline;
+}
+
+.redirect-login {
+  margin-bottom: 18px;
+}
+
+.redirect-login>NavLink,
+a:-webkit-any-link:hover {
+  text-decoration: underline;
+}
+
+.form-terms {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  color: #A3A6AA;
+  font-size: 12px;
+}
+
+.signup-errors {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #ED4245;
+  margin: 0 0 22px 5px;
+}
+
+.signup-errors-inner {
+  padding: 2px 0 2px 0;
+}

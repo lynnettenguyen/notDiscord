@@ -1,0 +1,55 @@
+.login-caption {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+  font-size: 15.5px;
+  text-align: center;
+  line-height: 20px;
+  margin: 0 0 10px 0;
+}
+
+.form-button-login {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  background-color: #5865F2;
+  border: none;
+  color: white;
+  width: 416px;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin: 5px 0 17px 0;
+}
+
+.outer-form-login {
+  background: #36393f;
+  box-sizing: border-box;
+  width: 480px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.redirect-register {
+  font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #B9BBBE;
+}
+
+.redirect-span {
+  margin-right: 5px;
+}
+
+.login-errors {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #ED4245;
+  margin: 0 0 18px 5px;
+}
+
+.login-errors-inner {
+  padding: 2px 0 2px 0;
+}

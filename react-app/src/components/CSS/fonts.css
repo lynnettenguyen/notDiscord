@@ -1,0 +1,24 @@
+@font-face {
+  font-family: GintoNormal;
+  src: url('../fonts/Ginto/ABCGintoNormal-Regular-Trial.otf');
+}
+
+@font-face {
+  font-family: GintoNormalBold;
+  src: url('../fonts/Ginto/ABCGintoNormal-Bold-Trial.woff');
+}
+
+@font-face {
+  font-family: WhitneyBook;
+  src: url('../fonts/Whitney/whitney-book.otf');
+}
+
+@font-face {
+  font-family: WhitneyBold;
+  src: url('../fonts/Whitney/whitney-bold.otf');
+}
+
+@font-face {
+  font-family: WhitneyLight;
+  src: url('../fonts/Whitney/whitney-light.otf');
+}
