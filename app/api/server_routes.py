@@ -7,4 +7,6 @@ servers = Blueprint('servers', __name__, url_prefix='/servers')
 @servers.route("/")
 def all_servers():
   servers = [server.to_dict() for server in Server.query.all()]
-  print(servers)
+  # return {'servers': servers} # returns an object {servers: [{},{}]}
+  return jsonify(servers) # returns an array [{},{}]
+
