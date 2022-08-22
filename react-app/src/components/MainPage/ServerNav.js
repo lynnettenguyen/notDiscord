@@ -4,6 +4,7 @@ import { allServers, listAllServers } from '../../store/servers';
 import discordHome from '../CSS/images/lightpurple.png'
 import { getOneServer, resetServer } from '../../store/server';
 import '../CSS/ServerNav.css'
+import { getUsers } from '../../store/users';
 
 
 
@@ -25,7 +26,10 @@ const ServerNav = () => {
     } else {
       setIsLoaded(false)
       dispatch(getOneServer(id))
-      .then(()=>setIsLoaded(true))
+      .then(()=>{
+        dispatch(getUsers())
+        .then(()=>setIsLoaded(true))
+      })
     }
   };
 

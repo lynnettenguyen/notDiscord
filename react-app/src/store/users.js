@@ -11,6 +11,7 @@ export const getUsers = () => async (dispatch) => {
 
   if (response.ok) {
     const users = await response.json();
+    console.log(users)
     dispatch(getUsersAction(users))
     return users;
   }
@@ -21,7 +22,7 @@ const singleServerReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
       case GET_ALL_USERS: {
-        newState[action.users.id] = action.users
+        for (let user of action.users) newState[user.id] = user
         return newState
       }
 
