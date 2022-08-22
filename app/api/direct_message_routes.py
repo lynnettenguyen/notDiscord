@@ -4,9 +4,10 @@ from flask_login import current_user, login_required
 from .auth_routes import login, validation_errors_to_error_messages
 from app.models import db, DirectMessage, User, DirectChat
 from app.forms import ServerForm, ChannelForm
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, join_room
 
 direct_messages = Blueprint('direct_messages', __name__)
+socketio = SocketIO(direct_messages)
 
 
 @direct_messages.route("/<int:sender_id>")
