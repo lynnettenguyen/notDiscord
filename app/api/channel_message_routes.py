@@ -9,3 +9,10 @@ from flask_socketio import SocketIO, join_room
 
 channel_messages = Blueprint('chat_messages', __name__)
 socketio = SocketIO(channel_messages)
+
+# get all channel messages
+@channel_messages.route("/int:channel_id")
+@login_required
+def channel_messages_by_channel(channel_id):
+  cms = ChannelForm.query.all(sender_id)
+  return jsonify(cms.to_dict())
