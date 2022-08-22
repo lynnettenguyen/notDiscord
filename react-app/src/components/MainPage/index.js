@@ -8,7 +8,12 @@ import NoServerPage from './NoServerPage';
 
 const MainPage = () => {
     const server = useSelector(state => state.server)
-    const id = Object.keys(server)
+    const id = Object.keys(server)[0]
+
+    useEffect(()=>{
+        // console.log('ID!!!', id)
+        // console.log('SERVER!!!', server)
+    })
 
     return (
         <>
@@ -26,4 +31,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-

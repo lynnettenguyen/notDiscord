@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allServers, listAllServers } from '../../store/servers';
 import discordHome from '../CSS/images/lightpurple.png'
-import { getOneServer, resetServer } from '../../store/server';
+import { getChannels, getOneServer, resetServer } from '../../store/server';
 import '../CSS/ServerNav.css'
 import { getUsers } from '../../store/users';
 
@@ -30,6 +30,8 @@ const ServerNav = () => {
         dispatch(getUsers())
         .then(()=>setIsLoaded(true))
       })
+      .then(()=>dispatch(getChannels(id)))
+
     }
   };
 

@@ -7,9 +7,8 @@ const findServer = (server) => ({
     server
 })
 
-const getChannelsAction = (serverId, channels) => ({
+const getChannelsAction = (channels) => ({
   type: GET_CHANNELS,
-  serverId,
   channels
 })
 
@@ -33,8 +32,7 @@ export const getChannels = (id) => async (dispatch) => {
 
   if (response.ok) {
     const channels = await response.json();
-    console.log('...........', channels)
-    dispatch(getChannelsAction(id, channels))
+    dispatch(getChannelsAction(channels))
     return channels;
   }
 }
@@ -52,11 +50,16 @@ const singleServerReducer = (state = {}, action) => {
         return newState
       }
 
-      // case GET_CHANNELS: {
-      //   newState = {...state}
-      //   newState[action.serverId] =
-      //   return newState
-      // }
+      case GET_CHANNELS: {
+        let channels = {}
+        console.log('Previous STATE', newState)
+        newState = {...state, channels}
+        action.channels.map(channel => {
+          newState.channels[channel.id] = channel
+        })
+        console.log('NEW STATE', newState)
+        return newState
+      }
 
       default:
         return state;
