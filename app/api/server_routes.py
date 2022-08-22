@@ -7,6 +7,8 @@ from app.forms import ServerForm, ChannelForm
 
 servers = Blueprint('servers', __name__)
 
+
+
 @servers.route("")
 @login_required
 # list all servers
@@ -15,12 +17,16 @@ def all_servers():
   # return {'servers': servers} # returns an object {servers: [{},{}]}
   return jsonify(servers) # returns an array [{},{}]
 
+
+
 @servers.route("/<int:server_id>")
 @login_required
 # get server by id
 def server_by_id(server_id):
   server = Server.query.get(server_id)
   return jsonify(server.to_dict())
+
+
 
 @servers.route("", methods=['POST'])
 @login_required
@@ -53,6 +59,8 @@ def create_server():
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+
+
 @servers.route("/<int:server_id>", methods=['PUT'])
 @login_required
 # edit server's name or picture by server id
@@ -66,6 +74,8 @@ def edit_server(server_id):
   db.session.commit()
   return jsonify(server.to_dict()), 200
 
+
+
 @servers.route("/<int:server_id>", methods=['DELETE'])
 @login_required
 # delete server by id
@@ -78,6 +88,8 @@ def delete_server(server_id):
     'status_code': 200
   }), 200
 
+
+
 @servers.route("/<int:server_id>/channels")
 @login_required
 # get all server's channels
@@ -85,6 +97,8 @@ def get_channels(server_id):
   server = Server.query.get(server_id)
   channels = [channel.to_dict() for channel in server.channels]
   return jsonify(channels)
+
+
 
 @servers.route("/<int:server_id>/channels", methods=['POST'])
 @login_required
@@ -108,6 +122,8 @@ def create_channel(server_id):
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+
+
 @servers.route("/<int:server_id>/channels/<int:channel_id>", methods=['PUT'])
 @login_required
 # edit channel's name or topic by channel id
@@ -120,6 +136,8 @@ def edit_channel(server_id, channel_id):
     channel.topic = update['topic']
   db.session.commit()
   return jsonify(channel.to_dict()), 200
+
+
 
 @servers.route("/<int:server_id>/channels/<int:channel_id>", methods=['DELETE'])
 @login_required
