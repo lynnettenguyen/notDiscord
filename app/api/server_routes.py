@@ -58,6 +58,7 @@ def create_server():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
+
 @servers.route("/<int:server_id>", methods=['PUT'])
 @login_required
 # edit server's name or picture by server id
@@ -70,6 +71,7 @@ def edit_server(server_id):
     server.server_pic = update['server_pic']
   db.session.commit()
   return jsonify(server.to_dict()), 200
+
 
 
 @servers.route("/<int:server_id>", methods=['DELETE'])
@@ -92,6 +94,7 @@ def get_channels(server_id):
   server = Server.query.get(server_id)
   channels = [channel.to_dict() for channel in server.channels]
   return jsonify(channels)
+
 
 
 @servers.route("/<int:server_id>/channels", methods=['POST'])
@@ -117,6 +120,7 @@ def create_channel(server_id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
+
 @servers.route("/<int:server_id>/channels/<int:channel_id>", methods=['PUT'])
 @login_required
 # edit channel's name or topic by channel id
@@ -129,6 +133,7 @@ def edit_channel(server_id, channel_id):
     channel.topic = update['topic']
   db.session.commit()
   return jsonify(channel.to_dict()), 200
+
 
 
 @servers.route("/<int:server_id>/channels/<int:channel_id>", methods=['DELETE'])
