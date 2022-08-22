@@ -34,7 +34,6 @@ const HomePage = () => {
         </div>
         <div className='HomePage-background'>
             <img src={leftImage} className='HomePage-left-image'/>
-            <div className='space'/>
             <div className='HomePage-text'>
                 <h1>
                     IMAGINE A PLACE...

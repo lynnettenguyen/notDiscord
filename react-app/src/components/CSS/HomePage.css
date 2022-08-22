@@ -39,7 +39,6 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    z-index: -1;
     overflow: hidden;
 }
 
@@ -61,25 +60,21 @@
     justify-content: center;
     color: white;
     flex-direction: column;
-    z-index: 3;
+
 }
 
-.space {
-    max-width: 1000px;
-    min-width: 620px;
-    height: 100px;
-    z-index: 1;
-}
 
 .HomePage-left-image {
     padding-top: 208px;
     z-index: 1;
+    position: relative;
+    left: -90px;
 }
 
 .HomePage-right-image {
     padding-top: 200px;
+    margin-left: 550px;
     z-index: 1;
-    margin-left: 350px;
 }
 
 .HomePage-text > h1 {
@@ -94,7 +89,8 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    width: 780px;
+    max-width: 780px;
+    min-width: 300px;
     font-size: 18px;
     padding-top: 1.5em;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
@@ -102,12 +98,10 @@
 
 .HomePage-3rd-part {
     display: flex;
-    position: relative;
     align-items: center;
     justify-content: center;
     background-color: #F6F6F6;
-    left: 0;
-    right: 0;
+    width: 100%;
 }
 
 .HomePage-4th-part {
