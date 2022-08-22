@@ -111,33 +111,48 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
-.HomePage-3rd-part {
+.HomePage-bottom-inner {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F6F6F6;
-    width: 100%;
+    padding: 5em 0;
+    width: 80%;
+    max-width: 1000px;
 }
 
-.HomePage-4th-part {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.HomePage-5th-part {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F6F6F6;
-    width: 100%;
-}
-
+.HomePage-3rd-part,
+.HomePage-4th-part,
+.HomePage-5th-part,
 .HomePage-6th-part {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.HomePage-inner-span {
+    width: 300px;
+    margin: 0 30px;
+}
+
+.HomePage-3rd-part {
+    background-color: #F6F6F6;
+}
+
+.HomePage-4th-part {
+}
+
+.HomePage-5th-part {
+    background-color: #F6F6F6;
+}
+
+.HomePage-6th-part {
+    display: flex;
     flex-direction: column;
+}
+
+.HomePage-part6-text {
+    width: 40%;
 }
 
 .HomePage-bottom-div {

@@ -32,9 +32,7 @@ const HomePage = () => {
         <div className='HomePage-heading-container'>
             <img src={leftImage} className='HomePage-left-image'/>
             <div className='HomePage-text'>
-                <h1>
-                    IMAGINE A PLACE...
-                </h1>
+                <h1>IMAGINE A PLACE...</h1>
                 <span>
                     ...where you can belong to a school club, a gaming group, or a worldwide art community. <br/>
                     Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.
@@ -43,43 +41,41 @@ const HomePage = () => {
             <img src={rightImage} className='HomePage-right-image'/>
         </div>
         <div className='HomePage-3rd-part'>
+            <div className='HomePage-bottom-inner'>
             <img src={part3}/>
-            <span>
-                <h1>
-                    Create an invite-only place where you belong
-                </h1>
+            <span className='HomePage-inner-span'>
+                <h1>Create an invite-only place where you belong</h1>
                 <span>
                 Discord servers are organized into topic-based channels where you can collaborate, share, and just talk about your day without clogging up a group chat.
                 </span>
             </span>
         </div>
+        </div>
         <div className='HomePage-4th-part'>
-            <span>
-                <h1>
-                    Where hanging out is easy
-                </h1>
+            <div className='HomePage-bottom-inner'>
+            <span className='HomePage-inner-span'>
+                <h1>Where hanging out is easy</h1>
                 <span>
                     Grab a seat in a voice channel when you’re free. Friends in your server can see you’re around and instantly pop in to talk without having to call.
                 </span>
             </span>
             <img src={part4}/>
         </div>
+        </div>
         <div className='HomePage-5th-part'>
+            <div className='HomePage-bottom-inner'>
             <img src={part5}/>
-            <span>
-                <h1>
-                    From few to a fandom
-                </h1>
+            <span className='HomePage-inner-span'>
+                <h1>From few to a fandom</h1>
                 <span>
                     Get any community running with moderation tools and custom member access. Give members special powers, set up private channels, and more.
                 </span>
             </span>
         </div>
+        </div>
         <div className='HomePage-6th-part'>
-            <span>
-                <h1>
-                    RELIABLE TECH FOR STAYING CLOSE
-                </h1>
+            <span className='HomePage-part6-text'>
+                <h1>RELIABLE TECH FOR STAYING CLOSE</h1>
                 <span>
                     Low-latency voice and video feels like you’re in the same room. Wave hello over video, watch friends stream their games, or gather up and have a drawing session with screen share.
                 </span>
