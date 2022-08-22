@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from app.models import db, Server, Channel, ChannelMessage
-from app.forms.server_form import ServerForm
+from app.forms import ServerForm
 
 servers = Blueprint('servers', __name__)
 
