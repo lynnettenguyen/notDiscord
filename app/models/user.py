@@ -8,13 +8,16 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    first_name = db.Column(db.String(40))
-    last_name = db.Column(db.String(40))
+    # first_name = db.Column(db.String(40))
+    # last_name = db.Column(db.String(40))
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String(255))
 
-    server = db.relationship('Server', back_populates='user')
+    servers = db.relationship('Server', back_populates='user')
+    channel_messages_sent = db.relationship('ChannelMessage', back_populates='user')
+    dm_sender = db.relationship('DirectChat', back_populates='sender', foreign_keys='DirectChat.sender_id')
+    dm_recipient = db.relationship('DirectChat', back_populates='recipient', foreign_keys='DirectChat.recipient_id')
 
     @property
     def password(self):
@@ -30,8 +33,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
+            # 'first_name': self.first_name,
+            # 'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
             'profile_pic': self.profile_pic

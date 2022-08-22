@@ -79,7 +79,7 @@ const LoginForm = () => {
             <button className='form-button-login' type='submit' onClick={() => { setEmail("demo@aa.io"); setPassword("password") }}>Demo User</button>
           </div>
           <div className='redirect-register'>
-            <span className='redirect-span'>Need an Account?</span>
+            <span className='redirect-span'>Need an account?</span>
             <NavLink id='navLink-login' to='/register'>Register</NavLink>
           </div>
         </form>
