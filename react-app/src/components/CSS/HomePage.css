@@ -40,12 +40,14 @@
     margin: 0;
     padding: 0;
     z-index: -1;
+    overflow: hidden;
 }
 
 .HomePage-background {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 
@@ -53,7 +55,7 @@
 
 .HomePage-text {
     display: flex;
-    position: fixed;
+    position: absolute;
     top: 1em;
     align-items: center;
     justify-content: center;
@@ -62,17 +64,22 @@
     z-index: 3;
 }
 
+.space {
+    max-width: 1000px;
+    min-width: 620px;
+    height: 100px;
+    z-index: 1;
+}
+
 .HomePage-left-image {
     padding-top: 208px;
     z-index: 1;
-    padding-left: 0;
 }
 
 .HomePage-right-image {
     padding-top: 200px;
     z-index: 1;
-    padding-right: 100px;
-    margin-left: 36em;
+    margin-left: 350px;
 }
 
 .HomePage-text > h1 {
@@ -91,4 +98,34 @@
     font-size: 18px;
     padding-top: 1.5em;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.HomePage-3rd-part {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F6F6;
+    left: 0;
+    right: 0;
+}
+
+.HomePage-4th-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.HomePage-5th-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F6F6F6;
+}
+
+.HomePage-6th-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
