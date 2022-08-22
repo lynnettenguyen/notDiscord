@@ -1,0 +1,94 @@
+/* ---------- NavBar ---------- */
+
+.NavBar-Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #404EED;
+    height: 5em;
+    padding-left: 25em;
+    padding-right: 25em;
+}
+
+.login-button {
+    padding: .5em 1em;
+    background-color: white;
+    border-radius: 1em;
+    text-decoration: none;
+    color: black;
+}
+
+.home-logo {
+    height: 2em;
+}
+
+
+
+/* ---------- Background ---------- */
+
+.HomePage-background-container {
+    background-image: url('./images/svgexport-4.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #404EED;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 35em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+}
+
+.HomePage-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ---------- Content ---------- */
+
+.HomePage-text {
+    display: flex;
+    position: fixed;
+    top: 1em;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    z-index: 3;
+}
+
+.HomePage-left-image {
+    padding-top: 208px;
+    z-index: 1;
+    padding-left: 0;
+}
+
+.HomePage-right-image {
+    padding-top: 200px;
+    z-index: 1;
+    padding-right: 100px;
+    margin-left: 36em;
+}
+
+.HomePage-text > h1 {
+    font-size: 56px;
+    margin: 0;
+    padding-top: 3em;
+    font-family: GintoNord;
+}
+
+.HomePage-text span {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 780px;
+    font-size: 18px;
+    padding-top: 1.5em;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}

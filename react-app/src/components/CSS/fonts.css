@@ -1,4 +1,9 @@
 @font-face {
+  font-family: GintoNord;
+  src: url('../fonts/Ginto/ABCGintoNord-Black-Trial.woff');
+}
+
+@font-face {
   font-family: GintoNormal;
   src: url('../fonts/Ginto/ABCGintoNormal-Regular-Trial.otf');
 }
