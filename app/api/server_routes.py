@@ -5,8 +5,8 @@ from .auth_routes import login, validation_errors_to_error_messages
 from app.models import db, Server, Channel, ChannelMessage
 from app.forms import ServerForm, ChannelForm
 
-servers = Blueprint('servers', __name__)
 
+servers = Blueprint('servers', __name__)
 
 
 @servers.route("")
@@ -18,14 +18,12 @@ def all_servers():
   return jsonify(servers) # returns an array [{},{}]
 
 
-
 @servers.route("/<int:server_id>")
 @login_required
 # get server by id
 def server_by_id(server_id):
   server = Server.query.get(server_id)
   return jsonify(server.to_dict())
-
 
 
 @servers.route("", methods=['POST'])
@@ -87,7 +85,6 @@ def delete_server(server_id):
     'message': 'Server successfully deleted',
     'status_code': 200
   }), 200
-
 
 
 @servers.route("/<int:server_id>/channels")
