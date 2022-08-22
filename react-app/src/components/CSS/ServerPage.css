@@ -3,3 +3,8 @@
     width: 90vw;
     height: 100vh;
 }
+
+.ServerPage-NavBar {
+    border: 1px solid blue;
+    height: 5em;
+}
