@@ -84,6 +84,10 @@
   margin-bottom: 12px;
 }
 
+.form-button:hover {
+  background-color: #4752c4;
+}
+
 #navLink-login {
   cursor: pointer;
   font-family: WhitneyBold, Arial, Helvetica, sans-serif;

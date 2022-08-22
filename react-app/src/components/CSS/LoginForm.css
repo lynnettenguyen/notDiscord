@@ -19,6 +19,10 @@
   margin: 5px 0 17px 0;
 }
 
+.form-button-login:hover {
+  background-color: #4752c4;
+}
+
 .outer-form-login {
   background: #36393f;
   box-sizing: border-box;
