@@ -14,5 +14,5 @@ socketio = SocketIO(channel_messages)
 @channel_messages.route("/int:channel_id")
 @login_required
 def channel_messages_by_channel(channel_id):
-  cms = ChannelForm.query.all(sender_id)
+  cms = ChannelForm.query.all(channel_id)
   return jsonify(cms.to_dict())
