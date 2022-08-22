@@ -1,0 +1,194 @@
+.HomePage-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+/* ---------- NavBar ---------- */
+
+.NavBar-Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #404EED;
+    height: 5em;
+    z-index: 5;
+    width: 50%;
+    max-width: 900px;
+}
+
+.NavBar-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login-button,
+.logout-button-top {
+    padding: .8em 1.1em;
+    background-color: white;
+    border-radius: 2em;
+    text-decoration: none;
+    color: black;
+    border: 0;
+}
+
+.home-logo {
+    height: 2.5em;
+    z-index: 2;
+}
+
+
+
+/* ---------- Background ---------- */
+
+.HomePage-background {
+    background-image: url('./images/svgexport-4.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #404EED;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 35em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.HomePage-heading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* ---------- Content ---------- */
+
+.HomePage-text {
+    display: flex;
+    position: absolute;
+    top: 1em;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+}
+
+
+.HomePage-left-image {
+    padding-top: 127px;
+    z-index: 1;
+    position: relative;
+    left: -90px;
+}
+
+.HomePage-right-image {
+    padding-top: 120px;
+    margin-left: 550px;
+    z-index: 1;
+}
+
+.HomePage-text > h1 {
+    font-size: 56px;
+    margin: 0;
+    padding-top: 3em;
+    font-family: GintoNord;
+}
+
+.HomePage-text span {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    max-width: 780px;
+    min-width: 300px;
+    font-size: 18px;
+    padding-top: 1.5em;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.HomePage-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5em 0;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.HomePage-3rd-part,
+.HomePage-4th-part,
+.HomePage-5th-part,
+.HomePage-6th-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.HomePage-inner-span {
+    width: 300px;
+    margin: 0 30px;
+}
+
+.HomePage-3rd-part {
+    background-color: #F6F6F6;
+}
+
+.HomePage-4th-part {
+}
+
+.HomePage-5th-part {
+    background-color: #F6F6F6;
+}
+
+.HomePage-6th-part {
+    display: flex;
+    flex-direction: column;
+}
+
+.HomePage-part6-text {
+    width: 40%;
+}
+
+.HomePage-bottom-div {
+    background-color: #23272A;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottom-divider {
+    height: 1px;
+    max-width: 1180px;
+    width: 50%;
+    background-color: #404EED;
+    margin: 2em 0;
+}
+
+.bottom-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1180px;
+    width: 50%;
+}
+
+.signup-button,
+.logout-button-bottom {
+    padding: .8em 1.1em;
+    background-color: #5865F2;
+    border-radius: 2em;
+    text-decoration: none;
+    color: white;
+    border: 0;
+}
