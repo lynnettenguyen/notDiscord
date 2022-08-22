@@ -10,7 +10,6 @@ user_routes = Blueprint('users', __name__)
 def users():
     users = User.query.all()
     result = [user.to_dict() for user in users]
-    print('PYTHON!', result)
     return jsonify(result)
 
 
