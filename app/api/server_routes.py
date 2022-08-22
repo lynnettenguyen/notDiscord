@@ -7,7 +7,7 @@ from app.forms.server_form import ServerForm
 
 servers = Blueprint('servers', __name__)
 
-@servers.route("/")
+@servers.route("")
 @login_required
 # list all servers
 def all_servers():
@@ -15,11 +15,11 @@ def all_servers():
   # return {'servers': servers} # returns an object {servers: [{},{}]}
   return jsonify(servers) # returns an array [{},{}]
 
-@servers.route("/<int:serverId>")
+@servers.route("/<int:server_id>")
 @login_required
 # get server by id
-def server_by_id(serverId):
-  server = Server.query.get(serverId)
+def server_by_id(server_id):
+  server = Server.query.get(server_id)
   return jsonify(server.to_dict())
 
 @servers.route("", methods=['POST'])
@@ -37,8 +37,6 @@ def create_server():
       server_pic = form.data['server_pic']
     )
 
-    print(server)
-
     db.session.add(server)
     db.session.commit()
 
@@ -54,3 +52,28 @@ def create_server():
     return jsonify(server.to_dict()), 201
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+@servers.route("/<int:server_id>", methods=['PUT'])
+@login_required
+# edit server's name or picture by server id
+def edit_serve(server_id):
+  server = Server.query.get(server_id)
+  update = request.json
+  if 'name' in update.keys():
+    server.name = update['name']
+  if 'server_pic' in update.keys():
+    server.server_pic = update['server_pic']
+  db.session.commit()
+  return jsonify(server.to_dict()), 200
+
+@servers.route("/<int:server_id>", methods=['DELETE'])
+@login_required
+# delete server by id
+def delete_server(server_id):
+  server = Server.query.get(server_id)
+  db.session.delete(server)
+  db.session.commit()
+  return jsonify({
+    'message': 'Server successfully deleted',
+    'status_code': 200
+  }), 200
