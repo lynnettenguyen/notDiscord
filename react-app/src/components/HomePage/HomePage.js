@@ -15,11 +15,6 @@ const HomePage = () => {
     const user = useSelector(state => state.session.user);
 
 
-
-
-
-
-
     return (
         <div className='HomePage-container'>
         <div className='HomePage-background'/>
@@ -89,7 +84,7 @@ const HomePage = () => {
                     <NavLink to='/'><img className='home-logo' src={HomeLogo}/></NavLink>
                 </div>
                 <div className='right'>
-                    <NavLink className='signup-button' to='/login'>Login</NavLink>
+                    <NavLink className='signup-button' to='/register'>Signup</NavLink>
                 </div>
             </div>
         </div>
