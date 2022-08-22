@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { allServers, listAllServers } from '../../store/servers';
+import '../CSS/ServerNav.css'
+import discordHome from '../CSS/images/lightpurple.png'
 
 const ServerNav = () => {
   const dispatch = useDispatch()
@@ -14,12 +16,16 @@ const ServerNav = () => {
 
   return (
     <>
-      <div>TEST1</div>
-      <div>
+      <div className='main-serverNav'>
+        <div className='home-icon-outer'>
+          <img src={discordHome} className='home-icon' />
+        </div>
         {servers?.map((server, i) => {
           return (
             <>
-              <div>{server.name}</div>
+              <div className='server-img-outer'>
+                <img src={server.server_pic} className='server-img' />
+              </div>
             </>
           )
         })}
