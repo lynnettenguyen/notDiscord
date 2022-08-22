@@ -7,9 +7,9 @@ import NoServerPage from './NoServerPage';
 
 
 const MainPage = () => {
-    const server = useSelector(state => state.servers.server)
+    const server = useSelector(state => state.server)
 
-    
+
 
     return (
         <>

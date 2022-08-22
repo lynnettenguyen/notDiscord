@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { allServers, getOneServer, listAllServers } from '../../store/servers';
-import '../CSS/ServerNav.css'
+import { allServers, listAllServers } from '../../store/servers';
 import discordHome from '../CSS/images/lightpurple.png'
+import { getOneServer } from '../../store/server';
+import '../CSS/ServerNav.css'
+
+
+
 
 const ServerNav = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
 
@@ -28,7 +30,7 @@ const ServerNav = () => {
           return (
             <>
               <div className='server-img-outer'>
-                <img src={server.server_pic} className='server-img' onClick={()=>handleServerClick(i)} />
+                <img src={server.server_pic} className='server-img' onClick={()=>handleServerClick(i + 1)} />
               </div>
             </>
           )

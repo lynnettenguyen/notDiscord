@@ -1,5 +1,4 @@
 const LIST_SERVERS = 'servers/LIST_SERVERS'
-const FIND_SERVER = 'servers/FIND_SERVER'
 const CREATE_SERVER = 'servers/CREATE_SERVER'
 const EDIT_SERVER = 'servers/EDIT_SERVER'
 const DELETE_SERVER = 'servers/DELETE_SERVER'
@@ -9,11 +8,6 @@ export const allServers = (state) => Object.values(state.servers)
 const listServers = (servers) => ({
   type: LIST_SERVERS,
   servers
-})
-
-const findServer = (server) => ({
-  type: FIND_SERVER,
-  server
 })
 
 // const createServer = (newServer) => {
@@ -41,28 +35,12 @@ export const listAllServers = () => async (dispatch) => {
   }
 }
 
-export const getOneServer = (id) => async (dispatch) => {
-  const response = await fetch(`/api/servers/${id}`);
-
-  if (response.ok) {
-    const server = await response.json();
-    dispatch(findServer(server))
-    return server;
-  }
-}
 
 const serverReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {
     case LIST_SERVERS: {
         for (let server of action.servers) newState[server.id] = server
-      return newState
-    }
-
-    case FIND_SERVER: {
-      let server = {}
-      server[action.server.id] = action.server
-      newState = {...state, server}
       return newState
     }
 
