@@ -1,32 +1,48 @@
+.HomePage-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
 /* ---------- NavBar ---------- */
 
 .NavBar-Container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #404EED;
     height: 5em;
-    padding-left: 25em;
-    padding-right: 25em;
+    z-index: 5;
+    width: 50%;
+    max-width: 900px;
+}
+
+.NavBar-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .login-button {
-    padding: .5em 1em;
+    padding: .8em 1.1em;
     background-color: white;
-    border-radius: 1em;
+    border-radius: 2em;
     text-decoration: none;
     color: black;
 }
 
 .home-logo {
-    height: 2em;
+    height: 2.5em;
+    z-index: 2;
 }
 
 
 
 /* ---------- Background ---------- */
 
-.HomePage-background-container {
+.HomePage-background {
     background-image: url('./images/svgexport-4.svg');
     background-size: cover;
     background-position: center;
@@ -42,7 +58,7 @@
     overflow: hidden;
 }
 
-.HomePage-background {
+.HomePage-heading-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,19 +76,18 @@
     justify-content: center;
     color: white;
     flex-direction: column;
-
 }
 
 
 .HomePage-left-image {
-    padding-top: 208px;
+    padding-top: 127px;
     z-index: 1;
     position: relative;
     left: -90px;
 }
 
 .HomePage-right-image {
-    padding-top: 200px;
+    padding-top: 120px;
     margin-left: 550px;
     z-index: 1;
 }
@@ -115,6 +130,7 @@
     align-items: center;
     justify-content: center;
     background-color: #F6F6F6;
+    width: 100%;
 }
 
 .HomePage-6th-part {
@@ -122,4 +138,38 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.HomePage-bottom-div {
+    background-color: #23272A;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottom-divider {
+    height: 1px;
+    max-width: 1180px;
+    width: 50%;
+    background-color: #404EED;
+    margin: 2em 0;
+}
+
+.bottom-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1180px;
+    width: 50%;
+}
+
+.signup-button {
+    padding: .8em 1.1em;
+    background-color: #5865F2;
+    border-radius: 2em;
+    text-decoration: none;
+    color: white;
 }
