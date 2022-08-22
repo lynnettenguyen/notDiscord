@@ -6,3 +6,5 @@ from app.models import db, DirectMessage, User, DirectChat
 from app.forms import ServerForm, ChannelForm
 
 servers = Blueprint('direct_messages', __name__)
+
+# hi 
