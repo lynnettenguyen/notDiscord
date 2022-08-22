@@ -10,6 +10,7 @@ import User from './components/User';
 import ServerNav from './components/MainPage/ServerNav'
 import { authenticate } from './store/session';
 import '../src/components/CSS/fonts.css'
+import MainPage from './components/MainPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,7 +31,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path='/servers'>
-          <ServerNav />
+          <MainPage />
         </Route>
         <Route exact path='/'>
           <HomePage />
