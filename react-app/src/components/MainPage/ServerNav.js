@@ -11,16 +11,20 @@ import '../CSS/ServerNav.css'
 const ServerNav = () => {
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(listAllServers())
+    .then(()=>setIsLoaded(true))
   }, [dispatch]);
 
   const handleServerClick = (id) => {
+      setIsLoaded(false)
       dispatch(getOneServer(id))
+      .then(()=>setIsLoaded(true))
   };
 
-  return (
+  return isLoaded && (
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>

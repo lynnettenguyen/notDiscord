@@ -8,8 +8,7 @@ import NoServerPage from './NoServerPage';
 
 const MainPage = () => {
     const server = useSelector(state => state.server)
-
-
+    const id = Object.keys(server)
 
     return (
         <>
@@ -18,7 +17,7 @@ const MainPage = () => {
                     <ServerNav />
                 </div>
                 <div className='main-middle-container'>
-                    {server ? (<ServerPage />) : (<NoServerPage />)}
+                    {server && server[id] ? (<ServerPage id={id} />) : (<NoServerPage />)}
                 </div>
                 <div className='main-right-container'>
 

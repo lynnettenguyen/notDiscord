@@ -5,7 +5,7 @@ import '../CSS/MainPage.css';
 const ServerPage = () => {
     return (
         <>
-
+            This is a Server!
         </>
     );
 

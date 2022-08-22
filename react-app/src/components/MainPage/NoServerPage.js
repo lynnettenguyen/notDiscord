@@ -10,7 +10,7 @@ const NoServerPage = () => {
 
     return (
         <>
-
+            No Server Page
         </>
     );
 
