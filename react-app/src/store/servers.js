@@ -4,8 +4,7 @@ const CREATE_SERVER = 'servers/CREATE_SERVER'
 const EDIT_SERVER = 'servers/EDIT_SERVER'
 const DELETE_SERVER = 'servers/DELETE_SERVER'
 
-export const allServers = (state) => Object.values(state.servers).all()
-
+export const allServers = (state) => Object.values(state.servers)
 
 const listServers = (servers) => ({
   type: LIST_SERVERS,

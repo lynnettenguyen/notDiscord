@@ -16,6 +16,7 @@
   border-radius: 20%;
   height: 50px;
   width: 50px;
+  margin: 2px 0;
 }
 
 .server-img {
@@ -30,4 +31,10 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  border: 1px solid red;
+  margin: 2px 0;
+}
+
+.server-img-outer:hover {
+  border-radius: 25%;
 }

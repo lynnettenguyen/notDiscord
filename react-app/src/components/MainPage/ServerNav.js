@@ -7,8 +7,8 @@ import discordHome from '../CSS/images/lightpurple.png'
 
 const ServerNav = () => {
   const dispatch = useDispatch()
-  const servers = useSelector((state) => Object.values(state.servers))
-  console.log(servers)
+  const servers = useSelector(allServers)
+  // console.log(servers)
 
   useEffect(() => {
     dispatch(listAllServers())
