@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allServers, listAllServers } from '../../store/servers';
 import discordHome from '../CSS/images/lightpurple.png'
-import { getOneServer } from '../../store/server';
+import { getOneServer, resetServer } from '../../store/server';
 import '../CSS/ServerNav.css'
 
 
@@ -19,16 +19,21 @@ const ServerNav = () => {
   }, [dispatch]);
 
   const handleServerClick = (id) => {
+
+    if (id === 0) {
+      dispatch(resetServer())
+    } else {
       setIsLoaded(false)
       dispatch(getOneServer(id))
       .then(()=>setIsLoaded(true))
+    }
   };
 
   return isLoaded && (
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img src={discordHome} className='home-icon' />
+          <img src={discordHome} className='home-icon' onClick={()=>handleServerClick(0)} />
         </div>
         {servers?.map((server, i) => {
           return (

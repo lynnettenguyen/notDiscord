@@ -19,9 +19,6 @@ const MainPage = () => {
                 <div className='main-middle-container'>
                     {server && server[id] ? (<ServerPage id={id} />) : (<NoServerPage />)}
                 </div>
-                <div className='main-right-container'>
-
-                </div>
             </div>
         </>
     );
