@@ -1,0 +1,40 @@
+.main-serverNav {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex start;
+}
+
+.home-icon {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 25%;
+}
+
+.home-icon-outer {
+  border-radius: 20%;
+  height: 50px;
+  width: 50px;
+  margin: 2px 0;
+}
+
+.server-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.server-img-outer {
+  background-color: rgb(197, 231, 243);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border: 1px solid red;
+  margin: 2px 0;
+}
+
+.server-img-outer:hover {
+  border-radius: 25%;
+}
