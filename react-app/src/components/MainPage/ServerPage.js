@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import '../CSS/MainPage.css';
+import '../CSS/ServerPage.css';
 
 
-const ServerPage = () => {
+const ServerPage = ({ id }) => {
     return (
-        <>
-            This is a Server!
-        </>
+        <div className='ServerPage-container'>
+            <div className='ServerPage-left-container'>
+
+            </div>
+            <div className='ServerPage-middle-container'>
+
+            </div>
+            <div className='ServerPage-right-container'>
+                
+            </div>
+        </div>
     );
 
 };
