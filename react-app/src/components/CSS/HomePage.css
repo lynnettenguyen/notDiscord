@@ -25,12 +25,14 @@
     width: 100%;
 }
 
-.login-button {
+.login-button,
+.logout-button-top {
     padding: .8em 1.1em;
     background-color: white;
     border-radius: 2em;
     text-decoration: none;
     color: black;
+    border: 0;
 }
 
 .home-logo {
@@ -181,10 +183,12 @@
     width: 50%;
 }
 
-.signup-button {
+.signup-button,
+.logout-button-bottom {
     padding: .8em 1.1em;
     background-color: #5865F2;
     border-radius: 2em;
     text-decoration: none;
     color: white;
+    border: 0;
 }

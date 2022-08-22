@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import '../CSS/HomePage.css';
 import HomeLogo from '../CSS/images/notDiscord.png'
@@ -9,11 +9,15 @@ import part3 from '../CSS/images/threePart.svg'
 import part4 from '../CSS/images/fourPart.svg'
 import part5 from '../CSS/images/fivePart.svg'
 import part6 from '../CSS/images/sixPart.svg'
+import { logout } from '../../store/session';
 
 
 const HomePage = () => {
     const user = useSelector(state => state.session.user);
-
+    const dispatch = useDispatch()
+    const onLogout = async (e) => {
+      await dispatch(logout());
+    };
 
     return (
         <div className='HomePage-container'>
@@ -21,7 +25,8 @@ const HomePage = () => {
             <nav className='NavBar-Container'>
                 <div className='NavBar-buttons'>
                 <div><NavLink exact to='/'><img className='home-logo' src={HomeLogo}/></NavLink></div>
-                <div><NavLink className='login-button' to='/login'>Login</NavLink></div>
+                {user && (<button className='logout-button-top' onClick={onLogout}>Logout</button>)}
+                {!user && (<div><NavLink className='login-button' to='/login'>Login</NavLink></div>)}
                 </div>
             </nav>
         <div className='HomePage-heading-container'>
@@ -84,7 +89,8 @@ const HomePage = () => {
                     <NavLink to='/'><img className='home-logo' src={HomeLogo}/></NavLink>
                 </div>
                 <div className='right'>
-                    <NavLink className='signup-button' to='/register'>Signup</NavLink>
+                {user && (<button className='logout-button-bottom' onClick={onLogout}>Logout</button>)}
+                    {!user && (<NavLink className='signup-button' to='/register'>Signup</NavLink>)}
                 </div>
             </div>
         </div>
