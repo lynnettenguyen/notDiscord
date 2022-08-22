@@ -1,9 +1,10 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, render_template
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+from flask_socketio import SocketIO
 
 from .models import db, User
 from .api.user_routes import user_routes
@@ -13,6 +14,9 @@ from .api.server_routes import servers
 from .seeds import seed_commands
 
 from .config import Config
+
+from flask_socketio import SocketIO
+
 
 app = Flask(__name__)
 
@@ -72,3 +76,17 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+
+
+# POSSIBLE WEBSOCKET ANSWER
+# if os.environ.get("FLASK_ENV") == "production":
+#     origins = [
+#         "http://not-discord-app.herokuapp.com",
+#         "https://not-discord-app.herokuapp.com"
+#     ]
+# else:
+#     origins = "*"
+
+# # create your SocketIO instance
+# socketio = SocketIO(cors_allowed_origins=origins)
