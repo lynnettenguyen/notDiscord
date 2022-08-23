@@ -37,16 +37,22 @@ const ServerPage = ({ id }) => {
                 <div className='channel-header'>
                     <img src={downArrow} />
                     CHANNELS
-                    <img src={plusIcon} />
+                    <div className='add-channel-button'>
+                        <img src={plusIcon} />
+                    </div>
                 </div>
                 <div>
                     <div className='channels-main'>
                         {channels?.map((channel, i) => {
                             return (
                                 <div key={i} className='server-channels'>
-                                    <img src={hashtag} />
-                                    {channel.name}
-                                    <img src={editGear} />
+                                    <div>
+                                        <img src={hashtag} />
+                                        {channel.name}
+                                        <div className='edit-channel-button'>
+                                            <img src={editGear} />
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}
