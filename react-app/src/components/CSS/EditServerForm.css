@@ -6,9 +6,9 @@
     position: absolute;
     top: 2em;
     left: 5em;
-    height: 300px;
+    height: 100px;
     width: 200px;
-    border: 1px solid green;
     background-color: #18191C;
     border-radius: 5px;
 }
+

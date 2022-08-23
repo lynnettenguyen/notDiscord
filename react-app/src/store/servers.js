@@ -20,10 +20,10 @@ const editServer = (server) => ({
   server
 })
 
-// const deleteServer = (serverId) => ({
-//   type: DELETE_SERVER,
-//     serverId
-// })
+const deleteServerAction = (serverId) => ({
+  type: DELETE_SERVER,
+    serverId
+})
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
@@ -37,13 +37,13 @@ export const listAllServers = () => async (dispatch) => {
 export const addServer = (serverData) => async (dispatch) => {
   const { name, server_pic } = serverData
   const response = await fetch(`/api/servers`, {
-    headers: { 'Content-Type': 'application/json' },
     method: "POST",
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name, server_pic
+      name,
+      server_pic
     })
   })
-
   if (response.ok) {
     const newServer = await response.json();
     dispatch(createServer(newServer))
@@ -54,16 +54,28 @@ export const addServer = (serverData) => async (dispatch) => {
 export const updateServer = (serverData) => async (dispatch) => {
   const { id, name, server_pic } = serverData
   const response = await fetch(`/api/servers/${id}`, {
-    headers: { 'Content-Type': 'application/json' },
     method: "PUT",
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name, server_pic
+      name,
+      server_pic
     })
   })
-
   if (response.ok) {
     const server = await response.json();
     dispatch(editServer(server))
+    console.log(server)
+    return server;
+  }
+}
+
+export const deleteServer = (id) => async (dispatch) => {
+  const response = await fetch(`/api/servers/${id}`, {
+    method: "DELETE"
+  })
+  if (response.ok) {
+    const server = await response.json();
+    dispatch(deleteServerAction(id))
     return server;
   }
 }
@@ -83,12 +95,12 @@ const serverReducer = (state = {}, action) => {
     }
     case EDIT_SERVER: {
       newState = { ...state }
-      newState[action.newServer.id] = action.newServer;
+      newState[action.server.id] = action.server;
       return newState
     }
     case DELETE_SERVER: {
       newState = { ...state }
-      delete newState[action.newServer.id]
+      delete newState[action.serverId]
       return newState
     }
     default:
