@@ -8,6 +8,7 @@ import ServerForm from './ServerForm'
 import '../CSS/ServerNav.css'
 import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
+// import addIcon from '../CSS/images/discord-add-icon.svg'
 
 const ServerNav = () => {
   const dispatch = useDispatch();
@@ -20,18 +21,16 @@ const ServerNav = () => {
       .then(() => setIsLoaded(true))
   }, [dispatch]);
 
-  const handleServerClick = async (id) => {
+  const handleServerClick = async (serverId) => {
 
-    if (id === 0) {
+    if (serverId === 0) {
       dispatch(resetServer())
     } else {
       setIsLoaded(false)
-      await dispatch(getOneServer(id))
-      await dispatch(getChannels(id))
+      await dispatch(getOneServer(serverId))
+      await dispatch(getChannels(serverId))
       await dispatch(getUsers())
-      .then(()=>setIsLoaded(true))
-
-
+        .then(() => setIsLoaded(true))
     }
   };
 
@@ -39,7 +38,7 @@ const ServerNav = () => {
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img src={discordHome} className='home-icon' onClick={() => handleServerClick(0)} />
+          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => handleServerClick(0)} />
         </div>
         <div className='line-break'>------</div>
         {servers?.map((server, i) => {
@@ -54,7 +53,8 @@ const ServerNav = () => {
           )
         })}
         <div className='add-server-outer' onClick={() => { setShowModal(true) }}>
-          <div className='fa-solid fa-plus add-server-icon' />
+          <div className='fas fa-plus add-server-icon' />
+          {/* <img src={addIcon} /> */}
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <ServerForm setShowModal={setShowModal} />
