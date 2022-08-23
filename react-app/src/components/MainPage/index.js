@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ServerNav from './ServerNav';
 import '../CSS/MainPage.css';
 import { useSelector } from 'react-redux';
