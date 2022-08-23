@@ -11,6 +11,7 @@ import ServerNav from './components/MainPage/ServerNav'
 import { authenticate } from './store/session';
 import '../src/components/CSS/fonts.css'
 import MainPage from './components/MainPage';
+import { ModalProvider } from './components/context/Modal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,9 +31,11 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+      <ModalProvider>
         <Route exact path='/servers'>
           <MainPage />
         </Route>
+      </ModalProvider>
         <Route exact path='/'>
           <HomePage />
         </Route>
