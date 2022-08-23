@@ -24,9 +24,9 @@ const ServerForm = ({ setShowModal }) => {
     }
 
     const response = await dispatch(addServer(serverData))
-      await dispatch(getOneServer(response.id))
-      await dispatch(getUsers())
-      await dispatch(getChannels(response.id))
+    await dispatch(getOneServer(response.id))
+    await dispatch(getUsers())
+    await dispatch(getChannels(response.id))
 
     setShowModal(false)
 
@@ -35,21 +35,23 @@ const ServerForm = ({ setShowModal }) => {
   return (
     <>
       <div className='server-form-outer'>
-        <form onSubmit={handleSubmit} className={page < 1 ? "block" : "hidden"}>
+        <form onSubmit={handleSubmit} className={page < 1 ? "flex" : "hidden"}>
           {page === 0 &&
-            <section className={page === 1 ? "block" : "hidden"}>
-              <div className='server-form-header'>Create a server</div>
-              <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
-              <button type="button" onClick={() => setPage(page + 1)} className='create-own-button'>
-                <img alt='hand-icon' src={handIcon} />Create My Own
-                <span className='fa solid fa-angle-right'></span>
-              </button>
+            <section className={page === 1 ? "flex" : "hidden"}>
+              <div className='first-inner-form'>
+                <div className='server-form-header'>Create a server</div>
+                <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
+                <button type="button" onClick={() => setPage(page + 1)} className='create-own-button'>
+                  <img alt='hand-icon' src={handIcon} />Create My Own
+                  <span className='fa solid fa-angle-right'></span>
+                </button>
+              </div>
             </section>
           }
           {page >= 1 &&
-            <section className={page === 1 ? "block" : "hidden"}>
+            <section className={page === 1 ? "flex" : "hidden"}>
               <div>Customize your server</div>
-              <div>Give your new server a personality with a name and an  icon. You can always change it later.</div>
+              <div>Give your new server a personality with a name and an icon. You can always change it later.</div>
               <div>
                 <div>
                   <label>SERVER IMAGE</label>
