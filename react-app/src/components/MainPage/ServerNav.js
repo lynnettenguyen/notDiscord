@@ -56,7 +56,7 @@ const ServerNav = () => {
           <div className='fa-solid fa-plus add-server-icon' />
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-              <ServerForm />
+              <ServerForm setShowModal={setShowModal} />
             </Modal>
           )}
         </div>
