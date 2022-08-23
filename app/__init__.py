@@ -87,6 +87,19 @@ def react_root(path):
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
 
+
+# POSSIBLE WEBSOCKET ANSWER
+# if os.environ.get("FLASK_ENV") == "production":
+#     origins = [
+#         "http://not-discord-app.herokuapp.com",
+#         "https://not-discord-app.herokuapp.com"
+#     ]
+# else:
+#     origins = "*"
+
+# # create your SocketIO instance
+# socketio = SocketIO(cors_allowed_origins=origins)
+
 # at the bottom of the file, use this to run the app
 if __name__ == '__main__':
     socketio.run(app)

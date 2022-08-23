@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getChannels } from '../../store/server';
+import { useSelector } from 'react-redux';
+import EditServerForm from './EditServerForm'
 import '../CSS/ServerPage.css';
+import '../CSS/EditServerForm.css'
 
 
 const ServerPage = ({ id }) => {
+    // const dispatch = useDispatch()
     const server = useSelector(state => state.server[id])
-    const channels = useSelector(state => state.server.channels)
-
-    const dispatch = useDispatch()
+    const channels = useSelector(state => Object.values(state.server.channels))
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [showDropdown, setShowDropdown] = useState(false)
 
     useEffect(() => {
-        // console.log('CHANNELS!!', channels)
-        dispatch(getChannels(id))
-    }, [dispatch])
+        if (channels) {
+            setIsLoaded(true)
+        }
+    }, [isLoaded, channels])
 
-    return (
+    const editServer = () => {
+        setShowDropdown(!showDropdown)
+    }
+
+    return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name'>{server.name}</div>
+                <div className='ServerPage-name'>{server.name}<button className='server-name-button' onClick={editServer}><i className="fas fa-angle-down"></i></button></div>
                 <div className='ServerPage-channel-name'></div>
                 <div className='ServerPage-NavBar-buttons'></div>
-
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} />)}
             </div>
             <div className='ServerPage-left-container'>
                 <div className='channels-main'>
-                    {/* {channels && channels?.map((channel, i) => {return (<div key={i} className={`channel${i}`}>{channel}</div>)})} */}
+                    {channels?.map((channel, i) => { return (<div key={i} className='server-channels'>{channel.name}</div>) })}
                 </div>
             </div>
             <div className='ServerPage-middle-container'>

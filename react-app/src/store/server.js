@@ -52,12 +52,10 @@ const singleServerReducer = (state = {}, action) => {
 
       case GET_CHANNELS: {
         let channels = {}
-        console.log('Previous STATE', newState)
         newState = {...state, channels}
         action.channels.map(channel => {
           newState.channels[channel.id] = channel
         })
-        console.log('NEW STATE', newState)
         return newState
       }
 
