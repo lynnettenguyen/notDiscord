@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allServers, listAllServers } from '../../store/servers';
-import discordHome from '../CSS/images/lightpurple.png'
 import { getChannels, getOneServer, resetServer } from '../../store/server';
-import '../CSS/ServerNav.css'
 import { getUsers } from '../../store/users';
-import addIcon from '../CSS/images/discord-add-icon.svg'
 import { Modal } from '../context/Modal';
 import ServerForm from './ServerForm'
-import defaultServer from '../CSS/images/disguise_blue.png'
+import '../CSS/ServerNav.css'
+import discordHome from '../CSS/images/lightpurple.png'
+import serverDefault from '../CSS/images/server_default.png'
 
 const ServerNav = () => {
   const dispatch = useDispatch();
@@ -48,7 +47,9 @@ const ServerNav = () => {
           return (
             <>
               <div className='server-img-outer'>
-                {server.server_pic ? <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div> : <div style={{ backgroundImage: `url(${defaultServer})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div>}
+                {server.server_pic ?
+                  <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div> :
+                  <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div>}
               </div>
             </>
           )
