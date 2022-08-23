@@ -8,6 +8,7 @@ import { getUsers } from '../../store/users';
 import addIcon from '../CSS/images/discord-add-icon.svg'
 import { Modal } from '../context/Modal';
 import ServerForm from './ServerForm'
+import defaultServer from '../CSS/images/disguise_blue.png'
 
 const ServerNav = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const ServerNav = () => {
           return (
             <>
               <div className='server-img-outer'>
-                <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div>
+                {server.server_pic ? <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div> : <div style={{ backgroundImage: `url(${defaultServer})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div>}
               </div>
             </>
           )
