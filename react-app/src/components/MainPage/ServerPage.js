@@ -10,7 +10,7 @@ const ServerPage = ({ id }) => {
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         // console.log('CHANNELS!!', channels)
         dispatch(getChannels(id))
     }, [dispatch])

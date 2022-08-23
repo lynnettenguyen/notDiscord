@@ -4,7 +4,7 @@ import '../CSS/MainPage.css';
 
 
 const NoServerPage = () => {
-    const servers = useSelector(state=> state.servers)
+    const servers = useSelector(state => state.servers)
     const server = servers.server
 
 
