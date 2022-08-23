@@ -12,15 +12,14 @@ socketio = SocketIO(direct_messages)
 
 
 # # get all direct messages by sender_id
-# @direct_messages.route("/<int:sender_id>")
-# @login_required
-# def direct_messages_by_sender(sender_id):
-#   dms = DirectMessage.query.all(sender_id)
-#   return jsonify(dms.to_dict())
+@direct_messages.route("/<int:sender_id>")
+@login_required
+def direct_messages_by_sender(sender_id):
+  dms = DirectMessage.query.all(sender_id)
+  return jsonify(dms.to_dict())
 
-# @direct_messages.route("/<int:direct_chat_id>", methods=['POST'])
-# @login_required
-# def create_new_direct_message():
-#   pass
-# # websocket potentially
+@direct_messages.route("/<int:direct_chat_id>", methods=['POST'])
+@login_required
+def create_new_direct_message():
+  pass
 
