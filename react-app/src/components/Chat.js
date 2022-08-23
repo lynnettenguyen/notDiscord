@@ -7,6 +7,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const user = useSelector((state) => state.session.user);
+  // const channel = useSelector((state) => state.channel)
 
   useEffect(() => {
     // create websocket/connect
@@ -31,7 +32,7 @@ const Chat = () => {
   const sendChat = (e) => {
     e.preventDefault();
     // emit a message
-    socket.emit("chat", { user: user.username, msg: chatInput });
+    socket.emit("chat", { user: user.username, user_id: user.id, channel_id: 1, content: chatInput });
     // clear the input field after the message is sent
     setChatInput("");
   };
@@ -42,7 +43,7 @@ const Chat = () => {
       <div>
         <div>
           {messages.map((message, ind) => (
-            <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+            <div key={ind}>{`${message.user}: ${message.content}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
