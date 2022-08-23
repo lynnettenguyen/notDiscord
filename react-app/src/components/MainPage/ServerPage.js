@@ -7,22 +7,21 @@ import '../CSS/ServerPage.css';
 const ServerPage = ({ id }) => {
     const dispatch = useDispatch()
     const server = useSelector(state => state.server[id])
-    const channels = useSelector(state => state.server.channels)
+    const channels = useSelector(state => Object.values(state.server.channels))
     const [isLoaded, setIsLoaded] = useState(false)
 
-    let channelArr = []
 
     useEffect(() => {
-        dispatch(getChannels(id))
-        .then(()=>{
-            channelArr = Object.values(channels)
-        })
-        .then(()=> {
-            if (channelArr.length > 0) {
-                console.log('!!!!!!!!!!!', channelArr)
-                setIsLoaded(true)
-            }
-        })
+        // dispatch(getChannels(id))
+        // .then(()=> {
+            //     if (channels && channels.length > 0) {
+                //         setIsLoaded(true)
+                //     }
+                // })
+        if (server) {
+            console.log('!!!!!!!!!!!', channels)
+            setIsLoaded(true)
+        }
     }, [dispatch, isLoaded])
 
     return isLoaded && (
@@ -35,7 +34,7 @@ const ServerPage = ({ id }) => {
             </div>
             <div className='ServerPage-left-container'>
                 <div className='channels-main'>
-                    {channelArr.length > 0 && channelArr.map((channel, i) => {return (<div key={i} className='server-channels'>{channel.name}</div>)})}
+                    {channels?.map((channel, i) => {return (<div key={i} className='server-channels'>{channel.name}</div>)})}
                 </div>
             </div>
             <div className='ServerPage-middle-container'>

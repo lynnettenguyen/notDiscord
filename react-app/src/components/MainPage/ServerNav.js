@@ -29,9 +29,9 @@ const ServerNav = () => {
       dispatch(getOneServer(id))
         .then(() => {
           dispatch(getUsers())
+            .then(() => dispatch(getChannels(id)))
             .then(() => setIsLoaded(true))
         })
-        .then(() => dispatch(getChannels(id)))
 
     }
   };
