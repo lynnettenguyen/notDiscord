@@ -14,6 +14,7 @@ const ServerForm = ({ setShowModal }) => {
   const [page, setPage] = useState(0)
   const [name, setName] = useState(`${user.username}'s server`)
   const [server_pic, setServerPic] = useState("")
+  const [serverId, setServerId] = useState(false)
 
 
   const handleSubmit = async (e) => {
@@ -25,12 +26,9 @@ const ServerForm = ({ setShowModal }) => {
     }
 
     const response = await dispatch(addServer(serverData))
-
-    if (response.ok) {
-      dispatch(getOneServer(response.id))
-        .then(() => dispatch(getUsers()))
-        .then(() => dispatch(getChannels(response.id)))
-    }
+      await dispatch(getOneServer(response.id))
+      await dispatch(getUsers())
+      await dispatch(getChannels(response.id))
 
     setShowModal(false)
 

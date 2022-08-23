@@ -8,6 +8,7 @@ import NoServerPage from './NoServerPage';
 
 const MainPage = () => {
     const server = useSelector(state => state.server)
+    const channels = useSelector(state => state.server.channels)
     const id = Object.keys(server)[0]
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const MainPage = () => {
                     <ServerNav />
                 </div>
                 <div className='main-middle-container'>
-                    {server && server[id] ? (<ServerPage id={id} />) : (<NoServerPage />)}
+                    {channels ? (<ServerPage id={id} />) : (<NoServerPage />)}
                 </div>
             </div>
         </>
