@@ -12,7 +12,7 @@ const listServers = (servers) => ({
 
 const createServer = (newServer) => ({
   type: CREATE_SERVER,
-    newServer
+  newServer
 })
 
 // const editServer = (server) => ({
@@ -27,7 +27,6 @@ const createServer = (newServer) => ({
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
-
   if (response.ok) {
     const servers = await response.json();
     dispatch(listServers(servers))
@@ -36,11 +35,15 @@ export const listAllServers = () => async (dispatch) => {
 }
 
 export const addServer = (serverData) => async (dispatch) => {
-  const { owner_id, name, server_pic } = serverData
+  const { name, server_pic } = serverData
+  console.log(serverData)
   const response = await fetch(`/api/servers`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
     method: "POST",
     body: JSON.stringify({
-      owner_id, name, server_pic
+      name, server_pic
     })
   })
 

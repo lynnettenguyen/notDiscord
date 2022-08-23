@@ -5,7 +5,7 @@ import { addServer, listAllServers } from '../../store/servers';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
-const ServerForm = () => {
+const ServerForm = ({ setShowModal }) => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -15,16 +15,17 @@ const ServerForm = () => {
 
 
   const handleSubmit = async (e) => {
-    e.preventdefault()
+    e.preventDefault()
 
     const serverData = {
-      owner_id: user.id,
       name,
       server_pic
     }
 
-    dispatch(addServer(serverData))
+    await dispatch(addServer(serverData))
       .then(() => dispatch(listAllServers()))
+
+    setShowModal(false)
 
   }
 
@@ -62,7 +63,7 @@ return (
                   name='name'
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  required
+                  // required
                 />
               </div>
             </div>
