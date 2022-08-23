@@ -10,13 +10,15 @@ import User from './components/User';
 import ServerNav from './components/MainPage/ServerNav'
 import { authenticate } from './store/session';
 import '../src/components/CSS/fonts.css'
+import MainPage from './components/MainPage';
+import { ModalProvider } from './components/context/Modal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -27,28 +29,30 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/servers'>
-          <ServerNav />
-        </Route>
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        <Route exact path='/login'>
-          <LoginForm />
-        </Route>
-        <Route exact path='/register'>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/servers'>
+            <MainPage />
+          </Route>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <Route exact path='/login'>
+            <LoginForm />
+          </Route>
+          <Route exact path='/register'>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+        </Switch>
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 

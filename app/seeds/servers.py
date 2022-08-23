@@ -3,19 +3,19 @@ from app.models import db, Server
 def seed_servers():
     demo_servers = [
       Server(
-        owner_id=1, name='Ducks', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661116419/ducks.png'
+        owner_id=1, name='Ducks', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661225905/server1.png'
       ),
       Server(
-        owner_id=2, name='Travel Guide', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661116639/travel_icon.png'
+        owner_id=1, name='Advanced HTML Tips', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661225841/server3.png'
         ),
       Server(
-        owner_id=3, name='Advanced HTML Tips', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661116063/html.png'
+        owner_id=1, name='Ghibli Films', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661225841/server4.png'
         ),
       Server(
-        owner_id=4, name='Ghibli Films', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661116713/ghibli.png'
+        owner_id=1, name='Japan Trip', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661227697/sushi3.png'
         ),
       Server(
-        owner_id=5, name='Discord Squad', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661117086/discord.png'
+        owner_id=1, name='Discord Squad', server_pic='https://res.cloudinary.com/dv3qturtv/image/upload/v1661225841/server5.png'
         ),
     ]
 

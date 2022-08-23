@@ -1,8 +1,7 @@
 const LIST_SERVERS = 'servers/LIST_SERVERS'
-const FIND_SERVER = 'servers/FIND_SERVER'
 const CREATE_SERVER = 'servers/CREATE_SERVER'
-const EDIT_SERVER = 'servers/EDIT_SERVER'
-const DELETE_SERVER = 'servers/DELETE_SERVER'
+// const EDIT_SERVER = 'servers/EDIT_SERVER'
+// const DELETE_SERVER = 'servers/DELETE_SERVER'
 
 export const allServers = (state) => Object.values(state.servers)
 
@@ -11,15 +10,10 @@ const listServers = (servers) => ({
   servers
 })
 
-// const findServer = (server) => ({
-//   type: FIND_SERVER,
-//   server
-// })
-
-// const createServer = (newServer) => {
-//   type: CREATE_SERVER,
-//     newServer
-// }
+const createServer = (newServer) => ({
+  type: CREATE_SERVER,
+    newServer
+})
 
 // const editServer = (server) => ({
 //   type: EDIT_SERVER,
@@ -33,32 +27,51 @@ const listServers = (servers) => ({
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
+
   if (response.ok) {
     const servers = await response.json();
-    console.log("!!!!!!!!!", servers)
     dispatch(listServers(servers))
+    return servers;
   }
 }
 
+export const addServer = (serverData) => async (dispatch) => {
+  const { owner_id, name, server_pic } = serverData
+  const response = await fetch(`/api/servers`, {
+    method: "POST",
+    body: JSON.stringify({
+      owner_id, name, server_pic
+    })
+  })
+
+  if (response.ok) {
+    const newServer = await response.json();
+    dispatch(createServer(newServer))
+    return newServer;
+  }
+}
+
+
 const serverReducer = (state = {}, action) => {
-  const newState = {}
+  let newState = {}
   switch (action.type) {
     case LIST_SERVERS: {
       for (let server of action.servers) newState[server.id] = server
       return newState
     }
-    case FIND_SERVER: {
-
-    }
     case CREATE_SERVER: {
-
+      newState = { ...state }
+      newState[action.newServer.id] = action.newServer;
+      return newState
     }
-    case EDIT_SERVER: {
 
-    }
-    case DELETE_SERVER: {
+    // case EDIT_SERVER: {
 
-    }
+    // }
+
+    // case DELETE_SERVER: {
+
+    // }
 
     default:
       return state;

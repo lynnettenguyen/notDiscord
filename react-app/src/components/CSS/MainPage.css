@@ -1,0 +1,4 @@
+.main-server-container {
+    display: flex;
+    flex-direction: row;
+}

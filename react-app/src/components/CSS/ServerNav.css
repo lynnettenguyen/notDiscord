@@ -1,40 +1,80 @@
 .main-serverNav {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: flex start;
+  align-items: center;
+  background-color: #202225;
+  padding: 10px 12px;
+  height: 100%;
 }
 
 .home-icon {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 25%;
+  border-radius: 30%;
 }
 
 .home-icon-outer {
   border-radius: 20%;
   height: 50px;
   width: 50px;
-  margin: 2px 0;
+  margin: 5px 0;
 }
 
 .server-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  width: 110%;
+  height: 110%;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .server-img-outer {
-  background-color: rgb(197, 231, 243);
+  background-color: rgb(90, 149, 171);
   border-radius: 50%;
   height: 50px;
   width: 50px;
-  border: 1px solid red;
-  margin: 2px 0;
+  margin: 5px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.server-img:hover {
+  object-fit: cover;
 }
 
 .server-img-outer:hover {
-  border-radius: 25%;
+  border-radius: 30%;
+}
+
+.add-server-outer {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: #36393F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+  font-size: 20px;
+  color: #1ab071;
+}
+
+.add-server-outer:hover {
+  background-color: #1ab071;
+  color: white;
+  border-radius: 30%;
+}
+
+.line-break {
+  height: 5px;
+  margin-top: 5px;
+  border-top: 2px #36393F solid;
+  color: #202225;
+}
+
+.server-form-first {
+  width: 500px;
+  border: 1px red solid;
 }
