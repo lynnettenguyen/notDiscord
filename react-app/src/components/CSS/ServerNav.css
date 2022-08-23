@@ -30,7 +30,7 @@
 }
 
 .server-img-outer {
-  background-color: rgb(90, 149, 171);
+  background-color: #36393f;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -52,7 +52,7 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
-  background-color: #36393F;
+  background-color: #36393f;
   display: flex;
   align-items: center;
   justify-content: center;

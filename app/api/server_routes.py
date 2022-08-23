@@ -33,6 +33,8 @@ def create_server():
   form = ServerForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
+  print("!!!!!!!!!", form.data)
+
   if form.validate_on_submit():
     # create server
     server = Server(
