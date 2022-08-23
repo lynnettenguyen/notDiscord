@@ -3,7 +3,10 @@ import { useSelector } from 'react-redux';
 import EditServerForm from './EditServerForm'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
-
+import downArrow from '../CSS/images/down-arrow.svg'
+import plusIcon from '../CSS/images/discord-add-icon.svg'
+import hashtag from '../CSS/images/channel-hashtag.svg'
+import editGear from '../CSS/images/edit-channel-gear.svg'
 
 const ServerPage = ({ id }) => {
     const server = useSelector(state => state.server[id])
@@ -31,8 +34,23 @@ const ServerPage = ({ id }) => {
                 {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}
             </div>
             <div className='ServerPage-left-container'>
-                <div className='channels-main'>
-                    {channels?.map((channel, i) => { return (<div key={i} className='server-channels'>{channel.name}</div>) })}
+                <div className='channel-header'>
+                    <img src={downArrow} />
+                    CHANNELS
+                    <img src={plusIcon} />
+                </div>
+                <div>
+                    <div className='channels-main'>
+                        {channels?.map((channel, i) => {
+                            return (
+                                <div key={i} className='server-channels'>
+                                    <img src={hashtag} />
+                                    {channel.name}
+                                    <img src={editGear} />
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
             <div className='ServerPage-middle-container'>
