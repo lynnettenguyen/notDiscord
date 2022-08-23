@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -29,30 +29,30 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Switch>
-      <ModalProvider>
-        <Route exact path='/servers'>
-          <MainPage />
-        </Route>
-      </ModalProvider>
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        <Route exact path='/login'>
-          <LoginForm />
-        </Route>
-        <Route exact path='/register'>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-      </Switch>
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/servers'>
+            <MainPage />
+          </Route>
+          <Route exact path='/'>
+            <HomePage />
+          </Route>
+          <Route exact path='/login'>
+            <LoginForm />
+          </Route>
+          <Route exact path='/register'>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+        </Switch>
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 

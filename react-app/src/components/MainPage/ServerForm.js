@@ -5,7 +5,7 @@ import "../CSS/ServerForm.css"
 
 const ServerForm = () => {
   const user = useSelector(state => state.session.user)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const [page, setPage] = useState(0)
   const [serverName, setServerName] = useState(`${user.username}'s server`)

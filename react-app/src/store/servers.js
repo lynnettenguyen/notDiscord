@@ -1,7 +1,7 @@
 const LIST_SERVERS = 'servers/LIST_SERVERS'
-const CREATE_SERVER = 'servers/CREATE_SERVER'
-const EDIT_SERVER = 'servers/EDIT_SERVER'
-const DELETE_SERVER = 'servers/DELETE_SERVER'
+// const CREATE_SERVER = 'servers/CREATE_SERVER'
+// const EDIT_SERVER = 'servers/EDIT_SERVER'
+// const DELETE_SERVER = 'servers/DELETE_SERVER'
 
 export const allServers = (state) => Object.values(state.servers)
 
@@ -44,17 +44,17 @@ const serverReducer = (state = {}, action) => {
       return newState
     }
 
-    case CREATE_SERVER: {
+    // case CREATE_SERVER: {
 
-    }
+    // }
 
-    case EDIT_SERVER: {
+    // case EDIT_SERVER: {
 
-    }
+    // }
 
-    case DELETE_SERVER: {
+    // case DELETE_SERVER: {
 
-    }
+    // }
 
     default:
       return state;
