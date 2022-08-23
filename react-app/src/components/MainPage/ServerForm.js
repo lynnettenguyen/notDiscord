@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { addServer, listAllServers } from '../../store/servers';
+import { addServer } from '../../store/servers';
+import { getChannels, getOneServer, } from '../../store/server';
+import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
@@ -23,8 +24,13 @@ const ServerForm = ({ setShowModal }) => {
       server_pic
     }
 
-    await dispatch(addServer(serverData))
-      .then(() => dispatch(listAllServers()))
+    const response = await dispatch(addServer(serverData))
+
+    if (response.ok) {
+      dispatch(getOneServer(response.id))
+        .then(() => dispatch(getUsers()))
+        .then(() => dispatch(getChannels(response.id)))
+    }
 
     setShowModal(false)
 
