@@ -5,7 +5,7 @@ import { deleteServer, updateServer } from '../../store/servers';
 import { Modal } from '../context/Modal';
 
 import "../CSS/EditServerForm.css"
-import { resetServer } from '../../store/server';
+import { getChannels, getOneServer, resetServer } from '../../store/server';
 
 
 const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
@@ -35,6 +35,8 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
     }
     const response = await dispatch(updateServer(serverData))
     if (response) {
+      await dispatch(getOneServer(id))
+      await dispatch(getChannels(id))
       setShowModal(false)
       setShowDropdown(false)
     }

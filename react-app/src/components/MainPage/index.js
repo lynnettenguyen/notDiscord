@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ServerNav from './ServerNav';
 import '../CSS/MainPage.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
+import { getOneServer } from '../../store/server';
 
 
 const MainPage = () => {
+    const dispatch = useDispatch()
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
     const id = Object.keys(server)[0]
+
+    useEffect(()=>{
+        dispatch(getOneServer(id))
+    }, [dispatch])
 
     return (
         <>
