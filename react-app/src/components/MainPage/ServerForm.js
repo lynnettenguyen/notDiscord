@@ -38,7 +38,7 @@ const ServerForm = ({ setShowModal }) => {
         <form onSubmit={handleSubmit} className={page < 1 ? "flex" : "hidden"}>
           {page === 0 &&
             <section className={page === 1 ? "flex" : "hidden"}>
-              <div className='first-inner-form'>
+              <div className='inner-form'>
                 <div className='server-form-header'>Create a server</div>
                 <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
                 <div onClick={() => setPage(page + 1)} className='create-own-button'>
@@ -51,31 +51,41 @@ const ServerForm = ({ setShowModal }) => {
           }
           {page >= 1 &&
             <section className={page === 1 ? "flex" : "hidden"}>
-              <div>Customize your server</div>
-              <div>Give your new server a personality with a name and an icon. You can always change it later.</div>
-              <div>
+              <div className='inner-form'>
+                <div className='server-form-header'>Customize your server</div>
+                <div className='server-form-caption'>Give your new server a personality with a name and an icon. You can always change it later.</div>
                 <div>
-                  <label>SERVER IMAGE</label>
-                  <input
-                    name='server_pic'
-                    placeholder='https://image.url'
-                    value={server_pic}
-                    onChange={(e) => setServerPic(e.target.value)}
-                  />
+                  <div>
+                    <div className='server-form-label'>SERVER IMAGE</div>
+                    <div>
+                      <input
+                        name='server_pic'
+                        className='server-form-input'
+                        placeholder='https://image.url'
+                        value={server_pic}
+                        onChange={(e) => setServerPic(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div className='server-form-label'>SERVER NAME</div>
+                    <div>
+                      <input
+                        name='name'
+                        className='server-form-input'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div>
-                  <label>SERVER NAME</label>
-                  <input
-                    name='name'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  // required
-                  />
+                  <div className='bottom-form-section'>
+                    <button onClick={() => setPage(page - 1)} className="back-button">Back</button>
+                    <button type="submit" className='create-server-button'>Create</button>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <div><button type="button" onClick={() => setPage(page - 1)} className="back-button">Back</button></div>
-                <div><button type="submit">Create</button></div>
               </div>
             </section>
           }
