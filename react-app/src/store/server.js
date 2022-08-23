@@ -53,9 +53,7 @@ const singleServerReducer = (state = {}, action) => {
       case GET_CHANNELS: {
         let channels = {}
         newState = {...state, channels}
-        action.channels.map(channel => {
-          newState.channels[channel.id] = channel
-        })
+        action.channels.map(channel => newState.channels[channel.id] = channel)
         return newState
       }
 
