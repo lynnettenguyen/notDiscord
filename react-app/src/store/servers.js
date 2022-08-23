@@ -37,13 +37,13 @@ export const listAllServers = () => async (dispatch) => {
 export const addServer = (serverData) => async (dispatch) => {
   const { name, server_pic } = serverData
   const response = await fetch(`/api/servers`, {
-    headers: { 'Content-Type': 'application/json' },
     method: "POST",
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name, server_pic
+      name,
+      server_pic
     })
   })
-
   if (response.ok) {
     const newServer = await response.json();
     dispatch(createServer(newServer))
@@ -54,13 +54,13 @@ export const addServer = (serverData) => async (dispatch) => {
 export const updateServer = (serverData) => async (dispatch) => {
   const { id, name, server_pic } = serverData
   const response = await fetch(`/api/servers/${id}`, {
-    headers: { 'Content-Type': 'application/json' },
     method: "PUT",
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name, server_pic
+      name,
+      server_pic
     })
   })
-
   if (response.ok) {
     const server = await response.json();
     dispatch(editServer(server))

@@ -6,7 +6,7 @@ import '../CSS/EditServerForm.css'
 
 
 const ServerPage = ({ id }) => {
-    // const dispatch = useDispatch()
+    const [page, setPage] = useState(0)
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => Object.values(state.users))
     const channels = useSelector(state => Object.values(state.server.channels))
@@ -17,19 +17,20 @@ const ServerPage = ({ id }) => {
         if (channels) {
             setIsLoaded(true)
         }
+        console.log(page)
     }, [isLoaded, channels])
 
     const editServer = () => {
         setShowDropdown(!showDropdown)
     }
 
-    return isLoaded && (
+    return isLoaded && page == 0 ? (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
                 <div className='ServerPage-name'>{server.name}<button className='server-name-button' onClick={editServer}><i className="fas fa-angle-down"></i></button></div>
                 <div className='ServerPage-channel-name'></div>
                 <div className='ServerPage-NavBar-buttons'></div>
-                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} />)}
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} setPage={setPage} />)}
             </div>
             <div className='ServerPage-left-container'>
                 <div className='channels-main'>
@@ -46,7 +47,11 @@ const ServerPage = ({ id }) => {
             </div>
         </div>
 
-    );
+    ) : (
+        <>
+        TEST
+        </>
+    )
 
 };
 
