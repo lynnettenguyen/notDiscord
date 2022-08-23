@@ -5,7 +5,7 @@ import discordHome from '../CSS/images/lightpurple.png'
 import { getChannels, getOneServer, resetServer } from '../../store/server';
 import '../CSS/ServerNav.css'
 import { getUsers } from '../../store/users';
-
+import addIcon from '../CSS/images/discord-add-icon.svg'
 
 
 
@@ -41,6 +41,7 @@ const ServerNav = () => {
         <div className='home-icon-outer'>
           <img src={discordHome} className='home-icon' onClick={()=>handleServerClick(0)} />
         </div>
+        <div className='line-break'>------</div>
         {servers?.map((server, i) => {
           return (
             <>
@@ -50,6 +51,10 @@ const ServerNav = () => {
             </>
           )
         })}
+        <div className='add-server-outer'>
+          {/* <img src={addIcon} className='add-server-icon' /> */} 
+          <div className='fa-solid fa-plus add-server-icon' />
+        </div>
       </div>
     </>
   )
