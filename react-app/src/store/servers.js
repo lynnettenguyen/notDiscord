@@ -38,9 +38,7 @@ export const addServer = (serverData) => async (dispatch) => {
   const { name, server_pic } = serverData
   console.log(serverData)
   const response = await fetch(`/api/servers`, {
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: {'Content-Type': 'application/json'},
     method: "POST",
     body: JSON.stringify({
       name, server_pic
