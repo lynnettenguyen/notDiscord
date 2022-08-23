@@ -8,7 +8,6 @@ from app.forms import ServerForm, ChannelForm
 from flask_socketio import SocketIO, join_room
 
 channel_messages = Blueprint('chat_messages', __name__)
-socketio = SocketIO(channel_messages)
 
 # get all channel messages
 @channel_messages.route("/int:channel_id")
