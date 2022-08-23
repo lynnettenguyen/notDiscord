@@ -6,8 +6,8 @@ import '../CSS/EditServerForm.css'
 
 
 const ServerPage = ({ id }) => {
-    // const dispatch = useDispatch()
     const server = useSelector(state => state.server[id])
+    const users = useSelector(state => Object.values(state.users))
     const channels = useSelector(state => Object.values(state.server.channels))
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
@@ -41,12 +41,11 @@ const ServerPage = ({ id }) => {
                 </div>
             </div>
             <div className='ServerPage-right-container'>
-
+                {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
             </div>
         </div>
 
     );
-
 };
 
 export default ServerPage;
