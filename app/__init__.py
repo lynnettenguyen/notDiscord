@@ -21,8 +21,6 @@ from .config import Config
 # top of the file)
 from .socket import socketio
 
-
-
 app = Flask(__name__)
 
 # Setup login manager
