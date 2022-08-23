@@ -4,21 +4,41 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 200px;
 }
 
 .server-form-header {
   font-family: GintoNormalBold;
-  font-size: 20px;
+  font-size: 22px;
+  padding-top: 18px;
 }
 
 .server-form-caption {
-  font-size: WhitneyBook;
+  font-family: WhitneyBook;
   color: #4f5660;
-  font-size: 14px;
+  font-size: 16px;
+  padding: 10px 20px 20px;
+  text-align: center;
 }
 
 .create-own-button {
   font-family: GintoNormalBold;
-  font-size: 14px;
+  font-size: 16px;
+  background-color: white;
+  border: 1px rgba(128, 128, 128, 0.459) solid;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 10px 6px;
+  display: flex;
+  align-items: center;
+}
+
+.create-text {
+  margin: 0 100px 0 8px;
+  padding-bottom: 8px;
+}
+
+.fa-angle-right {
+  margin-right: 10px;
+  padding-bottom: 6px;
+  color: #36393f;
 }

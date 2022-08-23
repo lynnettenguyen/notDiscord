@@ -41,10 +41,11 @@ const ServerForm = ({ setShowModal }) => {
               <div className='first-inner-form'>
                 <div className='server-form-header'>Create a server</div>
                 <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
-                <button type="button" onClick={() => setPage(page + 1)} className='create-own-button'>
-                  <img alt='hand-icon' src={handIcon} />Create My Own
+                <div onClick={() => setPage(page + 1)} className='create-own-button'>
+                  <div className='create-img'><img alt='hand-icon' src={handIcon} /></div>
+                  <div className='create-text'>Create My Own</div>
                   <span className='fa solid fa-angle-right'></span>
-                </button>
+                </div>
               </div>
             </section>
           }
