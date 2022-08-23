@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
 channel_messages = Blueprint('chat_messages', __name__)
 
 # get all channel messages
@@ -13,5 +13,3 @@ def channel_messages_by_channel(channel_id):
 @login_required
 def create_new_channel_message():
   pass
-=======
->>>>>>> main
