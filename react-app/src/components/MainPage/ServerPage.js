@@ -5,17 +5,27 @@ import '../CSS/ServerPage.css';
 
 
 const ServerPage = ({ id }) => {
+    const dispatch = useDispatch()
     const server = useSelector(state => state.server[id])
     const channels = useSelector(state => state.server.channels)
+    const [isLoaded, setIsLoaded] = useState(false)
 
-    const dispatch = useDispatch()
+    let channelArr = []
 
     useEffect(() => {
-        // console.log('CHANNELS!!', channels)
         dispatch(getChannels(id))
-    }, [dispatch])
+        .then(()=>{
+            channelArr = Object.values(channels)
+        })
+        .then(()=> {
+            if (channelArr.length > 0) {
+                console.log('!!!!!!!!!!!', channelArr)
+                setIsLoaded(true)
+            }
+        })
+    }, [dispatch, isLoaded])
 
-    return (
+    return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
                 <div className='ServerPage-name'>{server.name}</div>
@@ -25,7 +35,7 @@ const ServerPage = ({ id }) => {
             </div>
             <div className='ServerPage-left-container'>
                 <div className='channels-main'>
-                    {/* {channels && channels?.map((channel, i) => {return (<div key={i} className={`channel${i}`}>{channel}</div>)})} */}
+                    {channelArr.length > 0 && channelArr.map((channel, i) => {return (<div key={i} className='server-channels'>{channel.name}</div>)})}
                 </div>
             </div>
             <div className='ServerPage-middle-container'>
