@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ServerNav from './ServerNav';
 import '../CSS/MainPage.css';
 import { useSelector } from 'react-redux';
@@ -10,11 +10,6 @@ const MainPage = () => {
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
     const id = Object.keys(server)[0]
-
-    useEffect(() => {
-        // console.log('ID!!!', id)
-        // console.log('SERVER!!!', server)
-    })
 
     return (
         <>
