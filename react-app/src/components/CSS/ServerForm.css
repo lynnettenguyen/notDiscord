@@ -1,0 +1,23 @@
+.server-form-outer {
+  width: 442px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.server-form-header {
+  font-family: GintoNormalBold;
+  font-size: 20px;
+}
+
+.server-form-caption {
+  font-size: WhitneyBook;
+  color: #4f5660;
+  font-size: 14px;
+}
+
+.create-own-button {
+  font-family: GintoNormalBold;
+  font-size: 14px;
+}
