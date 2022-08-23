@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteServer, updateServer } from '../../store/servers';
 import { Modal } from '../context/Modal';
@@ -10,7 +9,6 @@ import { getChannels, getOneServer, resetServer } from '../../store/server';
 
 const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const server = useSelector(state => state.server[id])
   const serverPic = useSelector(state => state.server[id].server_pic)
   const [showModal, setShowModal] = useState(false)
