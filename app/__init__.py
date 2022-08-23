@@ -17,7 +17,10 @@ from .seeds import seed_commands
 
 from .config import Config
 
-from flask_socketio import SocketIO
+# import your socketio object (with the other imports at the
+# top of the file)
+from .socket import socketio
+
 
 
 app = Flask(__name__)
@@ -40,9 +43,12 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(servers, url_prefix='/api/servers')
 # app.register_blueprint(direct_messages, url_prefix='/api/direct_messages')
-# app.register_blueprint(channel_messages, url_prefix='/api/channel_messages')git brnahc
+# app.register_blueprint(channel_messages, url_prefix='/api/channel_messages')
 db.init_app(app)
 Migrate(app, db)
+
+# initialize the app with the socket instance
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -81,6 +87,7 @@ def react_root(path):
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
 
+<<<<<<< HEAD
 
 
 # POSSIBLE WEBSOCKET ANSWER
@@ -94,3 +101,8 @@ def react_root(path):
 
 # # create your SocketIO instance
 # socketio = SocketIO(cors_allowed_origins=origins)
+=======
+# at the bottom of the file, use this to run the app
+if __name__ == '__main__':
+    socketio.run(app)
+>>>>>>> 6809b76fc913f7edc94c6e016c2028249bb37ad3
