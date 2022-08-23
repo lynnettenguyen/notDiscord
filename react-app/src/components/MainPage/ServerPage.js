@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import EditServerForm from './EditServerForm'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
 
 const ServerPage = ({ id }) => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const server = useSelector(state => state.server[id])
     const channels = useSelector(state => Object.values(state.server.channels))
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
 
-    useEffect(()=> {
+    useEffect(() => {
         if (channels) {
             setIsLoaded(true)
         }
-    }, [isLoaded])
+    }, [isLoaded, channels])
 
     const editServer = () => {
         setShowDropdown(!showDropdown)
@@ -28,11 +28,11 @@ const ServerPage = ({ id }) => {
                 <div className='ServerPage-name'>{server.name}<button className='server-name-button' onClick={editServer}><i className="fas fa-angle-down"></i></button></div>
                 <div className='ServerPage-channel-name'></div>
                 <div className='ServerPage-NavBar-buttons'></div>
-            {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} />)}
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} />)}
             </div>
             <div className='ServerPage-left-container'>
                 <div className='channels-main'>
-                    {channels?.map((channel, i) => {return (<div key={i} className='server-channels'>{channel.name}</div>)})}
+                    {channels?.map((channel, i) => { return (<div key={i} className='server-channels'>{channel.name}</div>) })}
                 </div>
             </div>
             <div className='ServerPage-middle-container'>

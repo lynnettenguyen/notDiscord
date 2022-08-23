@@ -14,8 +14,6 @@ const ServerForm = ({ setShowModal }) => {
   const [page, setPage] = useState(0)
   const [name, setName] = useState(`${user.username}'s server`)
   const [server_pic, setServerPic] = useState("")
-  const [serverId, setServerId] = useState(false)
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -38,12 +36,12 @@ const ServerForm = ({ setShowModal }) => {
     <>
       <div className='server-form-outer'>
         <form onSubmit={handleSubmit} className={page < 1 ? "block" : "hidden"}>
-          {page == 0 &&
+          {page === 0 &&
             <section className={page === 1 ? "block" : "hidden"}>
               <div className='server-form-header'>Create a server</div>
               <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
               <button type="button" onClick={() => setPage(page + 1)} className='create-own-button'>
-                <img src={handIcon} />Create My Own
+                <img alt='hand-icon' src={handIcon} />Create My Own
                 <span className='fa solid fa-angle-right'></span>
               </button>
             </section>

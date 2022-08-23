@@ -20,10 +20,10 @@ const editServer = (server) => ({
   server
 })
 
-const deleteServer = (serverId) => ({
-  type: DELETE_SERVER,
-    serverId
-})
+// const deleteServer = (serverId) => ({
+//   type: DELETE_SERVER,
+//     serverId
+// })
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
