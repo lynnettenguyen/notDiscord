@@ -10,14 +10,17 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.server_routes import servers
-from .api.direct_message_routes import direct_messages
-from .api.channel_message_routes import channel_messages
+# from .api.direct_message_routes import direct_messages
+# from .api.channel_message_routes import channel_messages
 
 from .seeds import seed_commands
 
 from .config import Config
 
-from flask_socketio import SocketIO
+# import your socketio object (with the other imports at the
+# top of the file)
+from .socket import socketio
+
 
 
 app = Flask(__name__)
@@ -39,10 +42,13 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(servers, url_prefix='/api/servers')
-app.register_blueprint(direct_messages, url_prefix='/api/direct_messages')
-app.register_blueprint(channel_messages, url_prefix='/api/channel_messages')
+# app.register_blueprint(direct_messages, url_prefix='/api/direct_messages')
+# app.register_blueprint(channel_messages, url_prefix='/api/channel_messages')
 db.init_app(app)
 Migrate(app, db)
+
+# initialize the app with the socket instance
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -81,16 +87,6 @@ def react_root(path):
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
 
-
-
-# POSSIBLE WEBSOCKET ANSWER
-# if os.environ.get("FLASK_ENV") == "production":
-#     origins = [
-#         "http://not-discord-app.herokuapp.com",
-#         "https://not-discord-app.herokuapp.com"
-#     ]
-# else:
-#     origins = "*"
-
-# # create your SocketIO instance
-# socketio = SocketIO(cors_allowed_origins=origins)
+# at the bottom of the file, use this to run the app
+if __name__ == '__main__':
+    socketio.run(app)
