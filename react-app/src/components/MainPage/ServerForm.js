@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import addServerHand from '../CSS/images/create-server-icon.svg'
+import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
 const ServerForm = () => {
@@ -8,8 +8,8 @@ const ServerForm = () => {
   // const dispatch = useDispatch()
 
   const [page, setPage] = useState(0)
-  const [serverName, setServerName] = useState(`${user.username}'s server`)
-  const [serverImage, setServerImage] = useState("")
+  const [name, setName] = useState(`${user.username}'s server`)
+  const [server_pic, setServerPic] = useState("")
 
 
   const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ const ServerForm = () => {
               <div className='server-form-header'>Create a server</div>
               <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
               <button type="button" onClick={() => { setPage(page + 1) }} className='create-own-button'>
-                <img src={addServerHand} />Create My Own
+                <img src={handIcon} />Create My Own
                 <span className='fa solid fa-angle-right'></span>
               </button>
             </section>
@@ -38,16 +38,18 @@ const ServerForm = () => {
                 <div>
                   <label>SERVER IMAGE</label>
                   <input
+                    name='server_pic'
                     placeholder='https://image.url'
-                    value={serverImage}
-                    onChange={(e) => setServerImage(e.target.value)}
+                    value={server_pic}
+                    onChange={(e) => setServerPic(e.target.value)}
                   />
                 </div>
                 <div>
                   <label>SERVER NAME</label>
                   <input
-                    value={serverName}
-                    onChange={(e) => setServerName(e.target.value)}
+                    name='name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>
