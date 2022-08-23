@@ -28,7 +28,7 @@ const ServerPage = ({ id }) => {
                 <div className='ServerPage-name'>{server.name}<button className='server-name-button' onClick={editServer}><i className="fas fa-angle-down"></i></button></div>
                 <div className='ServerPage-channel-name'></div>
                 <div className='ServerPage-NavBar-buttons'></div>
-                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} />)}
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} />)}
             </div>
             <div className='ServerPage-left-container'>
                 <div className='channels-main'>
@@ -44,7 +44,6 @@ const ServerPage = ({ id }) => {
                 {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
             </div>
         </div>
-
     );
 };
 

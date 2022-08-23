@@ -83,7 +83,7 @@ const serverReducer = (state = {}, action) => {
     }
     case EDIT_SERVER: {
       newState = { ...state }
-      newState[action.newServer.id] = action.newServer;
+      newState[action.server.id] = action.server;
       return newState
     }
     case DELETE_SERVER: {
