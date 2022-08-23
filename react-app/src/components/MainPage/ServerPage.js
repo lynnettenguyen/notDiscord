@@ -10,19 +10,11 @@ const ServerPage = ({ id }) => {
     const channels = useSelector(state => Object.values(state.server.channels))
     const [isLoaded, setIsLoaded] = useState(false)
 
-
-    useEffect(() => {
-        // dispatch(getChannels(id))
-        // .then(()=> {
-            //     if (channels && channels.length > 0) {
-                //         setIsLoaded(true)
-                //     }
-                // })
-        if (server) {
-            console.log('!!!!!!!!!!!', channels)
+    useEffect(()=> {
+        if (channels) {
             setIsLoaded(true)
         }
-    }, [dispatch, isLoaded])
+    }, [isLoaded])
 
     return isLoaded && (
         <div className='ServerPage-container'>

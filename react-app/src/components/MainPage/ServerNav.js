@@ -20,18 +20,17 @@ const ServerNav = () => {
       .then(() => setIsLoaded(true))
   }, [dispatch]);
 
-  const handleServerClick = (id) => {
+  const handleServerClick = async (id) => {
 
     if (id === 0) {
       dispatch(resetServer())
     } else {
       setIsLoaded(false)
-      dispatch(getOneServer(id))
-        .then(() => {
-          dispatch(getUsers())
-            .then(() => dispatch(getChannels(id)))
-            .then(() => setIsLoaded(true))
-        })
+      await dispatch(getOneServer(id))
+      await dispatch(getChannels(id))
+      await dispatch(getUsers())
+      .then(()=>setIsLoaded(true))
+
 
     }
   };
@@ -45,13 +44,13 @@ const ServerNav = () => {
         <div className='line-break'>------</div>
         {servers?.map((server, i) => {
           return (
-            <>
+            <div key={i} >
               <div className='server-img-outer'>
                 {server.server_pic ?
                   <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div> :
                   <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div>}
               </div>
-            </>
+            </div>
           )
         })}
         <div className='add-server-outer' onClick={() => { setShowModal(true) }}>
