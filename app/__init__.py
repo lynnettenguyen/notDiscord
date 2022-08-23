@@ -87,8 +87,6 @@ def react_root(path):
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
 
-<<<<<<< HEAD
-
 
 # POSSIBLE WEBSOCKET ANSWER
 # if os.environ.get("FLASK_ENV") == "production":
@@ -101,8 +99,7 @@ def react_root(path):
 
 # # create your SocketIO instance
 # socketio = SocketIO(cors_allowed_origins=origins)
-=======
+
 # at the bottom of the file, use this to run the app
 if __name__ == '__main__':
     socketio.run(app)
->>>>>>> 6809b76fc913f7edc94c6e016c2028249bb37ad3
