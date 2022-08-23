@@ -10,7 +10,7 @@ const MainPage = () => {
     const server = useSelector(state => state.server)
     const id = Object.keys(server)[0]
 
-    useEffect(()=>{
+    useEffect(() => {
         // console.log('ID!!!', id)
         // console.log('SERVER!!!', server)
     })
