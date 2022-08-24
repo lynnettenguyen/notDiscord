@@ -30,12 +30,10 @@
     height: 5em;
 }
 
-<<<<<<< HEAD
-
 .server-channels:hover {
     border: 1px solid aqua;
 }
-=======
+
 .ServerPage-left-container {
     /* display: flex; */
     /* flex-direction: row; */
@@ -52,4 +50,3 @@
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
->>>>>>> origin/dms3
