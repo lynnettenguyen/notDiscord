@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 let socket;
 
-const Chat = ({channelId}) => {
+const Chat = ({ channelId }) => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -17,7 +17,7 @@ const Chat = ({channelId}) => {
       // when we recieve a chat, add it into our messages array in state
       setMessages((messages) => [...messages, chat]);
     });
-
+    console.log('MESSSSSSSAGE', channelId)
     // when component unmounts, disconnect
     return () => {
       socket.disconnect();
@@ -31,7 +31,7 @@ const Chat = ({channelId}) => {
   const sendChat = (e) => {
     e.preventDefault();
     // emit a message
-    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: channelId, content: chatInput });
+    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput });
     // clear the input field after the message is sent
     setChatInput("");
   };
@@ -41,8 +41,8 @@ const Chat = ({channelId}) => {
     user && (
       <div>
         <div>
-          {messages.map((message, i) => (
-            <div key={i}>{channelId === message.channel_id && `${message.user}: ${message.content}`}</div>
+          {messages.map((message, i) => `${channelId}` === message.channel_id && (
+            <div key={i}>{`${message.user}: ${message.content}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>

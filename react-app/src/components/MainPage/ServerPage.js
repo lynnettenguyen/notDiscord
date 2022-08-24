@@ -15,6 +15,9 @@ const ServerPage = ({ id }) => {
     const channels = useSelector(state => Object.values(state.server.channels))
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
+    const [channelId, setChannelId] = useState()
+
+    console.log(channelId)
 
     useEffect(() => {
         if (channels) {
@@ -36,39 +39,39 @@ const ServerPage = ({ id }) => {
             </div>
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
-                <div className='channel-header'>
-                    <img src={downArrow} />
-                    CHANNELS
-                    <div className='add-channel-button'>
-                        <img src={plusIcon} />
+                    <div className='channel-header'>
+                        <div className='down-arrow-icon'><img src={downArrow} /></div>
+                        <div className='channels-header'>CHANNELS</div>
+                        <div className='add-channel-button'>
+                            <img src={plusIcon} className='add-channel-icon' />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div className='channels-main'>
-                        {channels?.map((channel, i) => {
-                            return (
-                                <div key={i} className='server-channels'>
-                                    <div>
-                                        <img src={hashtag} />
-                                        {channel.name}
-                                        <div className='edit-channel-button'>
-                                            <img src={editGear} />
+                    <div>
+                        <div className='channels-main'>
+                            {channels?.map((channel, i) => {
+                                return (
+                                    <div key={i} className='server-channels' onClick={() => setChannelId(channel.id)}>
+                                        <div>
+                                            <img src={hashtag} />
+                                            {channel.name} {channel.id}
+                                            <div className='edit-channel-button'>
+                                                <img src={editGear} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
-                </div>
                 <div className='ServerPage-middle-container'>
-                <div className='channel-chat'>
-                    <Chat />
-                </div>
+                    <div className='channel-chat'>
+                        <Chat id={channelId} />
+                    </div>
                 </div>
                 <div className='ServerPage-right-container'>
-                {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
-            </div>
+                    {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
+                </div>
             </div>
         </div>
     );
