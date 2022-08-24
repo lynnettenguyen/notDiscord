@@ -8,16 +8,18 @@ import plusIcon from '../CSS/images/discord-add-icon.svg'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
 import Chat from '../Chat';
+import ChannelPage from './ChannelPage';
 
 const ServerPage = ({ id }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => Object.values(state.users))
     const channels = useSelector(state => Object.values(state.server.channels))
+    const generalChannel = channels[0]
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()
 
-    console.log("channel id from server page", channelId)
+    console.log("channel id from server page", generalChannel)
 
     useEffect(() => {
         if (channels) {
@@ -66,6 +68,7 @@ const ServerPage = ({ id }) => {
                 </div>
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
+                        <ChannelPage id={channelId} />
                         <Chat id={channelId} />
                     </div>
                 </div>
