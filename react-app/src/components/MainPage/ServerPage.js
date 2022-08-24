@@ -10,7 +10,7 @@ import editGear from '../CSS/images/edit-channel-gear.svg'
 import Chat from '../Chat';
 import ChannelPage from './ChannelPage';
 
-const ServerPage = ({ id }) => {
+const ServerPage = ({ id, generalChannelId }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => Object.values(state.users))
     const channels = useSelector(state => Object.values(state.server.channels))
@@ -21,6 +21,7 @@ const ServerPage = ({ id }) => {
 
     // console.log("channel id from server page", channelId)
 
+    console.log("generalChannelId", generalChannelId)
 
     useEffect(() => {
         if (channels) {
@@ -70,7 +71,7 @@ const ServerPage = ({ id }) => {
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
 
-                        <ChannelPage channelId={channelId} />
+                        <ChannelPage generalChannelId={generalChannelId} channelId={channelId} />
 
                         <Chat channelId={channelId} />
                     </div>
