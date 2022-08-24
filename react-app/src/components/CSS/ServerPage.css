@@ -23,3 +23,8 @@
     border: 1px solid blue;
     height: 5em;
 }
+
+
+.server-channels:hover {
+    border: 1px solid aqua;
+}
