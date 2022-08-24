@@ -1,7 +1,7 @@
 from email import message
 from flask_socketio import SocketIO, emit
 import os
-from app.models import db, ChannelMessage
+from app.models import db, Channel, ChannelMessage
 
 
 # configure cors_allowed_origins
@@ -27,7 +27,10 @@ def handle_chat(data):
         content = data['content']
     )
 
+    # messages = db.session.query(Channel.channel_messages).filter(id == data['channel_id'])
+
     db.session.add(message)
     db.session.commit()
 
+    # emit("chat", [message.to_dict() for message in messages], broadcast=True)
     emit("chat", data, broadcast=True)
