@@ -40,10 +40,10 @@ const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
     <>
 
       <div className='server-form-outer'>
+        <button className='close-modal' onClick={()=>setShowModalCreate(false)}><i className="fa-thin fa-x"/></button>
         <form onSubmit={handleSubmit} className={page < 1 ? "flex" : "hidden"}>
           {page === 0 &&
             <section className={page === 1 ? "flex" : "hidden"}>
-              <button className='close-modal'><i className="fa-thin fa-x" onClick={()=>setShowModalCreate(false)}/></button>
               <div className='inner-form'>
                 <div className='server-form-header'>Create a server</div>
                 <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
@@ -57,7 +57,6 @@ const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
           }
           {page >= 1 &&
             <section className={page === 1 ? "flex" : "hidden"}>
-              <button className='close-modal'><i className="fa-thin fa-x" onClick={()=>setShowModalCreate(false)}/></button>
               <div className='inner-form'>
                 <div className='server-form-header'>Customize your server</div>
                 <div className='server-form-caption'>Give your new server a personality with a name and an icon. You can always change it later.</div>
