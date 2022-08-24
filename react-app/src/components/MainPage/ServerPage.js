@@ -7,6 +7,7 @@ import downArrow from '../CSS/images/down-arrow.svg'
 import plusIcon from '../CSS/images/discord-add-icon.svg'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
+import Chat from '../Chat';
 
 const ServerPage = ({ id }) => {
     const server = useSelector(state => state.server[id])
@@ -33,7 +34,8 @@ const ServerPage = ({ id }) => {
                 <div className='ServerPage-NavBar-buttons'></div>
                 {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}
             </div>
-            <div className='ServerPage-left-container'>
+            <div className='ServerPage-content-container'>
+                <div className='ServerPage-left-container'>
                 <div className='channel-header'>
                     <img src={downArrow} />
                     CHANNELS
@@ -58,14 +60,15 @@ const ServerPage = ({ id }) => {
                         })}
                     </div>
                 </div>
-            </div>
-            <div className='ServerPage-middle-container'>
-                <div className='channel-chat'>
-
                 </div>
-            </div>
-            <div className='ServerPage-right-container'>
+                <div className='ServerPage-middle-container'>
+                <div className='channel-chat'>
+                    <Chat />
+                </div>
+                </div>
+                <div className='ServerPage-right-container'>
                 {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
+            </div>
             </div>
         </div>
     );
