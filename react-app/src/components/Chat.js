@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 let socket;
 
-const Chat = ({ id }) => {
+const Chat = ({ channelId }) => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [channelChange, setChannelChange] = useState(false);
@@ -27,8 +27,7 @@ const Chat = ({ id }) => {
 
   useEffect(() => {
     setChannelChange(true)
-    console.log('MESSSSSSSAGE', id)
-  }, [id]);
+  }, [channelId]);
 
   const updateChatInput = (e) => {
     setChatInput(e.target.value);
@@ -37,7 +36,7 @@ const Chat = ({ id }) => {
   const sendChat = (e) => {
     e.preventDefault();
     // emit a message
-    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${id}`, content: chatInput });
+    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput });
     // clear the input field after the message is sent
     setChatInput("");
   };
@@ -47,7 +46,7 @@ const Chat = ({ id }) => {
     user && (
       <div>
         <div>
-          {messages.map((message, i) => `${id}` === message.channel_id && (
+          {messages.map((message, i) => `${channelId}` === message.channel_id && (
             <div key={i}>{`${message.user}: ${message.content} ${message.channel_id}`}</div>
           ))}
         </div>

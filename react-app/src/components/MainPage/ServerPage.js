@@ -17,7 +17,7 @@ const ServerPage = ({ id }) => {
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()
 
-    console.log("channel id from server page", channelId)
+    // console.log("channel id from server page", channelId)
 
     useEffect(() => {
         if (channels) {
@@ -66,7 +66,7 @@ const ServerPage = ({ id }) => {
                 </div>
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
-                        <Chat id={channelId} />
+                        <Chat channelId={channelId} />
                     </div>
                 </div>
                 <div className='ServerPage-right-container'>
