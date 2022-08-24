@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EditServerForm from './EditServerForm'
-import '../CSS/ServerPage.css';
-import '../CSS/EditServerForm.css'
 import downArrow from '../CSS/images/down-arrow.svg'
 import plusIcon from '../CSS/images/discord-add-icon.svg'
 import hashtag from '../CSS/images/channel-hashtag.svg'
@@ -11,6 +9,13 @@ import Chat from '../Chat';
 import ChannelPage from './ChannelPage';
 import { Modal } from '../context/Modal';
 import ChannelForm from './ChannelForm';
+
+import '../CSS/ServerPage.css';
+import '../CSS/EditServerForm.css'
+
+
+
+
 
 
 const ServerPage = ({ id, generalChannelId }) => {
