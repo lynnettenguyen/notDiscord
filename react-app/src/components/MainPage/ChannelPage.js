@@ -7,14 +7,14 @@ import NoServerPage from './NoServerPage';
 import { getOneServer } from '../../store/server';
 
 
-const ChannelPage = ({ id }) => {
+const ChannelPage = ({ channelId }) => {
   const dispatch = useDispatch()
   const server = useSelector(state => state.server)
   const channels = useSelector(state => state.server.channels)
 
   return (
     <>
-      TEST {id}
+      TEST {channelId}
     </>
   );
 

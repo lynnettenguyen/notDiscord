@@ -68,8 +68,8 @@ const ServerPage = ({ id }) => {
                 </div>
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
-                        <ChannelPage id={channelId} />
-                        <Chat id={channelId} />
+                        <ChannelPage channelId={channelId} />
+                        <Chat channelId={channelId} />
                     </div>
                 </div>
                 <div className='ServerPage-right-container'>
