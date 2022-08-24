@@ -12,3 +12,17 @@
     border-radius: 5px;
 }
 
+.edit-server-button {
+    background-color: red;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.delete-server-button {
+    background-color: red;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.edit-server-modal-container {
+    background-color: green;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
