@@ -12,10 +12,12 @@ import '../src/components/CSS/fonts.css'
 import MainPage from './components/MainPage';
 import { ModalProvider } from './components/context/Modal';
 import Chat from './components/Chat'
+import { SocketContext } from './index'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const socket = useContext(SocketContext)
 
   useEffect(() => {
     (async () => {

@@ -14,16 +14,12 @@ from .api.server_routes import servers
 # from .api.direct_message_routes import direct_messages
 
 from .seeds import seed_commands
-
 from .config import Config
 
-# import your socketio object (with the other imports at the
-# top of the file)
+# import your socketio object
 from .socket import socketio
 
 app = Flask(__name__)
-
-# socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Setup login manager
 login = LoginManager(app)
