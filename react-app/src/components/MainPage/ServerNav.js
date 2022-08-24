@@ -26,10 +26,10 @@ const ServerNav = () => {
     dispatch(listAllServers())
       .then(() => setIsLoaded(true))
 
-    socket = io();
-    socket.on('load_channel_messages', async (data) => {
-      await dispatch(loadChannelMessages(data['channel_id']))
-    })
+    // socket = io();
+    // socket.on('load_channel_messages', async (data) => {
+    //   await dispatch(loadChannelMessages(data['channel_id']))
+    // })
 
   }, [dispatch, isLoaded]);
 
@@ -46,7 +46,7 @@ const ServerNav = () => {
     }
   };
 
-  return isLoaded && (
+  return (
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>

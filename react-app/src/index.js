@@ -13,9 +13,9 @@ const store = configureStore();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <SocketContext.Provider value={socket}>
+      {/* <SocketContext.Provider value={socket}> */}
         <App />
-      </SocketContext.Provider>
+      {/* </SocketContext.Provider> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
