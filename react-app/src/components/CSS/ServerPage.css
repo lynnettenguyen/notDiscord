@@ -12,11 +12,6 @@
     flex-direction: row;
 }
 
-.server-name-button {
-    width: 50%;
-    height: 50%;
-}
-
 
 /* NAV BAR COMPONENTS*/
 .ServerPage-NavBar {
@@ -30,12 +25,20 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+.ServerPage-name:hover {
+    background-color: #42464D;
+}
+
 .ServerPage-name {
     display: flex;
-
     width: 271px;
     background-color: #2F3136;
 
+}
+
+.server-name-button {
+    width: 10%;
+    height: 35%;
 }
 
 
