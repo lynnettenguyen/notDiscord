@@ -9,6 +9,9 @@ import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
 import Chat from '../Chat';
 import ChannelPage from './ChannelPage';
+import { Modal } from '../context/Modal';
+import ChannelForm from './ChannelForm';
+
 
 const ServerPage = ({ id, generalChannelId }) => {
     const server = useSelector(state => state.server[id])
@@ -18,6 +21,8 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()
+    const [showModal, setShowModal] = useState(false)
+    const [showEditChannel, setShowEditChannel] = useState(false)
 
     // console.log("channel id from server page", channelId)
 
@@ -47,19 +52,24 @@ const ServerPage = ({ id, generalChannelId }) => {
                         <div className='down-arrow-icon'><img src={downArrow} /></div>
                         <div className='channels-header'>CHANNELS</div>
                         <div className='add-channel-button'>
-                            <img src={plusIcon} className='add-channel-icon' />
+                            <img src={plusIcon} className='add-channel-icon' onClick={() => { setShowModal(true) }} />
+                            {showModal && (
+                                <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
+                                    <ChannelForm setShowModal={setShowModal} showEditChannel={showEditChannel} />
+                                </Modal>
+                            )}
                         </div>
                     </div>
                     <div>
                         <div className='channels-main'>
                             {channels?.map((channel, i) => {
                                 return (
-                                    <div key={i} className='server-channels' onClick={() => setChannelId(channel.id)}>
+                                    <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id) }}>
                                         <div>
                                             <img src={hashtag} />
                                             {channel.name} {channel.id}
                                             <div className='edit-channel-button'>
-                                                <img src={editGear} />
+                                                <img src={editGear} onClick={() => { setShowModal(true); setShowEditChannel(true) }} />
                                             </div>
                                         </div>
                                     </div>
