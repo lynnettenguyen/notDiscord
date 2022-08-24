@@ -121,7 +121,8 @@ const singleServerReducer = (state = {}, action) => {
       return newState
     }
     case CREATE_CHANNELS: {
-      newState = { ...state }
+      newState = { ...state}
+      console.log('NEWSTATE', newState)
       newState.channels[action.newChannel.id] = action.newChannel;
       return newState
     }
@@ -132,7 +133,7 @@ const singleServerReducer = (state = {}, action) => {
     }
     case DELETE_CHANNEL: {
       newState = { ...state }
-      delete newState[action.channelId]
+      delete newState.channels[action.channelId]
       return newState
     }
     default:
