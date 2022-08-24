@@ -13,6 +13,9 @@ const MainPage = () => {
     const channels = useSelector(state => state.server.channels)
     const id = Object.keys(server)[0]
 
+    console.log('all channels from index', channels)
+    // console.log('first channel general', Object.keys(channels))
+
     useEffect(()=>{
         dispatch(getOneServer(id))
     }, [dispatch])
