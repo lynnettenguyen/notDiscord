@@ -13,9 +13,6 @@ const ChannelPage = ({ generalChannelId, channelId }) => {
   const server = useSelector(state => state.server)
   const channels = useSelector(state => state.server.channels)
 
-  console.log('channel', channelId)
-  console.log('general', generalChannelId)
-
 
 
   return (

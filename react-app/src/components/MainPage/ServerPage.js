@@ -59,7 +59,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                             <img src={plusIcon} className='add-channel-icon' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm setShowModal={setShowModal} showEditChannel={showEditChannel} />
+                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setChannelId={setChannelId} />
                                 </Modal>
                             )}
                         </div>
@@ -84,7 +84,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                 </div>
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
-                        <ChannelPage generalChannelId={generalChannelId} channelId={channelId} />
+                        <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
                     </div>
                 </div>
                 <div className='ServerPage-right-container'>
