@@ -10,7 +10,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.server_routes import servers
-from .api.channel_message_routes import channel_messages
+# from .api.channel_message_routes import channel_messages
 # from .api.direct_message_routes import direct_messages
 
 from .seeds import seed_commands
@@ -23,7 +23,7 @@ from .socket import socketio
 
 app = Flask(__name__)
 
-socketio = SocketIO(app, cors_allowed_origins="*")
+# socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Setup login manager
 login = LoginManager(app)
@@ -42,7 +42,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(servers, url_prefix='/api/servers')
-app.register_blueprint(channel_messages, url_prefix='/api/channel_messages')
+# app.register_blueprint(channel_messages, url_prefix='/api')
 # app.register_blueprint(direct_messages, url_prefix='/api/direct_messages')
 db.init_app(app)
 Migrate(app, db)
