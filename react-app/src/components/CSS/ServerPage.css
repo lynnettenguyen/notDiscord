@@ -44,7 +44,17 @@
     height: 5em;
 }
 
+
 .channel-header {
+    background-color: red;
+}
+
+.server-channels:hover {
+    border: 1px solid aqua;
+}
+
+.ServerPage-left-container {
+
     width: 240px;
 }
 
@@ -74,4 +84,3 @@
 .server-users {
     width: 240px;
 }
-

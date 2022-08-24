@@ -18,7 +18,7 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 
 # handle chat messages
-@socketio.on("chat")
+@socketio.on('chat')
 def handle_chat(data):
 
     message = ChannelMessage(
@@ -33,7 +33,7 @@ def handle_chat(data):
     db.session.commit()
 
     # emit("chat", [message.to_dict() for message in messages], broadcast=True)
-    emit("chat", data, broadcast=True)
+    emit('chat', data, broadcast=True)
 
 
 # load all channel messages
