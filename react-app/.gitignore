@@ -23,3 +23,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+
+*/dev.db
+*.db
+dev.db
+app/dev.db
