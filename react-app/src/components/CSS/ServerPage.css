@@ -1,8 +1,10 @@
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
-    border: 1px solid red;
-    width: 90vw;
+    /* border: 1px solid red; */
+    width: 100vw;
     height: 100vh;
+    position: absolute;
+    left: 70px;
 }
 
 .ServerPage-content-container {
@@ -10,17 +12,12 @@
     flex-direction: row;
 }
 
-.ServerPage-name {
-    width: 240px;
-    background-color: #2F3136;
-
-}
-
 
 /* NAV BAR COMPONENTS*/
 .ServerPage-NavBar {
     width: 100%;
     display: flex;
+    background-color: #36393F;
     flex-direction: row;
     border: 1px solid #2C2F33;
     height: 3em;
@@ -28,22 +25,50 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+.ServerPage-name:hover {
+    background-color: #42464D;
+}
+
+.ServerPage-name {
+    display: flex;
+    width: 271px;
+    background-color: #2F3136;
+
+}
+
+.server-name-button {
+    width: 10%;
+    height: 35%;
+}
+
 
 /* LEFT CONTAINER COMPONENTS*/
 .ServerPage-left-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    height: 100vh;
     width: 240px;
     color: white;
     background-color: #2F3136;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+.channels-header{
+    width: 240px;
+}
+
+
 .server-channels {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     border: 1px solid blue;
     height: 5em;
 }
 
 .server-channels:hover {
+    background-color: #42464D;
     border: 1px solid aqua;
 }
 
@@ -69,7 +94,6 @@
 
 .channel-chat {
     width: 100%;
-
 }
 
 /* RIGHT CONTAINER COMPONENTS*/
