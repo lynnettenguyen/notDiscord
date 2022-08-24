@@ -72,6 +72,18 @@
     border: 1px solid aqua;
 }
 
+<<<<<<< HEAD
+=======
+.ServerPage-left-container {
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+
+.channel-header {
+
+    width: 240px;
+}
+>>>>>>> 8167e24dde3b452c1c37561396f0d4e1da32ce17
 
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
@@ -98,4 +110,7 @@
 .server-users {
     width: 240px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8167e24dde3b452c1c37561396f0d4e1da32ce17

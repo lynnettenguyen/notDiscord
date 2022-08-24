@@ -67,12 +67,12 @@ const ServerNav = () => {
         <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
           {/* <img src={addIcon} /> */}
+        </div>
           {showModalCreate && (
             <Modal onClose={() => setShowModalCreate(false)}>
               <ServerForm setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
             </Modal>
           )}
-        </div>
       </div>
     </>
   )
