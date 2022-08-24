@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getOneServer } from '../../store/server';
+import Chat from '../Chat'
 
 
 const ChannelPage = ({ generalChannelId, channelId }) => {
@@ -22,11 +23,11 @@ const ChannelPage = ({ generalChannelId, channelId }) => {
       {channelId ?
         <div>
           channel: {channelId}
-
+          <Chat channelId={channelId} />
         </div> :
         <div>
           default general: {generalChannelId}
-
+          <Chat channelId={channelId} />
         </div>
       }
     </>

@@ -5,7 +5,6 @@ import downArrow from '../CSS/images/down-arrow.svg'
 import plusIcon from '../CSS/images/discord-add-icon.svg'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
-import Chat from '../Chat';
 import ChannelPage from './ChannelPage';
 import { Modal } from '../context/Modal';
 import ChannelForm from './ChannelForm';
@@ -85,10 +84,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                 </div>
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
-
                         <ChannelPage generalChannelId={generalChannelId} channelId={channelId} />
-
-                        <Chat channelId={channelId} />
                     </div>
                 </div>
                 <div className='ServerPage-right-container'>
