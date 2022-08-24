@@ -9,7 +9,8 @@ const rootReducer = combineReducers({
   session,
   users,
   servers,
-  server
+  server,
+  channelMessages
 });
 
 
