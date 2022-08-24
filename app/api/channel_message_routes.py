@@ -16,6 +16,27 @@ def get_channel_messages(channel_id):
   messages = [message.to_dict() for message in all_channel_messages]
   return jsonify(messages)
 
+# create channel message
+@channel_messages.routes('/channels/<int:channel_id>/messages/', methods=['POST'])
+@login_required
+def edit_channel_message(channel_id):
+  form = MessageForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+
+    message = ChannelMessage(
+      user_id = current_user.id,
+      channel_id = channel_id,
+      content = form.data['content']
+    )
+
+    db.session.add(message)
+    db.session.commit()
+
+  else:
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
 
 # edit channel message
 @channel_messages.routes('/channels/<int:channel_id>/messages/<int:message_id>', methods=['PUT'])
