@@ -27,6 +27,7 @@ const Chat = ({ channelId }) => {
 
   useEffect(() => {
     setChannelChange(true)
+    console.log(channelId)
   }, [channelId]);
 
   const updateChatInput = (e) => {
