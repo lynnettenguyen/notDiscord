@@ -22,6 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3a731108ba3e61a82da07329f7f58e4bf978bf9a
 */dev.db
 *.db
 dev.db
