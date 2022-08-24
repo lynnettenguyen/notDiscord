@@ -4,6 +4,7 @@ import session from './session';
 import servers from './servers';
 import server from './server';
 import users from './users';
+import channelMessages from './channelMessages'
 
 const rootReducer = combineReducers({
   session,

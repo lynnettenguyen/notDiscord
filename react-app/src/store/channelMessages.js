@@ -77,7 +77,7 @@ export const removeChannelMessage = (channel_id, channel_message_id) => async (d
 
   if (response.ok) {
     const message = await response.json();
-    dispatch(deleteChannel(channel_id))
+    dispatch(deleteChannelMessages(channel_id))
     return message;
   }
 }
@@ -87,7 +87,7 @@ const channelMessagesReducer = (state = {}, action) => {
   let newState = { ...state }
   switch (action.type) {
     case LOAD_CHANNEL_MESSAGES: {
-      newState[channelId] = channelMessages
+      newState[action.channelId] = action.channelMessages
       return newState
     }
     case ADD_CHANNEL_MESSAGE: {
