@@ -16,10 +16,16 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password))
-                .then(()=> history.push('/servers'));
+    // .then(()=> history.push('/servers'))
+    .catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    })
     if (data) {
       // setErrors(data);
       setErrors(['Email and/or password could not be validated'])
+    } else {
+      history.push('/servers')
     }
   };
 

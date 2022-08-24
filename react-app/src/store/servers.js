@@ -20,10 +20,10 @@ const editServer = (server) => ({
   server
 })
 
-// const deleteServer = (serverId) => ({
-//   type: DELETE_SERVER,
-//     serverId
-// })
+const deleteServerAction = (serverId) => ({
+  type: DELETE_SERVER,
+    serverId
+})
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
@@ -64,6 +64,18 @@ export const updateServer = (serverData) => async (dispatch) => {
   if (response.ok) {
     const server = await response.json();
     dispatch(editServer(server))
+    console.log(server)
+    return server;
+  }
+}
+
+export const deleteServer = (id) => async (dispatch) => {
+  const response = await fetch(`/api/servers/${id}`, {
+    method: "DELETE"
+  })
+  if (response.ok) {
+    const server = await response.json();
+    dispatch(deleteServerAction(id))
     return server;
   }
 }
@@ -83,12 +95,12 @@ const serverReducer = (state = {}, action) => {
     }
     case EDIT_SERVER: {
       newState = { ...state }
-      newState[action.newServer.id] = action.newServer;
+      newState[action.server.id] = action.server;
       return newState
     }
     case DELETE_SERVER: {
       newState = { ...state }
-      delete newState[action.newServer.id]
+      delete newState[action.serverId]
       return newState
     }
     default:

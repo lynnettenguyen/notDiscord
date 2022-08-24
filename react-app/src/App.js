@@ -7,11 +7,11 @@ import HomePage from './components/HomePage/HomePage'
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import { authenticate } from './store/session';
 import '../src/components/CSS/fonts.css'
 import MainPage from './components/MainPage';
 import { ModalProvider } from './components/context/Modal';
 import Chat from './components/Chat'
+import { authenticate } from './store/session';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

@@ -1,8 +1,7 @@
-import json
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
-from .auth_routes import login, validation_errors_to_error_messages
-from app.models import db, Server, Channel, ChannelMessage
+from .auth_routes import validation_errors_to_error_messages
+from app.models import db, Server, Channel
 from app.forms import ServerForm, ChannelForm
 
 
@@ -32,8 +31,6 @@ def server_by_id(server_id):
 def create_server():
   form = ServerForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-
-  print("!!!!!!!!!", form.data)
 
   if form.validate_on_submit():
     # create server
