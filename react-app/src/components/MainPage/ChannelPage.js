@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ServerNav from './ServerNav';
 import '../CSS/ChannelPage.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,14 +7,18 @@ import NoServerPage from './NoServerPage';
 import { getOneServer } from '../../store/server';
 
 
-const ChannelPage = ({ channelId }) => {
+const ChannelPage = ({ generalChannelId, channelId }) => {
   const dispatch = useDispatch()
   const server = useSelector(state => state.server)
   const channels = useSelector(state => state.server.channels)
 
+  console.log('channels from channelpage', channelId)
+
   return (
     <>
-      TEST {channelId}
+      {/* {channelId?} */}
+      general: {generalChannelId},
+      channel: {channelId}
     </>
   );
 
