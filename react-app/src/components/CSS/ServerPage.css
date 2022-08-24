@@ -1,8 +1,10 @@
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
-    border: 1px solid red;
-    width: 90vw;
+    /* border: 1px solid red; */
+    width: 100vw;
     height: 100vh;
+    position: absolute;
+    left: 70px;
 }
 
 .ServerPage-content-container {
@@ -10,18 +12,17 @@
     flex-direction: row;
 }
 
-.ServerPage-name {
-    width: 240px;
-    background-color: #2F3136;
-
+.server-name-button {
+    width: 50%;
+    height: 50%;
 }
 
 
 /* NAV BAR COMPONENTS*/
-
 .ServerPage-NavBar {
     width: 100%;
     display: flex;
+    background-color: #36393F;
     flex-direction: row;
     border: 1px solid #2C2F33;
     height: 3em;
@@ -29,34 +30,45 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+.ServerPage-name {
+    display: flex;
+
+    width: 271px;
+    background-color: #2F3136;
+
+}
+
 
 /* LEFT CONTAINER COMPONENTS*/
 .ServerPage-left-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    height: 100vh;
     width: 240px;
     color: white;
     background-color: #2F3136;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+.channels-header{
+    width: 240px;
+}
+
+
 .server-channels {
+    display: flex;
+    flex-direction: row;
     width: 100%;
     border: 1px solid blue;
     height: 5em;
 }
 
-<<<<<<< HEAD
 .server-channels:hover {
+    background-color: #42464D;
     border: 1px solid aqua;
 }
 
-.ServerPage-left-container {
-    /* display: flex; */
-    /* flex-direction: row; */
-=======
-.channel-header {
->>>>>>> 59e63b0adca0c3bef07d641193560a69665d38e8
-    width: 240px;
-}
 
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
@@ -68,32 +80,19 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
-<<<<<<< HEAD
-=======
 .channel-chat {
     width: 100%;
-
 }
 
 /* RIGHT CONTAINER COMPONENTS*/
->>>>>>> 59e63b0adca0c3bef07d641193560a69665d38e8
 .ServerPage-right-container {
     width: 240px;
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 3a731108ba3e61a82da07329f7f58e4bf978bf9a
 
 .server-users {
     width: 240px;
 }
-<<<<<<< HEAD
 
->>>>>>> 59e63b0adca0c3bef07d641193560a69665d38e8
-=======
->>>>>>> 3a731108ba3e61a82da07329f7f58e4bf978bf9a
