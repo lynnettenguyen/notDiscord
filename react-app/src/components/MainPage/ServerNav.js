@@ -11,11 +11,13 @@ import serverDefault from '../CSS/images/server_default.png'
 // import addIcon from '../CSS/images/discord-add-icon.svg'
 import { loadChannelMessages } from '../../store/channelMessages';
 import { io } from "socket.io-client";
+// import { SocketContext } from '../context/Socket';
 
 let socket;
 
 const ServerNav = () => {
   const dispatch = useDispatch();
+  // const socket = useContext(SocketContext)
   const servers = useSelector(allServers);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false)

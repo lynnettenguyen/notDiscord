@@ -4,11 +4,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './store';
 import './index.css';
+import { socket, SocketContext } from './components/context/Socket';
+
 
 const store = configureStore();
-
-export const socket = null;
-export const SocketContext = React.createContext();
 
 
 ReactDOM.render(
