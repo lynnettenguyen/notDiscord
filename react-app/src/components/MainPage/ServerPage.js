@@ -17,7 +17,7 @@ const ServerPage = ({ id }) => {
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()
 
-    console.log(channelId)
+    console.log("channel id from server page", channelId)
 
     useEffect(() => {
         if (channels) {
