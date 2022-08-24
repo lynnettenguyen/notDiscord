@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getOneServer } from '../../store/server';
+import ChannelPage from './ChannelPage';
 
 
 const MainPage = () => {
@@ -13,7 +14,11 @@ const MainPage = () => {
     const channels = useSelector(state => state.server.channels)
     const id = Object.keys(server)[0]
 
-    useEffect(()=>{
+    let generalChannelId;
+
+    if (channels) generalChannelId = Object.keys(channels)[0]
+
+    useEffect(() => {
         dispatch(getOneServer(id))
     }, [dispatch])
 
@@ -24,7 +29,13 @@ const MainPage = () => {
                     <ServerNav />
                 </div>
                 <div className='main-middle-container'>
-                    {channels ? (<ServerPage id={id} />) : (<NoServerPage />)}
+                    {channels ? (
+                        <>
+                            <ServerPage id={id} generalChannelId={generalChannelId} />
+                        </>
+                    ) : (
+                        <NoServerPage />
+                    )}
                 </div>
             </div>
         </>

@@ -20,7 +20,7 @@ const ServerNav = () => {
   // const socket = useContext(SocketContext)
   const servers = useSelector(allServers);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false)
+  const [showModalCreate, setShowModalCreate] = useState(false)
 
   useEffect(() => {
     dispatch(listAllServers())
@@ -64,12 +64,12 @@ const ServerNav = () => {
             </div>
           )
         })}
-        <div className='add-server-outer' onClick={() => { setShowModal(true) }}>
+        <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
           {/* <img src={addIcon} /> */}
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <ServerForm setShowModal={setShowModal} />
+          {showModalCreate && (
+            <Modal onClose={() => setShowModalCreate(false)}>
+              <ServerForm setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
             </Modal>
           )}
         </div>

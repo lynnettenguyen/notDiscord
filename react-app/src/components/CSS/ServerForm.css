@@ -111,3 +111,22 @@
 .create-server-button:hover {
   background-color: #4752c4;
 }
+
+.close-modal {
+  position: absolute;
+  padding: 0;
+  border: none;
+  background: none;
+  right: 16px;
+  top: 14px;
+  color: #8e9196;
+  font-weight: bold;
+}
+
+.fa-thin {
+  font-size: larger;
+}
+
+/* .fa-angle-right:hover {
+  background-color: #2c2d31;
+} */

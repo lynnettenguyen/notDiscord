@@ -7,7 +7,7 @@ import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
 
-const ServerForm = ({ setShowModal }) => {
+const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -28,17 +28,22 @@ const ServerForm = ({ setShowModal }) => {
     await dispatch(getUsers())
     await dispatch(getChannels(response.id))
 
-    setShowModal(false)
+    setShowModalCreate(false)
+  }
 
+  const closeModal = () => {
+    setShowModalCreate(false)
+    console.log('click', showModalCreate)
   }
 
   return (
     <>
+
       <div className='server-form-outer'>
         <form onSubmit={handleSubmit} className={page < 1 ? "flex" : "hidden"}>
           {page === 0 &&
             <section className={page === 1 ? "flex" : "hidden"}>
-              <button className='close-modal'><i className="fa-thin fa-x" onClick={()=>setShowModal(false)}/></button>
+              <button className='close-modal'><i className="fa-thin fa-x" onClick={()=>setShowModalCreate(false)}/></button>
               <div className='inner-form'>
                 <div className='server-form-header'>Create a server</div>
                 <div className='server-form-caption'>Your server is where you and your friends hand out. Make yours and start talking.</div>
@@ -52,7 +57,7 @@ const ServerForm = ({ setShowModal }) => {
           }
           {page >= 1 &&
             <section className={page === 1 ? "flex" : "hidden"}>
-              <button className='close-modal'><i className="fa-thin fa-x" onClick={()=>setShowModal(false)}/></button>
+              <button className='close-modal'><i className="fa-thin fa-x" onClick={()=>setShowModalCreate(false)}/></button>
               <div className='inner-form'>
                 <div className='server-form-header'>Customize your server</div>
                 <div className='server-form-caption'>Give your new server a personality with a name and an icon. You can always change it later.</div>
