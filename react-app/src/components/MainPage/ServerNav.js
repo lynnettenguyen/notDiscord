@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allServers, listAllServers } from '../../store/servers';
 import { getChannels, getOneServer, resetServer } from '../../store/server';
@@ -9,6 +9,10 @@ import '../CSS/ServerNav.css'
 import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
 // import addIcon from '../CSS/images/discord-add-icon.svg'
+import { loadChannelMessages } from '../../store/channelMessages';
+import { io } from "socket.io-client";
+
+let socket;
 
 const ServerNav = () => {
   const dispatch = useDispatch();
@@ -19,7 +23,13 @@ const ServerNav = () => {
   useEffect(() => {
     dispatch(listAllServers())
       .then(() => setIsLoaded(true))
-  }, [dispatch]);
+
+    socket = io();
+    socket.on('load_channel_messages', async (data) => {
+      await dispatch(loadChannelMessages(data['channel_id']))
+    })
+
+  }, [dispatch, isLoaded]);
 
   const handleServerClick = async (serverId) => {
 
