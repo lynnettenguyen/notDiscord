@@ -10,16 +10,39 @@
 }
 
 .ServerPage-middle-container {
+    width: 1370px;
     display: flex;
-    width: 800px;
+    color: white;
+    background-color: #36393F;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .ServerPage-NavBar {
-    border: 1px solid blue;
+    border: 1px solid #2C2F33;
+    background-color: #36393F;
     height: 3em;
+    color: white;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .server-channels {
     border: 1px solid blue;
     height: 5em;
+}
+
+.ServerPage-left-container {
+    /* display: flex; */
+    /* flex-direction: row; */
+    width: 240px;
+    color: white;
+    background-color: #2F3136;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+
+.ServerPage-right-container {
+    width: 240px;
+    background-color: #2F3136;
+    color: white;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
