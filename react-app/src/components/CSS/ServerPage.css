@@ -1,3 +1,4 @@
+/* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
     border: 1px solid red;
     width: 90vw;
@@ -9,27 +10,41 @@
     flex-direction: row;
 }
 
-.ServerPage-middle-container {
-    width: 1370px;
-    display: flex;
-    color: white;
-    background-color: #36393F;
-    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+.ServerPage-name {
+    width: 240px;
+    background-color: #2F3136;
+
 }
 
+
+/* NAV BAR COMPONENTS*/
+
 .ServerPage-NavBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     border: 1px solid #2C2F33;
-    background-color: #36393F;
     height: 3em;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+
+/* LEFT CONTAINER COMPONENTS*/
+.ServerPage-left-container {
+    width: 240px;
+    color: white;
+    background-color: #2F3136;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
 .server-channels {
+    width: 100%;
     border: 1px solid blue;
     height: 5em;
 }
 
+<<<<<<< HEAD
 .server-channels:hover {
     border: 1px solid aqua;
 }
@@ -37,15 +52,42 @@
 .ServerPage-left-container {
     /* display: flex; */
     /* flex-direction: row; */
+=======
+.channel-header {
+>>>>>>> 59e63b0adca0c3bef07d641193560a69665d38e8
     width: 240px;
+}
+
+/* MIDDLE CONTAINER COMPONENTS*/
+.ServerPage-middle-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
     color: white;
-    background-color: #2F3136;
+    background-color: #36393F;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+<<<<<<< HEAD
+=======
+.channel-chat {
+    width: 100%;
+
+}
+
+/* RIGHT CONTAINER COMPONENTS*/
+>>>>>>> 59e63b0adca0c3bef07d641193560a69665d38e8
 .ServerPage-right-container {
     width: 240px;
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
+<<<<<<< HEAD
+=======
+
+.server-users {
+    width: 240px;
+}
+
+>>>>>>> 59e63b0adca0c3bef07d641193560a69665d38e8
