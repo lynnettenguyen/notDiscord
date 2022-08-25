@@ -48,7 +48,7 @@ const Chat = ({ channelId }) => {
       <div>
         <div>
           {messages.map((message, i) => `${channelId}` === message.channel_id && (
-            <div key={i}>{`${message.user}: ${message.content} ${message.channel_id}`}</div>
+            <div key={i}>{`${message.user}: ${message.content}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
