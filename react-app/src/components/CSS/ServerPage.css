@@ -38,6 +38,10 @@
     box-sizing: border-box;
 }
 
+.ServerPage-name:hover {
+    cursor: pointer;
+}
+
 .server-name-button {
     width: 10%;
     height: 35%;

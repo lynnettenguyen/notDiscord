@@ -51,7 +51,6 @@
 .server-form-label {
   font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
   font-size: 12px;
-  font-weight: 700;
   margin: 0 0 8px 0;
   box-sizing: border-box;
   color: #4f5660;
@@ -99,7 +98,7 @@
   font-family: WhitneyBook, Arial, Helvetica, sans-serif;
   background-color: #5865F2;
   border: none;
-  color: white;
+  color: #ffffff;
   width: 86px;
   height: 28px;
   font-size: 14px;
