@@ -33,7 +33,7 @@ const Chat = ({ channelId }) => {
 
   useEffect(() => {
     const newDate = new Date()
-    const time = newDate.toLocaleString([], {hour: '2-digit', minute: '2-digit'});
+    const time = newDate.toLocaleString([], {timeStyle: 'short'});
     setDate(time)
   }, [messages]);
 
