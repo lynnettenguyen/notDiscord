@@ -36,16 +36,28 @@ const Chat = ({ channelId }) => {
   useEffect(()=>{
     if (user) {
       const index = messages.length - 1
-      if (index >= 0) {
-        setLastUser(messages[index].user)
-        console.log('LAST USER', lastUser)
-        if (lastUser !== user.username) {
-          setCurrUser(true)
-        }
-      }
+
       if (index < 0) {
         setCurrUser(true)
       }
+
+      if (index >= 0) {
+        if (messages[index].user == user.username) {
+            setCurrUser(false)
+        } else {
+          setCurrUser(true)
+        }
+      }
+      // if (index >= 0) {
+      //   setLastUser(messages[index].user)
+      //   console.log('LAST USER', lastUser)
+      //   if (lastUser !== user.username) {
+      //     setCurrUser(true)
+      //   }
+      // }
+      // if (index < 0) {
+      //   setCurrUser(true)
+      // }
     }
   }, [channelId])
 
