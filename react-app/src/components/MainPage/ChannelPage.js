@@ -23,7 +23,7 @@ const ChannelPage = ({ generalChannelId, channelId }) => {
   return users && (
     <>
         <div>
-          {messages?.map((message, i) => (<div key={i} className='channel-messages'>{users[message.user_id].username}: {message.content}</div>))}
+          {users && messages?.map((message, i) => (<div key={i} className='channel-messages'>{users[message.user_id].username}: {message.content}</div>))}
           <Chat channelId={channelId} />
         </div>
     </>
