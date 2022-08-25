@@ -7,8 +7,6 @@ import '../CSS/NoServerPage.css';
 
 const NoServerPage = () => {
     const users = useSelector(state => Object.values(state.users))
-    const [isLoaded, setIsLoaded] = useState(false)
-
 
     return (
         <div className='NoServerPage-container'>

@@ -4,6 +4,7 @@ import EditServerForm from './EditServerForm'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
 import ChannelPage from './ChannelPage';
+import UsersList from '../UsersList';
 import { Modal } from '../context/Modal';
 import ChannelForm from './ChannelForm';
 import noChannels from '../CSS/images/no-text-channels.svg'
@@ -115,7 +116,14 @@ const ServerPage = ({ id, generalChannelId }) => {
                     </div>
                 }
                 <div className='ServerPage-right-container'>
-                    {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
+                    {/* <UsersList /> */}
+                    {users?.map((user, i) => {
+                        return (
+                            <div key={i} className='server-user'>
+                                <img src={user.profile_pic} className='user-profile-pic'></img>
+                                {user.username}
+                            </div>)
+                    })}
                 </div>
             </div>
         </div>
