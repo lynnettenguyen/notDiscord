@@ -6,12 +6,14 @@ import '../CSS/NoServerPage.css';
 
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
+    const currentUser = useSelector(state => state.session)
     const users = useSelector(state => Object.values(state.users))
     const directChats = useSelector(state => Object.values(state.directChat))
 
     const [recipientId, setRecipientId] = useState()
 
-    console.log(directChatId)
+    console.log('DIRRECT CHAT', directChats)
+    console.log(currentUser.user.id)
 
     return (
         <div className='NoServerPage-container'>
@@ -21,14 +23,28 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                     <div onClick={() => { setShowFriends(true); setDirectChatId(null) }}>Friends</div>
                     <div>Direct Messages</div>
                     {directChats?.map((directChat, i) => {
-                        return (
-                            <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id) }}>
-                                <div>
-                                    <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
+                        if (currentUser.user.id === directChat.recipient_id) {
+                            return (
+                                <>
+                                    <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.sender_id) }}>
+                                        <div className='direct-chat-profile-pic'>
+                                            <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
+                                        </div>
+                                        {users[directChat.sender_id - 1]?.username}
+                                    </div>
+                                </>
+                            )
+                        } else
+                            return (
+                                <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id) }}>
+                                    <div className='direct-chat-profile-pic'>
+                                        <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
+                                    </div>
+                                    {users[directChat.recipient_id - 1]?.username}
                                 </div>
-                                {users[directChat.recipient_id - 1]?.username}
-                            </div>)
+                            )
                     })}
+
                     {/* <img alt='empty_dms' src={empty_dms} className='empty_dms'/> */}
                 </div>
                 {directChatId ? (
