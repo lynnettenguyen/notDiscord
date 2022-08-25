@@ -12,12 +12,10 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.server_routes import servers
 from .api.channel_message_routes import channel_messages
-# from .api.direct_message_routes import direct_messages
+from .api.direct_chat_routes import direct_chats
 
 from .seeds import seed_commands
 
-# import your socketio object
-# from .socket import socketio
 
 app = Flask(__name__)
 
@@ -35,7 +33,8 @@ if os.environ.get('FLASK_ENV') == 'production':
 else:
     origins = "*"
 
-# initialize your socket instance
+
+# initialize socket instance
 socketio = SocketIO(cors_allowed_origins=origins)
 
 
@@ -44,31 +43,29 @@ def load_user(id):
     return User.query.get(int(id))
 
 
-# Tell flask about our seed commands
-app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
+
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(servers, url_prefix='/api/servers')
 app.register_blueprint(channel_messages, url_prefix='/api')
-# app.register_blueprint(direct_messages, url_prefix='/api/direct_messages')
+app.register_blueprint(direct_chats, url_prefix='/api/direct')
+
 db.init_app(app)
 Migrate(app, db)
 
+app.cli.add_command(seed_commands)
 
 # initialize the app with the socket instance
 socketio.init_app(app)
+
 
 # Application Security
 CORS(app)
 
 
-# Since we are deploying with Docker and Flask,
-# we won't be using a buildpack when we deploy to Heroku.
-# Therefore, we need to make sure that in production any
-# request made over http is redirected to https.
-# Well.........
+# Since we are deploying with Docker and Flask, we won't be using a buildpack when we deploy to Heroku. Therefore, we need to make sure that in production any request made over http is redirected to https.
 @app.before_request
 def https_redirect():
     if os.environ.get('FLASK_ENV') == 'production':

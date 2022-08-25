@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.models import db, ChannelMessage
-from app.forms.message_form import MessageForm
+from app.forms import MessageForm
 from .auth_routes import validation_errors_to_error_messages
 
 channel_messages = Blueprint('channel_messages', __name__)
@@ -15,6 +15,7 @@ def get_channel_messages(channel_id):
 
   messages = [message.to_dict() for message in all_channel_messages]
   return jsonify(messages)
+
 
 # create channel message
 @channel_messages.route('/channels/<int:channel_id>/messages/', methods=['POST'])

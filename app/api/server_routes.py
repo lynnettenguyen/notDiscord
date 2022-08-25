@@ -140,8 +140,10 @@ def edit_channel(server_id, channel_id):
 # delete channel by id
 def delete_channel(server_id, channel_id):
   channel = Channel.query.filter(Channel.id == channel_id, Channel.server_id == server_id).first()
+
   db.session.delete(channel)
   db.session.commit()
+  
   return jsonify({
     'message': 'Server successfully deleted',
     'status_code': 200

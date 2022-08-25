@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addChannel, removeChannel, editChannel } from '../../store/server';
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
-import deleteBin from '../CSS/images/delete-server-bin.svg'
+// import deleteBin from '../CSS/images/delete-server-bin.svg'
 
 const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
   const channels = useSelector(state => state.server.channels)
