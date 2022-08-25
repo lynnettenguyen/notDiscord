@@ -17,6 +17,7 @@ const MainPage = () => {
     const id = Object.keys(server)[0]
 
     const [directChatId, setDirectChatId] = useState()
+    const [showFriends, setShowFriends] = useState(false)
 
     let generalChannelId;
 
@@ -32,13 +33,13 @@ const MainPage = () => {
         <>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav directChatId={directChatId} setDirectChatId={setDirectChatId} />
+                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} />
                 </div>
                 <div className='main-middle-container'>
                     {channels ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} />
                     ) : (
-                        <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} />
+                            <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
                     )}
                 </div>
             </div>

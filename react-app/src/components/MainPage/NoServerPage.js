@@ -5,7 +5,7 @@ import empty_dms from '../CSS/images/empty_dms.svg'
 import '../CSS/NoServerPage.css';
 
 
-const NoServerPage = ({ directChatId, setDirectChatId }) => {
+const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
     const users = useSelector(state => Object.values(state.users))
     const directChats = useSelector(state => Object.values(state.directChat))
 
@@ -18,6 +18,8 @@ const NoServerPage = ({ directChatId, setDirectChatId }) => {
             <div className='NoServerPage-NavBar'></div>
             <div className='NoServerPage-content-container'>
                 <div className='NoServerPage-left-container'>
+                    <div onClick={() => { setShowFriends(true); setDirectChatId(null) }}>Friends</div>
+                    <div>Direct Messages</div>
                     {directChats?.map((directChat, i) => {
                         return (
                             <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id) }}>
@@ -38,8 +40,20 @@ const NoServerPage = ({ directChatId, setDirectChatId }) => {
                             <div>
                                 {users[recipientId - 1]?.username}
                             </div>
+                            <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
+
                         </div>
                     </div>
+                ) : showFriends ? (
+                    <>
+                        {users?.map((user, i) => {
+                            return (
+                                <div key={i} className='server-user'>
+                                    <img src={user.profile_pic} className='user-profile-pic'></img>
+                                    <p className='username'>{user.username}</p>
+                                </div>)
+                        })}
+                    </>
                 ) : (
                     <>
                         <div className='NoServerPage-middle-container'>
