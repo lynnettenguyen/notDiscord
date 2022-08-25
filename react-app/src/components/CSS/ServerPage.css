@@ -1,13 +1,3 @@
-html {
-    background-color: #36393F;
-  
-}
-
-body {
-    max-width: 1080px;
-    max-height: 1920px;
-}
-
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
     /* border: 5px solid red; */
@@ -221,18 +211,30 @@ body {
 
 /* RIGHT CONTAINER COMPONENTS*/
 .ServerPage-right-container {
-    border: 10px solid greenyellow;
     width: 270px;
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
-.server-users {
+.server-user {
+    display: flex;
     position: relative;
     width: 100vw;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     font-size: 13px;
     padding-left: 8px;
     padding-top: 2px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
+ .user-profile-pic {
+    height: 38px;
+    width: auto;
+    border-radius: 30px;
+ }
+ .username {
+    font-size: 15px;
+    padding: 0px 0px 0px 15px;
+ }
