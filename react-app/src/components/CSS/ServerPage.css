@@ -1,6 +1,5 @@
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
-    /* border: 1px solid red; */
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -38,11 +37,26 @@
 .ServerPage-name {
     width: 271px;
     background-color: #2F3136;
+    display: flex;
+    justify-content: space-between;
+    width: 271px;
+    background-color: #2F3136;
+    font-family: GintoNormal, Arial, Helvetica, sans-serif;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.ServerPage-name:hover {
+    cursor: pointer;
 }
 
 .server-name-button {
     width: 10%;
     height: 35%;
+    background: none;
+    border: none;
+    color: white;
+    margin-top: 3px;
 }
 
 
@@ -61,7 +75,6 @@
 .channels-header {
     width: 240px;
 }
-
 
 .server-channels {
     width: 100%;
@@ -90,14 +103,15 @@
     transition: all 0.3s ease-in-out;
 }
 
-.channel-down:hover {
-    transform: rotate(0.5turn);
+.channel-down.close {
+    transform: rotate(-0.25turn);
 }
 
 .channel-title {
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     font-size: 13px;
     padding-left: 8px;
+    padding-top: 2px;
 }
 
 .channel-header-left:hover,
@@ -109,8 +123,6 @@
 .add-channel-icon {
     font-size: 15px;
 }
-
-
 
 .server-channels {
     display: flex;
@@ -156,7 +168,6 @@
 }
 
 
-
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
     width: 100%;
@@ -167,9 +178,32 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+.no-text-channel-middle-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #b0b0b2;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393F;
+    font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.no-text-header {
+    margin: 20px 0 0;
+    font-family: WhitneyBold, Arial, Helvetica, sans-serif;
+}
+
+.no-text-caption {
+    padding: 10px;
+    width: 450px;
+    text-align: center;
+}
+
 .channel-chat {
     width: 100%;
 }
+
 
 /* RIGHT CONTAINER COMPONENTS*/
 .ServerPage-right-container {
