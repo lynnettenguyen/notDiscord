@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from .auth_routes import validation_errors_to_error_messages
 from app.models import db, DirectMessage, DirectChat
 from app.forms import MessageForm
-
+from sqlalchemy import or_
 
 direct_chats = Blueprint('direct_chats', __name__)
 
@@ -12,7 +12,7 @@ direct_chats = Blueprint('direct_chats', __name__)
 @direct_chats.route('')
 @login_required
 def all_direct_chats():
-  chats = [chat.to_dict() for chat in DirectChat.query.all()]
+  chats = [chat.to_dict() for chat in DirectChat.query.filter(or_(current_user.id == DirectChat.recipient_id, current_user.id == DirectChat.sender_id)).all()]
   return jsonify(chats)
 
 

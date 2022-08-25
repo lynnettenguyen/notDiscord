@@ -1,7 +1,7 @@
 /* MAIN CONTAINER COMPONENTS */
 .NoServerPage-container {
   width: 100vw;
-  height: 100vh;
+  height: 95%;
   position: absolute;
   left: 74px;
 }
@@ -29,12 +29,26 @@
 
 /* LEFT CONTAINER COMPONENTS*/
 .NoServerPage-left-container {
+  width: 344px;
   display: flex;
   flex-direction: column;
   padding: 2em;
   color: white;
   background-color: #2F3136;
-  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.direct-chat-recipient{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px;
+  font-family: WhitneyMedium, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.direct-chat-profile-pic {
+  padding: 0px 5px 0px 0px;
+  border-radius: 50%;
 }
 
 .empty_dms {
