@@ -12,6 +12,7 @@ const ChannelPage = ({ channelId }) => {
   const channels = useSelector(state => Object.values(state.server.channels))
   const users = useSelector(state => state.users)
 
+
   const checkDay = (date) => {
     const today = new Date()
     const newDate = new Date(date)
@@ -40,12 +41,26 @@ const ChannelPage = ({ channelId }) => {
     func()
   }, [channelId])
 
+  const checkPost = (date, prevDate, i) => {
+    const oldDate = new Date(date)
+    const newDate = new Date(prevDate)
+    const difference = newDate - oldDate
+    if(i == 0) {
+      return true
+    }
+    if (difference > 180000) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return users && (
     <>
         <div>
           {users && messages?.map((message, i) => (
           <div className='channel-messages' key={i}>
-              {messages[i-1]?.user_id !== message.user_id && (<div className='chat-header'>
+              {checkPost(messages[i-1]?.created_at, message.created_at, i) && (<div className='chat-header'>
               <div className='chat-username'>{users[message.user_id]?.username}</div>
               <div className='chat-date'>{checkDay(message.created_at)}</div>
               </div>)}
