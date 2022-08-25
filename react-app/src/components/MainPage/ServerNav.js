@@ -15,7 +15,7 @@ import { io } from "socket.io-client";
 
 let socket;
 
-const ServerNav = ({directChatId, setDirectChatId}) => {
+const ServerNav = ({setDirectChatId, setShowFriends }) => {
   const directChats = useSelector(state => Object.values(state.directChat))
   const dispatch = useDispatch();
   // const socket = useContext(SocketContext)
@@ -51,7 +51,7 @@ const ServerNav = ({directChatId, setDirectChatId}) => {
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null)}} />
+          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null); setShowFriends(false)}} />
         </div>
         <div className='line-break'>------</div>
         {servers?.map((server, i) => {
