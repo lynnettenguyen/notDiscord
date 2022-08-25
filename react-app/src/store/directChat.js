@@ -88,7 +88,7 @@ export const getDirectMessages = (direct_chat_id) => async (dispatch) => {
   if (response.ok) {
     const messages = await response.json();
     dispatch(loadDirectMessages(messages))
-    return chats;
+    return messages;
   }
 }
 
