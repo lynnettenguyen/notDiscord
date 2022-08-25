@@ -53,8 +53,12 @@ const ServerPage = ({ id, generalChannelId }) => {
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
                     <div className='channel-header'>
-                        <div className='down-arrow-icon'><img src={downArrow} /></div>
-                        <div className='channels-header'>CHANNELS</div>
+                        <div className='channel-header'>
+                            <div className='channel-header-left'>
+                                <div><img src={downArrow} alt='down arrow' className='channel-header-arrow' /></div>
+                                <div className='channel-title'>CHANNEL</div>
+                            </div>
+                        </div>
                         <div className='add-channel-button'>
                             <img src={plusIcon} className='add-channel-icon' onClick={() => { setShowModal(true) }} />
                             {showModal && (

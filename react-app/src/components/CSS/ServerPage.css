@@ -54,7 +54,7 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
-.channels-header{
+.channels-header {
     width: 240px;
 }
 
@@ -75,12 +75,23 @@
 .ServerPage-left-container {
     /* display: flex; */
     /* flex-direction: row; */
+    border: 1px solid red;
 }
 
 .channel-header {
-
+    display: flex;
     width: 240px;
 }
+
+.channel-header-left {
+    display: flex;
+}
+
+.channel-title {
+    font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
 
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
