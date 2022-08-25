@@ -10,6 +10,7 @@ const ChannelPage = ({ channelId }) => {
   const dispatch = useDispatch()
   const messages = useSelector(state=> Object.values(state.channelMessages))
   const channels = useSelector(state => Object.values(state.server.channels))
+  const server = useSelector(state => state.server)
   const users = useSelector(state => state.users)
 
   useEffect( async ()=>{
