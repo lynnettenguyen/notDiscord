@@ -67,13 +67,6 @@
 .server-channels:hover {
     background-color: #42464dab;
     border-radius: 3px;
-    border: 1px solid aqua;
-}
-
-.ServerPage-left-container {
-    /* display: flex; */
-    /* flex-direction: row; */
-    border: 1px solid red;
 }
 
 .channel-header {
@@ -89,6 +82,11 @@
 .channel-down {
     padding-top: 5px;
     font-size: 11px;
+    transition: all 0.3s ease-in-out;
+}
+
+.channel-down:hover {
+    transform: rotate(0.5turn);
 }
 
 .channel-title {
@@ -100,11 +98,14 @@
 .channel-header-left:hover,
 .add-channel-icon:hover {
     color: #DCDDDE;
+    cursor: pointer;
 }
 
 .add-channel-icon {
     font-size: 15px;
 }
+
+
 
 .server-channels {
     display: flex;
@@ -125,6 +126,7 @@
     color: #DCDDDE;
     background-color: #4f545c;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .channel-section-left {

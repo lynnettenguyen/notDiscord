@@ -28,6 +28,7 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [showModal, setShowModal] = useState(false)
     const [showEditChannel, setShowEditChannel] = useState(false)
     const [showSection, setShowSection] = useState()
+    const [showChannels, setShowChannels] = useState(true)
 
 
     useEffect(() => {
@@ -58,7 +59,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                             </div>
                         </div>
                         <div className='add-channel-button'>
-                            <img className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
+                            <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
                                     <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setChannelId={setChannelId} />
@@ -77,7 +78,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                                                 <div className='channel-name'>{channel.name}</div>
                                             </div>
                                             <div className='edit-channel-button'>
-                                                <img src={editGear} className={channel.id == i ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
+                                                <img src={editGear} className={channel.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
                                                     onClick={() => { setShowModal(true); setShowEditChannel(true) }}
                                                 />
                                             </div>
