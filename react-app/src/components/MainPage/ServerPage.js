@@ -23,6 +23,7 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [showSection, setShowSection] = useState()
     const [showChannels, setShowChannels] = useState(true)
 
+    console.log(channels[0])
 
     useEffect(() => {
         if (channels) {
@@ -46,8 +47,8 @@ const ServerPage = ({ id, generalChannelId }) => {
                 <div className='ServerPage-left-container'>
                     <div className='channel-header'>
                         <div className='channel-header'>
-                            <div className='channel-header-left'>
-                                <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'} onClick={() => setShowChannels(!showChannels)}></div>
+                            <div className='channel-header-left' onClick={() => setShowChannels(!showChannels)}>
+                                <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'}></div>
                                 <div className='channel-title'>CHANNEL</div>
                             </div>
                         </div>
@@ -61,25 +62,43 @@ const ServerPage = ({ id, generalChannelId }) => {
                         </div>
                     </div>
                     <div>
-                       {showChannels && <div className='channels-main'>
-                            {channels?.map((channel, i) => {
-                                return (
-                                    <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id) }}>
-                                        <div className='channel-section-header' onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
+                        {showChannels ?
+                            <div className='channels-main'>
+                                {channels?.map((channel, i) => {
+                                    return (
+                                        <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id) }}>
+                                            <div className='channel-section-header' onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
+                                                <div className='channel-section-left'>
+                                                    <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
+                                                    <div className='channel-name'>{channel.name}</div>
+                                                </div>
+                                                <div className='edit-channel-button'>
+                                                    <img src={editGear} className={channel.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
+                                                        onClick={() => { setShowModal(true); setShowEditChannel(true) }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div> : <>
+                                {channels?.length > 0 && (<div className='channels-main'>
+                                    <div className='server-channels' onClick={() => { setChannelId(channels[0]?.id) }}>
+                                        <div className='channel-section-header' onMouseOver={() => { setShowSection(channels[0]?.id) }} onMouseLeave={() => setShowSection(0)}>
                                             <div className='channel-section-left'>
                                                 <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
-                                                <div className='channel-name'>{channel.name}</div>
+                                                <div className='channel-name'>{channels[0]?.name}</div>
                                             </div>
                                             <div className='edit-channel-button'>
-                                                <img src={editGear} className={channel.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
+                                                <img src={editGear} className={channels[0]?.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
                                                     onClick={() => { setShowModal(true); setShowEditChannel(true) }}
                                                 />
                                             </div>
                                         </div>
                                     </div>
-                                )
-                            })}
-                        </div>}
+                                </div>)}
+                            </>
+                        }
                     </div>
                 </div>
                 {channels?.length > 0 ?
