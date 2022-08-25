@@ -26,6 +26,19 @@ login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
 
+# configure cors_allowed_origins
+if os.environ.get('FLASK_ENV') == 'production':
+    origins = [
+        "http://not-discord-app.herokuapp.com",
+        "https://not-discord-app.herokuapp.com"
+    ]
+else:
+    origins = "*"
+
+# initialize your socket instance
+socketio = SocketIO(cors_allowed_origins=origins)
+
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -42,6 +55,7 @@ app.register_blueprint(channel_messages, url_prefix='/api')
 # app.register_blueprint(direct_messages, url_prefix='/api/direct_messages')
 db.init_app(app)
 Migrate(app, db)
+
 
 # initialize the app with the socket instance
 socketio.init_app(app)
@@ -84,34 +98,6 @@ def react_root(path):
     return app.send_static_file('index.html')
 
 
-# POSSIBLE WEBSOCKET ANSWER
-# if os.environ.get("FLASK_ENV") == "production":
-#     origins = [
-#         "http://not-discord-app.herokuapp.com",
-#         "https://not-discord-app.herokuapp.com"
-#     ]
-# else:
-#     origins = "*"
-
-# # create your SocketIO instance
-# socketio = SocketIO(cors_allowed_origins=origins)
-
-
-
-
-# configure cors_allowed_origins
-if os.environ.get('FLASK_ENV') == 'production':
-    origins = [
-        "http://not-discord-app.herokuapp.com",
-        "https://not-discord-app.herokuapp.com"
-    ]
-else:
-    origins = "*"
-
-# initialize your socket instance
-socketio = SocketIO(cors_allowed_origins=origins)
-
-
 # handle chat messages
 @socketio.on('chat')
 def handle_chat(data):
@@ -145,9 +131,9 @@ def channel_messages(data):
   emit('load_channel_messages', data, broadcast=True)
 
 # load all direct messages
-@socketio.on('load_direct_messages')
-def direct_messages(data):
-  emit('load_direct_messages', data, broadcast=True)
+# @socketio.on('load_direct_messages')
+# def direct_messages(data):
+#   emit('load_direct_messages', data, broadcast=True)
 
 
 # # reload all channel messages when users send new messages to the channel
