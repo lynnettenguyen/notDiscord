@@ -28,9 +28,6 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [showModal, setShowModal] = useState(false)
     const [showEditChannel, setShowEditChannel] = useState(false)
 
-    // console.log("channel id from server page", channelId)
-
-    console.log("generalChannelId", generalChannelId)
 
     useEffect(() => {
         if (channels) {
@@ -55,7 +52,9 @@ const ServerPage = ({ id, generalChannelId }) => {
                     <div className='channel-header'>
                         <div className='channel-header'>
                             <div className='channel-header-left'>
-                                <div><img src={downArrow} alt='down arrow' className='channel-header-arrow' /></div>
+                                <div className='channel-header-arrow-outer'>
+                                    <img src={downArrow} alt='down arrow' className='channel-header-arrow' />
+                                </div>
                                 <div className='channel-title'>CHANNEL</div>
                             </div>
                         </div>
