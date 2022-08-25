@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import EditServerForm from './EditServerForm'
-import downArrow from '../CSS/images/down-arrow.svg'
-import plusIcon from '../CSS/images/discord-add-icon.svg'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
 import ChannelPage from './ChannelPage';
@@ -17,7 +15,6 @@ const ServerPage = ({ id, generalChannelId }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => Object.values(state.users))
     const channels = useSelector(state => Object.values(state.server.channels))
-    const generalChannel = channels[0]
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()

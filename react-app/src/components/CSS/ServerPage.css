@@ -1,6 +1,5 @@
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
-    /* border: 1px solid red; */
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -33,7 +32,6 @@
     display: flex;
     width: 271px;
     background-color: #2F3136;
-
 }
 
 .server-name-button {
@@ -57,7 +55,6 @@
 .channels-header {
     width: 240px;
 }
-
 
 .server-channels {
     width: 100%;
@@ -106,8 +103,6 @@
     font-size: 15px;
 }
 
-
-
 .server-channels {
     display: flex;
     flex-direction: column;
@@ -152,7 +147,6 @@
 }
 
 
-
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
     width: 100%;
@@ -188,6 +182,7 @@
 .channel-chat {
     width: 100%;
 }
+
 
 /* RIGHT CONTAINER COMPONENTS*/
 .ServerPage-right-container {

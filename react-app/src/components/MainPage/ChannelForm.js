@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChannel, removeChannel, editChannel, getChannels } from '../../store/server';
+import { addChannel, removeChannel, editChannel } from '../../store/server';
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 
 const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
-  const user = useSelector(state => state.session.user)
   const channels = useSelector(state => state.server.channels)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
