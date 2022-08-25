@@ -1,3 +1,9 @@
 .channel-messages {
-    
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    display: flex;
+    flex-direction: row;
 }

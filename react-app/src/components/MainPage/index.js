@@ -6,7 +6,7 @@ import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getOneServer } from '../../store/server';
 import ChannelPage from './ChannelPage';
-
+import { getUsers } from '../../store/users';
 
 const MainPage = () => {
     const dispatch = useDispatch()
@@ -19,6 +19,7 @@ const MainPage = () => {
     if (channels) generalChannelId = Object.keys(channels)[0]
 
     useEffect(() => {
+        dispatch(getUsers())
         dispatch(getOneServer(id))
     }, [dispatch])
 
@@ -31,7 +32,7 @@ const MainPage = () => {
                 <div className='main-middle-container'>
                     {channels ? (
                         <>
-                            <ServerPage id={id} generalChannelId={generalChannelId} />
+                        <ServerPage id={id} generalChannelId={generalChannelId} />
                         </>
                     ) : (
                         <NoServerPage />

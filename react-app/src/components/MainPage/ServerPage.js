@@ -121,7 +121,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                         return (
                             <div key={i} className='server-user'>
                                 <img src={user.profile_pic} className='user-profile-pic'></img>
-                                {user.username}
+                                <p className='username'>{user.username}</p>
                             </div>)
                     })}
                 </div>
