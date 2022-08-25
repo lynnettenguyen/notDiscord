@@ -15,6 +15,7 @@ def all_direct_chats():
   chats = [chat.to_dict() for chat in DirectChat.query.all()]
   return jsonify(chats)
 
+
 # create new direct chat channel
 @direct_chats.route('', methods=['POST'])
 @login_required

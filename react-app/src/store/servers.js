@@ -27,6 +27,7 @@ const deleteServerAction = (serverId) => ({
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
+  
   if (response.ok) {
     const servers = await response.json();
     dispatch(listServers(servers))
