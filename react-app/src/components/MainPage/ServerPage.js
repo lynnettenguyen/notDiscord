@@ -27,10 +27,9 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [channelId, setChannelId] = useState()
     const [showModal, setShowModal] = useState(false)
     const [showEditChannel, setShowEditChannel] = useState(false)
+    const [showSection, setShowSection] = useState()
+    const [showChannels, setShowChannels] = useState(true)
 
-    // console.log("channel id from server page", channelId)
-
-    console.log("generalChannelId", generalChannelId)
 
     useEffect(() => {
         if (channels) {
@@ -53,13 +52,17 @@ const ServerPage = ({ id, generalChannelId }) => {
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
                     <div className='channel-header'>
-                        <div className='down-arrow-icon'><img src={downArrow} /></div>
-                        <div className='channels-header'>CHANNELS</div>
+                        <div className='channel-header'>
+                            <div className='channel-header-left'>
+                                <div className='fa-solid fa-angle-down channel-down'></div>
+                                <div className='channel-title'>CHANNEL</div>
+                            </div>
+                        </div>
                         <div className='add-channel-button'>
-                            <img src={plusIcon} className='add-channel-icon' onClick={() => { setShowModal(true) }} />
+                            <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm setShowModal={setShowModal} showEditChannel={showEditChannel} />
+                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setChannelId={setChannelId} />
                                 </Modal>
                             )}
                         </div>
@@ -69,11 +72,15 @@ const ServerPage = ({ id, generalChannelId }) => {
                             {channels?.map((channel, i) => {
                                 return (
                                     <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id) }}>
-                                        <div>
-                                            <img src={hashtag} />
-                                            {channel.name} {channel.id}
+                                        <div className='channel-section-header' onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
+                                            <div className='channel-section-left'>
+                                                <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
+                                                <div className='channel-name'>{channel.name}</div>
+                                            </div>
                                             <div className='edit-channel-button'>
-                                                <img src={editGear} onClick={() => { setShowModal(true); setShowEditChannel(true) }} />
+                                                <img src={editGear} className={channel.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
+                                                    onClick={() => { setShowModal(true); setShowEditChannel(true) }}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +91,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                 </div>
                 <div className='ServerPage-middle-container'>
                     <div className='channel-chat'>
-                        <ChannelPage generalChannelId={generalChannelId} channelId={channelId} />
+                        <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
                     </div>
                 </div>
                 <div className='ServerPage-right-container'>

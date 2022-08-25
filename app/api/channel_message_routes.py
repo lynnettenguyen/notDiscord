@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.models import db, ChannelMessage
-from app.forms import MessageForm
+from app.forms.message_form import MessageForm
 from .auth_routes import validation_errors_to_error_messages
 
 channel_messages = Blueprint('channel_messages', __name__)
@@ -17,9 +17,9 @@ def get_channel_messages(channel_id):
   return jsonify(messages)
 
 # create channel message
-@channel_messages.routes('/channels/<int:channel_id>/messages/', methods=['POST'])
+@channel_messages.route('/channels/<int:channel_id>/messages/', methods=['POST'])
 @login_required
-def edit_channel_message(channel_id):
+def create_channel_message(channel_id):
   form = MessageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -39,7 +39,7 @@ def edit_channel_message(channel_id):
 
 
 # edit channel message
-@channel_messages.routes('/channels/<int:channel_id>/messages/<int:message_id>', methods=['PUT'])
+@channel_messages.route('/channels/<int:channel_id>/messages/<int:message_id>', methods=['PUT'])
 @login_required
 def edit_channel_message(channel_id, message_id):
   form = MessageForm()
@@ -58,7 +58,7 @@ def edit_channel_message(channel_id, message_id):
 
 
 # delete channel message
-@channel_messages.routes('/channels/<int:channel_id>/messages/<int:message_id>', methods=['DELETE'])
+@channel_messages.route('/channels/<int:channel_id>/messages/<int:message_id>', methods=['DELETE'])
 @login_required
 def delete_channel_message(channel_id, message_id):
 

@@ -1,12 +1,11 @@
-const LOAD_CHANNEL_MESSAGES = '/messages/LOAD_CHHANEL_MESSAGES'
+const LOAD_CHANNEL_MESSAGES = '/messages/LOAD_CHHANNEL_MESSAGES'
 const ADD_CHANNEL_MESSAGE = '/messages/ADD_CHANNEL_MESSAGE'
 const EDIT_CHANNEL_MESSAGE = '/messages/EDIT_CHANNEL_MESSAGE'
 const DELETE_CHANNEL_MESSAGE = '/messages/DELETE_CHANNEL_MESSAGE'
 
-export const loadChannelMessages = (channelId, channelMessages) => ({
+export const loadChannelMessages = (messages) => ({
   type: LOAD_CHANNEL_MESSAGES,
-  channelId,
-  channelMessages
+  messages
 })
 
 export const addChannelMessages = (channelMessage) => ({
@@ -37,7 +36,7 @@ export const getChannelMessages = (channelId) => async (dispatch) => {
 export const createChannelMessage = (channelMessageData) => async (dispatch) => {
   const { channel_id, content } = channelMessageData
 
-  const response = await fetch(`/channels/${channel_id}/messages/`, {
+  const response = await fetch(`/api/channels/${channel_id}/messages/`, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -55,7 +54,7 @@ export const createChannelMessage = (channelMessageData) => async (dispatch) => 
 export const updateChannelMessage = (channelMessageData) => async (dispatch) => {
   const { channel_id, id, content } = channelMessageData
 
-  const response = await fetch(`/channels/${channel_id}/messages/${id}`, {
+  const response = await fetch(`/api/channels/${channel_id}/messages/${id}`, {
     method: "PUT",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -71,7 +70,7 @@ export const updateChannelMessage = (channelMessageData) => async (dispatch) => 
 }
 
 export const removeChannelMessage = (channel_id, channel_message_id) => async (dispatch) => {
-  const response = await fetch(`/channels/${channel_id}/messages/${channel_message_id}`, {
+  const response = await fetch(`/api/channels/${channel_id}/messages/${channel_message_id}`, {
     method: "DELETE"
   })
 
@@ -84,10 +83,13 @@ export const removeChannelMessage = (channel_id, channel_message_id) => async (d
 
 
 const channelMessagesReducer = (state = {}, action) => {
-  let newState = { ...state }
+  let newState = {}
   switch (action.type) {
     case LOAD_CHANNEL_MESSAGES: {
-      newState[action.channelId] = action.channelMessages
+      console.log('messages', action.messages)
+      action.messages.forEach((each, i) => {
+        newState[i] = each
+      })
       return newState
     }
     case ADD_CHANNEL_MESSAGE: {
