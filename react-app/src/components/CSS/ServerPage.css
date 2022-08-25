@@ -22,12 +22,6 @@
     height: 3em;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-    font-size: 15px;
-    line-height: 20px;
-    font-weight: 500;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 .ServerPage-name:hover {
@@ -35,8 +29,6 @@
 }
 
 .ServerPage-name {
-    width: 271px;
-    background-color: #2F3136;
     display: flex;
     justify-content: space-between;
     width: 271px;
@@ -87,7 +79,6 @@
 }
 
 .channel-header {
-    width: 240px;
     display: flex;
     width: 240px;
     color: #96989d;
@@ -207,12 +198,12 @@
 
 /* RIGHT CONTAINER COMPONENTS*/
 .ServerPage-right-container {
-    width: 270px;
+    width: 240px;
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .server-users {
-    width: 270px;
+    width: 240px;
 }
