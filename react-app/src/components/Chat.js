@@ -19,15 +19,14 @@ const Chat = ({ channelId }) => {
       setMessages((messages) => [...messages, chat]);
     });
     // when component unmounts, disconnect
-    return () => {
+    return (() => {
       socket.disconnect();
-    };
+    });
   }, []);
 
 
   useEffect(() => {
     setChannelChange(true)
-    console.log(channelId)
   }, [channelId]);
 
   const updateChatInput = (e) => {
