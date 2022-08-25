@@ -4,7 +4,7 @@ import { addChannel, removeChannel, editChannel, getChannels } from '../../store
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 
-const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId }) => {
+const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
   const user = useSelector(state => state.session.user)
   const channels = useSelector(state => state.server.channels)
   const dispatch = useDispatch()
@@ -47,11 +47,14 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
       setChannelId(response.id)
     }
 
+    setShowEditChannel(false)
     setShowModal(false)
   }
 
   const handleChannelDelete = (id, channelId) => {
     dispatch(removeChannel(id, channelId))
+    setShowEditChannel(false)
+    setShowModal(false)
   }
 
   return (

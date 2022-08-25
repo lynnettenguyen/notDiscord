@@ -8,13 +8,9 @@ import editGear from '../CSS/images/edit-channel-gear.svg'
 import ChannelPage from './ChannelPage';
 import { Modal } from '../context/Modal';
 import ChannelForm from './ChannelForm';
-
+import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
-
-
-
-
 
 
 const ServerPage = ({ id, generalChannelId }) => {
@@ -62,7 +58,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                             <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setChannelId={setChannelId} />
+                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
                                 </Modal>
                             )}
                         </div>
@@ -89,11 +85,18 @@ const ServerPage = ({ id, generalChannelId }) => {
                         </div>
                     </div>
                 </div>
-                <div className='ServerPage-middle-container'>
-                    <div className='channel-chat'>
-                        <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
+                {channels?.length > 0 ?
+                    <div className='ServerPage-middle-container'>
+                        <div className='channel-chat'>
+                            <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
+                        </div>
+                    </div> :
+                    <div className='no-text-channel-middle-container'>
+                        <div><img src={noChannels} /></div>
+                        <div className='no-text-header'>NO TEXT CHANNELS</div>
+                        <div className='no-text-caption'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
                     </div>
-                </div>
+                }
                 <div className='ServerPage-right-container'>
                     {users?.map((user, i) => { return (<div key={i} className='server-users'>{user.username}</div>) })}
                 </div>
