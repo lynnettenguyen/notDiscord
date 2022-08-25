@@ -1,16 +1,16 @@
 /* MAIN CONTAINER COMPONENTS */
-.NoServerPage-container {
+.ServerPage-container {
   width: 100vw;
   height: 95%;
   position: absolute;
   left: 74px;
 }
 
-.NoServerPage-content-container {
+.ServerPage-content-container {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
-  height: 57rem;
+  height: 100%;
 }
 
 

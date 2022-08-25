@@ -16,9 +16,9 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     console.log(currentUser.user.id)
 
     return (
-        <div className='NoServerPage-container'>
+        <div className='ServerPage-container'>
             <div className='NoServerPage-NavBar'></div>
-            <div className='NoServerPage-content-container'>
+            <div className='ServerPage-content-container'>
                 <div className='NoServerPage-left-container'>
                     <div onClick={() => { setShowFriends(true); setDirectChatId(null) }}>Friends</div>
                     <div>Direct Messages</div>
