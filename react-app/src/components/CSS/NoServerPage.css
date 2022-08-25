@@ -29,12 +29,22 @@
 
 /* LEFT CONTAINER COMPONENTS*/
 .NoServerPage-left-container {
+  width: 344px;
   display: flex;
   flex-direction: column;
   padding: 2em;
   color: white;
   background-color: #2F3136;
   font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.direct-chat-recipient{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px;
+
 }
 
 .empty_dms {
