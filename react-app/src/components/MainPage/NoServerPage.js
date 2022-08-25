@@ -7,15 +7,19 @@ import '../CSS/NoServerPage.css';
 
 const NoServerPage = () => {
     const users = useSelector(state => Object.values(state.users))
+    const directChats = useSelector(state => Object.values(state.directChat))
 
-    console.log(users)
+    let recipients;
+    if (directChats) recipients = directChats.map(directChat => directChat.recipient_id)
+
+    const directChatUsers = recipients.map(recipientId => users[recipientId - 1])
 
     return (
         <div className='NoServerPage-container'>
             <div className='NoServerPage-NavBar'></div>
             <div className='NoServerPage-content-container'>
                 <div className='NoServerPage-left-container'>
-                    {users?.map((user, i) => {
+                    {directChatUsers?.map((user, i) => {
                         return (
                             <div key={i} className='server-user'>
                                 {user.username}

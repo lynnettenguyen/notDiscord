@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getOneServer } from '../../store/server';
-import ChannelPage from './ChannelPage';
+import { getDirectChats } from '../../store/directChat';
 import { getUsers } from '../../store/users';
 
 const MainPage = () => {
@@ -20,6 +20,7 @@ const MainPage = () => {
 
     useEffect(() => {
         dispatch(getUsers())
+        dispatch(getDirectChats())
         dispatch(getOneServer(id))
     }, [dispatch])
 
