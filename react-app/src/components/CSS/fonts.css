@@ -27,3 +27,8 @@
   font-family: WhitneyLight;
   src: url('../fonts/Whitney/whitney-light.otf');
 }
+
+@font-face {
+  font-family: WhitneyMedium;
+  src: url('../fonts/Whitney/whitney-medium.otf');
+}

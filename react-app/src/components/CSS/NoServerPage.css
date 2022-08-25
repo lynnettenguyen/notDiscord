@@ -1,0 +1,85 @@
+/* MAIN CONTAINER COMPONENTS */
+.NoServerPage-container {
+  /* border: 1px solid red; */
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 70px;
+}
+
+.NoServerPage-content-container {
+  display: flex;
+  flex-direction: row;
+  /* display: grid;
+  grid-template-columns: 1fr 2fr 1fr; */
+}
+
+
+/* NAV BAR COMPONENTS*/
+.NoServerPage-NavBar {
+  width: 100%;
+  display: flex;
+  background-color: #36393F;
+  flex-direction: row;
+  border: 1px solid #2C2F33;
+  height: 3em;
+  color: white;
+  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+
+/* LEFT CONTAINER COMPONENTS*/
+.NoServerPage-left-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  height: 100vh;
+  color: white;
+  background-color: #2F3136;
+  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.empty_dms {
+  position: relative;
+}
+
+/* MIDDLE CONTAINER COMPONENTS*/
+.NoServerPage-middle-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #36393F;
+  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.wumpus-image {
+  position: relative;
+  width: auto;
+  height: 10em;
+  margin-bottom: -16em;
+  padding-bottom: 18em;
+}
+
+/* RIGHT CONTAINER COMPONENTS*/
+.NoServerPage-right-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  padding-right: 2em;
+  margin-right: 4em;
+  align-items: center;
+  color: white;
+  background-color: #2F3136;
+  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+  /* width: 240px;
+  background-color: #2F3136;
+  color: white;
+  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'; */
+}
+
+.server-users {
+  width: 240px;
+}
