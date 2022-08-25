@@ -8,12 +8,20 @@ import '../CSS/NoServerPage.css';
 const NoServerPage = () => {
     const users = useSelector(state => Object.values(state.users))
 
+    console.log(users)
+
     return (
         <div className='NoServerPage-container'>
             <div className='NoServerPage-NavBar'></div>
             <div className='NoServerPage-content-container'>
                 <div className='NoServerPage-left-container'>
-                    <img alt='empty_dms' src={empty_dms} className='empty_dms'/>
+                    {users?.map((user, i) => {
+                        return (
+                            <div key={i} className='server-user'>
+                                {user.username}
+                            </div>)
+                    })}
+                    {/* <img alt='empty_dms' src={empty_dms} className='empty_dms'/> */}
                 </div>
                 <div className='NoServerPage-middle-container'>
                     <img alt='Wumpus' src={wumpus} className='wumpus-image' />
