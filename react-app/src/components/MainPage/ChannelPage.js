@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannelMessages } from '../../store/channelMessages';
 import Chat from '../Chat'
@@ -8,33 +8,24 @@ import '../CSS/ChannelPage.css';
 
 const ChannelPage = ({ generalChannelId, channelId }) => {
   const dispatch = useDispatch()
-  const [messages, setMessages] = useState([])
-  const server = useSelector(state => state.server)
-  const channels = useSelector(state => state.server.channels)
+  const messages = useSelector(state=> Object.values(state.channelMessages))
+  const channels = useSelector(state => Object.values(state.server.channels))
+  const users = useSelector(state => state.users)
 
-  useEffect(()=>{
-    if (channelId) {
-      const result = dispatch(getChannelMessages(channelId)).then(()=> {
-        result.forEach(message => {
-          setMessages(message)
-        })
-      })
+  useEffect( async ()=>{
+    if (!channelId) {
+      await dispatch(getChannelMessages(channels[0].id))
+    } else {
+      await dispatch(getChannelMessages(channelId))
     }
-    console.log(messages)
-  }, [dispatch])
+  }, [channelId])
 
-  return (
+  return users && (
     <>
-      {channelId ?
         <div>
-          channel: {channelId}
-          <Chat channelId={channelId} />
-        </div> :
-        <div>
-          default general: {generalChannelId}
+          {messages?.map((message, i) => (<div key={i} className='channel-messages'>{users[message.user_id].username}: {message.content}</div>))}
           <Chat channelId={channelId} />
         </div>
-      }
     </>
   );
 
