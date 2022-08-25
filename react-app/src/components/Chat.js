@@ -12,6 +12,8 @@ const Chat = ({ channelId }) => {
   const user = useSelector((state) => state.session.user);
   const server = useSelector(state => state.server)
   const [date, setDate] = useState(new Date())
+  const [lastUser, setLastUser] = useState()
+  const [currUser, setCurrUser] = useState(false)
 
   useEffect(() => {
     // create websocket/connect
@@ -29,6 +31,23 @@ const Chat = ({ channelId }) => {
       socket.disconnect();
     });
   }, [server]);
+
+
+  useEffect(()=>{
+    if (user) {
+      const index = messages.length - 1
+      if (index >= 0) {
+        setLastUser(messages[index].user)
+        console.log('LAST USER', lastUser)
+        if (lastUser !== user.username) {
+          setCurrUser(true)
+        }
+      }
+      if (index < 0) {
+        setCurrUser(true)
+      }
+    }
+  }, [channelId])
 
 
   useEffect(() => {
@@ -58,7 +77,7 @@ const Chat = ({ channelId }) => {
         <div>
           {messages?.map((message, i) => `${channelId}` === message.channel_id && (
             <div className='channel-messages' key={i}>
-              {i > 0 && messages[i-1].user_id !== message.user_id && (<div className='chat-header'>
+              {messages[i-1]?.user_id !== message.user_id && currUser && (<div className='chat-header'>
               <div className='chat-username'>{message.user}</div>
               <div className='chat-date'>Today at {date}</div>
               </div>)}
