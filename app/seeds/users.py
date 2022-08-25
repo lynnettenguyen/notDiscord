@@ -4,71 +4,71 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo User', email='demo@aa.io', password='password')
+        username='Demo User', email='demo@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_blue.png')
     alexZ = User(
-        username='Alex Z', email='alexZ@aa.io', password='password')
+        username='Alex Z', email='alexZ@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_green.png')
     benD = User(
-        username='Ben D', email='benD@aa.io', password='password')
+        username='Ben D', email='benD@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_blue.png')
     antonyP = User(
-        username='Antony P', email='antonyP@aa.io', password='password')
+        username='Antony P', email='antonyP@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_dark_pink.png')
     allanY = User(
-        username='Allan Y', email='allanY@aa.io', password='password')
+        username='Allan Y', email='allanY@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_purple.png')
     attiyaK = User(
-        username='Attiya K', email='attiyaK@aa.io', password='password')
+        username='Attiya K', email='attiyaK@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_pink.png')
     brianA = User(
-        username='Brian A', email='brianA@aa.io', password='password')
+        username='Brian A', email='brianA@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_red.png')
     calvinL = User(
-        username='Calvin L', email='calvinL@aa.io', password='password')
+        username='Calvin L', email='calvinL@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_yellow.png')
     davidJ = User(
-        username='David J', email='davidJ@aa.io', password='password')
+        username='David J', email='davidJ@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png')
     fangruZ = User(
-        username='Fangru Z', email='fangruZ@aa.io', password='password')
+        username='Fangru Z', email='fangruZ@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_blue.png')
     grantC = User(
-        username='Grant C', email='grantC@aa.io', password='password')
+        username='Grant C', email='grantC@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_green.png')
     hansenG = User(
-        username='Hansen G', email='hansenG@aa.io', password='password')
+        username='Hansen G', email='hansenG@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_blue.png')
     hengW = User(
-        username='Heng W', email='hengW@aa.io', password='password')
+        username='Heng W', email='hengW@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_dark_pink.png')
     abbyF = User(
-        username='Abby F', email='abbyF@aa.io', password='password')
+        username='Abby F', email='abbyF@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_purple.png')
     isabelA = User(
-        username='Isabel A', email='isabelA@aa.io', password='password')
+        username='Isabel A', email='isabelA@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_pink.png')
     jairC = User(
-        username='Jair C', email='jairC@aa.io', password='password')
+        username='Jair C', email='jairC@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_red.png')
     jonathanA = User(
-        username='Jonathan A', email='jonathanA@aa.io', password='password')
+        username='Jonathan A', email='jonathanA@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_yellow.png')
     kevinZ = User(
-        username='Kevin Z', email='kevinZ@aa.io', password='password')
+        username='Kevin Z', email='kevinZ@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png')
     lynnetteN = User(
-        username='Lynnette N', email='lynnetteN@aa.io', password='password')
+        username='Lynnette N', email='lynnetteN@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_blue.png')
     aliceL = User(
-        username='Alice L', email='aliceL@aa.io', password='password')
+        username='Alice L', email='aliceL@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_green.png')
     reneeL = User(
-        username='Renee L', email='reneeL@aa.io', password='password')
+        username='Renee L', email='reneeL@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_blue.png')
     samanthaW = User(
-        username='Samantha W', email='samanthaW@aa.io', password='password')
+        username='Samantha W', email='samanthaW@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_dark_pink.png')
     joonB = User(
-        username='Joon B', email='joonB@aa.io', password='password')
+        username='Joon B', email='joonB@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_purple.png')
     thomasA = User(
-        username='Thomas A', email='thomasA@aa.io', password='password')
+        username='Thomas A', email='thomasA@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_pink.png')
     timR = User(
-        username='Tim R', email='timR@aa.io', password='password')
+        username='Tim R', email='timR@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_red.png')
     tingF = User(
-        username='Ting F', email='tingF@aa.io', password='password')
+        username='Ting F', email='tingF@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_yellow.png')
     varshaG = User(
-        username='Varsha G', email='varshaG@aa.io', password='password')
+        username='Varsha G', email='varshaG@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png')
     waseemA = User(
-        username='Waseem A', email='waseemA@aa.io', password='password')
+        username='Waseem A', email='waseemA@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_blue.png')
     yoniL = User(
-        username='Yoni L', email='yoniL@aa.io', password='password')
+        username='Yoni L', email='yoniL@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_green.png')
     yueH = User(
-        username='Yue H', email='yueH@aa.io', password='password')
+        username='Yue H', email='yueH@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_blue.png')
     zachH = User(
-        username='Zach H', email='zachH@aa.io', password='password')
+        username='Zach H', email='zachH@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_dark_pink.png')
     zeusR = User(
-        username='Zeus R', email='zeusR@aa.io', password='password')
+        username='Zeus R', email='zeusR@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_purple.png')
     zhihongL = User(
-        username='Zhihong L', email='zhihongL@aa.io', password='password')
+        username='Zhihong L', email='zhihongL@aa.io', password='password', profile_pic='https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_pink.png')
 
 
     db.session.add(demo)
