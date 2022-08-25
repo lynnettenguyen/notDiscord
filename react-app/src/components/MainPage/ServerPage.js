@@ -24,8 +24,6 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [showChannels, setShowChannels] = useState(true)
     const [editActive, setEditActive] = useState(false)
 
-    console.log(channels[0])
-
     useEffect(() => {
         if (channels) {
             setIsLoaded(true)
