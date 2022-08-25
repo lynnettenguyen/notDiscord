@@ -28,7 +28,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     if (response) {
       setChannelId(response.id)
     }
-
+    
     setShowModal(false)
   }
 
@@ -51,10 +51,8 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     setShowModal(false)
   }
 
-  const handleChannelDelete = () => {
-    console.log("channelid in delete", channelId)
-    dispatch(removeChannel(channelId))
-
+  const handleChannelDelete = (id, channelId) => {
+    dispatch(removeChannel(id, channelId))
   }
 
   return (
@@ -90,7 +88,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                       </div>
                       <div>
                         <button type='submit'>Update</button>
-                        <button onClick={() => handleChannelDelete(channelId)}>Delete</button>
+                        <button onClick={() => handleChannelDelete(id, channelId)}>Delete</button>
                       </div>
                     </div>
                   </div>
