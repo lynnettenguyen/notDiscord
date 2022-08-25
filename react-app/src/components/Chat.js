@@ -9,18 +9,14 @@ let socket;
 const Chat = ({ channelId }) => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
+  const [date, setDate] = useState(new Date());
   const user = useSelector((state) => state.session.user);
-  const server = useSelector(state => state.server)
-  const [date, setDate] = useState(new Date())
-  const [lastUser, setLastUser] = useState()
-  const [currUser, setCurrUser] = useState(false)
+  const server = useSelector(state => state.server);
 
   useEffect(() => {
     // create websocket/connect
     socket = io();
-
     // listen for chat events
-
     socket.on('chat', (chat) => {
       // when we recieve a chat, add it into our messages array in state
       setMessages((messages) => [...messages, chat]);
@@ -34,31 +30,8 @@ const Chat = ({ channelId }) => {
 
 
   useEffect(()=>{
-    if (user) {
-      const index = messages.length - 1
-
-      if (index < 0) {
-        setCurrUser(true)
-      }
-
-      if (index >= 0) {
-        if (messages[index].user == user.username) {
-            setCurrUser(false)
-        } else {
-          setCurrUser(true)
-        }
-      }
-      // if (index >= 0) {
-      //   setLastUser(messages[index].user)
-      //   console.log('LAST USER', lastUser)
-      //   if (lastUser !== user.username) {
-      //     setCurrUser(true)
-      //   }
-      // }
-      // if (index < 0) {
-      //   setCurrUser(true)
-      // }
-    }
+    setMessages([])
+      setChatInput('')
   }, [channelId])
 
 
@@ -82,14 +55,13 @@ const Chat = ({ channelId }) => {
     setChatInput("");
   };
 
-  // additional code to be added
   return (
     user && (
       <div>
         <div>
           {messages?.map((message, i) => `${channelId}` === message.channel_id && (
             <div className='channel-messages' key={i}>
-              {messages[i-1]?.user_id !== message.user_id && currUser && (<div className='chat-header'>
+              {messages[i-1]?.user_id !== message.user_id && (<div className='chat-header'>
               <div className='chat-username'>{message.user}</div>
               <div className='chat-date'>Today at {date}</div>
               </div>)}
