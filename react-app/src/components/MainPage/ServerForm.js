@@ -31,11 +31,6 @@ const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
     setShowModalCreate(false)
   }
 
-  const closeModal = () => {
-    setShowModalCreate(false)
-    console.log('click', showModalCreate)
-  }
-
   return (
     <>
 

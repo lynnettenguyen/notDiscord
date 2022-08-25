@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
+
+import './CSS/ChannelPage.css'
+
 let socket;
 
 const Chat = ({ channelId }) => {
@@ -8,26 +11,29 @@ const Chat = ({ channelId }) => {
   const [chatInput, setChatInput] = useState("");
   const [channelChange, setChannelChange] = useState(false);
   const user = useSelector((state) => state.session.user);
+  const server = useSelector(state => state.server)
 
   useEffect(() => {
     // create websocket/connect
     socket = io();
 
     // listen for chat events
+
+    console.log('CONNECTED')
     socket.on('chat', (chat) => {
       // when we recieve a chat, add it into our messages array in state
       setMessages((messages) => [...messages, chat]);
     });
     // when component unmounts, disconnect
-    return () => {
+    return (() => {
+      console.log('DISCONNECTING')
       socket.disconnect();
-    };
-  }, []);
+    });
+  }, [server]);
 
 
   useEffect(() => {
     setChannelChange(true)
-    console.log(channelId)
   }, [channelId]);
 
   const updateChatInput = (e) => {
@@ -48,7 +54,7 @@ const Chat = ({ channelId }) => {
       <div>
         <div>
           {messages.map((message, i) => `${channelId}` === message.channel_id && (
-            <div key={i}>{`${message.user}: ${message.content}`}</div>
+            <div className='channel-messages' key={i}>{`${message.user}: ${message.content}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
