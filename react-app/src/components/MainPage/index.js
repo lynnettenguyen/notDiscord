@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ServerNav from './ServerNav';
 import '../CSS/MainPage.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,11 @@ const MainPage = () => {
     const dispatch = useDispatch()
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
+    const directChats = useSelector(state => Object.values(state.directChat))
+
     const id = Object.keys(server)[0]
+
+    const [directChatId, setDirectChatId] = useState()
 
     let generalChannelId;
 
@@ -28,15 +32,13 @@ const MainPage = () => {
         <>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav />
+                    <ServerNav directChatId={directChatId} setDirectChatId={setDirectChatId} />
                 </div>
                 <div className='main-middle-container'>
                     {channels ? (
-                        <>
                         <ServerPage id={id} generalChannelId={generalChannelId} />
-                        </>
                     ) : (
-                        <NoServerPage />
+                        <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} />
                     )}
                 </div>
             </div>
