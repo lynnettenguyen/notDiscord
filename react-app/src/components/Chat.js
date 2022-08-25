@@ -9,9 +9,9 @@ let socket;
 const Chat = ({ channelId }) => {
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
-  const [channelChange, setChannelChange] = useState(false);
   const user = useSelector((state) => state.session.user);
   const server = useSelector(state => state.server)
+  const [date, setDate] = useState(new Date())
 
   useEffect(() => {
     // create websocket/connect
@@ -19,22 +19,25 @@ const Chat = ({ channelId }) => {
 
     // listen for chat events
 
-    console.log('CONNECTED')
     socket.on('chat', (chat) => {
       // when we recieve a chat, add it into our messages array in state
       setMessages((messages) => [...messages, chat]);
     });
     // when component unmounts, disconnect
     return (() => {
-      console.log('DISCONNECTING')
+      setMessages([])
       socket.disconnect();
     });
   }, [server]);
 
 
   useEffect(() => {
-    setChannelChange(true)
-  }, [channelId]);
+    const newDate = new Date()
+    const time = newDate.toLocaleString([], {hour: '2-digit', minute: '2-digit'});
+    setDate(time)
+  }, [messages]);
+
+
 
   const updateChatInput = (e) => {
     setChatInput(e.target.value);
@@ -49,12 +52,18 @@ const Chat = ({ channelId }) => {
   };
 
   // additional code to be added
-  return channelChange && (
+  return (
     user && (
       <div>
         <div>
-          {messages.map((message, i) => `${channelId}` === message.channel_id && (
-            <div className='channel-messages' key={i}>{`${message.user}: ${message.content}`}</div>
+          {messages?.map((message, i) => `${channelId}` === message.channel_id && (
+            <div className='channel-messages' key={i}>
+              {i > 0 && messages[i-1].user_id !== message.user_id && (<div className='chat-header'>
+              <div className='chat-username'>{message.user}</div>
+              <div className='chat-date'>Today at {date}</div>
+              </div>)}
+              <div className='chat-message'>{message.content}</div>
+            </div>
           ))}
         </div>
         <form onSubmit={sendChat}>
