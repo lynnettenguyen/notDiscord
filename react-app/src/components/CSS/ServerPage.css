@@ -85,14 +85,15 @@
     transition: all 0.3s ease-in-out;
 }
 
-.channel-down:hover {
-    transform: rotate(0.5turn);
+.channel-down.close {
+    transform: rotate(-0.25turn);
 }
 
 .channel-title {
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     font-size: 13px;
     padding-left: 8px;
+    padding-top: 2px;
 }
 
 .channel-header-left:hover,

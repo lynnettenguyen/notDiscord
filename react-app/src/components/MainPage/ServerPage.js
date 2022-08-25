@@ -50,7 +50,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                     <div className='channel-header'>
                         <div className='channel-header'>
                             <div className='channel-header-left'>
-                                <div className='fa-solid fa-angle-down channel-down'></div>
+                                <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'} onClick={() => setShowChannels(!showChannels)}></div>
                                 <div className='channel-title'>CHANNEL</div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                         </div>
                     </div>
                     <div>
-                        <div className='channels-main'>
+                       {showChannels && <div className='channels-main'>
                             {channels?.map((channel, i) => {
                                 return (
                                     <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id) }}>
@@ -82,7 +82,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                                     </div>
                                 )
                             })}
-                        </div>
+                        </div>}
                     </div>
                 </div>
                 {channels?.length > 0 ?
