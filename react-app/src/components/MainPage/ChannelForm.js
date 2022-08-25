@@ -7,7 +7,6 @@ import hashtag from '../CSS/images/channel-hashtag.svg'
 const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId }) => {
   const user = useSelector(state => state.session.user)
   const channels = useSelector(state => state.server.channels)
-
   const dispatch = useDispatch()
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
@@ -28,7 +27,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     if (response) {
       setChannelId(response.id)
     }
-    
+
     setShowModal(false)
   }
 
