@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
+
+import './CSS/ChannelPage.css'
+
 let socket;
 
 const Chat = ({ channelId }) => {
@@ -51,7 +54,7 @@ const Chat = ({ channelId }) => {
       <div>
         <div>
           {messages.map((message, i) => `${channelId}` === message.channel_id && (
-            <div key={i}>{`${message.user}: ${message.content}`}</div>
+            <div className='channel-messages' key={i}>{`${message.user}: ${message.content}`}</div>
           ))}
         </div>
         <form onSubmit={sendChat}>
