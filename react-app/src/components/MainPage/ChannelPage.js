@@ -6,10 +6,11 @@ import Chat from '../Chat'
 import '../CSS/ChannelPage.css';
 
 
-const ChannelPage = ({ generalChannelId, channelId }) => {
+const ChannelPage = ({ channelId }) => {
   const dispatch = useDispatch()
   const messages = useSelector(state=> Object.values(state.channelMessages))
   const channels = useSelector(state => Object.values(state.server.channels))
+  const server = useSelector(state => state.server)
   const users = useSelector(state => state.users)
 
   useEffect( async ()=>{
@@ -23,7 +24,7 @@ const ChannelPage = ({ generalChannelId, channelId }) => {
   return users && (
     <>
         <div>
-          {users && messages?.map((message, i) => (<div key={i} className='channel-messages'>{users[message.user_id].username}: {message.content}</div>))}
+          {users && messages?.map((message, i) => (<div key={i} className='channel-messages'>{users[message.user_id]?.username}: {message.content}</div>))}
           <Chat channelId={channelId} />
         </div>
     </>

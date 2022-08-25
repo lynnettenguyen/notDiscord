@@ -86,7 +86,6 @@ const channelMessagesReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {
     case LOAD_CHANNEL_MESSAGES: {
-      console.log('messages', action.messages)
       action.messages.forEach((each, i) => {
         newState[i] = each
       })

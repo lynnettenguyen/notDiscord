@@ -122,7 +122,6 @@ const singleServerReducer = (state = {}, action) => {
     }
     case CREATE_CHANNELS: {
       newState = { ...state}
-      console.log('NEWSTATE', newState)
       newState.channels[action.newChannel.id] = action.newChannel;
       return newState
     }
