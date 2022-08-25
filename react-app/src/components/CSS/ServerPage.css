@@ -1,6 +1,6 @@
 /* html {
     background-color: #36393F;
-  
+
 }
 
 body {
@@ -16,6 +16,7 @@ body {
     height: 100vh;
     position: absolute;
     left: 74px;
+    height: 95%;
 }
 
 .ServerPage-content-container {
