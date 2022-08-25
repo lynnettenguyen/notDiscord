@@ -31,7 +31,7 @@ const MainPage = () => {
                 <div className='main-middle-container'>
                     {channels ? (
                         <>
-                            <ServerPage id={id} generalChannelId={generalChannelId} />
+                        <ServerPage id={id} generalChannelId={generalChannelId} />
                         </>
                     ) : (
                         <NoServerPage />
