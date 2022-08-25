@@ -64,7 +64,6 @@ export const updateServer = (serverData) => async (dispatch) => {
   if (response.ok) {
     const server = await response.json();
     dispatch(editServer(server))
-    console.log(server)
     return server;
   }
 }

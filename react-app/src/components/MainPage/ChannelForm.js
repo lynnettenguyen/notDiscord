@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChannel, removeChannel, editChannel, getChannels } from '../../store/server';
+import { addChannel, removeChannel, editChannel } from '../../store/server';
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
+import deleteBin from '../CSS/images/delete-server-bin.svg'
 
-const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId }) => {
-  const user = useSelector(state => state.session.user)
+const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
   const channels = useSelector(state => state.server.channels)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
@@ -47,47 +47,60 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
       setChannelId(response.id)
     }
 
+    setShowEditChannel(false)
     setShowModal(false)
   }
 
   const handleChannelDelete = (id, channelId) => {
     dispatch(removeChannel(id, channelId))
+    setShowEditChannel(false)
+    setShowModal(false)
   }
 
   return (
     <>
       {showEditChannel ?
         <>
-          <div>
-            <div className='channel-form-header'>Edit Channel</div>
+          <div className='main-channel-form'>
+            <div className='channel-form-upper'>
+              <div className='fa-solid fa-x channel-close' onClick={() => setShowModal(false)}></div>
+              <div className='channel-form-header'>Edit Channel</div>
+            </div>
             <div>
-              <button className="fa-thin fa-x" onClick={() => setShowModal(false)}></button>
               <form onSubmit={handleEditChannel}>
                 <div className='channel-form-text-main'>
                   <div>
-                    <div><label>CHANNEL NAME</label></div>
-                    <div>
-                      <img src={hashtag} alt='hashtag' />
+                    <div><label className='channel-form-label'>CHANNEL NAME</label></div>
+                    <div className='channel-name-outer'>
+                      <div className='channel-form-hash-outer'>
+                        <img src={hashtag} className='channel-form-hash' alt='hashtag' />
+                      </div>
                       <input
                         placeholder='new-channel'
                         value={nameEdit}
+                        className='channel-name-input'
                         onChange={(e) => setNameEdit(e.target.value)}
                         required
                       />
                     </div>
                     <div>
-                      <div><label>CHANNEL TOPIC</label></div>
-                      <div>
+                      <div><label className='channel-form-label'>CHANNEL TOPIC</label></div>
+                      <div className='channel-topic-outer'>
                         <input
                           placeholder='channel-topic'
+                          className='channel-topic-input'
                           value={topicEdit}
                           onChange={(e) => setTopicEdit(e.target.value)}
                           required
                         />
                       </div>
-                      <div>
-                        <button type='submit'>Update</button>
-                        <button onClick={() => handleChannelDelete(id, channelId)}>Delete</button>
+                      <div className='bottom-channel-section'>
+                        <button type='submit' className='channel-update-button'>Update</button>
+                        <div className='delete-channel-outer'>
+                          <button className='channel-delete-button' onClick={() => handleChannelDelete(id, channelId)}><span className='delete-name'>Delete</span>
+                            {/* <img src={deleteBin} className='delete-channel-bin' alt='delete' /> */}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -97,8 +110,11 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
           </div>
         </> :
         <>
-          <div>
-            <div className='channel-form-header'>Create Channel</div>
+          <div className='main-channel-form'>
+            <div className='channel-form-upper'>
+              <div className='fa-solid fa-x channel-close' onClick={() => setShowModal(false)}></div>
+              <div className='channel-form-header'>Create Channel</div>
+            </div>
             <div className='channel-form-caption'>in Text Channels</div>
             <div>
               <form onSubmit={handleCreateChannel}>
@@ -113,29 +129,35 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                     />
                   </div> */}
                   <div>
-                    <div><label>CHANNEL NAME</label></div>
-                    <div>
-                      <img src={hashtag} alt='hashtag' />
-                      <input
-                        placeholder='new-channel'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                      />
+                    <div><label className='channel-form-label'>CHANNEL NAME</label></div>
+                    <div className='channel-name-outer'>
+                      <div className='channel-form-hash-outer'>
+                        <img src={hashtag} className='channel-form-hash' alt='hashtag' />
+                      </div>
+                      <div>
+                        <input
+                          placeholder='channel-name'
+                          className='channel-name-input'
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          required
+                        />
+                      </div>
                     </div>
                     <div>
-                      <div><label>CHANNEL TOPIC</label></div>
-                      <div>
+                      <div><label className='channel-form-label'>CHANNEL TOPIC</label></div>
+                      <div className='channel-topic-outer'>
                         <input
                           placeholder='channel-topic'
                           value={topic}
+                          className='channel-topic-input'
                           onChange={(e) => setTopic(e.target.value)}
                           required
                         />
                       </div>
-                      <div>
-                        <button onClick={() => setShowModal(false)}>Cancel</button>
-                        <button type='submit'>Create Channel</button>
+                      <div className='bottom-channel-section'>
+                        <button onClick={() => setShowModal(false)} className='channel-cancel'>Cancel</button>
+                        <button type='submit' className='create-channel-button'>Create Channel</button>
                       </div>
                     </div>
                   </div>
