@@ -4,25 +4,47 @@
 
 .dropdown-container {
     position: absolute;
-    top: 2em;
-    left: 5em;
-    height: 100px;
-    width: 200px;
+    top: 3.5em;
+    left: 1em;
+    width: 240px;
     background-color: #18191C;
-    border-radius: 5px;
+    border-radius: 4px;
+
 }
 
 .edit-server-button {
-    background-color: red;
+    color: #919395;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    cursor: pointer;
 }
 
 .delete-server-button {
-    background-color: red;
+    color: #ED4245;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    cursor: pointer;
 }
 
 .edit-server-modal-container {
     background-color: green;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+.edit-server-button:hover {
+    background-color: #4752C4;
+    color: white;
+}
+
+.delete-server-button:hover {
+    color: white;
+    background-color: #ED4245;
+}
+
+.edit-server-button,
+.delete-server-button {
+    display: flex;
+    border-radius: 4px;
+    padding: .4em;
+    margin: .5em;
+    justify-content: space-between;
+    align-items: center;
 }

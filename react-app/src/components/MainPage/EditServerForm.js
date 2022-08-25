@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteServer, updateServer } from '../../store/servers';
 import { Modal } from '../context/Modal';
+import { getChannels, getOneServer, resetServer } from '../../store/server';
+import greyPencil from '../CSS/images/edit-server-pencil.svg'
+import whitePencil from '../CSS/images/edit-server-pencil-white.svg'
+import redBin from '../CSS/images/delete-server-bin.svg'
+import whiteBin from '../CSS/images/delete-server-bin-white.svg'
 
 import "../CSS/EditServerForm.css"
-import { getChannels, getOneServer, resetServer } from '../../store/server';
 
 
 const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
@@ -14,6 +18,8 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
   const [showModal, setShowModal] = useState(false)
   const [name, setName] = useState(`${server.name}`)
   const [server_pic, setServerPic] = useState(serverPic)
+  const [pencil, setPencil] = useState(greyPencil)
+  const [bin, setBin] = useState(redBin)
 
   const handleDelete = async () => {
     const response = await dispatch(deleteServer(id))
@@ -43,11 +49,11 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
 
   return (
     <div className='dropdown-container'>
-        <div className='edit-server-button' onClick={()=>setShowModal(true)}>
-          Edit
+        <div className='edit-server-button' onMouseOver={()=>setPencil(whitePencil)} onMouseLeave={()=>setPencil(greyPencil)} onClick={()=>setShowModal(true)}>
+          Edit <img className='server-edit-pencil' src={pencil}/>
         </div>
-        <div className='delete-server-button' onClick={handleDelete}>
-          Delete Server
+        <div className='delete-server-button' onMouseOver={()=>setBin(whiteBin)} onMouseLeave={()=>setBin(redBin)} onClick={handleDelete}>
+          Delete Server <img className='server-delete-bin' src={bin}/>
         </div>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
