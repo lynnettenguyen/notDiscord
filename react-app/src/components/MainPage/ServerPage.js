@@ -22,6 +22,7 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [showEditChannel, setShowEditChannel] = useState(false)
     const [showSection, setShowSection] = useState()
     const [showChannels, setShowChannels] = useState(true)
+    const [editActive, setEditActive] = useState(false)
 
     console.log(channels[0])
 
@@ -38,7 +39,9 @@ const ServerPage = ({ id, generalChannelId }) => {
     return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name'>{server.name}<button className='server-name-button' onClick={editServer}><i className="fas fa-angle-down"></i></button></div>
+                <div className='ServerPage-name'>{server.name}
+                    <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down' } onClick={() => { editServer(); setEditActive(!editActive)}}></button>
+                </div>
                 <div className='ServerPage-channel-name'></div>
                 <div className='ServerPage-NavBar-buttons'></div>
                 {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}

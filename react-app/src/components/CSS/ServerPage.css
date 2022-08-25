@@ -30,13 +30,21 @@
 
 .ServerPage-name {
     display: flex;
+    justify-content: space-between;
     width: 271px;
     background-color: #2F3136;
+    font-family: GintoNormal, Arial, Helvetica, sans-serif;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .server-name-button {
     width: 10%;
     height: 35%;
+    background: none;
+    border: none;
+    color: white;
+    margin-top: 3px;
 }
 
 
