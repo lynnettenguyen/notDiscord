@@ -97,10 +97,12 @@ const Chat = ({ channelId }) => {
             </div>
           ))}
         </div>
+        <div className="chat-input">
         <form onSubmit={sendChat}>
           <input value={chatInput} onChange={updateChatInput} />
           <button type="submit">Send</button>
         </form>
+        </div>
       </div>
     )
   );

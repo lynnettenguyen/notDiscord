@@ -1,3 +1,14 @@
+/* html {
+    background-color: #36393F;
+  
+}
+
+body {
+    max-width: 1080px;
+    max-height: 1920px;
+} */
+
+
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
     /* border: 5px solid red; */
@@ -11,7 +22,7 @@
     /* border: 5px solid red; */
     display: flex;
     flex-direction: row;
-    overflow: hidden, scroll;
+    /* overflow: hidden, scroll; */
     max-height: 100%;
 }
 
@@ -61,7 +72,6 @@
     display: flex;
     flex-direction: column;
     padding: 1em;
-    height: 100vh;
     width: 240px;
     color: white;
     background-color: #2F3136;
@@ -174,6 +184,8 @@
     color: white;
     background-color: #36393F;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 .no-text-channel-middle-container {
@@ -211,10 +223,15 @@
 
 /* RIGHT CONTAINER COMPONENTS*/
 .ServerPage-right-container {
-    width: 270px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+    width: 25rem;
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    overflow: hidden scroll;
 }
 
 .server-user {
@@ -228,6 +245,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    /* max-height: 1000px;
+    overflow: hidden scroll; */
 }
  .user-profile-pic {
     height: 38px;

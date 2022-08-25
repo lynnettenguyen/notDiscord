@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   position: absolute;
-  left: 70px;
+  left: 74px;
 }
 
 .NoServerPage-content-container {
@@ -74,10 +74,6 @@
   color: white;
   background-color: #2F3136;
   font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-  /* width: 240px;
-  background-color: #2F3136;
-  color: white;
-  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'; */
 }
 
 .server-users {
