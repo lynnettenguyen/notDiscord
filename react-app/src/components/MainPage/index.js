@@ -13,7 +13,6 @@ const MainPage = () => {
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
     const directChats = useSelector(state => Object.values(state.directChat))
-    const [check, setCheck] = useState(false)
 
     const id = Object.keys(server)[0]
 
@@ -30,35 +29,19 @@ const MainPage = () => {
         dispatch(getOneServer(id))
     }, [dispatch])
 
-    // useEffect(()=>{
-    //     if (server) {
-    //         setCheck(true)
-    //     }
-    // }, [channels, server])
-
-
-    if (check) return (
+    return (
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} />
                 </div>
                 <div className='main-middle-container'>
-                    <ServerPage id={id} generalChannelId={generalChannelId} />
+                    {channels ? (
+                        <ServerPage id={id} generalChannelId={generalChannelId} />
+                    ) : (
+                        <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
+                    )}
                 </div>
-            </div>
-        </div>
-    );
-
-    if (!check) return (
-        <div id='main-application'>
-        <div className='main-server-container'>
-            <div className='main-left-container'>
-                <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} />
-            </div>
-            <div className='main-middle-container'>
-                <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
-            </div>
             </div>
         </div>
     );
