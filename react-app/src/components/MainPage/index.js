@@ -39,7 +39,7 @@ const MainPage = () => {
                     {channels ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} />
                     ) : (
-                            <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
+                        <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
                     )}
                 </div>
             </div>

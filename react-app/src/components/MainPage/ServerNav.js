@@ -1,24 +1,21 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allServers, listAllServers } from '../../store/servers';
 import { getChannels, getOneServer, resetServer } from '../../store/server';
 import { getUsers } from '../../store/users';
 import { Modal } from '../context/Modal';
 import ServerForm from './ServerForm'
-import '../CSS/ServerNav.css'
 import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
-// import addIcon from '../CSS/images/discord-add-icon.svg'
-import { loadChannelMessages } from '../../store/channelMessages';
-import { io } from "socket.io-client";
-// import { SocketContext } from '../context/Socket';
+
+import '../CSS/ServerNav.css'
+
 
 let socket;
 
 const ServerNav = ({setDirectChatId, setShowFriends }) => {
   const directChats = useSelector(state => Object.values(state.directChat))
   const dispatch = useDispatch();
-  // const socket = useContext(SocketContext)
   const servers = useSelector(allServers);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
@@ -26,12 +23,6 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
   useEffect(() => {
     dispatch(listAllServers())
       .then(() => setIsLoaded(true))
-
-    // socket = io();
-    // socket.on('load_channel_messages', async (data) => {
-    //   await dispatch(loadChannelMessages(data['channel_id']))
-    // })
-
   }, [dispatch, isLoaded]);
 
   const handleServerClick = async (serverId) => {
@@ -58,9 +49,11 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
           return (
             <div key={i} >
               <div className='server-img-outer'>
-                {server.server_pic ?
-                  <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div> :
-                  <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(i + 1)}> </div>}
+                {
+                server.server_pic ?
+                  <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div> :
+                  <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div>
+                  }
               </div>
             </div>
           )
