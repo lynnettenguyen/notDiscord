@@ -98,6 +98,23 @@ span {
     font-family: WhitneyBook;
 }
 
+.enter-servers-button {
+    border: 0;
+    background-color: #23272A;
+    padding: 1em;
+    border-radius: 40px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: WhitneyMedium;
+
+}
+
+.enter-servers-button:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.322);
+    background-color: #2c2f33;
+    transition: all 0.3s ease-in-out;
+}
+
 span {
     font-size: 20px;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
@@ -225,4 +242,13 @@ h1 {
     text-decoration: none;
     color: white;
     border: 0;
+}
+
+.signup-button:hover,
+.login-button:hover,
+.logout-button-top:hover,
+.logout-button-bottom:hover {
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.26);
+    opacity: .9;
+    text-decoration: none;
 }
