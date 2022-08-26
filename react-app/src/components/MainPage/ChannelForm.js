@@ -11,7 +11,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
   const [nameEdit, setNameEdit] = useState(`${channels[channelId]?.name}`)
-  const [topicEdit, setTopicEdit] = useState(`${channels[channelId]?.topic}`)
+  const [topicEdit, setTopicEdit] = useState(channels[channelId]?.topic ? `${channels[channelId]?.topic}` : "")
 
   const handleCreateChannel = async (e) => {
     e.preventDefault()
@@ -76,7 +76,6 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                         <img src={hashtag} className='channel-form-hash' alt='hashtag' />
                       </div>
                       <input
-                        placeholder='new-channel'
                         value={nameEdit}
                         className='channel-name-input'
                         onChange={(e) => setNameEdit(e.target.value)}
@@ -87,7 +86,6 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                       <div><label className='channel-form-label'>CHANNEL TOPIC</label></div>
                       <div className='channel-topic-outer'>
                         <input
-                          placeholder='channel-topic'
                           className='channel-topic-input'
                           value={topicEdit}
                           onChange={(e) => setTopicEdit(e.target.value)}
