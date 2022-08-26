@@ -1,0 +1,14 @@
+.current-user-profile-pic {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+}
+
+ .logout-icon {
+  font-size: 15px;
+ }
+
+.logout-icon:hover {
+    color: #DCDDDE;
+    cursor: pointer;
+}
