@@ -5,11 +5,9 @@
     left: 74px;
     overflow: hidden;
     box-sizing: border-box;
-    border: 1px solid red;
 }
 
 .ServerPage-content-container {
-    border: 1px solid green;
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -19,7 +17,6 @@
 
 /* NAV BAR COMPONENTS*/
 .ServerPage-NavBar {
-    border: 1px solid green;
     width: 100%;
     display: flex;
     background-color: #36393F;
@@ -59,11 +56,11 @@
 
 /* LEFT CONTAINER COMPONENTS*/
 .ServerPage-left-container {
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     padding: 1em;
-    min-width: 236px;
+    min-width: 240px;
+    max-width: 240px;
     color: white;
     background-color: #2F3136;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
@@ -88,6 +85,7 @@
     display: flex;
     width: 240px;
     color: #96989d;
+    justify-content: space-between;
 }
 
 .channel-header-left {
@@ -170,14 +168,17 @@
     /* border: 5px solid red; */
     width: 100%;
     overflow: scroll;
-    max-height: 100%;
+    max-height: 95%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     color: white;
     background-color: #36393F;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
     overflow: auto;
     overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+    scrollbar-color: #2F3136;
 }
 
 .no-text-channel-middle-container {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
-import './CSS/ChannelPage.css'
+import './CSS/Chat.css'
 
 let socket;
 
@@ -29,15 +29,15 @@ const Chat = ({ channelId }) => {
   }, [server]);
 
 
-  useEffect(()=>{
+  useEffect(() => {
     setMessages([])
-      setChatInput('')
+    setChatInput('')
   }, [channelId])
 
 
   useEffect(() => {
     const newDate = new Date()
-    const time = newDate.toLocaleString([], {timeStyle: 'short'});
+    const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
   }, [messages]);
 
@@ -57,25 +57,27 @@ const Chat = ({ channelId }) => {
 
   return (
     user && (
-      <div>
-        <div>
-          {messages?.map((message, i) => `${channelId}` === message.channel_id && (
-            <div className='channel-messages' key={i}>
-              {messages[i-1]?.user_id !== message.user_id && (<div className='chat-header'>
-              <div className='chat-username'>{message.user}</div>
-              <div className='chat-date'>Today at {date}</div>
-              </div>)}
-              <div className='chat-message'>{message.content}</div>
-            </div>
-          ))}
+      <>
+        <div className="channel-page-main">
+          <div className="channel-messages">
+            {messages?.map((message, i) => `${channelId}` === message.channel_id && (
+              <div className='channel-messages' key={i}>
+                {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
+                  <div className='chat-username'>{message.user}</div>
+                  <div className='chat-date'>Today at {date}</div>
+                </div>)}
+                <div className='chat-message'>{message.content}</div>
+              </div>
+            ))}
+          </div>
+          <div className="channel-messages-input">
+            <form onSubmit={sendChat} className='chat-input-form'>
+              <input value={chatInput} onChange={updateChatInput} className="chat-input" />
+              <button className='chat-button' type="submit"></button>
+            </form>
+          </div>
         </div>
-        <div className="chat-input">
-        <form onSubmit={sendChat}>
-          <input value={chatInput} onChange={updateChatInput} />
-          <button type="submit">Send</button>
-        </form>
-        </div>
-      </div>
+      </>
     )
   );
 };

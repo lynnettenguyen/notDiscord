@@ -52,14 +52,14 @@ const ServerPage = ({ id, generalChannelId }) => {
                             <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'}></div>
                             <div className='channel-title'>CHANNEL</div>
                         </div>
-                    </div>
-                    <div className='add-channel-button'>
-                        <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
-                        {showModal && (
-                            <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
-                            </Modal>
-                        )}
+                        <div className='add-channel-button'>
+                            <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
+                            {showModal && (
+                                <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
+                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
+                                </Modal>
+                            )}
+                        </div>
                     </div>
                     <div>
                         {showChannels ?
@@ -103,9 +103,9 @@ const ServerPage = ({ id, generalChannelId }) => {
                 </div>
                 {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
-                        <div className='channel-chat'>
+                        {/* <div className='channel-chat'> */}
                             <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
-                        </div>
+                        {/* </div> */}
                     </div> :
                     <div className='no-text-channel-middle-container'>
                         <div><img src={noChannels} /></div>

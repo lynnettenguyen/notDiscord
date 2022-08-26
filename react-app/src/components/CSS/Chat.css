@@ -1,0 +1,52 @@
+.channel-messages {
+  display: flex;
+  flex-direction: column;
+  font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.channel-messages-scroll {
+  border: 1px solid red;
+  overflow-y: scroll;
+}
+
+.chat-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-username {
+  color: white;
+  font-family: WhitneyBold, Arial, Helvetica, sans-serif;
+}
+
+.chat-date {
+  display: flex;
+  flex-direction: column-reverse;
+  color: #A3A6AA;
+  font-size: 12px;
+  font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+}
+
+.chat-input {
+  width: 100%;
+  background-color: #40444B;
+  border: none;
+  height: 2rem;
+  margin-top: 20px;
+}
+
+.chat-input:focus {
+  outline: none;
+  width: 100%;
+}
+
+.chat-button {
+  display: none;
+}
+
+.channel-messages-input {
+  width: 100%;
+  overflow: hidden;
+}

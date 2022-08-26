@@ -10,7 +10,6 @@
   left: 0;
   bottom: 0;
   top: 0;
-  border: 1px purple solid;
   max-height: 100%;
   box-sizing: border-box;
 }
@@ -87,5 +86,4 @@
 
 .server-form-first {
   width: 500px;
-  border: 1px red solid;
 }
