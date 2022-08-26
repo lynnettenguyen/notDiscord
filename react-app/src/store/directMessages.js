@@ -88,7 +88,7 @@ const directMessagesReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_DIRECT_CHAT: {
       let directChat = {}
-      newState = { directChat, ...state }
+      newState = { directChat }
       directChat[action.directChat.id] = action.directChat
       return newState;
     }
