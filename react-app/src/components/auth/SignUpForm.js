@@ -135,17 +135,6 @@ const SignUpForm = () => {
               value={profile_pic}
               required={true}
             />
-            {/* <select value={profile_pic} onChange={(e) => setProfilePic(e.target.value)}>
-                <option value={blue}>Blue</option>
-                <option value={green}>Green</option>
-                <option value={lightblue}>Light Blue</option>
-                <option value={darkpink}>Dark Pink</option>
-                <option value={purple}>Purple</option>
-                <option value={pink}>Pink</option>
-                <option value={red}>Red</option>
-                <option value={yellow}>Yellow</option>
-                <option value={"https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png'"}>Light Purple</option>
-              </select> */}
           </div>
           <div className='signup-errors'>
             {errors.map((error, ind) => (
