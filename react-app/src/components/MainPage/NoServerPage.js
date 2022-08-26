@@ -4,7 +4,7 @@ import wumpus from '../CSS/images/wumpus.svg'
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
 import messageBubble from '../CSS/images/message-bubble.svg'
-import { createDirectChat } from '../../store/directChat';
+import { createDirectChat, removeDirectChat } from '../../store/directChat';
 
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
@@ -12,12 +12,9 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const currentUser = useSelector(state => state.session)
     const users = useSelector(state => Object.values(state.users))
     const directChats = useSelector(state => Object.values(state.directChat))
-
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
 
-    console.log(directChats)
-    console.log(recipientId)
 
     const allUsersInChat = []
     directChats.forEach(chat => {
@@ -81,14 +78,12 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                     {directChats?.map((directChat, i) => {
                         if (currentUser.user.id === directChat.recipient_id) {
                             return (
-                                <>
-                                    <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.sender_id) }}>
-                                        <div className='direct-chat-profile-pic'>
-                                            <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
-                                        </div>
-                                        {users[directChat.sender_id - 1]?.username}
+                                <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.sender_id) }}>
+                                    <div className='direct-chat-profile-pic'>
+                                        <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                     </div>
-                                </>
+                                    {users[directChat.sender_id - 1]?.username}
+                                </div>
                             )
                         } else
                             return (
