@@ -75,8 +75,8 @@
 
 .friend-profile-pic {
   height: 38px;
-  width: auto;
-  border-radius: 30px;
+  width: 38px;
+  border-radius: 50%;
 }
 
 .friend-username {
