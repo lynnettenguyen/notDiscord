@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import wumpus from '../CSS/images/wumpus.svg'
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
+import messageBubble from '../CSS/images/message-bubble.svg'
 
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
@@ -73,10 +74,20 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         <div className='main-friends-list'>
                             {users?.map((user, i) => {
                                 return (
-                                    <div key={i} className='server-user'>
-                                        <img src={user.profile_pic} className='user-profile-pic'></img>
-                                        <p className='username'>{user.username}</p>
-                                    </div>)
+                                    <>
+                                        <div key={i} className='friends-users'>
+                                            <div className='friend-users-left'>
+                                                <div>
+                                                    <img src={user.profile_pic} className='friend-profile-pic'></img>
+                                                </div>
+                                                <div><span className='friend-username'>{user.username}</span></div>
+                                            </div>
+                                            <div className='message-bubble-outer'>
+                                                <img src={messageBubble} className='messsage-bubble-icon' />
+                                            </div>
+                                        </div>
+                                    </>
+                                )
                             })}
                         </div>
                     </div>
@@ -88,7 +99,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         </div>
                     </div>
                 )}
-                {!showFriends && (<div className='noServerPage-right-container'>
+                {showFriends && (<div className='noServerPage-right-container'>
                     <h3>It's quiet for now...</h3>
                     <div className='no-online-friends'>When a friend starts an activity-like playing a game or hanging out on voice-we'll show it here!</div>
                 </div>)}
