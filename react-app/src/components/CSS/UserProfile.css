@@ -1,3 +1,9 @@
+.current-user-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .current-user-profile-pic {
   height: 38px;
   width: 38px;

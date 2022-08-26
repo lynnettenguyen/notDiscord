@@ -168,6 +168,10 @@
     display: none;
 }
 
+.user-profile-container {
+    display: flex;
+}
+
 
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {

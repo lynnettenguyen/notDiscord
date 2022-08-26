@@ -12,17 +12,13 @@ const UserProfile = () => {
 
   return (
     <div className="current-user-profile">
-      <div className="current-user-info">
-        <div className="user-pfp-outer">
-          <img src={user.profile_pic} alt='user-pfp-inner' className='current-user-profile-pic'></img>
-        </div>
-        <div className="username-outer">
-          <p className='username-inner'>{user.username}</p>
-        </div>
+      <div className="user-pfp-outer">
+        <img src={user.profile_pic} alt='user-pfp-inner' className='current-user-profile-pic'></img>
+      </div>
+      <div className="username-outer">
+        {user.username}
       </div>
       <div className="logout-button-outer">
-        {/* {user && (<button className='logout-button-inner' onClick={onLogout}>Logout</button>)} */}
-        {/* <i className="fa-solid fa-right-from-bracket"></i> */}
         <div className="logout-icon fa-solid fa-right-from-bracket" onClick={onLogout}/>
       </div>
     </div>
