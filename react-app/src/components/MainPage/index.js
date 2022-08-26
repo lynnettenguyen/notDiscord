@@ -30,7 +30,7 @@ const MainPage = () => {
     }, [dispatch])
 
     return (
-        <>
+        <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} />
@@ -43,7 +43,7 @@ const MainPage = () => {
                     )}
                 </div>
             </div>
-        </>
+        </div>
     );
 
 };

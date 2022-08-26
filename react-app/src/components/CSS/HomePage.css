@@ -4,6 +4,7 @@
     flex-direction: column;
     width: 100vw;
     font-family: WhitneyLight;
+    overflow: auto;
 }
 
 /* ---------- NavBar ---------- */
@@ -15,8 +16,8 @@
     background-color: #404EED;
     height: 5em;
     z-index: 5;
-    width: 50%;
-    max-width: 900px;
+    width: 80%;
+    max-width: 1200px;
 }
 
 a,

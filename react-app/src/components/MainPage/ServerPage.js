@@ -48,20 +48,18 @@ const ServerPage = ({ id, generalChannelId }) => {
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
                     <div className='channel-header'>
-                        <div className='channel-header'>
-                            <div className='channel-header-left' onClick={() => setShowChannels(!showChannels)}>
-                                <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'}></div>
-                                <div className='channel-title'>CHANNEL</div>
-                            </div>
+                        <div className='channel-header-left' onClick={() => setShowChannels(!showChannels)}>
+                            <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'}></div>
+                            <div className='channel-title'>CHANNEL</div>
                         </div>
-                        <div className='add-channel-button'>
-                            <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
-                            {showModal && (
-                                <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
-                                </Modal>
-                            )}
-                        </div>
+                    </div>
+                    <div className='add-channel-button'>
+                        <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
+                        {showModal && (
+                            <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
+                                <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
+                            </Modal>
+                        )}
                     </div>
                     <div>
                         {showChannels ?

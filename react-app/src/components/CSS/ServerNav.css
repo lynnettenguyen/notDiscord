@@ -10,6 +10,9 @@
   left: 0;
   bottom: 0;
   top: 0;
+  border: 1px purple solid;
+  max-height: 100%;
+  box-sizing: border-box;
 }
 
 .home-icon {
