@@ -10,7 +10,6 @@ import User from './components/User';
 import '../src/components/CSS/fonts.css'
 import MainPage from './components/MainPage';
 import { ModalProvider } from './components/context/Modal';
-import Chat from './components/Chat'
 import { authenticate } from './store/session';
 
 function App() {
@@ -49,9 +48,6 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
-          </ProtectedRoute>
-          <ProtectedRoute path='/chat'>
-            <Chat />
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>

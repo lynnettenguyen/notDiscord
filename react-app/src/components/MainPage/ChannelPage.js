@@ -108,33 +108,35 @@ const ChannelPage = ({ channelId }) => {
   return users && (
     <>
       <div className='channel-page-main'>
-        <div className='channel-messages'>
-          {users && msgState?.map((message, i) => (
-            <div className='channel-messages-inner' key={i}>
-              {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
-                <div className='chat-username'>{users[message.user_id]?.username}</div>
-                <div className='chat-date'>{checkDay(message.created_at)}</div>
-              </div>)}
-              <div className='chat-message'>{message.content}</div>
-            </div>
-          ))}
-          {messages?.map((message, i) => `${channelId}` === message.channel_id && (
-            <div className='channel-messages-inner' key={i}>
-              {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
-                <div className='chat-username'>{message.user}</div>
-                <div className='chat-date'>Today at {date}</div>
-              </div>)}
-              <div className='chat-message'>{message.content}</div>
-            </div>
-          ))}
+        <div className='channel-messages-outer'>
+          <div className='channel-messages'>
+            {users && msgState?.map((message, i) => (
+              <div className='channel-messages-inner' key={i}>
+                {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
+                  <div className='chat-username'>{users[message.user_id]?.username}</div>
+                  <div className='chat-date'>{checkDay(message.created_at)}</div>
+                </div>)}
+                <div className='chat-message'>{message.content}</div>
+              </div>
+            ))}
+            {messages?.map((message, i) => `${channelId}` === message.channel_id && (
+              <div className='channel-messages-inner' key={i}>
+                {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
+                  <div className='chat-username'>{message.user}</div>
+                  <div className='chat-date'>Today at {date}</div>
+                </div>)}
+                <div className='chat-message'>{message.content}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="channel-messages-input">
-          <form onSubmit={sendChat} className='chat-input-form'>
-            <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #${channels[currChannel]?.name}`} />
-            <button className='chat-button' type="submit"></button>
-          </form>
-        </div>
+        <form onSubmit={sendChat} className='chat-input-form'>
+          <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #${channels[currChannel]?.name}`} />
+          <button className='chat-button' type="submit"></button>
+        </form>
+      </div>
     </>
   );
 
