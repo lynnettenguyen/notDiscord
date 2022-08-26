@@ -103,9 +103,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                 </div>
                 {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
-                        {/* <div className='channel-chat'> */}
                             <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
-                        {/* </div> */}
                     </div> :
                     <div className='no-text-channel-middle-container'>
                         <div><img src={noChannels} /></div>

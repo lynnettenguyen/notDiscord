@@ -166,14 +166,12 @@
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
     width: 100%;
-    overflow: scroll;
     max-height: 100%;
     display: flex;
     flex-direction: column;
     color: white;
     background-color: #36393F;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-    overflow: auto;
     overflow-x: hidden;
     box-sizing: border-box;
     padding: 2rem 1rem;
@@ -203,16 +201,6 @@
     padding: 10px;
     width: 450px;
     text-align: center;
-}
-
-.channel-chat {
-    /* border: 10px solid greenyellow; */
-    overflow: hidden scroll;
-    width: 100%;
-    font-size: 17px;
-    padding-left: 8px;
-    padding-top: 2px;
-    max-height: 1000px;
 }
 
 
