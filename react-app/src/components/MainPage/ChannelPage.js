@@ -33,13 +33,17 @@ const ChannelPage = ({ channelId }) => {
       setMessages([])
       socket.disconnect();
     });
-  }, [server]);
+  }, []);
 
   useEffect(() => {
     if (channelId) {
       setCurrChannel(channelId)
     }
-    setMessages([])
+    // console.log('STATE', msgState)
+    // console.log('MESSAGES', messages)
+    // if (msgState[msgState.length - 1]?.user_id !== messages?.user_id) {
+    //   setMessages([])
+    // }
     setChatInput('')
   }, [channelId])
 
