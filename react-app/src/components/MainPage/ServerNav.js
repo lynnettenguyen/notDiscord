@@ -11,8 +11,6 @@ import serverDefault from '../CSS/images/server_default.png'
 import '../CSS/ServerNav.css'
 
 
-let socket;
-
 const ServerNav = ({setDirectChatId, setShowFriends }) => {
   const directChats = useSelector(state => Object.values(state.directChat))
   const dispatch = useDispatch();
@@ -34,7 +32,7 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
       await dispatch(getOneServer(serverId))
       await dispatch(getChannels(serverId))
       await dispatch(getUsers())
-        .then(() => setIsLoaded(true))
+      .then(() => setIsLoaded(true))
     }
   };
 
@@ -60,7 +58,6 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
         })}
         <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
-          {/* <img src={addIcon} /> */}
         </div>
           {showModalCreate && (
             <Modal onClose={() => setShowModalCreate(false)}>
