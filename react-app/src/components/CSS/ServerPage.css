@@ -222,6 +222,7 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
     overflow: scroll;
     position: absolute;
+    top: 3.3em;
     right: 0;
     bottom: 0;
     overflow-y: scroll;
