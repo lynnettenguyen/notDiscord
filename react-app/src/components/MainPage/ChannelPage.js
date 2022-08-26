@@ -8,7 +8,7 @@ import '../CSS/ChannelPage.css';
 
 const ChannelPage = ({ channelId }) => {
   const dispatch = useDispatch()
-  const messages = useSelector(state=> Object.values(state.channelMessages))
+  const messages = useSelector(state => Object.values(state.channelMessages))
   const channels = useSelector(state => Object.values(state.server.channels))
   const users = useSelector(state => state.users)
 
@@ -16,7 +16,7 @@ const ChannelPage = ({ channelId }) => {
   const checkDay = (date) => {
     const today = new Date()
     const newDate = new Date(date)
-    const time = newDate.toLocaleTimeString([], {timeStyle: 'short'})
+    const time = newDate.toLocaleTimeString([], { timeStyle: 'short' })
     const todayDay = today.getDay()
     const dateDay = newDate.getDay()
 
@@ -30,7 +30,7 @@ const ChannelPage = ({ channelId }) => {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     const func = async () => {
       if (!channelId) {
         await dispatch(getChannelMessages(channels[0].id))
@@ -45,7 +45,7 @@ const ChannelPage = ({ channelId }) => {
     const oldDate = new Date(date)
     const newDate = new Date(prevDate)
     const difference = newDate - oldDate
-    if(i == 0) {
+    if (i == 0) {
       return true
     }
     if (difference > 180000) {
@@ -57,18 +57,20 @@ const ChannelPage = ({ channelId }) => {
 
   return users && (
     <>
-        <div>
+      <div className='channel-page-main'>
+        <div className='channel-messages'>
           {users && messages?.map((message, i) => (
-          <div className='channel-messages' key={i}>
-              {checkPost(messages[i-1]?.created_at, message.created_at, i) && (<div className='chat-header'>
-              <div className='chat-username'>{users[message.user_id]?.username}</div>
-              <div className='chat-date'>{checkDay(message.created_at)}</div>
+            <div className='channel-messages' key={i}>
+              {checkPost(messages[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
+                <div className='chat-username'>{users[message.user_id]?.username}</div>
+                <div className='chat-date'>{checkDay(message.created_at)}</div>
               </div>)}
               <div className='chat-message'>{message.content}</div>
             </div>
           ))}
-          <Chat channelId={channelId} />
         </div>
+      </div>
+      <Chat channelId={channelId} />
     </>
   );
 

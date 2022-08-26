@@ -48,11 +48,9 @@ const ServerPage = ({ id, generalChannelId }) => {
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
                     <div className='channel-header'>
-                        <div className='channel-header'>
-                            <div className='channel-header-left' onClick={() => setShowChannels(!showChannels)}>
-                                <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'}></div>
-                                <div className='channel-title'>CHANNEL</div>
-                            </div>
+                        <div className='channel-header-left' onClick={() => setShowChannels(!showChannels)}>
+                            <div className={showChannels ? 'fa-solid fa-angle-down channel-down' : 'fa-solid fa-angle-down channel-down close'}></div>
+                            <div className='channel-title'>CHANNEL</div>
                         </div>
                         <div className='add-channel-button'>
                             <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
@@ -105,9 +103,9 @@ const ServerPage = ({ id, generalChannelId }) => {
                 </div>
                 {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
-                        <div className='channel-chat'>
+                        {/* <div className='channel-chat'> */}
                             <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
-                        </div>
+                        {/* </div> */}
                     </div> :
                     <div className='no-text-channel-middle-container'>
                         <div><img src={noChannels} /></div>

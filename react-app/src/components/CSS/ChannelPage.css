@@ -1,25 +1,5 @@
-.channel-messages {
+.channel-page-main {
+    border: 1px solid purple;
     display: flex;
     flex-direction: column;
-    font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
-    color: white;
-}
-
-.chat-header {
-    display: flex;
-    flex-direction: row;
-}
-
-.chat-username {
-    color: white;
-    font-family: WhitneyBold, Arial, Helvetica, sans-serif;
-}
-
-.chat-date {
-    display: flex;
-    flex-direction: column-reverse;
-    color: #A3A6AA;
-    font-size: 12px;
-    font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
-    padding-left: 10px;
 }
