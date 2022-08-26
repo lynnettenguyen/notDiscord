@@ -1,17 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannelMessages } from '../../store/channelMessages';
-import Chat from '../Chat'
+// import Chat from '../Chat'
 
 import '../CSS/ChannelPage.css';
-
+/////////
+import { io } from "socket.io-client";
+import '../CSS/Chat.css'
+/////////
+let socket;
 
 
 const ChannelPage = ({ channelId }) => {
-  const dispatch = useDispatch()
-  const messages = useSelector(state => Object.values(state.channelMessages))
-  const channels = useSelector(state => Object.values(state.server.channels))
-  const users = useSelector(state => state.users)
+  const dispatch = useDispatch();
+  const msgState = useSelector(state => Object.values(state.channelMessages));
+  const channels = useSelector(state => Object.values(state.server.channels));
+  const users = useSelector(state => state.users);
+  const [currChannel, setCurrChannel] = useState(0)
+
+
+///////////vvvvvvvvvvvvvvv
+  const [messages, setMessages] = useState([]);
+  const [chatInput, setChatInput] = useState("");
+  const [date, setDate] = useState(new Date());
+  const user = useSelector((state) => state.session.user);
+  const server = useSelector(state => state.server);
+  useEffect(() => {
+    socket = io();
+    socket.on('chat', (chat) => {
+      setMessages((messages) => [...messages, chat]);
+    });
+    return (() => {
+      setMessages([])
+      socket.disconnect();
+    });
+  }, [server]);
+
+
+  useEffect(() => {
+    if (channelId) {
+      setCurrChannel(channelId)
+    }
+    setMessages([])
+    setChatInput('')
+  }, [channelId])
+
+
+  useEffect(() => {
+    const newDate = new Date()
+    const time = newDate.toLocaleString([], { timeStyle: 'short' });
+    setDate(time)
+    let elem = document.getElementsByClassName('chat-message');
+    elem.scrollTop = elem.scrollHeight
+  }, [messages]);
+
+
+  const updateChatInput = (e) => {
+    setChatInput(e.target.value);
+  };
+
+  const sendChat = (e) => {
+    e.preventDefault();
+    // emit a message
+    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput });
+    // clear the input field after the message is sent
+    setChatInput("");
+  };
+////////
+
 
 
   const checkDay = (date) => {
@@ -32,6 +88,7 @@ const ChannelPage = ({ channelId }) => {
   }
 
   useEffect(() => {
+
     const func = async () => {
       if (!channelId) {
         await dispatch(getChannelMessages(channels[0].id))
@@ -60,18 +117,41 @@ const ChannelPage = ({ channelId }) => {
     <>
       <div className='channel-page-main'>
         <div className='channel-messages'>
-          {users && messages?.map((message, i) => (
-            <div className='channel-messages' key={i}>
-              {checkPost(messages[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
+          {users && msgState?.map((message, i) => (
+            <div className='channel-messages-inner' key={i}>
+              {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
                 <div className='chat-username'>{users[message.user_id]?.username}</div>
                 <div className='chat-date'>{checkDay(message.created_at)}</div>
               </div>)}
               <div className='chat-message'>{message.content}</div>
             </div>
           ))}
+{/*   /////////////////IMPORT FROM CHAT vvvvvvv////////////////////         */}
+
+
+                      {messages?.map((message, i) => `${channelId}` === message.channel_id && (
+                        <div className='channel-messages-inner' key={i}>
+                          {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
+                            <div className='chat-username'>{message.user}</div>
+                            <div className='chat-date'>Today at {date}</div>
+                          </div>)}
+                          <div className='chat-message'>{message.content}</div>
+                        </div>
+                      ))}
+
+
+{/*   /////////////////IMPORT FROM CHAT ^^^^^^////////////////////         */}
         </div>
       </div>
-      <Chat channelId={channelId} />
+{/*   //////////////////IMPORT FROM CHAT vvvvvvvv///////////////////         */}
+      <div className="channel-messages-input">
+            <form onSubmit={sendChat} className='chat-input-form'>
+              <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #${channels[currChannel]?.name}`} />
+              <button className='chat-button' type="submit"></button>
+            </form>
+          </div>
+{/*   /////////////////IMPORT FROM CHAT ^^^^^^////////////////////         */}
+      {/* <Chat channelId={channelId} /> */}
     </>
   );
 

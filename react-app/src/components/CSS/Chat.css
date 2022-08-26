@@ -1,14 +1,37 @@
-.channel-messages {
+.channel-page-main {
   display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.channel-page-main::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+
+}
+
+.channel-page-main::-webkit-scrollbar-track {
+  background: #2E3338;        /* color of the tracking area */
+  border-radius: 20px;
+}
+
+.channel-page-main::-webkit-scrollbar-thumb {
+  background-color: #202225;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
+.channel-messages {
+  display: flexbox;
   flex-direction: column;
   font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
   color: white;
+  height: 100%;
+  justify-content: flex-end;
+  vertical-align: baseline;
+  margin-top: auto;
 }
 
-.channel-messages-scroll {
-  border: 1px solid red;
-  overflow-y: scroll;
-}
 
 .chat-header {
   display: flex;
@@ -31,10 +54,14 @@
 
 .chat-input {
   background-color: #40444B;
-  border: none;
   height: 2rem;
+  border: 0;
   margin-top: 20px;
   width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  padding: 10px;
 }
 
 .chat-input:focus {
@@ -56,4 +83,5 @@
 
 .chat-input-form {
   width: 100%;
+  padding: 10px;
 }

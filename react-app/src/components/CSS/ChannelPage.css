@@ -1,7 +1,0 @@
-.channel-page-main {
-    border: 1px solid purple;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
