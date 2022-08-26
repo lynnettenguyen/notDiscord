@@ -224,6 +224,7 @@
 }
 
 .server-user {
+    /* box-sizing: border-box; */
     display: flex;
     position: relative;
     width: 100vw;
@@ -234,13 +235,17 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    /* max-height: 1000px;
-    overflow: hidden scroll; */
+    /* /* max-height: 1000px; */
+    /* overflow: hidden scroll; */
 }
+
+/* .ServerPage-right-content {
+    overflow: hidden scroll;
+} */
 
 .user-profile-pic {
     height: 38px;
-    width: auto;
+    width: 38px;
     border-radius: 30px;
 }
 
