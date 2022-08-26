@@ -17,10 +17,9 @@
 .edit-server-modal-container {
     display: flex;
     flex-direction: column;
-    width: 442px;
-    justify-self: center;
-    /* background-color: #36393f; */
-    background-color: #2f3136;
+    width: 500px;
+    align-content: center;
+    background-color: #36393F;
     border-radius: 10px;
 }
 
@@ -37,6 +36,20 @@
     color: #B9BBBE;
     padding: 10px 0 8px 18px;
     box-sizing: border-box;
+}
+
+.edit-server-buttons-container {
+    position: relative;
+    background-color: #2f3136;
+    width: 482px;
+    height: 70px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-right: 18px;
 }
 
 .edit-server-button {
@@ -63,7 +76,7 @@
     margin: 8px 0 18px 18px;
     border-radius: 3px;
     padding: 8px;
-    width: 392px;
+    width: 428px;
 }
 
 .edit-server-modal-input-server-name, .edit-server-modal-input-server-image {
@@ -76,18 +89,7 @@
     font-family: WhitneyBook, Arial, Helvetica, sans-serif;
 }
 
-.edit-server-buttons-container {
-    height: 70px;
-    margin-top: 30px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding-right: 18px;
-    box-sizing: border-box;
 
-}
 
 .edit-server-modal-cancel-button {
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
