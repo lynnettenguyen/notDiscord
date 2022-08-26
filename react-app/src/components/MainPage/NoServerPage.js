@@ -4,7 +4,7 @@ import wumpus from '../CSS/images/wumpus.svg'
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
 import messageBubble from '../CSS/images/message-bubble.svg'
-import { createDirectChat } from '../../store/directChat';
+import { createDirectChat, removeDirectChat } from '../../store/directChat';
 
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
@@ -12,18 +12,22 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const currentUser = useSelector(state => state.session)
     const users = useSelector(state => Object.values(state.users))
     const directChats = useSelector(state => Object.values(state.directChat))
-
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
 
-    console.log(directChats)
-    console.log(recipientId)
 
     const allUsersInChat = []
     directChats.forEach(chat => {
         allUsersInChat.push(chat.recipient_id)
         allUsersInChat.push(chat.sender_id)
     })
+
+    const displayDirectChat = (chatId, userId) => {
+        setDirectChatId(chatId)
+        setRecipientId(userId)
+        setUserChat(users[userId - 1]?.username)
+        setShowFriends(false)
+    }
 
     const uniqueUsersInChat = new Set(allUsersInChat)
 
@@ -39,6 +43,15 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     const openDirectChat = (recipientId) => {
         setRecipientId(recipientId)
+        setShowFriends(false)
+
+        let check = false
+        directChats.forEach(chat => {
+            if (chat.recipient_id === recipientId) check = true
+            if (chat.sender_id == recipientId) check = true
+
+            if (check === true) setDirectChatId(chat.id)
+        })
     }
 
     return (
@@ -65,18 +78,16 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                     {directChats?.map((directChat, i) => {
                         if (currentUser.user.id === directChat.recipient_id) {
                             return (
-                                <>
-                                    <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.sender_id); setUserChat(users[directChat.sender_id - 1]?.username); setShowFriends(false) }}>
-                                        <div className='direct-chat-profile-pic'>
-                                            <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
-                                        </div>
-                                        {users[directChat.sender_id - 1]?.username}
+                                <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.sender_id) }}>
+                                    <div className='direct-chat-profile-pic'>
+                                        <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                     </div>
-                                </>
+                                    {users[directChat.sender_id - 1]?.username}
+                                </div>
                             )
                         } else
                             return (
-                                <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id); setUserChat(users[directChat.recipient_id - 1]?.username); setShowFriends(false) }}>
+                                <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.recipient_id) }}>
                                     <div className='direct-chat-profile-pic'>
                                         <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                     </div>
@@ -116,7 +127,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                             </div>
                                         </>
                                     )
-                                } else {
+                                } else if (user.id !== currentUser.user.id) {
                                     return (
                                         <>
                                             <div key={i} className='friends-users'>
@@ -126,7 +137,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                     </div>
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
-                                                <div className='message-bubble-outer' onClick={() => openDirectChat(user.id)}>
+                                                <div className='message-bubble-outer' onClick={() => { openDirectChat(user.id) }}>
                                                     <img src={messageBubble} className='message-bubble-icon' />
                                                 </div>
                                             </div>
