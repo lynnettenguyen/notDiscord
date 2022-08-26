@@ -1,9 +1,7 @@
 .main-server-container {
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
     overflow: hidden;
-=======
     height: 100%;
     min-height: 100%;
     max-height: 100%;
@@ -18,5 +16,4 @@
 .main-middle-container {
     min-height: 100%;
     margin: 0;
->>>>>>> main
 }
