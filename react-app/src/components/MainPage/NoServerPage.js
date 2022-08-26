@@ -27,6 +27,8 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     const displayDirectChat = (chatId, userId) => {
         setDirectChatId(chatId)
+        setRecipientId(userId)
+        setUserChat(users[userId - 1]?.username)
         setShowFriends(false)
     }
 
@@ -80,7 +82,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         if (currentUser.user.id === directChat.recipient_id) {
                             return (
                                 <>
-                                    <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id); setRecipientId(directChat.sender_id); setUserChat(users[directChat.sender_id - 1]?.username) }}>
+                                    <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.sender_id) }}>
                                         <div className='direct-chat-profile-pic'>
                                             <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                         </div>
@@ -90,7 +92,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             )
                         } else
                             return (
-                                <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id); setRecipientId(directChat.recipient_id); setUserChat(users[directChat.recipient_id - 1]?.username) }}>
+                                <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.recipient_id) }}>
                                     <div className='direct-chat-profile-pic'>
                                         <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                     </div>
