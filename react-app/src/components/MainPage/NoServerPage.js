@@ -25,6 +25,11 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
         allUsersInChat.push(chat.sender_id)
     })
 
+    const displayDirectChat = (chatId, userId) => {
+        setDirectChatId(chatId)
+        setShowFriends(false)
+    }
+
     const uniqueUsersInChat = new Set(allUsersInChat)
 
     const newDirectChat = (recipientId) => {
@@ -39,6 +44,15 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     const openDirectChat = (recipientId) => {
         setRecipientId(recipientId)
+        setShowFriends(false)
+
+        let check = false
+        directChats.forEach(chat => {
+            if (chat.recipient_id === recipientId) check = true
+            if (chat.sender_id == recipientId) check = true
+
+            if (check === true) setDirectChatId(chat.id)
+        })
     }
 
     return (
@@ -66,7 +80,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         if (currentUser.user.id === directChat.recipient_id) {
                             return (
                                 <>
-                                    <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.sender_id); setUserChat(users[directChat.sender_id - 1]?.username); setShowFriends(false) }}>
+                                    <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id); setRecipientId(directChat.sender_id); setUserChat(users[directChat.sender_id - 1]?.username) }}>
                                         <div className='direct-chat-profile-pic'>
                                             <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                         </div>
@@ -76,7 +90,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             )
                         } else
                             return (
-                                <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id); setUserChat(users[directChat.recipient_id - 1]?.username); setShowFriends(false) }}>
+                                <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id); setRecipientId(directChat.recipient_id); setUserChat(users[directChat.recipient_id - 1]?.username) }}>
                                     <div className='direct-chat-profile-pic'>
                                         <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                     </div>
@@ -116,7 +130,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                             </div>
                                         </>
                                     )
-                                } else {
+                                } else if (user.id !== currentUser.user.id) {
                                     return (
                                         <>
                                             <div key={i} className='friends-users'>
@@ -126,7 +140,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                     </div>
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
-                                                <div className='message-bubble-outer' onClick={() => openDirectChat(user.id)}>
+                                                <div className='message-bubble-outer' onClick={() => { openDirectChat(user.id) }}>
                                                     <img src={messageBubble} className='message-bubble-icon' />
                                                 </div>
                                             </div>
