@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
   width: 100vw;
@@ -12,10 +11,11 @@
   display: flex;
   flex-direction: row;
   height: 100%;
-=======
+}
+
 .wumpus-image {
   height: 13em;
->>>>>>> main
+
 }
 
 .noServerPage-middle-container {
@@ -38,11 +38,8 @@
   background-color: #2F3136;
   color: white;
   font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-<<<<<<< HEAD
   margin-bottom: 0;
-=======
   box-sizing: border-box;
->>>>>>> main
 }
 
 .no-online-friends {
