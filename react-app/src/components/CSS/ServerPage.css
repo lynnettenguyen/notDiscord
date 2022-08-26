@@ -214,7 +214,7 @@
 .ServerPage-right-container {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
+    height: 100%;
     padding: 1rem;
     width: 25rem;
     background-color: #2F3136;
@@ -224,7 +224,6 @@
 }
 
 .server-user {
-    /* box-sizing: border-box; */
     display: flex;
     position: relative;
     width: 100vw;
@@ -235,13 +234,11 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    /* /* max-height: 1000px; */
-    /* overflow: hidden scroll; */
 }
 
-/* .ServerPage-right-content {
-    overflow: hidden scroll;
-} */
+.ServerPage-right-content {
+    height: 100%;
+}
 
 .user-profile-pic {
     height: 38px;
