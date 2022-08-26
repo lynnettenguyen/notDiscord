@@ -17,6 +17,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const [userChat, setUserChat] = useState()
 
     console.log(directChats)
+    console.log(recipientId)
 
     const allUsersInChat = []
     directChats.forEach(chat => {
@@ -34,6 +35,10 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
         }
 
         dispatch(createDirectChat(chatData))
+    }
+
+    const openDirectChat = (recipientId) => {
+        setRecipientId(recipientId)
     }
 
     return (
@@ -106,6 +111,22 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
                                                 <div className='message-bubble-outer' onClick={() => newDirectChat(user.id)}>
+                                                    <img src={messageBubble} className='message-bubble-icon' />
+                                                </div>
+                                            </div>
+                                        </>
+                                    )
+                                } else {
+                                    return (
+                                        <>
+                                            <div key={i} className='friends-users'>
+                                                <div className='friend-users-left'>
+                                                    <div>
+                                                        <img src={user.profile_pic} className='friend-profile-pic'></img>
+                                                    </div>
+                                                    <div><span className='friend-username'>{user.username}</span></div>
+                                                </div>
+                                                <div className='message-bubble-outer' onClick={() => openDirectChat(user.id)}>
                                                     <img src={messageBubble} className='message-bubble-icon' />
                                                 </div>
                                             </div>
