@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import '../CSS/HomePage.css';
+import { NavLink, useHistory } from 'react-router-dom';
 import HomeLogo from '../CSS/images/notDiscord.png'
 import leftImage from '../CSS/images/svgexport-5.svg'
 import rightImage from '../CSS/images/svgexport-6.svg'
@@ -11,13 +10,27 @@ import part5 from '../CSS/images/fivePart.svg'
 import part6 from '../CSS/images/sixPart.svg'
 import { logout } from '../../store/session';
 
+import '../CSS/HomePage.css';
+import AltLogin from '../auth/AltLogin';
+
+
 
 const HomePage = () => {
+    const history = useHistory()
     const user = useSelector(state => state.session.user);
+    const [needLogin, setNeedLogin] = useState(false)
     const dispatch = useDispatch()
     const onLogout = async (e) => {
       await dispatch(logout());
     };
+
+    const enterServers = () => {
+        if (user) {
+            history.push('/servers')
+        } else {
+            setNeedLogin(true)
+        }
+    }
 
     return (
         <div className='HomePage-container'>
@@ -37,6 +50,8 @@ const HomePage = () => {
                     ...where you can belong to a school club, a gaming group, or a worldwide art community. <br/>
                     Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.
                 </span>
+                {!needLogin && (<div className='enter-servers-button' onClick={enterServers}>Open !Discord in your browser</div>)}
+                {needLogin && (<AltLogin />)}
             </div>
             <img alt='home' src={rightImage} className='HomePage-right-image'/>
         </div>

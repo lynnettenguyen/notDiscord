@@ -1,0 +1,90 @@
+.outer-alt-login {
+    position: relative;
+    animation: createBox .4s;
+}
+
+@keyframes createBox {
+    0% {
+      transform: scaleX(0);
+    }
+    60% {
+        transform: scaleX(1.1);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+
+  }
+
+.alt-form-section {
+
+}
+
+.alt-form-label{
+
+}
+
+.alt-login-errors {
+
+}
+
+.alt-email-errors-inner {
+    position: absolute;
+    z-index: 6;
+    border: 0;
+    color: rgb(255, 238, 0);
+    top: 0;
+    left: 9.5em;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.alt-login-errors-inner {
+    position: absolute;
+    z-index: 6;
+    border: 0;
+    color: rgb(255, 238, 0);
+    top: 0em;
+    left: 4.5em;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.alt-form-input {
+    font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+    width: 416px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    background-color: white;
+    font-size: 16px;
+    color: #202225;
+    padding: 26px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    outline: none;
+}
+
+.alt-form-button-login,
+.alt-form-button-email {
+    background-color: #5865F2;
+    border: 0;
+    position: absolute;
+    top: 2.2em;
+    right: 1em;
+    z-index: 5;
+    cursor: pointer;
+    height: 2.5em;
+    width: 4em;
+    border-radius: 20px;
+}
+
+.alt-form-button-email:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.26);
+    opacity: .9;
+}
+
+.fa-arrow-right {
+    color: white;
+}
+
