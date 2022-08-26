@@ -61,7 +61,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
             <form onSubmit={handleSubmit} className="block">
             <section>
               <div>
-                <div>
+                <div className='edit-server-modal-server-name'>
                   <label>SERVER NAME</label>
                   <input
                     name='name'
@@ -69,7 +69,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div>
+                <div className='edit-server-modal-server-image'>
                   <label>SERVER IMAGE</label>
                   <input
                     name='server_pic'
@@ -77,10 +77,10 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
                     value={server_pic}
                     onChange={(e) => setServerPic(e.target.value)}
                     />
+                  <div className='edit-server-modal-submit-button'>
+                    <button type="submit">Update Server</button>
                   </div>
-                </div>
-                <div>
-                  <div><button type="submit">Update Server</button></div>
+                  </div>
                 </div>
             </section>
             </form>
