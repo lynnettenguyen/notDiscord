@@ -1,7 +1,7 @@
 /* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
   width: 100vw;
-  height: 95%;
+  height: 100%;
   position: absolute;
   left: 74px;
 }
@@ -88,6 +88,7 @@
   color: white;
   background-color: #2F3136;
   font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+  margin-bottom: 0;
 }
 
 .server-users {
