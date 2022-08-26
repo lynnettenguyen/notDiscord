@@ -5,18 +5,35 @@ import { signUp } from '../../store/session';
 import "../CSS/SignUpForm.css"
 
 const SignUpForm = () => {
+  const blue = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_blue.png'
+  const green = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_green.png'
+  const lightblue = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_blue.png'
+  const darkpink = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_dark_pink.png'
+  const purple = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_purple.png'
+  const pink = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_pink.png'
+  const red = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_red.png'
+  const yellow = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_yellow.png'
+  const lightpurple = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png'
+
+  const userPfps = [blue, green, lightblue, darkpink, purple, pink, red, yellow, lightpurple]
+  const randomPfp = userPfps[Math.floor(Math.random() * userPfps.length)];
+  // console.log('randompfp', randomPfp)
+
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  // const [profile_pic, setProfilePic] = useState(red)
+  const [profile_pic, setProfilePic] = useState(randomPfp)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, profile_pic));
       if (data) {
         setErrors(data)
       }
@@ -39,8 +56,14 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateProfilePic = (e) => {
+    console.log('etargetvalue', e.target.value)
+    setProfilePic(e.target.value);
+    console.log('profilepic', profile_pic)
+  };
+
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/servers' />;
   }
 
   return (
@@ -101,12 +124,34 @@ const SignUpForm = () => {
               value={repeatPassword}
               required={true}
             />
-              </div>
-            <div className='signup-errors'>
-              {errors.map((error, ind) => (
-                <li className='signup-errors-inner' key={ind}>{error.split(":")[1]}</li>
+          </div>
+          <div className='form-section'>
+            <label>PROFILE PIC</label>
+            <input
+              type='text'
+              className='form-input'
+              name='profile_pic'
+              onChange={updateProfilePic}
+              value={profile_pic}
+              required={true}
+            />
+            {/* <select value={profile_pic} onChange={(e) => setProfilePic(e.target.value)}>
+                <option value={blue}>Blue</option>
+                <option value={green}>Green</option>
+                <option value={lightblue}>Light Blue</option>
+                <option value={darkpink}>Dark Pink</option>
+                <option value={purple}>Purple</option>
+                <option value={pink}>Pink</option>
+                <option value={red}>Red</option>
+                <option value={yellow}>Yellow</option>
+                <option value={"https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png'"}>Light Purple</option>
+              </select> */}
+          </div>
+          <div className='signup-errors'>
+            {errors.map((error, ind) => (
+              <li className='signup-errors-inner' key={ind}>{error.split(":")[1]}</li>
               ))}
-            </div>
+          </div>
           <div className='form-button-outer'>
             <button className='form-button' type='submit'>Continue</button>
           </div>
