@@ -1,10 +1,10 @@
 .ServerPage-container {
     width: 100%;
     height: 100%;
-    position: absolute;
-    left: 74px;
+    position: relative;
+    /* left: 74px; */
     overflow: hidden;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 .ServerPage-content-container {
@@ -64,7 +64,7 @@
     color: white;
     background-color: #2F3136;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-    min-height: 100%;
+    height: 100%;
 }
 
 .channels-header {
@@ -172,7 +172,7 @@
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
     width: 100%;
-    max-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     color: white;
@@ -180,7 +180,7 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
     overflow-x: hidden;
     box-sizing: border-box;
-    padding: 2rem 1rem;
+    padding: 2rem 18.5rem 2rem 1rem;
     scrollbar-color: #2F3136;
     position: relative;
     justify-content: flex-end;
@@ -214,17 +214,21 @@
 .ServerPage-right-container {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
+    height: 100%;
     padding: 1rem;
-    width: 25rem;
+    width: 250px;
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-    overflow: hidden scroll;
+    overflow: scroll;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .server-user {
-    /* box-sizing: border-box; */
     display: flex;
     position: relative;
     width: 100vw;
@@ -235,13 +239,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    /* /* max-height: 1000px; */
-    /* overflow: hidden scroll; */
 }
-
-/* .ServerPage-right-content {
-    overflow: hidden scroll;
-} */
 
 .user-profile-pic {
     height: 38px;
