@@ -25,8 +25,20 @@
 }
 
 .edit-server-modal-container {
-    background-color: green;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 300px;
+    background-color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    border-radius: 4px;
+}
+
+.edit-server-modal-server-name, .edit-server-modal-server-image {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-family: WhitneyMedium, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .edit-server-button:hover {
