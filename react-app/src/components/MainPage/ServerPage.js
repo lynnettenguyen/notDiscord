@@ -10,6 +10,7 @@ import ChannelForm from './ChannelForm';
 import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
+import UserProfile from './UserProfile';
 
 
 const ServerPage = ({ id, generalChannelId }) => {
@@ -99,6 +100,9 @@ const ServerPage = ({ id, generalChannelId }) => {
                                 </div>)}
                             </>
                         }
+                        <div className='user-profile-container'>
+                            <UserProfile className='user-profile'/>
+                        </div>
                     </div>
                 </div>
                 {channels?.length > 0 ?
