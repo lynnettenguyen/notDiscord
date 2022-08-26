@@ -126,7 +126,9 @@ const SignUpForm = () => {
             />
           </div>
           <div className='form-section'>
-            <label>PROFILE PIC</label>
+          <div className='form-label'>
+              <label>PROFILE PIC</label>
+          </div>
             <input
               type='text'
               className='form-input'
