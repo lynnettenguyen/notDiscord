@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import wumpus from '../CSS/images/wumpus.svg'
-import '../CSS/NoServerPage.css';
-import '../CSS/ServerPage.css';
 import messageBubble from '../CSS/images/message-bubble.svg'
 import { createDirectChat, removeDirectChat } from '../../store/directChat';
+import DirectChat from './DirectChat'
 
+import '../CSS/NoServerPage.css';
+import '../CSS/ServerPage.css';
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
     const dispatch = useDispatch()
@@ -105,7 +106,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             {users[recipientId - 1]?.username}
                         </div>
                         <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
-
+                        <DirectChat />
                     </div>
                 ) : showFriends ? (
                     <div className='ServerPage-middle-container'>

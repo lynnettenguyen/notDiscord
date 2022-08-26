@@ -7,7 +7,7 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 from flask_socketio import SocketIO, emit
 
-from .models import db, User, ChannelMessage
+from .models import db, User, ChannelMessage, DirectMessage, DirectChat
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.server_routes import servers
@@ -112,6 +112,46 @@ def handle_chat(data):
 
     # emit("chat", [message.to_dict() for message in messages], broadcast=True)
     emit('chat', data, broadcast=True)
+
+
+
+
+
+
+
+
+
+# handle chat messages
+@socketio.on('direct_chat')
+def handle_direct_chat(data):
+
+    reciever = DirectChat(
+            id = data['id'],
+            sender_id = data['sender_id'],
+            recipient_id = ['recipient_id']
+    )
+
+    sender = DirectMessage(
+        direct_chat_id = data['direct_chat_id'],
+        sender_id=data['sender_id'],
+        created_at=data['created_at'],
+        content=data['content']
+    )
+
+    db.session.add(sender)
+    db.session.add(reciever)
+    db.session.commit()
+
+    emit('chat', data, broadcast=True)
+
+
+
+
+
+
+
+
+
 
 
 # load all channel messages
