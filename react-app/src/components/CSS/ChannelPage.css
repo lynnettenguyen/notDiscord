@@ -4,19 +4,20 @@
     position: relative;
     overflow-y: auto;
     height: 100%;
+    justify-content: flex-end;
   }
 
-  .channel-page-main::-webkit-scrollbar {
+  .channel-messages-outer::-webkit-scrollbar {
     width: 8px;
 
   }
 
-  .channel-page-main::-webkit-scrollbar-track {
+.channel-messages-outer::-webkit-scrollbar-track {
     background: #2E3338;
     border-radius: 20px;
   }
 
-  .channel-page-main::-webkit-scrollbar-thumb {
+ .channel-messages-outer::-webkit-scrollbar-thumb {
     background-color: #202225;
     border-radius: 20px;
   }
@@ -30,6 +31,10 @@
     justify-content: flex-end;
     vertical-align: baseline;
     margin-top: auto;
+  }
+
+  .channel-messages-outer {
+    overflow-y: scroll;
   }
 
   .chat-header {
