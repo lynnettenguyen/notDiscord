@@ -63,6 +63,7 @@ export const createDirectChat = (directChatData) => async (dispatch) => {
     })
   })
 
+
   if (response.ok) {
     const chat = await response.json();
     dispatch(addDirectChat(chat))
