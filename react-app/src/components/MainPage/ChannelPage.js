@@ -13,13 +13,17 @@ const ChannelPage = ({ channelId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.channelMessages));
   const channels = useSelector(state => Object.values(state.server.channels));
+  const channel = useSelector(state => state.server.channels)
   const users = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
   const server = useSelector(state => state.server);
-  const [currChannel, setCurrChannel] = useState(0)
+  const [currChannel, setCurrChannel] = useState(channels[0].id)
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
+
+
+
   useEffect(() => {
     socket = io();
     socket.on('chat', (chat) => {
@@ -29,25 +33,42 @@ const ChannelPage = ({ channelId }) => {
       setMessages([])
       socket.disconnect();
     });
-  }, [server]);
-
+  }, []);
 
   useEffect(() => {
     if (channelId) {
       setCurrChannel(channelId)
     }
-    setMessages([])
+    // console.log('STATE', msgState)
+    // console.log('MESSAGES', messages)
+    // if (msgState[msgState.length - 1]?.user_id !== messages?.user_id) {
+    //   setMessages([])
+    // }
     setChatInput('')
   }, [channelId])
-
 
   useEffect(() => {
     const newDate = new Date()
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
-    let elem = document.getElementsByClassName('chat-message');
+    let elem = document.getElementsByClassName('channel-messages-outer');
     elem.scrollTop = elem.scrollHeight
+    window.scrollTo(0,elem.scrollHeight)
+
   }, [messages]);
+
+  useEffect(() => {
+    const func = async () => {
+      if (!channelId) {
+        await dispatch(getChannelMessages(channels[0].id))
+      } else {
+        await dispatch(getChannelMessages(channelId))
+      }
+    }
+    func()
+  }, [])
+
+
 
 
   const updateChatInput = (e) => {
@@ -69,9 +90,9 @@ const ChannelPage = ({ channelId }) => {
     const todayDay = today.getDay()
     const dateDay = newDate.getDay()
 
-    if (todayDay - dateDay == 0) {
+    if (todayDay - dateDay === 0) {
       return `Today at ${time}`
-    } else if (todayDay - dateDay == 1) {
+    } else if (todayDay - dateDay === 1) {
       return `Yesterday at ${time}`
     } else {
       const result = newDate.toLocaleDateString()
@@ -79,23 +100,12 @@ const ChannelPage = ({ channelId }) => {
     }
   }
 
-  useEffect(() => {
-
-    const func = async () => {
-      if (!channelId) {
-        await dispatch(getChannelMessages(channels[0].id))
-      } else {
-        await dispatch(getChannelMessages(channelId))
-      }
-    }
-    func()
-  }, [channelId])
 
   const checkPost = (date, prevDate, i) => {
     const oldDate = new Date(date)
     const newDate = new Date(prevDate)
     const difference = newDate - oldDate
-    if (i == 0) {
+    if (i === 0) {
       return true
     }
     if (difference > 180000) {
@@ -133,7 +143,7 @@ const ChannelPage = ({ channelId }) => {
       </div>
       <div className="channel-messages-input">
         <form onSubmit={sendChat} className='chat-input-form'>
-          <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #${channels[currChannel]?.name}`} />
+          <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #${channel[currChannel]?.name}`} />
           <button className='chat-button' type="submit"></button>
         </form>
       </div>
