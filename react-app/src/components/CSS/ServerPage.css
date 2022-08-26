@@ -73,11 +73,11 @@
 
 .server-channels {
     width: 100%;
-    margin: 10px 0 8px 2px;
+    margin: 10px 0 10px 2px;
 }
 
 .server-channels:hover {
-    background-color: #42464dab;
+    background-color: #42464D;
     border-radius: 3px;
 }
 
@@ -130,19 +130,25 @@
     color: #96989d;
     justify-content: space-between;
     font-size: 16px;
-    height: 20px;
-    padding: 5px 2px;
+    height: 22px;
+    margin: 5px 2px;
+    padding-left: 2px;
+    box-sizing: border-box;
 }
 
 .channel-section-header:hover {
     color: #DCDDDE;
-    background-color: #4f545c;
     border-radius: 3px;
     cursor: pointer;
 }
 
 .channel-section-left {
     display: flex;
+    box-sizing: border-box;
+}
+
+.channel-name {
+    padding-bottom: 10px;
 }
 
 .channel-hash-img {

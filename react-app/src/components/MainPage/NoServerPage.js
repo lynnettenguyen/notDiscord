@@ -83,7 +83,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                 <div><span className='friend-username'>{user.username}</span></div>
                                             </div>
                                             <div className='message-bubble-outer'>
-                                                <img src={messageBubble} className='messsage-bubble-icon' />
+                                                <img src={messageBubble} className='message-bubble-icon' />
                                             </div>
                                         </div>
                                     </>
