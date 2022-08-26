@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import wumpus from '../CSS/images/wumpus.svg'
 import empty_dms from '../CSS/images/empty_dms.svg'
 import '../CSS/NoServerPage.css';
+import '../CSS/ServerPage.css';
 
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
@@ -17,11 +18,15 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     return (
         <div className='ServerPage-container'>
-            <div className='NoServerPage-NavBar'></div>
+            <div className='ServerPage-NavBar'>
+                NEED TO PUT STUFF HERE LATER
+            </div>
             <div className='ServerPage-content-container'>
-                <div className='NoServerPage-left-container'>
-                    <div onClick={() => { setShowFriends(true); setDirectChatId(null) }}>Friends</div>
-                    <div>Direct Messages</div>
+                <div className='ServerPage-left-container'>
+                    <div className='noServer-channel-header'>
+                        <div onClick={() => { setShowFriends(true); setDirectChatId(null) }}>Friends</div>
+                        <div>Direct Messages</div>
+                    </div>
                     {directChats?.map((directChat, i) => {
                         if (currentUser.user.id === directChat.recipient_id) {
                             return (
@@ -44,24 +49,22 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                 </div>
                             )
                     })}
-
-                    {/* <img alt='empty_dms' src={empty_dms} className='empty_dms'/> */}
                 </div>
+                {/* <div className='ServerPage-middle-container'> */}
                 {directChatId ? (
-                    <div className='NoServerPage-middle-container'>
+                    <div className='ServerPage-middle-container'>
                         <div>
-                            <div>
-                                <img src={users[recipientId - 1]?.profile_pic} style={{ height: "100px" }} />
-                            </div>
-                            <div>
-                                {users[recipientId - 1]?.username}
-                            </div>
-                            <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
-
+                            <img src={users[recipientId - 1]?.profile_pic} style={{ height: "100px" }} />
                         </div>
+                        <div>
+                            {users[recipientId - 1]?.username}
+                        </div>
+                        <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
+
                     </div>
+
                 ) : showFriends ? (
-                    <>
+                    <div className='ServerPage-middle-container'>
                         {users?.map((user, i) => {
                             return (
                                 <div key={i} className='server-user'>
@@ -69,25 +72,23 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                     <p className='username'>{user.username}</p>
                                 </div>)
                         })}
-                    </>
+                    </div>
+
                 ) : (
-                    <>
-                        <div className='NoServerPage-middle-container'>
-                            <div>
-                                <img alt='Wumpus' src={wumpus} className='wumpus-image' />
-                                <div>
-                                    <p className='wumpus-image'>Wumpus is waiting on friends. You don't have to though!</p>
-                                </div>
-                            </div>
+                    <div className='noServerPage-middle-container'>
+                        <div className='wumpus-main'>
+                            <img alt='Wumpus' src={wumpus} className='wumpus-image' />
+                            <div className='wumpus-caption'>Wumpus is waiting on friends. You don't have to though!</div>
                         </div>
-                        <div className='NoServerPage-right-container'>
-                            <h3>It's quiet for now...</h3>
-                            <p>When a friend starts an activity-like playing a game or hanging out on voice-we'll show it here!</p>
-                        </div>
-                    </>
+                    </div>
                 )}
+                {/* </div> */}
+                {!showFriends && (<div className='noServerPage-right-container'>
+                    <h3>It's quiet for now...</h3>
+                    <div className='no-online-friends'>When a friend starts an activity-like playing a game or hanging out on voice-we'll show it here!</div>
+                </div>)}
             </div>
-        </div>
+        </div >
     );
 
 };

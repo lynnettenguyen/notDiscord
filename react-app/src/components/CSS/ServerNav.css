@@ -10,6 +10,8 @@
   left: 0;
   bottom: 0;
   top: 0;
+  max-height: 100%;
+  box-sizing: border-box;
 }
 
 .home-icon {
@@ -84,5 +86,4 @@
 
 .server-form-first {
   width: 500px;
-  border: 1px red solid;
 }

@@ -1,29 +1,16 @@
-/* html {
-    background-color: #36393F;
-
-}
-
-body {
-    max-width: 1080px;
-    max-height: 1920px;
-} */
-
-
-/* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
-    /* border: 5px solid red; */
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: absolute;
     left: 74px;
-    height: 95%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .ServerPage-content-container {
-    /* border: 5px solid red; */
     display: flex;
     flex-direction: row;
-    /* overflow: hidden, scroll; */
+    height: 100%;
     max-height: 100%;
 }
 
@@ -35,7 +22,6 @@ body {
     background-color: #36393F;
     flex-direction: row;
     border: 1px solid #2C2F33;
-    height: 3em;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
@@ -73,10 +59,12 @@ body {
     display: flex;
     flex-direction: column;
     padding: 1em;
-    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
     color: white;
     background-color: #2F3136;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    min-height: 100%;
 }
 
 .channels-header {
@@ -97,6 +85,7 @@ body {
     display: flex;
     width: 240px;
     color: #96989d;
+    justify-content: space-between;
 }
 
 .channel-header-left {
@@ -179,14 +168,17 @@ body {
     /* border: 5px solid red; */
     width: 100%;
     overflow: scroll;
-    max-height: 100%;
+    max-height: 95%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     color: white;
     background-color: #36393F;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
     overflow: auto;
     overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 2rem 1rem;
+    scrollbar-color: #2F3136;
 }
 
 .no-text-channel-middle-container {
@@ -227,7 +219,7 @@ body {
     display: flex;
     flex-direction: column;
     max-height: 100%;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem;
     width: 25rem;
     background-color: #2F3136;
     color: white;
@@ -249,12 +241,14 @@ body {
     /* max-height: 1000px;
     overflow: hidden scroll; */
 }
- .user-profile-pic {
+
+.user-profile-pic {
     height: 38px;
     width: auto;
     border-radius: 30px;
- }
- .username {
+}
+
+.username {
     font-size: 15px;
     padding: 0px 0px 0px 15px;
- }
+}
