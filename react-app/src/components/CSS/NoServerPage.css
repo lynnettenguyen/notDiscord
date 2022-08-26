@@ -45,6 +45,75 @@
 .no-online-friends {
   width: 80%;
 }
+
 .main-friends-list {
   overflow: hidden scroll;
+  width: 100%;
+}
+
+.friends-users-outer {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.friends-users {
+  border-top: 1px solid #42464D;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 96%;
+  box-sizing: border-box;
+}
+
+.friends-users:hover {
+  background-color: #42464D;
+  border-radius: 3px;
+}
+
+.friend-profile-pic {
+  height: 38px;
+  width: auto;
+  border-radius: 30px;
+}
+
+.friend-username {
+  font-size: 15px;
+  padding: 0px 0px 0px 15px;
+}
+
+.friend-users-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.message-bubble-outer {
+  background-color: #2F3136;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  margin-right: 2px
+}
+
+.message-bubble-icon {
+  width: 22px;
+}
+
+.main-friends-list::-webkit-scrollbar {
+  width: 8px;
+
+}
+
+.main-friends-list::-webkit-scrollbar-track {
+  background: #2E3338;
+  border-radius: 20px;
+}
+
+.main-friends-list::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 20px;
 }
