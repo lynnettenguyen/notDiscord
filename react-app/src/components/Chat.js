@@ -70,13 +70,13 @@ const Chat = ({ channelId }) => {
               </div>
             ))}
           </div>
+        </div>
           <div className="channel-messages-input">
             <form onSubmit={sendChat} className='chat-input-form'>
               <input value={chatInput} onChange={updateChatInput} className="chat-input" />
               <button className='chat-button' type="submit"></button>
             </form>
           </div>
-        </div>
       </>
     )
   );

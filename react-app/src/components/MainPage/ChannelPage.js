@@ -6,6 +6,7 @@ import Chat from '../Chat'
 import '../CSS/ChannelPage.css';
 
 
+
 const ChannelPage = ({ channelId }) => {
   const dispatch = useDispatch()
   const messages = useSelector(state => Object.values(state.channelMessages))
