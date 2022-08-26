@@ -45,3 +45,6 @@
 .no-online-friends {
   width: 80%;
 }
+.main-friends-list {
+  overflow: hidden scroll;
+}

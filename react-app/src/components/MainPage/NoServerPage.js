@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import wumpus from '../CSS/images/wumpus.svg'
-import empty_dms from '../CSS/images/empty_dms.svg'
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
 
@@ -12,14 +11,22 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const directChats = useSelector(state => Object.values(state.directChat))
 
     const [recipientId, setRecipientId] = useState()
-
-    console.log('DIRRECT CHAT', directChats)
-    console.log(currentUser.user.id)
+    const [userChat, setUserChat] = useState()
 
     return (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                NEED TO PUT STUFF HERE LATER
+                <div className='ServerPage-name'></div>
+                <div className='ServerPage-channel-name'>
+                    {directChatId &&
+                        <div>
+                            @{userChat}
+                        </div>}
+                    {showFriends && <div>Friends</div>}
+                </div>
+                <div className='ServerPage-NavBar-buttons'></div>
+                <div></div>
+                <div></div>
             </div>
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
@@ -31,7 +38,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         if (currentUser.user.id === directChat.recipient_id) {
                             return (
                                 <>
-                                    <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.sender_id) }}>
+                                    <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.sender_id); setUserChat(users[directChat.sender_id - 1]?.username); setShowFriends(false) }}>
                                         <div className='direct-chat-profile-pic'>
                                             <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                         </div>
@@ -41,7 +48,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             )
                         } else
                             return (
-                                <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id) }}>
+                                <div key={i} className='direct-chat-recipient' onClick={() => { setDirectChatId(directChat.id); setRecipientId(directChat.recipient_id); setUserChat(users[directChat.recipient_id - 1]?.username); setShowFriends(false) }}>
                                     <div className='direct-chat-profile-pic'>
                                         <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
                                     </div>
@@ -50,7 +57,6 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             )
                     })}
                 </div>
-                {/* <div className='ServerPage-middle-container'> */}
                 {directChatId ? (
                     <div className='ServerPage-middle-container'>
                         <div>
@@ -62,18 +68,18 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
 
                     </div>
-
                 ) : showFriends ? (
                     <div className='ServerPage-middle-container'>
-                        {users?.map((user, i) => {
-                            return (
-                                <div key={i} className='server-user'>
-                                    <img src={user.profile_pic} className='user-profile-pic'></img>
-                                    <p className='username'>{user.username}</p>
-                                </div>)
-                        })}
+                        <div className='main-friends-list'>
+                            {users?.map((user, i) => {
+                                return (
+                                    <div key={i} className='server-user'>
+                                        <img src={user.profile_pic} className='user-profile-pic'></img>
+                                        <p className='username'>{user.username}</p>
+                                    </div>)
+                            })}
+                        </div>
                     </div>
-
                 ) : (
                     <div className='noServerPage-middle-container'>
                         <div className='wumpus-main'>
@@ -82,7 +88,6 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                         </div>
                     </div>
                 )}
-                {/* </div> */}
                 {!showFriends && (<div className='noServerPage-right-container'>
                     <h3>It's quiet for now...</h3>
                     <div className='no-online-friends'>When a friend starts an activity-like playing a game or hanging out on voice-we'll show it here!</div>
@@ -90,7 +95,6 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
             </div>
         </div >
     );
-
 };
 
 export default NoServerPage;
