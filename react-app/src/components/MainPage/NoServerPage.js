@@ -7,6 +7,7 @@ import DirectChat from './DirectChat'
 
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
+import { findDirectChat } from '../../store/directMessages';
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     })
 
     const displayDirectChat = (chatId, userId) => {
+        dispatch(findDirectChat(chatId))
         setDirectChatId(chatId)
         setRecipientId(userId)
         setUserChat(users[userId - 1]?.username)
@@ -106,7 +108,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             {users[recipientId - 1]?.username}
                         </div>
                         <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
-                        <DirectChat />
+                        <DirectChat directChatId={directChatId} />
                     </div>
                 ) : showFriends ? (
                     <div className='ServerPage-middle-container'>
