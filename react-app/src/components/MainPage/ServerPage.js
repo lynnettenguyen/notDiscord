@@ -112,13 +112,14 @@ const ServerPage = ({ id, generalChannelId }) => {
                     </div>
                 }
                 <div className='ServerPage-right-container'>
-                    {/* <UsersList /> */}
                     <div className='Serverpage-right-content'>
                     {users?.map((user, i) => {
                         return (
-                                <div key={i} className='server-user'>
+                                <div key={i} className='server-user-container'>
+                                    <div className='server-user'>
                                     <img src={user.profile_pic} className='user-profile-pic'></img>
                                     <p className='username'>{user.username}</p>
+                                    </div>
                                 </div>)
                     })}
                     </div>
