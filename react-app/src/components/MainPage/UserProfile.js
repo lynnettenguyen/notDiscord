@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import "../CSS/UserProfile.css";
@@ -9,6 +10,9 @@ const UserProfile = () => {
   const onLogout = async (e) => {
     await dispatch(logout());
   };
+  if (!user) {
+    return <Redirect to='/' />
+  }
 
   return (
     <div className="current-user-profile">

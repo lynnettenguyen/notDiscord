@@ -62,7 +62,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                             )}
                         </div>
                     </div>
-                    <div>
+                    <div className='serverPage-server-channels-outer'>
                         {showChannels ?
                             <div className='channels-main'>
                                 {channels?.map((channel, i) => {
@@ -100,10 +100,10 @@ const ServerPage = ({ id, generalChannelId }) => {
                                 </div>)}
                             </>
                         }
+                    </div>
                         <div className='user-profile-container'>
                             <UserProfile className='user-profile'/>
                         </div>
-                    </div>
                 </div>
                 {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
