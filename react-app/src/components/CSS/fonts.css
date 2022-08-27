@@ -24,6 +24,11 @@
 }
 
 @font-face {
+  font-family: WhitneySemiBold;
+  src: url('../fonts/Whitney/whitney-semibold.otf');
+}
+
+@font-face {
   font-family: WhitneyLight;
   src: url('../fonts/Whitney/whitney-light.otf');
 }

@@ -1,4 +1,3 @@
-/* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
   width: 100vw;
   height: 100%;
@@ -7,7 +6,6 @@
 }
 
 .ServerPage-content-container {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -15,7 +13,6 @@
 
 .wumpus-image {
   height: 13em;
-
 }
 
 .noServerPage-middle-container {
@@ -34,38 +31,37 @@
 }
 
 .noServerPage-right-container {
-  padding: 1.5rem;
+  padding: 20px;
   background-color: #2F3136;
   color: white;
   font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   margin-bottom: 0;
   box-sizing: border-box;
+  position: absolute;
+  top: 3.3em;
+  right: 0;
+  bottom: 0;
+  width: 360px;
 }
 
 .no-online-friends {
-  width: 80%;
+  width: 75%;
 }
 
 .main-friends-list {
   overflow: hidden scroll;
-  width: 100%;
-}
-
-.friends-users-outer {
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 3px;
+  height: 100%;
+  width: 92%;
 }
 
 .friends-users {
   border-top: 1px solid #42464D;
   padding: 12px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 96%;
+  width: 97%;
   box-sizing: border-box;
+  margin-left: 5px;
 }
 
 .friends-users:hover {
@@ -80,13 +76,23 @@
 }
 
 .friend-username {
-  font-size: 15px;
+  font-family: WhitneySemiBold;
+  font-size: 16px;
   padding: 0px 0px 0px 15px;
 }
 
 .friend-users-left {
   display: flex;
   flex-direction: row;
+}
+.message-bubble-outer-hover {
+  background-color: #242528;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  margin-right: 2px;
 }
 
 .message-bubble-outer {
@@ -96,7 +102,7 @@
   width: 36px;
   display: flex;
   justify-content: center;
-  margin-right: 2px
+  margin-right: 2px;
 }
 
 .message-bubble-icon {

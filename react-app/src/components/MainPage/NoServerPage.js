@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import DirectChat from './DirectChat'
 import { createDirectChat, removeDirectChat } from '../../store/directChat';
 import wumpus from '../CSS/images/wumpus.svg'
-import messageBubble from '../CSS/images/message-bubble.svg'
+import messageBubbleGrey from '../CSS/images/message-bubble-grey.svg'
+import messageBubbleWhite from '../CSS/images/message-bubble-white.svg'
 import whiteX from '../CSS/images/white-x.svg'
 import greyX from '../CSS/images/grey-x.svg'
 
@@ -19,6 +20,10 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
     const [close, setClose] = useState(greyX)
+    const [messageHover, setMessageHover] = useState(false)
+    const [selectUser, setSelectUser] = useState()
+    const [messageBubble, setMessageBubble] = useState(messageBubbleGrey)
+
 
     const allUsersInChat = []
     directChats.forEach(chat => {
@@ -124,8 +129,8 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             {users?.map((user, i) => {
                                 if (!uniqueUsersInChat.has(user.id)) {
                                     return (
-                                        <>
-                                            <div key={i} className='friends-users'>
+                                        <div className='friends-users-outer'>
+                                            <div key={i} className='friends-users' onMouseOver={() => { setMessageHover(true); setSelectUser(user.id) }} onMouseLeave={() => setMessageHover(false)}>
                                                 <div className='friend-users-left'>
                                                     <div>
                                                         <img src={user.profile_pic} alt='profile' className='friend-profile-pic'></img>
@@ -133,26 +138,26 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
                                                 <div className='message-bubble-outer' onClick={() => newDirectChat(user.id)}>
-                                                    <img src={messageBubble} alt='message' className='message-bubble-icon' />
+                                                    <img src={messageBubbleGrey} alt='message' className='message-bubble-icon' />
                                                 </div>
                                             </div>
-                                        </>
+                                        </div>
                                     )
                                 } else if (user.id !== currentUser.user.id) {
                                     return (
-                                        <>
-                                            <div key={i} className='friends-users'>
+                                        <div className='friends-users-outer'>
+                                            <div key={i} className='friends-users' onMouseOver={() => { setMessageHover(true); setSelectUser(user.id)}} onMouseLeave={() => setMessageHover(false)}>
                                                 <div className='friend-users-left'>
                                                     <div>
                                                         <img src={user.profile_pic} alt='profile' className='friend-profile-pic'></img>
                                                     </div>
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
-                                                <div className='message-bubble-outer' onClick={() => { openDirectChat(user.id) }}>
-                                                    <img src={messageBubble} alt='message' className='message-bubble-icon' />
+                                                <div className={messageHover && selectUser === user.id ? 'message-bubble-outer-hover' : 'message-bubble-outer'} onClick={() => { openDirectChat(user.id) }}>
+                                                    <img src={user.id === selectUser ? messageBubble : messageBubbleGrey} alt='message' className='message-bubble-icon' onMouseOver={() => setMessageBubble(messageBubbleWhite)} onMouseLeave={() => setMessageBubble(messageBubbleGrey)} />
                                                 </div>
                                             </div>
-                                        </>
+                                        </div>
                                     )
                                 }
                             })}
