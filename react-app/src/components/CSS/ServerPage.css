@@ -218,7 +218,6 @@
 .ServerPage-right-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
     padding: 1rem;
     width: 250px;
     background-color: #2F3136;
