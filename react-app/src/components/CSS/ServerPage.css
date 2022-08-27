@@ -169,7 +169,9 @@
 }
 
 .user-profile-container {
+    padding-top: 100px;
     display: flex;
+    background-color: #2F3136;
     background-color: #282B2F;
 }
 
