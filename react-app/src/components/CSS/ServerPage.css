@@ -119,10 +119,23 @@
     font-size: 15px;
 }
 
+.serverPage-server-channels-outer {
+    padding-top:5px ;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 82.5%;
+    overflow: hidden scroll;
+}
+
+.serverPage-server-channels-outer::-webkit-scrollbar { 
+    display: none;
+  }
+
 .server-channels {
     display: flex;
     flex-direction: column;
 }
+
 
 .channel-section-header {
     display: flex;
@@ -169,10 +182,10 @@
 }
 
 .user-profile-container {
-    padding-top: 100px;
+    padding-top: 5px;
     display: flex;
     background-color: #2F3136;
-    background-color: #282B2F;
+    /* background-color: #282B2F; */
 }
 
 
