@@ -36,6 +36,16 @@ span {
 
 }
 
+.meet-us {
+    color: white;
+    font-weight: bold;
+}
+
+.meet-us:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .login-button,
 .logout-button-top {
     padding: .8em 1.1em;
@@ -213,6 +223,44 @@ h1 {
     flex-direction: column;
 }
 
+
+
+
+
+/* ---------- Bottom ---------- */
+
+.HomePage-bottom-upper-contianer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1180px;
+    width: 50%;
+    padding-top: 3em;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.HomePage-bottom-name {
+    color: #3051F2;
+}
+
+.HomePage-LinkedIn,
+.HomePage-GitHub {
+    color: white;
+    margin-top: 1em;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.HomePage-logos {
+    height: 100%;
+    margin-right: .5em;
+}
+
 .bottom-divider {
     display: flex;
     align-items: center;
@@ -221,7 +269,6 @@ h1 {
     max-width: 1180px;
     width: 50%;
     background-color: #404EED;
-
     margin: 5em 0 1em 0;
 }
 
