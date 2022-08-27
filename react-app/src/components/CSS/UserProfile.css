@@ -8,11 +8,21 @@
   height: 38px;
   width: 38px;
   border-radius: 50%;
+  display: flex;
+}
+
+.username-outer {
+  display: flex;
+  padding: 0px 6em 0px 10px;
 }
 
  .logout-icon {
   font-size: 15px;
  }
+
+.logout-button-outer {
+  display: flex;
+}
 
 .logout-icon:hover {
     color: #DCDDDE;
