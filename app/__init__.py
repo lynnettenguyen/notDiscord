@@ -98,107 +98,30 @@ def react_root(path):
 # handle chat messages
 @socketio.on('chat')
 def handle_chat(data):
-
     message = ChannelMessage(
         user_id=data['user_id'],
         channel_id=data['channel_id'],
         content = data['content']
     )
 
-    # messages = db.session.query(Channel.channel_messages).filter(id == data['channel_id'])
-
     db.session.add(message)
     db.session.commit()
-
-    # emit("chat", [message.to_dict() for message in messages], broadcast=True)
     emit('chat', data, broadcast=True)
-
-
-
-
-
-
-
 
 
 # handle chat messages
 @socketio.on('direct_chat')
 def handle_direct_chat(data):
 
-    reciever = DirectChat(
-            id = data['id'],
-            sender_id = data['sender_id'],
-            recipient_id = ['recipient_id']
-    )
-
-    sender = DirectMessage(
-        direct_chat_id = data['direct_chat_id'],
+    direct_message = DirectMessage(
         sender_id=data['sender_id'],
-        created_at=data['created_at'],
+        direct_chat_id = data['direct_chat_id'],
         content=data['content']
     )
 
-    db.session.add(sender)
-    db.session.add(reciever)
+    db.session.add(direct_message)
     db.session.commit()
-
-    emit('chat', data, broadcast=True)
-
-
-
-
-
-
-
-
-
-
-
-# load all channel messages
-@socketio.on('load_channel_messages')
-def channel_messages(data):
-#   message = ChannelMessage(
-#     user_id = current_user.id,
-#     channel_id = data['channel_id'],
-#     content = data['content']
-#   )
-
-#   all_channel_messages = db.session.query(ChannelMessage).filter(ChannelMessage.channel_id == data['channel_id']).order_by(ChannelMessage.created_at).all()
-
-  emit('load_channel_messages', data, broadcast=True)
-
-# load all direct messages
-# @socketio.on('load_direct_messages')
-# def direct_messages(data):
-#   emit('load_direct_messages', data, broadcast=True)
-
-
-# # reload all channel messages when users send new messages to the channel
-# @socketio.on('new_message')
-# @login_required
-# def new_message_in_channel(data):
-#   room = f"channel{data['channel_id']}"
-
-#   all_channel_messages = db.session.query(ChannelMessage).filter(ChannelMessage.channel_id == data['channel_id']).order_by(ChannelMessage.created_at).all()
-
-#   emit('reload_channel_messages', [message.to_dict() for message in all_channel_messages], room=room)
-
-# # adds user to channel
-# @socketio.on('join_channel')
-# @login_required
-# def join_channel(data):
-#   user = current_user
-#   room = f"channel{data['channel_id']}"
-#   join_room(room)
-
-
-# # removes user from channel
-# @socketio.on('leave_channel')
-# @login_required
-# def leave_channel(data):
-#   user = current_user
-#   room = f"channel{data['channel_id']}"
-#   leave_room(room)
+    emit('direct_chat', data, broadcast=True)
 
 
 # at the bottom of the file, use this to run the app
