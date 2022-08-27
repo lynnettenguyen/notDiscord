@@ -41,6 +41,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
 
+    scrollBottom()
   }, [messages]);
 
 
@@ -51,7 +52,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
     func()
     scrollBottom()
-  }, [directChatId, messages])
+  }, [directChatId])
 
 
   const updateChatInput = (e) => {

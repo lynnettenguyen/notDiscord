@@ -67,7 +67,7 @@ def delete_direct_chat(direct_chat_id):
 @direct_chats.route('/<int:direct_chat_id>/messages')
 @login_required
 def get_direct_messages(direct_chat_id):
-  all_direct_messages = db.session.query(DirectMessage).filter(DirectMessage.direct_chat_id == direct_chat_id).order_by(DirectMessage.created_at).all()
+  all_direct_messages = DirectMessage.query.filter(DirectMessage.direct_chat_id == direct_chat_id).order_by(DirectMessage.created_at).all()
 
   messages = [message.to_dict() for message in all_direct_messages]
   return jsonify(messages), 200

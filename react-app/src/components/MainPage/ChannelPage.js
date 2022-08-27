@@ -48,22 +48,23 @@ const ChannelPage = ({ channelId }) => {
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
 
+    scrollBottom()
   }, [messages]);
 
   useEffect(() => {
     const func = async () => {
-        setMessages([])
-        if (!channelId) {
-          await dispatch(getChannelMessages(channels[0].id))
-        } else {
-          await dispatch(getChannelMessages(channelId))
-        }
+      setMessages([])
+      if (!channelId) {
+        await dispatch(getChannelMessages(channels[0].id))
+      } else {
+        await dispatch(getChannelMessages(channelId))
+      }
 
     }
     func()
 
     scrollBottom()
-  }, [channelId, messages])
+  }, [channelId])
 
 
   const updateChatInput = (e) => {
