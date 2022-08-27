@@ -39,8 +39,13 @@
   border-radius: 3px;
 }
 
-.friends-icon-nav {
+.noServer-icon-nav {
   margin-right: 10px;
+  height: 24.4px;
+}
+
+.noServer-icon-at {
+  margin-right: 5px;
   height: 24.4px;
 }
 
@@ -107,6 +112,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.noServer-middle-profile {
+  height: 68px;
+  width: 68px;
+  border-radius: 50%;
+}
+
+.noServer-username-middle {
+  font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 32px;
+  margin-top: 8px;
+
+}
+
+.noServer-caption-middle {
+  color: #DCDDDE;
+  margin: 10px 0;
 }
 
 .wumpus-caption {

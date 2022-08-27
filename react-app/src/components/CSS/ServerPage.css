@@ -185,7 +185,7 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
     overflow-x: hidden;
     box-sizing: border-box;
-    padding: 2rem 18.5rem 2rem 1rem;
+    padding: 1rem 18.5rem 2rem 1rem;
     scrollbar-color: #2F3136;
     position: relative;
     justify-content: flex-end;

@@ -7,6 +7,7 @@ import messageBubbleGrey from '../CSS/images/message-bubble-grey.svg'
 import messageBubbleWhite from '../CSS/images/message-bubble-white.svg'
 import whiteX from '../CSS/images/white-x.svg'
 import greyX from '../CSS/images/grey-x.svg'
+import at from '../CSS/images/@-symbol.svg'
 
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
@@ -79,14 +80,14 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 <div className='ServerPage-name'></div>
                 <div className='ServerPage-channel-name'>
                     {!directChatId && !showFriends && <div className='noServer-nav'>!Discord</div>}
-                    {directChatId && <div>@{userChat}</div>}
-                    {showFriends && <div className='noServer-nav'><img src={friendsGrey} alt='friends' className='friends-icon-nav' />Friends</div>}
+                    {directChatId && <div className='noServer-nav'><img src={at} alt='at' className='noServer-icon-at' />{userChat}</div>}
+                    {showFriends && <div className='noServer-nav'><img src={friendsGrey} alt='friends' className='noServer-icon-nav' />Friends</div>}
                 </div>
             </div>
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
                     <div className='noServer-channel-header'>
-                        <div className='noServer-friends-left' onClick={() => { setShowFriends(true); setDirectChatId(null) }} onMouseOver={() => setFriendIconHeader(friendsWhite)} onMouseLeave={() => setFriendIconHeader(friendsGrey)}><img src={friendIconHeader} alt='friends' className='friends-icon-nav' />Friends</div>
+                        <div className='noServer-friends-left' onClick={() => { setShowFriends(true); setDirectChatId(null) }} onMouseOver={() => setFriendIconHeader(friendsWhite)} onMouseLeave={() => setFriendIconHeader(friendsGrey)}><img src={friendIconHeader} alt='friends' className='noServer-icon-nav' />Friends</div>
                         <div className='dm-header'>DIRECT MESSAGES</div>
                     </div>
                     {directChats?.map((directChat, i) => {
@@ -118,13 +119,6 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 </div>
                 {directChatId ? (
                     <div className='ServerPage-middle-container'>
-                        <div>
-                            <img src={users[recipientId - 1]?.profile_pic} alt='profile' style={{ height: "100px" }} />
-                        </div>
-                        <div>
-                            {users[recipientId - 1]?.username}
-                        </div>
-                        <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
                         <DirectChat directChatId={directChatId} recipientId={recipientId} />
                     </div>
                 ) : showFriends ? (

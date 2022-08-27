@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
 import { getDirectMessages } from '../../store/directMessages';
@@ -10,11 +10,17 @@ let socket;
 const DirectChat = ({ directChatId, recipientId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
+  const users = useSelector(state => Object.values(state.users))
   const user = useSelector((state) => state.session.user);
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
 
+  const messageRef = useRef(null)
+
+  const scrollBottom = () => {
+    if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+  }
 
   useEffect(() => {
     socket = io();
@@ -35,10 +41,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
 
-    let elem = document.getElementsByClassName('channel-messages-outer');
-    elem.scrollTop = elem.scrollHeight
-    window.scrollTo(0, elem.scrollHeight)
-
+    scrollBottom()
   }, [messages]);
 
 
@@ -48,7 +51,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
     }
 
     func()
-
+    scrollBottom()
   }, [directChatId])
 
 
@@ -95,12 +98,21 @@ const DirectChat = ({ directChatId, recipientId }) => {
       return false
     }
   }
-  
+
 
   return (
     <>
-      <div className='channel-page-main'>
+      <div className='directChat-page-main'>
         <div className='channel-messages-outer'>
+          <div className='noServer-main-middle-header'>
+            <div>
+              <img className='noServer-middle-profile' src={users[recipientId - 1]?.profile_pic} alt='profile' />
+            </div>
+            <div className='noServer-username-middle'>
+              {users[recipientId - 1]?.username}
+            </div>
+            <div className='noServer-caption-middle'>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
+          </div>
           <div className='channel-messages'>
             {user && msgState?.map((message, i) => (
               <div className='channel-messages-inner' key={i}>
@@ -109,6 +121,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                   <div className='chat-date'>{checkDay(message.created_at)}</div>
                 </div>)}
                 <div className='chat-message'>{message.content}</div>
+                <div ref={messageRef} className="scroll-to-bottom-message" />
               </div>
             ))}
             {messages?.map((message, i) => `${directChatId}` === message.direct_chat_id && (
@@ -118,12 +131,13 @@ const DirectChat = ({ directChatId, recipientId }) => {
                   <div className='chat-date'>Today at {date}</div>
                 </div>)}
                 <div className='chat-message'>{message.content}</div>
+                <div ref={messageRef} className="scroll-to-bottom-message" />
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="channel-messages-input">
+      <div className="directChat-messages-input">
         <form onSubmit={sendChat} className='chat-input-form'>
           <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #`} />
           <button className='chat-button' type="submit"></button>
