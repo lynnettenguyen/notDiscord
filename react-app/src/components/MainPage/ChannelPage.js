@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannelMessages } from '../../store/channelMessages';
 import { io } from "socket.io-client";
@@ -22,7 +22,11 @@ const ChannelPage = ({ channelId }) => {
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
 
+  const messageRef = useRef(null)
 
+  const scrollBottom = () => {
+    if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+  }
 
   useEffect(() => {
     socket = io();
@@ -39,11 +43,7 @@ const ChannelPage = ({ channelId }) => {
     if (channelId) {
       setCurrChannel(channelId)
     }
-    // console.log('STATE', msgState)
-    // console.log('MESSAGES', messages)
-    // if (msgState[msgState.length - 1]?.user_id !== messages?.user_id) {
-    //   setMessages([])
-    // }
+
     setChatInput('')
   }, [channelId])
 
@@ -51,10 +51,9 @@ const ChannelPage = ({ channelId }) => {
     const newDate = new Date()
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
-    let elem = document.getElementsByClassName('channel-messages-outer');
-    elem.scrollTop = elem.scrollHeight
-    window.scrollTo(0,elem.scrollHeight)
-
+    // let elem = document.getElementsByClassName('channel-messages-outer');
+    // elem.scrollTop = elem.scrollHeight
+    // window.scrollTo(0, elem.scrollHeight)
   }, [messages]);
 
   useEffect(() => {
@@ -66,9 +65,8 @@ const ChannelPage = ({ channelId }) => {
       }
     }
     func()
-  }, [])
-
-
+    scrollBottom()
+  }, [channelId, messages])
 
 
   const updateChatInput = (e) => {
@@ -118,25 +116,32 @@ const ChannelPage = ({ channelId }) => {
   return users && (
     <>
       <div className='channel-page-main'>
+
         <div className='channel-messages-outer'>
           <div className='channel-messages'>
             {users && msgState?.map((message, i) => (
-              <div className='channel-messages-inner' key={i}>
-                {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
-                  <div className='chat-username'>{users[message.user_id]?.username}</div>
-                  <div className='chat-date'>{checkDay(message.created_at)}</div>
-                </div>)}
-                <div className='chat-message'>{message.content}</div>
-              </div>
+              <>
+                <div className='channel-messages-inner' key={i}>
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
+                    <div className='chat-username'>{users[message.user_id]?.username}</div>
+                    <div className='chat-date'>{checkDay(message.created_at)}</div>
+                  </div>)}
+                  <div className='chat-message'>{message.content}</div>
+                  <div ref={messageRef} className="scroll-to-bottom-message" />
+                </div>
+              </>
             ))}
             {messages?.map((message, i) => `${channelId}` === message.channel_id && (
-              <div className='channel-messages-inner' key={i}>
-                {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
-                  <div className='chat-username'>{message.user}</div>
-                  <div className='chat-date'>Today at {date}</div>
-                </div>)}
-                <div className='chat-message'>{message.content}</div>
-              </div>
+              <>
+                <div className='channel-messages-inner' key={i}>
+                  {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
+                    <div className='chat-username'>{message.user}</div>
+                    <div className='chat-date'>Today at {date}</div>
+                  </div>)}
+                  <div className='chat-message'>{message.content}</div>
+                  <div ref={messageRef} className="scroll-to-new-message" />
+                </div>
+              </>
             ))}
           </div>
         </div>
