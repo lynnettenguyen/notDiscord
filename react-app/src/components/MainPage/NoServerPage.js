@@ -77,7 +77,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     return (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name'>
+                <div className='noServerPage-name'>
                 </div>
                 <div className='ServerPage-channel-name'>
                     {!directChatId && !showFriends && <div className='noServer-nav'>!Discord</div>}

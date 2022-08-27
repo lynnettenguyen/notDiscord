@@ -2,9 +2,7 @@
     width: 100%;
     height: 100%;
     position: relative;
-    /* left: 74px; */
     overflow: hidden;
-    /* box-sizing: border-box; */
 }
 
 .ServerPage-content-container {
@@ -124,10 +122,10 @@
     margin-top: 5px;
     margin-bottom: 5px;
     height: 82.5%;
-    overflow: hidden scroll;
+    overflow: hidden auto;
 }
 
-.serverPage-server-channels-outer::-webkit-scrollbar { 
+.serverPage-server-channels-outer::-webkit-scrollbar {
     display: none;
   }
 
@@ -243,7 +241,7 @@
     top: 3.3em;
     right: 0;
     bottom: 0;
-    overflow: hidden scroll;
+    overflow: hidden auto;
 }
 
 .server-user {
