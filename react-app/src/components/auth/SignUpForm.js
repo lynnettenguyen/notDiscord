@@ -5,26 +5,24 @@ import { signUp } from '../../store/session';
 import "../CSS/SignUpForm.css"
 
 const SignUpForm = () => {
-  const blue = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_blue.png'
-  const green = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_green.png'
-  const lightblue = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_blue.png'
-  const darkpink = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_dark_pink.png'
-  const purple = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_purple.png'
-  const pink = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_pink.png'
-  const red = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_red.png'
-  const yellow = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_yellow.png'
-  const lightpurple = 'https://res.cloudinary.com/dxhbqihvs/image/upload/v1661373705/user_image_light_purple.png'
+  const blue = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/blue.png'
+  const green = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/green.png'
+  const lightBlue = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/light-blue.png'
+  const pink = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/light-pink.png'
+  const purple = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/purple.png'
+  const darkPink = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/pink.png'
+  const red = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/red.png'
+  const yellow = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/yellow.png'
+  const lightPurple = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/light-purple.png'
 
-  const userPfps = [blue, green, lightblue, darkpink, purple, pink, red, yellow, lightpurple]
+  const userPfps = [blue, green, lightBlue, darkPink, purple, pink, red, yellow, lightPurple]
   const randomPfp = userPfps[Math.floor(Math.random() * userPfps.length)];
-  // console.log('randompfp', randomPfp)
 
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  // const [profile_pic, setProfilePic] = useState(red)
   const [profile_pic, setProfilePic] = useState(randomPfp)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();

@@ -12,7 +12,6 @@ const MainPage = () => {
     const dispatch = useDispatch()
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
-    const directChats = useSelector(state => Object.values(state.directChat))
 
     const id = Object.keys(server)[0]
 

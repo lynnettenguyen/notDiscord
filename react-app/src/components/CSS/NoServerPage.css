@@ -1,4 +1,3 @@
-/* MAIN CONTAINER COMPONENTS */
 .ServerPage-container {
   width: 100vw;
   height: 100%;
@@ -7,7 +6,6 @@
 }
 
 .ServerPage-content-container {
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
   height: 100%;
@@ -15,7 +13,115 @@
 
 .wumpus-image {
   height: 13em;
+}
 
+.noServer-nav {
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.noServer-left-scroll {
+  overflow: hidden auto;
+  padding-bottom: 85px;
+}
+
+.noServer-left-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.noServer-left-scroll::-webkit-scrollbar-track {
+  background: #2E3338;
+  border-radius: 20px;
+}
+
+.noServer-left-scroll::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 20px;
+}
+
+.noServer-friends-left {
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  display: flex;
+  padding: 8px;
+  margin: 0 0 12px;
+  box-sizing: border-box;
+  color: #8E9297;
+}
+
+.noServer-friends-left:hover {
+  color: white;
+  background-color: #42464D;
+  border-radius: 3px;
+}
+
+.noServer-icon-nav {
+  margin-right: 10px;
+  height: 24.4px;
+}
+
+.noServer-icon-at {
+  margin-right: 5px;
+  height: 24.4px;
+}
+
+.dm-header {
+  font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #8E9297;
+  margin-bottom: 7px;
+}
+
+.dm-header:hover,
+.direct-chat-recipient:hover {
+  color: #DCDDDE;
+}
+
+.noServer-friend-direct-chat,
+.noServer-dc-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.noServer-friend-direct-chat {
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.direct-chat-recipient {
+  margin: 3px 0;
+  color: #96989D;
+  padding: 2px;
+}
+
+.dc-left-profile {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+}
+
+.dc-left-user {
+  font-family: WhitneySemiBold;
+  font-size: 16px;
+  padding: 0px 0px 0px 10px;
+  margin: 2px;
+}
+
+.remove-dc-hidden {
+  display: none;
+}
+
+.remove-dc-img {
+  height: 16px;
+}
+
+.noServer-friend-middle {
+  display: flex;
+  flex-direction: column;
 }
 
 .noServerPage-middle-container {
@@ -27,6 +133,25 @@
   justify-content: center;
 }
 
+.noServer-middle-profile {
+  height: 68px;
+  width: 68px;
+  border-radius: 50%;
+}
+
+.noServer-username-middle {
+  font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 32px;
+  margin-top: 8px;
+
+}
+
+.noServer-caption-middle {
+  color: #DCDDDE;
+  margin: 10px 0;
+}
+
 .wumpus-caption {
   font-family: WhitneyLight, Arial, Helvetica, sans-serif;
   color: white;
@@ -34,41 +159,41 @@
 }
 
 .noServerPage-right-container {
-  padding: 1.5rem;
+  padding: 20px;
   background-color: #2F3136;
   color: white;
   font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   margin-bottom: 0;
   box-sizing: border-box;
+  position: absolute;
+  top: 3.45em;
+  right: 0;
+  bottom: 0;
+  width: 360px;
 }
 
 .no-online-friends {
-  width: 80%;
+  width: 75%;
 }
 
 .main-friends-list {
   overflow: hidden scroll;
-  width: 100%;
-}
-
-.friends-users-outer {
-  display: flex;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 3px;
+  height: 100%;
+  width: 92%;
 }
 
 .friends-users {
   border-top: 1px solid #42464D;
   padding: 12px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 96%;
+  width: 97%;
   box-sizing: border-box;
+  margin-left: 5px;
 }
 
-.friends-users:hover {
+.friends-users:hover,
+.direct-chat-recipient:hover {
   background-color: #42464D;
   border-radius: 3px;
 }
@@ -80,13 +205,31 @@
 }
 
 .friend-username {
-  font-size: 15px;
+  font-family: WhitneySemiBold;
+  font-size: 16px;
   padding: 0px 0px 0px 15px;
+}
+
+.friend-id {
+  font-family: WhitneyBook;
+  font-size: 13px;
+  padding: 0px 0px 0px 15px;
+  color: #DCDDDE
 }
 
 .friend-users-left {
   display: flex;
   flex-direction: row;
+}
+
+.message-bubble-outer-hover {
+  background-color: #242528;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  margin-right: 2px;
 }
 
 .message-bubble-outer {
@@ -96,7 +239,7 @@
   width: 36px;
   display: flex;
   justify-content: center;
-  margin-right: 2px
+  margin-right: 2px;
 }
 
 .message-bubble-icon {

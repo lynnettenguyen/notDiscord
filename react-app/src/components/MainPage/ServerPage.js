@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Modal } from '../context/Modal';
+import UserProfile from './UserProfile';
 import EditServerForm from './EditServerForm'
+import ChannelPage from './ChannelPage';
+import ChannelForm from './ChannelForm';
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
-import ChannelPage from './ChannelPage';
-import UsersList from '../UsersList';
-import { Modal } from '../context/Modal';
-import ChannelForm from './ChannelForm';
 import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
-import UserProfile from './UserProfile';
 
 
 const ServerPage = ({ id, generalChannelId }) => {
@@ -74,7 +73,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                                                     <div className='channel-name'>{channel.name}</div>
                                                 </div>
                                                 <div className='edit-channel-button'>
-                                                    <img src={editGear} className={channel.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
+                                                    <img src={editGear} alt='edit' className={channel.id === showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
                                                         onClick={() => { setShowModal(true); setShowEditChannel(true) }}
                                                     />
                                                 </div>
@@ -91,7 +90,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                                                 <div className='channel-name'>{channels[0]?.name}</div>
                                             </div>
                                             <div className='edit-channel-button'>
-                                                <img src={editGear} className={channels[0]?.id == showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
+                                                <img src={editGear} alt='edit' className={channels[0]?.id === showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
                                                     onClick={() => { setShowModal(true); setShowEditChannel(true) }}
                                                 />
                                             </div>
@@ -102,30 +101,30 @@ const ServerPage = ({ id, generalChannelId }) => {
                         }
                     </div>
                         <div className='user-profile-container'>
-                            <UserProfile className='user-profile'/>
+                            <UserProfile className='user-profile' />
                         </div>
                 </div>
                 {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
-                            <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
+                        <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
                     </div> :
                     <div className='no-text-channel-middle-container'>
-                        <div><img src={noChannels} /></div>
+                        <div><img src={noChannels} alt='no channels' /></div>
                         <div className='no-text-header'>NO TEXT CHANNELS</div>
                         <div className='no-text-caption'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
                     </div>
                 }
                 <div className='ServerPage-right-container'>
                     <div className='Serverpage-right-content'>
-                    {users?.map((user, i) => {
-                        return (
+                        {users?.map((user, i) => {
+                            return (
                                 <div key={i} className='server-user-container'>
                                     <div className='server-user'>
-                                    <img src={user.profile_pic} className='user-profile-pic'></img>
-                                    <p className='username'>{user.username}</p>
+                                        <img src={user.profile_pic} alt='profile' className='user-profile-pic'></img>
+                                        <p className='username'>{user.username}</p>
                                     </div>
                                 </div>)
-                    })}
+                        })}
                     </div>
                 </div>
             </div>
