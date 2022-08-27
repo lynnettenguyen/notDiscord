@@ -24,12 +24,12 @@
   .channel-messages {
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     color: white;
-    height: 100%;
   }
 
   .channel-messages-outer {
     overflow-y: auto;
   }
+
 
   .chat-header {
     display: flex;
