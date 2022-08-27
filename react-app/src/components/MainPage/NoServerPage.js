@@ -38,7 +38,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     })
 
     const displayDirectChat = (chatId, userId) => {
-        dispatch(findDirectChat(chatId))
+        if (directChatId !== chatId) dispatch(findDirectChat(chatId))
         setDirectChatId(chatId)
         setRecipientId(userId)
         setUserChat(users[userId - 1]?.username)

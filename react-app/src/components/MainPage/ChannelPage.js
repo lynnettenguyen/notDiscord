@@ -35,6 +35,7 @@ const ChannelPage = ({ channelId }) => {
     });
   }, []);
 
+
   useEffect(() => {
     if (channelId) {
       setCurrChannel(channelId)
@@ -42,6 +43,7 @@ const ChannelPage = ({ channelId }) => {
 
     setChatInput('')
   }, [channelId])
+  
 
   useEffect(() => {
     const newDate = new Date()

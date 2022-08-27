@@ -10,11 +10,24 @@ let socket;
 const DirectChat = ({ directChatId, recipientId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
+
+  let currentChat = useSelector(state => state.directMessages.directChat)
+  let currentChatId;
+  if (currentChat) {
+    currentChat = Object.values(currentChat)
+    currentChatId = currentChat[0]?.id
+  }
+
   const users = useSelector(state => Object.values(state.users))
   const user = useSelector((state) => state.session.user);
+  const [currChat, setCurrChat] = useState(currentChatId)
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
+
+  console.log("DIRECT CHAT ID", directChatId)
+  console.log("CURRENT CHAT", currentChat)
+  console.log("CURRENT CHAT ID", currentChatId)
 
   const messageRef = useRef(null)
 
@@ -35,6 +48,14 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
   }, []);
 
+  useEffect(() => {
+    if (directChatId) {
+      setCurrChat(directChatId)
+    }
+
+    setChatInput("")
+  }, [directChatId])
+
 
   useEffect(() => {
     const newDate = new Date()
@@ -47,7 +68,12 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
   useEffect(() => {
     const func = async () => {
-      await dispatch(getDirectMessages(directChatId))
+      setMessages([])
+      if (!directChatId) {
+        await dispatch(getDirectMessages(currentChatId))
+      } else {
+        await dispatch(getDirectMessages(directChatId))
+      }
     }
 
     func()
@@ -118,7 +144,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
               <div className='channel-messages-inner' key={i}>
                 {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
                   <div className='chat-username'>{user[message.sender_id]?.username}</div>
-                  <div className='chat-date'>{checkDay(message.created_at)}</div>
+                  <div className='chat-date'>{message.created_at ? checkDay(message.created_at) : ""}</div>
                 </div>)}
                 <div className='chat-message'>{message.content}</div>
                 <div ref={messageRef} className="scroll-to-bottom-message" />
