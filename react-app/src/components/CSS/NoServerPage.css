@@ -48,7 +48,7 @@
   font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
   font-size: 12px;
   color: #8E9297;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .dm-header:hover,
@@ -65,12 +65,13 @@
 
 .noServer-friend-direct-chat {
   justify-content: space-between;
+  padding: 2px;
 }
 
 .direct-chat-recipient {
-  margin: 5px 0;
-  padding: 2px;
+  margin: 3px 0;
   color: #96989D;
+  padding: 2px;
 }
 
 .dc-left-profile {
@@ -84,6 +85,10 @@
   font-size: 16px;
   padding: 0px 0px 0px 10px;
   margin: 2px;
+}
+
+.remove-dc-hidden {
+  display: none;
 }
 
 .remove-dc-img {
