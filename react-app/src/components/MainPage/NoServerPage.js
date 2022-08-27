@@ -26,9 +26,6 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     const displayDirectChat = (chatId, userId) => {
         dispatch(findDirectChat(chatId))
-
-        console.log(chatId)
-
         setDirectChatId(chatId)
         setRecipientId(userId)
         setUserChat(users[userId - 1]?.username)
@@ -111,7 +108,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             {users[recipientId - 1]?.username}
                         </div>
                         <div>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
-                        <DirectChat directChatId={directChatId} />
+                        <DirectChat directChatId={directChatId} recipientId={recipientId} />
                     </div>
                 ) : showFriends ? (
                     <div className='ServerPage-middle-container'>

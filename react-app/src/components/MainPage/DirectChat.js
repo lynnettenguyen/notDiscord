@@ -8,10 +8,10 @@ import '../CSS/DirectChat.css';
 
 let socket;
 
-const DirectChat = ({ directChatId }) => {
+const DirectChat = ({ directChatId, recipientId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
-  // const currentDirectChat = useSelector(state => Object.values(state.directMessages.directChat));
+  // const currentDirectChat = useSelector(state => state.directMessages.directChat);
   const directChats = useSelector(state => state.server.directChat);
   const allUsers = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
@@ -21,10 +21,12 @@ const DirectChat = ({ directChatId }) => {
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
 
-  // console.log("!!!!!!!!ID!!!!!!!!!!!!!", currentDirectChat.id)
+  // console.log("!!!!!!!!ID!!!!!!!!!!!!!", currentDirectChat)
   // if (currentDirectChat) console.log("CHAT", currentDirectChat)
   // if (currentDirectChat) console.log("ID", currentDirectChat[0].id)
   // console.log('DIRECT CHAT ID PROP', directChatId)
+
+
 
   useEffect(() => {
     socket = io();
@@ -71,7 +73,7 @@ const DirectChat = ({ directChatId }) => {
 
   const sendChat = (e) => {
     e.preventDefault();
-    socket.emit('direct_chat', { user: user.username, sender_id: user.id, direct_chat_id: `${directChatId}`, content: chatInput });
+    socket.emit('direct_chat', { user: user.username, sender_id: user.id, recipient_id: recipientId, direct_chat_id: `${directChatId}`, content: chatInput });
     setChatInput("");
   };
 
