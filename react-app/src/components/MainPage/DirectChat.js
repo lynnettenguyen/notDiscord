@@ -3,28 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
 import { getDirectMessages } from '../../store/directMessages';
 
-
 import '../CSS/DirectChat.css';
 
 let socket;
 
-const DirectChat = ({ directChatId }) => {
+const DirectChat = ({ directChatId, recipientId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
-  // const currentDirectChat = useSelector(state => Object.values(state.directMessages.directChat));
-  const directChats = useSelector(state => state.server.directChat);
-  const allUsers = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
-  const server = useSelector(state => state.server);
-  const [currentRecipient, setCurrentRecipient] = useState()
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
 
-  // console.log("!!!!!!!!ID!!!!!!!!!!!!!", currentDirectChat.id)
-  // if (currentDirectChat) console.log("CHAT", currentDirectChat)
-  // if (currentDirectChat) console.log("ID", currentDirectChat[0].id)
-  // console.log('DIRECT CHAT ID PROP', directChatId)
 
   useEffect(() => {
     socket = io();
@@ -54,13 +44,11 @@ const DirectChat = ({ directChatId }) => {
 
   useEffect(() => {
     const func = async () => {
-      // if (!directChatId) {
-      //   await dispatch(getDirectMessages(currentDirectChat[0].id))
-      // } else {
       await dispatch(getDirectMessages(directChatId))
-      // }
     }
+
     func()
+
   }, [directChatId])
 
 
@@ -71,10 +59,9 @@ const DirectChat = ({ directChatId }) => {
 
   const sendChat = (e) => {
     e.preventDefault();
-    socket.emit('direct_chat', { user: user.username, sender_id: user.id, direct_chat_id: `${directChatId}`, content: chatInput });
+    socket.emit('direct_chat', { user: user.username, sender_id: user.id, recipient_id: recipientId, direct_chat_id: `${directChatId}`, content: chatInput });
     setChatInput("");
   };
-
 
 
   const checkDay = (date) => {
@@ -108,8 +95,7 @@ const DirectChat = ({ directChatId }) => {
       return false
     }
   }
-
-
+  
 
   return (
     <>
@@ -145,7 +131,6 @@ const DirectChat = ({ directChatId }) => {
       </div>
     </>
   );
-
 };
 
 export default DirectChat;
