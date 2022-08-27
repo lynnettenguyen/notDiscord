@@ -39,11 +39,6 @@ const ChannelPage = ({ channelId }) => {
     if (channelId) {
       setCurrChannel(channelId)
     }
-    // console.log('STATE', msgState)
-    // console.log('MESSAGES', messages)
-    // if (msgState[msgState.length - 1]?.user_id !== messages?.user_id) {
-    //   setMessages([])
-    // }
     setChatInput('')
   }, [channelId])
 
@@ -59,14 +54,16 @@ const ChannelPage = ({ channelId }) => {
 
   useEffect(() => {
     const func = async () => {
-      if (!channelId) {
-        await dispatch(getChannelMessages(channels[0].id))
-      } else {
-        await dispatch(getChannelMessages(channelId))
-      }
+        setMessages([])
+        if (!channelId) {
+          await dispatch(getChannelMessages(channels[0].id))
+        } else {
+          await dispatch(getChannelMessages(channelId))
+        }
+
     }
     func()
-  }, [])
+  }, [channelId])
 
 
 
