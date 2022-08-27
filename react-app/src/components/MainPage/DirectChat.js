@@ -157,7 +157,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                   <div className='chat-date'>Today at {date}</div>
                 </div>)}
                 <div className='chat-message'>{message.content}</div>
-                <div ref={messageRef} className="scroll-to-bottom-message" />
+                <div ref={messageRef} className="scroll-to-new-message" />
               </div>
             ))}
           </div>

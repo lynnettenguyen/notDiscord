@@ -22,18 +22,13 @@
   }
 
   .channel-messages {
-    display: flexbox;
-    flex-direction: column;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     color: white;
     height: 100%;
-    justify-content: flex-end;
-    vertical-align: baseline;
-    margin-top: auto;
   }
 
   .channel-messages-outer {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .chat-header {
