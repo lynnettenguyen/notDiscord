@@ -6,6 +6,7 @@ import server from './server';
 import users from './users';
 import channelMessages from './channelMessages'
 import directChat from './directChat'
+import directMessages from './directMessages'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   servers,
   server,
   channelMessages,
-  directChat
+  directChat,
+  directMessages
 });
 
 
