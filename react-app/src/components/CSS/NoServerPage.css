@@ -15,6 +15,86 @@
   height: 13em;
 }
 
+.noServer-nav {
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  display: flex;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.noServer-friends-left {
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  display: flex;
+  padding: 8px;
+  margin: 0 0 12px;
+  box-sizing: border-box;
+  color: #8E9297;
+}
+
+.noServer-friends-left:hover {
+  color: white;
+  background-color: #42464D;
+  border-radius: 3px;
+}
+
+.friends-icon-nav {
+  margin-right: 10px;
+  height: 24.4px;
+}
+
+.dm-header {
+  font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #8E9297;
+  margin-bottom: 5px;
+}
+
+.dm-header:hover,
+.direct-chat-recipient:hover {
+  color: #DCDDDE;
+}
+
+.noServer-friend-direct-chat,
+.noServer-dc-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.noServer-friend-direct-chat {
+  justify-content: space-between;
+}
+
+.direct-chat-recipient {
+  margin: 5px 0;
+  padding: 2px;
+  color: #96989D;
+}
+
+.dc-left-profile {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+}
+
+.dc-left-user {
+  font-family: WhitneySemiBold;
+  font-size: 16px;
+  padding: 0px 0px 0px 10px;
+  margin: 2px;
+}
+
+.remove-dc-img {
+  height: 16px;
+}
+
+.noServer-friend-middle {
+  display: flex;
+  flex-direction: column;
+}
+
 .noServerPage-middle-container {
   width: 100%;
   max-height: 100%;
@@ -38,7 +118,7 @@
   margin-bottom: 0;
   box-sizing: border-box;
   position: absolute;
-  top: 3.3em;
+  top: 3.45em;
   right: 0;
   bottom: 0;
   width: 360px;
@@ -64,7 +144,8 @@
   margin-left: 5px;
 }
 
-.friends-users:hover {
+.friends-users:hover,
+.direct-chat-recipient:hover {
   background-color: #42464D;
   border-radius: 3px;
 }
@@ -81,10 +162,18 @@
   padding: 0px 0px 0px 15px;
 }
 
+.friend-id {
+  font-family: WhitneyBook;
+  font-size: 13px;
+  padding: 0px 0px 0px 15px;
+  color: #DCDDDE
+}
+
 .friend-users-left {
   display: flex;
   flex-direction: row;
 }
+
 .message-bubble-outer-hover {
   background-color: #242528;
   border-radius: 50%;
