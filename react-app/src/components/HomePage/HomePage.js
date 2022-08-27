@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, Redirect } from 'react-router-dom';
 import HomeLogo from '../CSS/images/notDiscord.png'
 import leftImage from '../CSS/images/svgexport-5.svg'
 import rightImage from '../CSS/images/svgexport-6.svg'
@@ -8,6 +8,8 @@ import part3 from '../CSS/images/threePart.svg'
 import part4 from '../CSS/images/fourPart.svg'
 import part5 from '../CSS/images/fivePart.svg'
 import part6 from '../CSS/images/sixPart.svg'
+import git from '../CSS/images/github.png'
+import linked from '../CSS/images/Linkedin.png'
 import { logout } from '../../store/session';
 
 import '../CSS/HomePage.css';
@@ -32,12 +34,17 @@ const HomePage = () => {
         }
     }
 
+    const handleMeetUp = () => {
+        window.scrollTo(0,100000000000000000000)
+    }
+
     return (
         <div className='HomePage-container'>
         <div className='HomePage-background'/>
             <nav className='NavBar-Container'>
                 <div className='NavBar-buttons'>
                 <div><NavLink exact to='/'><img alt='home' className='home-logo' src={HomeLogo}/></NavLink></div>
+                <div className='meet-us' onClick={handleMeetUp}>Meet Us</div>
                 {user && (<button className='logout-button-top' onClick={onLogout}>Logout</button>)}
                 {!user && (<div><NavLink className='login-button' to='/login'>Login</NavLink></div>)}
                 </div>
@@ -98,6 +105,28 @@ const HomePage = () => {
             <img alt='home' src={part6}/>
         </div>
         <div className='HomePage-bottom-div'>
+            <div className='HomePage-bottom-upper-contianer'>
+                <div className='HomePage-bottom-name'>
+                    Ben Durham
+                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='https://www.linkedin.com/in/ben-durham-5ab74997/'>LinkedIn</a></div>
+                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='https://github.com/oorazugoku'>GitHub</a></div>
+                </div>
+                <div className='HomePage-bottom-name'>
+                    Samantha Weglinski
+                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='https://www.linkedin.com/in/samanthaweglinski/'>LinkedIn</a></div>
+                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='https://github.com/samanthaweglinski'>GitHub</a></div>
+                </div>
+                <div className='HomePage-bottom-name'>
+                    YOUR NAME HERE
+                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='YOUR URL HERE'>LinkedIn</a></div>
+                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='YOUR URL HERE'>GitHub</a></div>
+                </div>
+                <div className='HomePage-bottom-name'>
+                    YOUR NAME HERE
+                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='YOUR URL HERE'>LinkedIn</a></div>
+                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='YOUR URL HERE'>GitHub</a></div>
+                </div>
+            </div>
             <div className='bottom-divider'/>
             <div className='bottom-nav-container'>
                 <div className='left'>

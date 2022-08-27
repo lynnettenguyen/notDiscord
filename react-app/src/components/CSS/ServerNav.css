@@ -29,7 +29,18 @@
   margin: 5px 0;
 }
 
+.serverNav-all-servers-outer{
+  margin-top: 8px;
+  overflow: hidden auto;
+  height: 225px;
+}
+
+.serverNav-all-servers-outer::-webkit-scrollbar { 
+  display: none;
+}
+
 .server-img {
+  padding-top: 10px;
   width: 110%;
   height: 110%;
   background-size: cover;

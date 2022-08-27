@@ -40,8 +40,9 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
           <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null); setShowFriends(false)}} />
-        </div>
         <div className='line-break'>------</div>
+        </div>
+        <div className='serverNav-all-servers-outer'>
         {servers?.map((server, i) => {
           return (
             <div key={i} >
@@ -55,6 +56,8 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
             </div>
           )
         })}
+        </div>
+        
         <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
         </div>

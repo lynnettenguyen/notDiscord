@@ -52,13 +52,16 @@ const ChannelPage = ({ channelId }) => {
 
   useEffect(() => {
     const func = async () => {
-      if (!channelId) {
-        await dispatch(getChannelMessages(channels[0].id))
-      } else {
-        await dispatch(getChannelMessages(channelId))
-      }
+        setMessages([])
+        if (!channelId) {
+          await dispatch(getChannelMessages(channels[0].id))
+        } else {
+          await dispatch(getChannelMessages(channelId))
+        }
+
     }
     func()
+
     scrollBottom()
   }, [channelId, messages])
 
