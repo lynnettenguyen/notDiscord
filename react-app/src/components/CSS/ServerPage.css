@@ -224,13 +224,11 @@
     background-color: #2F3136;
     color: white;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-    overflow: scroll;
     position: absolute;
     top: 3.3em;
     right: 0;
     bottom: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden scroll;
 }
 
 .server-user {

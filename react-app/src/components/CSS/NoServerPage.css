@@ -23,6 +23,25 @@
   box-sizing: border-box;
 }
 
+.noServer-left-scroll {
+  overflow: hidden auto;
+  padding-bottom: 85px;
+}
+
+.noServer-left-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.noServer-left-scroll::-webkit-scrollbar-track {
+  background: #2E3338;
+  border-radius: 20px;
+}
+
+.noServer-left-scroll::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 20px;
+}
+
 .noServer-friends-left {
   font-family: GintoNormal, Arial, Helvetica, sans-serif;
   font-size: 16px;
