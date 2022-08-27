@@ -12,7 +12,6 @@ import '../CSS/ServerNav.css'
 
 
 const ServerNav = ({setDirectChatId, setShowFriends }) => {
-  const directChats = useSelector(state => Object.values(state.directChat))
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
   const [isLoaded, setIsLoaded] = useState(false);

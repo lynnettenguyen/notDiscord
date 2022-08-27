@@ -48,9 +48,9 @@ def create_direct_chat():
 @direct_chats.route('/<int:direct_chat_id>', methods=['DELETE'])
 @login_required
 def delete_direct_chat(direct_chat_id):
-  if DirectChat.sender_id == current_user.id or DirectChat.recipient_id == current_user.id:
+  direct_chat = DirectChat.query.get(direct_chat_id)
 
-    direct_chat = DirectChat.query.filter(DirectChat.id == direct_chat_id)
+  if direct_chat.sender_id == current_user.id or direct_chat.recipient_id == current_user.id:
 
     db.session.delete(direct_chat)
     db.session.commit()

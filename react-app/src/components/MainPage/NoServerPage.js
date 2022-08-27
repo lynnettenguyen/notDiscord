@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import DirectChat from './DirectChat'
+import { createDirectChat, removeDirectChat } from '../../store/directChat';
 import wumpus from '../CSS/images/wumpus.svg'
 import messageBubble from '../CSS/images/message-bubble.svg'
-import { createDirectChat, removeDirectChat } from '../../store/directChat';
-import DirectChat from './DirectChat'
+import whiteX from '../CSS/images/white-x.svg'
+import greyX from '../CSS/images/grey-x.svg'
 
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
@@ -16,7 +18,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const directChats = useSelector(state => Object.values(state.directChat))
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
-
+    const [close, setClose] = useState(greyX)
 
     const allUsersInChat = []
     directChats.forEach(chat => {
@@ -51,10 +53,14 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
         let check = false
         directChats.forEach(chat => {
             if (chat.recipient_id === recipientId) check = true
-            if (chat.sender_id == recipientId) check = true
+            if (chat.sender_id === recipientId) check = true
 
             if (check === true) setDirectChatId(chat.id)
         })
+    }
+
+    const handleDelete = (directChatId) => {
+        dispatch(removeDirectChat(directChatId))
     }
 
     return (
@@ -83,18 +89,20 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             return (
                                 <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.sender_id) }}>
                                     <div className='direct-chat-profile-pic'>
-                                        <img src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
+                                        <img alt='profile' src={users[directChat.sender_id - 1]?.profile_pic} style={{ height: "38px" }} />
+                                        <div>{users[directChat.sender_id - 1]?.username}</div>
                                     </div>
-                                    {users[directChat.sender_id - 1]?.username}
+                                    <div onClick={() => handleDelete(directChat.id)} onMouseOver={() => setClose(greyX)} onMouseLeave={() => setClose(whiteX)}><img src={close} /></div>
                                 </div>
                             )
                         } else
                             return (
                                 <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.recipient_id) }}>
                                     <div className='direct-chat-profile-pic'>
-                                        <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} />
+                                        <img src={users[directChat.recipient_id - 1]?.profile_pic} style={{ height: "38px" }} alt='profile' />
+                                        <div>{users[directChat.recipient_id - 1]?.username}</div>
                                     </div>
-                                    {users[directChat.recipient_id - 1]?.username}
+                                    <div onClick={() => handleDelete(directChat.id)} onMouseOver={() => setClose(greyX)} onMouseLeave={() => setClose(whiteX)}><img src={close} /></div>
                                 </div>
                             )
                     })}
@@ -102,7 +110,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 {directChatId ? (
                     <div className='ServerPage-middle-container'>
                         <div>
-                            <img src={users[recipientId - 1]?.profile_pic} style={{ height: "100px" }} />
+                            <img src={users[recipientId - 1]?.profile_pic} alt='profile' style={{ height: "100px" }} />
                         </div>
                         <div>
                             {users[recipientId - 1]?.username}
@@ -120,12 +128,12 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                             <div key={i} className='friends-users'>
                                                 <div className='friend-users-left'>
                                                     <div>
-                                                        <img src={user.profile_pic} className='friend-profile-pic'></img>
+                                                        <img src={user.profile_pic} alt='profile' className='friend-profile-pic'></img>
                                                     </div>
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
                                                 <div className='message-bubble-outer' onClick={() => newDirectChat(user.id)}>
-                                                    <img src={messageBubble} className='message-bubble-icon' />
+                                                    <img src={messageBubble} alt='message' className='message-bubble-icon' />
                                                 </div>
                                             </div>
                                         </>
@@ -136,12 +144,12 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                             <div key={i} className='friends-users'>
                                                 <div className='friend-users-left'>
                                                     <div>
-                                                        <img src={user.profile_pic} className='friend-profile-pic'></img>
+                                                        <img src={user.profile_pic} alt='profile' className='friend-profile-pic'></img>
                                                     </div>
                                                     <div><span className='friend-username'>{user.username}</span></div>
                                                 </div>
                                                 <div className='message-bubble-outer' onClick={() => { openDirectChat(user.id) }}>
-                                                    <img src={messageBubble} className='message-bubble-icon' />
+                                                    <img src={messageBubble} alt='message' className='message-bubble-icon' />
                                                 </div>
                                             </div>
                                         </>
@@ -153,7 +161,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 ) : (
                     <div className='noServerPage-middle-container'>
                         <div className='wumpus-main'>
-                            <img alt='Wumpus' src={wumpus} className='wumpus-image' />
+                            <img alt='wumpus' src={wumpus} className='wumpus-image' />
                             <div className='wumpus-caption'>Wumpus is waiting on friends. You don't have to though!</div>
                         </div>
                     </div>

@@ -2,10 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannelMessages } from '../../store/channelMessages';
 import { io } from "socket.io-client";
-
 import '../CSS/ChannelPage.css';
-
-
 
 let socket;
 
@@ -16,7 +13,6 @@ const ChannelPage = ({ channelId }) => {
   const channel = useSelector(state => state.server.channels)
   const users = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
-  const server = useSelector(state => state.server);
   const [currChannel, setCurrChannel] = useState(channels[0].id)
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
@@ -51,9 +47,7 @@ const ChannelPage = ({ channelId }) => {
     const newDate = new Date()
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
-    // let elem = document.getElementsByClassName('channel-messages-outer');
-    // elem.scrollTop = elem.scrollHeight
-    // window.scrollTo(0, elem.scrollHeight)
+
   }, [messages]);
 
   useEffect(() => {
@@ -79,8 +73,6 @@ const ChannelPage = ({ channelId }) => {
     setChatInput("");
   };
 
-
-
   const checkDay = (date) => {
     const today = new Date()
     const newDate = new Date(date)
@@ -97,7 +89,6 @@ const ChannelPage = ({ channelId }) => {
       return result
     }
   }
-
 
   const checkPost = (date, prevDate, i) => {
     const oldDate = new Date(date)
@@ -116,7 +107,6 @@ const ChannelPage = ({ channelId }) => {
   return users && (
     <>
       <div className='channel-page-main'>
-
         <div className='channel-messages-outer'>
           <div className='channel-messages'>
             {users && msgState?.map((message, i) => (
@@ -154,7 +144,6 @@ const ChannelPage = ({ channelId }) => {
       </div>
     </>
   );
-
 };
 
 export default ChannelPage;
