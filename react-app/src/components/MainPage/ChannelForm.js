@@ -6,7 +6,7 @@ import hashtag from '../CSS/images/channel-hashtag.svg'
 // import deleteBin from '../CSS/images/delete-server-bin.svg'
 
 const ChannelForm = ({ serverId, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
-  const channels = useSelector(state => state.servers.channels)
+  const channels = useSelector(state => state.servers[serverId].channels)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")

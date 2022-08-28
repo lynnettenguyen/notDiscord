@@ -16,7 +16,7 @@ const ServerPage = ({ serverId, generalChannelId, setGeneralChannelId, channelNa
     const server = useSelector(state => state.servers[serverId])
 
     const users = useSelector(state => state.userSorted)
-    const channelsObj = useSelector(state => state.servers.channels)
+    const channelsObj = useSelector(state => state.servers[serverId].channels)
 
     let channels;
     if (channelsObj) {

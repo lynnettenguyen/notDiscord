@@ -30,9 +30,12 @@ const deleteServerAction = (serverId) => ({
   serverId
 })
 
-const getChannelsAction = (channels) => ({
+const getChannelsAction = (serverId, channels) => ({
   type: GET_CHANNELS,
-  channels
+  payload: {
+    serverId,
+    channels
+  }
 })
 
 export const createChannel = (newChannel) => ({
@@ -115,7 +118,7 @@ export const getChannels = (id) => async (dispatch) => {
 
   if (response.ok) {
     const channels = await response.json();
-    dispatch(getChannelsAction(channels))
+    dispatch(getChannelsAction(id, channels))
     return channels;
   }
 }
@@ -175,7 +178,7 @@ const serverReducer = (state = {}, action) => {
   switch (action.type) {
     case LIST_SERVERS: {
       for (let server of action.servers) newState[server.id] = server
-      return {...state, ...newState}
+      return { ...state, ...newState }
     }
     case CREATE_SERVER: {
       newState = { ...state }
@@ -193,10 +196,16 @@ const serverReducer = (state = {}, action) => {
       return newState
     }
     case GET_CHANNELS: {
-      let channels = {}
-      newState = { ...state, channels }
-      action.channels.map(channel => newState.channels[channel.id] = channel)
-      return newState
+      // let channels = {}
+      // newState = { ...state, channels }
+      // action.channels.map(channel => newState.channels[channel.id] = channel)
+      // return newState
+      newState = { ...state }
+      newState[action.payload.serverId].channels = {}
+      // action.payload.channels.map(channel => newState[action.payload.serverId].channels = channel)
+      for (let channel of action.payload.channels) newState[action.payload.serverId].channels = channel
+      return { ...newState }
+
     }
     case CREATE_CHANNELS: {
       newState = { ...state }

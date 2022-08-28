@@ -19,16 +19,6 @@ const EditServerForm = ({ setShowDropdown, serverId, setIsLoaded }) => {
   const [pencil, setPencil] = useState(greyPencil)
   const [bin, setBin] = useState(redBin)
 
-  const handleDelete = async () => {
-    const response = await dispatch(deleteServer(serverId))
-
-    setShowDropdown(false)
-    setIsLoaded(false)
-
-    if (response) {
-      dispatch(resetServer())
-    }
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -47,6 +37,18 @@ const EditServerForm = ({ setShowDropdown, serverId, setIsLoaded }) => {
       await dispatch(getChannels(serverId))
       setShowModal(false)
       setShowDropdown(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    const response = await dispatch(deleteServer(serverId))
+    await dispatch(listAllServers())
+
+    setShowDropdown(false)
+    setIsLoaded(false)
+
+    if (response) {
+      dispatch(resetServer())
     }
   }
 

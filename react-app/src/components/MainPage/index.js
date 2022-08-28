@@ -10,12 +10,13 @@ import { getUsers } from '../../store/users';
 
 const MainPage = () => {
     const dispatch = useDispatch()
-    // const server = useSelector(state => state.server)
-    const channels = useSelector(state => state.server.channels)
-    const user = useSelector(state=> state.session.user)
+    const [serverId, setServerId] = useState()
+    // const server = useSelector(state => state.servers)
+
+   const channels = useSelector(state => state.servers[serverId]?.channels)
+    const user = useSelector(state => state.session.user)
 
     // const id = Object.keys(server)[0]
-    const [serverId, setServerId] = useState()
 
     const [generalChannelId, setGeneralChannelId] = useState(channels ? Object.keys(channels)[0] : "")
 
