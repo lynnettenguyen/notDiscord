@@ -164,7 +164,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
-                      <div className='chat-username'>{message.user}</div>
+                    <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
                       <div className='chat-date'>Today at {date}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>
