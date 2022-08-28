@@ -96,19 +96,19 @@ const ChannelPage = ({ channelId }) => {
     }
   }
 
-  // const checkPost = (date, prevDate, i) => {
-  //   const oldDate = new Date(date)
-  //   const newDate = new Date(prevDate)
-  //   const difference = newDate - oldDate
-  //   if (i === 0) {
-  //     return true
-  //   }
-  //   if (difference > 180000) {
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
+  const checkPost = (date, prevDate, i) => {
+    const oldDate = new Date(date)
+    const newDate = new Date(prevDate)
+    // const difference = newDate - oldDate
+    if (i === 0) {
+      return true
+    }
+    // if (difference > 180000) {
+    //   return true
+    // } else {
+    //   return false
+    // }
+  }
 
   return users && (
     <>
@@ -118,8 +118,8 @@ const ChannelPage = ({ channelId }) => {
             {users && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {(msgState[i - 1]?.created_at, message.created_at, i) &&
-                  // {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
+                  {/* {(msgState[i - 1]?.created_at, message.created_at, i) && */}
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
