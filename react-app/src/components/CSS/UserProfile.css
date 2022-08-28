@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-bottom: 85px;
   justify-content: space-between;
+  width: 236px;
+  /* position: absolute; */
 }
 
 .user-pfp-outer {
@@ -16,6 +17,7 @@
   width: 38px;
   border-radius: 50%;
   display: flex;
+  padding-left: 15px;
 }
 
 .username-outer {
@@ -23,15 +25,15 @@
   padding: 0 12px;
 }
 
- .logout-icon {
+.logout-icon {
   font-size: 15px;
- }
+}
 
 .logout-button-outer {
   display: flex;
 }
 
 .logout-icon:hover {
-    color: #DCDDDE;
-    cursor: pointer;
+  color: #DCDDDE;
+  cursor: pointer;
 }

@@ -119,9 +119,9 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                     </div>
                                 )
                         })}
-                    </div>
-                    <div className='noServer-user-profile-container'>
+                    <div className='user-profile-container'>
                         <UserProfile />
+                    </div>
                     </div>
                 </div>
                 {directChatId ? (
