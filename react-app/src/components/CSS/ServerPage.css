@@ -51,6 +51,14 @@
     margin-top: 3px;
 }
 
+.serverPage-channel-name-topic {
+    color: #B9BBBE;
+    font-family: WhitneyMedium;
+    font-size: 15px;
+    border-left: 1px solid grey;
+    margin-left: 10px;
+    padding-left: 10px;
+}
 
 /* LEFT CONTAINER COMPONENTS*/
 .ServerPage-left-container {

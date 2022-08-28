@@ -21,6 +21,7 @@
   display: flex;
   padding: 15px;
   box-sizing: border-box;
+  align-items: center;
 }
 
 .noServer-icon-at {

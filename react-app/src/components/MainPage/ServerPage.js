@@ -8,7 +8,6 @@ import ChannelForm from './ChannelForm';
 import hashtag from '../CSS/images/channel-hashtag.svg'
 import editGear from '../CSS/images/edit-channel-gear.svg'
 import noChannels from '../CSS/images/no-text-channels.svg'
-import at from '../CSS/images/@-symbol.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
@@ -48,7 +47,11 @@ const ServerPage = ({ id, generalChannelId }) => {
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
-                    {channelId && <div className='noServer-nav'><img src={at} alt='at' className='noServer-icon-at' />{channelName} | {channelTopic}</div>}
+                    {channelId && <div className='noServer-nav'>
+                        <img src={hashtag} alt='hashtag' className='noServer-icon-at' />
+                        <div>{channelName}</div>
+                        <div className='serverPage-channel-name-topic'>{channelTopic}</div>
+                    </div>}
                 </div>
                 <div className='ServerPage-NavBar-buttons'></div>
                 {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}

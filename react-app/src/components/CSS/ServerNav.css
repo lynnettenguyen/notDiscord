@@ -41,8 +41,8 @@
 
 .server-img {
   padding-top: 10px;
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: 50% 50%;
 }
