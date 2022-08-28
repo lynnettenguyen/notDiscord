@@ -15,8 +15,8 @@ import '../CSS/EditServerForm.css'
 const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, setChannelName, channelTopic, setChannelTopic }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => state.userSorted)
-    const channels = useSelector(state => Object.values(state.server.channels))
     const channelsObj = useSelector(state => state.server.channels)
+    const channels = useSelector(state => Object.values(state.server.channels))
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()

@@ -4,7 +4,7 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
-    width: 110%
+    width: 100%
   }
 
   .directChat-page-main {
@@ -14,6 +14,6 @@
     overflow-y: auto;
     height: 90%;
     justify-content: flex-end;
-    width: 110%;
+    width: 100%;
     margin-left: 10px;
   }
