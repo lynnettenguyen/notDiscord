@@ -101,7 +101,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                         }
                     </div>
                         <div className='user-profile-container'>
-                            <UserProfile className='user-profile' />
+                            <UserProfile />
                         </div>
                 </div>
                 {channels?.length > 0 ?

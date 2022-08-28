@@ -5,12 +5,6 @@
   left: 74px;
 }
 
-.ServerPage-content-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
 .noServerPage-name {
   display: flex;
   justify-content: space-between;
@@ -21,16 +15,28 @@
   box-sizing: border-box;
 }
 
-.wumpus-image {
-  height: 13em;
-}
-
 .noServer-nav {
   font-family: GintoNormal, Arial, Helvetica, sans-serif;
   font-size: 18px;
   display: flex;
   padding: 15px;
   box-sizing: border-box;
+}
+
+.noServer-icon-at {
+  margin-right: 5px;
+  height: 24.4px;
+}
+
+.noServer-icon-nav {
+  margin-right: 10px;
+  height: 24.4px;
+}
+
+.ServerPage-content-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
 .noServer-left-scroll {
@@ -68,16 +74,6 @@
   border-radius: 3px;
 }
 
-.noServer-icon-nav {
-  margin-right: 10px;
-  height: 24.4px;
-}
-
-.noServer-icon-at {
-  margin-right: 5px;
-  height: 24.4px;
-}
-
 .dm-header {
   font-family: GintoNormalBold, Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -90,6 +86,12 @@
   color: #DCDDDE;
 }
 
+.direct-chat-recipient {
+  margin: 3px 0;
+  color: #96989D;
+  padding: 2px;
+}
+
 .noServer-friend-direct-chat,
 .noServer-dc-left {
   display: flex;
@@ -99,12 +101,6 @@
 
 .noServer-friend-direct-chat {
   justify-content: space-between;
-  padding: 2px;
-}
-
-.direct-chat-recipient {
-  margin: 3px 0;
-  color: #96989D;
   padding: 2px;
 }
 
@@ -121,17 +117,12 @@
   margin: 2px;
 }
 
-.remove-dc-hidden {
-  display: none;
-}
-
 .remove-dc-img {
   height: 16px;
 }
 
-.noServer-friend-middle {
-  display: flex;
-  flex-direction: column;
+.remove-dc-hidden {
+  display: none;
 }
 
 .noServerPage-middle-container {
@@ -142,6 +133,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.wumpus-image {
+  height: 13em;
+}
+
+.noServer-friend-middle {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .noServer-middle-profile {
   height: 68px;
@@ -162,34 +163,24 @@
   margin: 10px 0;
 }
 
-.wumpus-caption {
-  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-}
-
-.noServerPage-right-container {
-  padding: 20px;
-  background-color: #2F3136;
-  color: white;
-  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-  margin-bottom: 0;
-  box-sizing: border-box;
-  position: absolute;
-  top: 3.45em;
-  right: 0;
-  bottom: 0;
-  width: 360px;
-}
-
-.no-online-friends {
-  width: 75%;
-}
-
 .main-friends-list {
   overflow: hidden auto;
   height: 100%;
   width: 92%;
+}
+
+.main-friends-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-friends-list::-webkit-scrollbar-track {
+  background: #2E3338;
+  border-radius: 20px;
+}
+
+.main-friends-list::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 20px;
 }
 
 .friends-users {
@@ -202,10 +193,9 @@
   margin-left: 5px;
 }
 
-.friends-users:hover,
-.direct-chat-recipient:hover {
-  background-color: #42464D;
-  border-radius: 3px;
+.friend-users-left {
+  display: flex;
+  flex-direction: row;
 }
 
 .friend-profile-pic {
@@ -225,11 +215,6 @@
   font-size: 13px;
   padding: 0px 0px 0px 15px;
   color: #DCDDDE
-}
-
-.friend-users-left {
-  display: flex;
-  flex-direction: row;
 }
 
 .message-bubble-outer-hover {
@@ -256,17 +241,32 @@
   width: 22px;
 }
 
-.main-friends-list::-webkit-scrollbar {
-  width: 8px;
-
+.friends-users:hover,
+.direct-chat-recipient:hover {
+  background-color: #42464D;
+  border-radius: 3px;
 }
 
-.main-friends-list::-webkit-scrollbar-track {
-  background: #2E3338;
-  border-radius: 20px;
+.wumpus-caption {
+  font-family: WhitneyLight, Arial, Helvetica, sans-serif;
+  color: white;
+  text-align: center;
 }
 
-.main-friends-list::-webkit-scrollbar-thumb {
-  background-color: #202225;
-  border-radius: 20px;
+.noServerPage-right-container {
+  padding: 20px;
+  background-color: #2F3136;
+  color: white;
+  font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+  margin-bottom: 0;
+  box-sizing: border-box;
+  position: absolute;
+  top: 3.45em;
+  right: 0;
+  bottom: 0;
+  width: 360px;
+}
+
+.no-online-friends {
+  width: 75%;
 }
