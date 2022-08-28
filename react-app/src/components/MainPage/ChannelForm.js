@@ -64,7 +64,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
           <div className='main-channel-form'>
             <div className='channel-form-upper'>
               <div className='fa-solid fa-x channel-close' onClick={() => setShowModal(false)}></div>
-              <div className='channel-form-header'>Edit Channel</div>
+              <div className='edit-channel-form-header'>Edit Channel</div>
             </div>
             <div>
               <form onSubmit={handleEditChannel}>
