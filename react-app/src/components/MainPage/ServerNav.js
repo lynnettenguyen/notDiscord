@@ -10,14 +10,12 @@ import serverDefault from '../CSS/images/server_default.png'
 
 import '../CSS/ServerNav.css'
 
-
-const ServerNav = ({ setDirectChatId, setShowFriends }) => {
+const ServerNav = ({ setDirectChatId, setShowFriends}) => {
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
   const server = useSelector(state => state.server)
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
-
 
   useEffect(() => {
     dispatch(listAllServers())
@@ -35,7 +33,6 @@ const ServerNav = ({ setDirectChatId, setShowFriends }) => {
         .then(() => setIsLoaded(true))
     }
   };
-
 
   return (
     <>

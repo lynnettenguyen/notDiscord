@@ -22,6 +22,10 @@
   border-radius: 30%;
 }
 
+.home-icon:hover {
+  cursor: pointer;
+}
+
 .home-icon-outer {
   border-radius: 20%;
   height: 50px;
@@ -29,7 +33,7 @@
   margin: 5px 0;
 }
 
-.serverNav-all-servers-outer{
+.serverNav-all-servers-outer {
   margin-top: 8px;
   overflow: hidden auto;
   height: auto;
@@ -41,8 +45,8 @@
 
 .server-img {
   padding-top: 10px;
-  width: 110%;
-  height: 110%;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -60,6 +64,7 @@
 
 .server-img:hover {
   object-fit: cover;
+  cursor: pointer;
 }
 
 .server-img-outer:hover {
@@ -88,6 +93,7 @@
   background-color: #1ab071;
   color: white;
   border-radius: 30%;
+  cursor: pointer;
 }
 
 .line-break {

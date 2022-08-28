@@ -48,14 +48,15 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     const uniqueUsersInChat = new Set(allUsersInChat)
 
-    const newDirectChat = (recipientId) => {
+    const newDirectChat = async (recipientId) => {
 
         const chatData = {
             sender_id: currentUser.user.id,
             recipient_id: recipientId
         }
 
-        dispatch(createDirectChat(chatData))
+        const response = await dispatch(createDirectChat(chatData))
+        if (response) setDirectChatId(response.id - 1)
     }
 
     const openDirectChat = (recipientId) => {
@@ -102,7 +103,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                 <img className='dc-left-profile' alt='profile' src={users[directChat.sender_id - 1]?.profile_pic} />
                                                 <div className='dc-left-user'>{users[directChat.sender_id - 1]?.username}</div>
                                             </div>
-                                            <div onClick={() => handleDelete(directChat.id)} onMouseOver={() => { setClose(whiteX); setSelectUser(directChat.sender_id) }} onMouseLeave={() => setClose(greyX)}><img className={deleteOption === directChat.sender_id ? 'remove-dc-img' : 'remove-dc-hidden'} alt='delete' src={close} /></div>
+                                            {/* <div onClick={() => handleDelete(directChat.id)} onMouseOver={() => { setClose(whiteX); setSelectUser(directChat.sender_id) }} onMouseLeave={() => setClose(greyX)}><img className={deleteOption === directChat.sender_id ? 'remove-dc-img' : 'remove-dc-hidden'} alt='delete' src={close} /></div> */}
                                         </div>
                                     </div>
                                 )
@@ -114,18 +115,18 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                                 <img className='dc-left-profile' alt='profile' src={users[directChat.recipient_id - 1]?.profile_pic} />
                                                 <div className='dc-left-user'>{users[directChat.recipient_id - 1]?.username}</div>
                                             </div>
-                                            <div onClick={() => handleDelete(directChat.id)} onMouseOver={() => { setClose(whiteX); setSelectUser(directChat.recipient_id) }} onMouseLeave={() => setClose(greyX)}><img className={deleteOption === directChat.recipient_id ? 'remove-dc-img' : 'remove-dc-hidden'} alt='delete' src={close} /></div>
+                                            {/* <div onClick={() => handleDelete(directChat.id)} onMouseOver={() => { setClose(whiteX); setSelectUser(directChat.recipient_id) }} onMouseLeave={() => setClose(greyX)}><img className={deleteOption === directChat.recipient_id ? 'remove-dc-img' : 'remove-dc-hidden'} alt='delete' src={close} /></div> */}
                                         </div>
                                     </div>
                                 )
                         })}
-                    <div className='user-profile-container'>
-                        <UserProfile />
-                    </div>
+                        <div className='user-profile-container'>
+                            <UserProfile />
+                        </div>
                     </div>
                 </div>
                 {directChatId ? (
-                    <div className='ServerPage-middle-container'>
+                    <div className='ServerPage-middle-container-direct-chat'>
                         <DirectChat directChatId={directChatId} recipientId={recipientId} />
                     </div>
                 ) : showFriends ? (
