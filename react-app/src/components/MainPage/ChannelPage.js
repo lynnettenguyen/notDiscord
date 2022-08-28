@@ -75,7 +75,7 @@ const ChannelPage = ({ channelId }) => {
 
   const sendChat = (e) => {
     e.preventDefault();
-    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput });
+    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput, profile_pic: user.profile_pic });
     setChatInput("");
   };
 
@@ -122,7 +122,7 @@ const ChannelPage = ({ channelId }) => {
                   {/* {(msgState[i - 1]?.created_at, message.created_at, i) && */}
                     <div className='chat-header'>
                       <div className='chat-profile-outer'>
-                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                      <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
                       <div className='chat-username'>{users[message.user_id]?.username}</div>
                       <div className='chat-date'>{checkDay(message.created_at)}</div>
@@ -138,7 +138,7 @@ const ChannelPage = ({ channelId }) => {
                   {messages[i - 1]?.user_id !== message.user_id &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
-                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                        <img src={message.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
                       <div className='chat-username'>{message.user}</div>
                       <div className='chat-date'>Today at {date}</div>
