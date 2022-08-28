@@ -146,14 +146,14 @@ h1 {
 }
 
 .HomePage-left-image {
-    padding-top: 127px;
+    padding-top: 91px;
     z-index: 1;
     position: relative;
     left: -90px;
 }
 
 .HomePage-right-image {
-    padding-top: 120px;
+    padding-top: 83px;
     margin-left: 550px;
     z-index: 1;
 }
