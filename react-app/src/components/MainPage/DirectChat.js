@@ -129,12 +129,12 @@ const DirectChat = ({ directChatId, recipientId }) => {
         <div className='channel-messages-outer'>
           <div className='noServer-main-middle-header'>
             <div>
-              <img className='noServer-middle-profile' src={users[recipientId - 1]?.profile_pic} alt='profile' />
+              <img className='noServer-middle-profile' src={users[recipientId]?.profile_pic} alt='profile' />
             </div>
             <div className='noServer-username-middle'>
-              {users[recipientId - 1]?.username}
+              {users[recipientId]?.username}
             </div>
-            <div className='noServer-caption-middle'>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
+            <div className='noServer-caption-middle'>This is the beginning of your direct message history with @{users[recipientId]?.username}</div>
           </div>
           <div className='channel-messages'>
             {user && msgState?.map((message, i) => (
