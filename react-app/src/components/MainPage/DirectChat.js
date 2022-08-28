@@ -9,12 +9,6 @@ import '../CSS/DirectChat.css';
 let socket;
 
 const DirectChat = ({ directChatId, recipientId }) => {
-  const users = useSelector(state => Object.values(state.users))
-  const user = useSelector((state) => state.session.user);
-  const [currChat, setCurrChat] = useState(currentChatId)
-  const [messages, setMessages] = useState([]);
-  const [chatInput, setChatInput] = useState("");
-  const [date, setDate] = useState(new Date());
 
 
 
@@ -35,6 +29,12 @@ const DirectChat = ({ directChatId, recipientId }) => {
     scrollBottom()
   }
 
+  const users = useSelector(state => Object.values(state.users))
+  const user = useSelector((state) => state.session.user);
+  const [currChat, setCurrChat] = useState(currentChatId)
+  const [messages, setMessages] = useState([]);
+  const [chatInput, setChatInput] = useState("");
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     socket = io();
