@@ -9,7 +9,7 @@ import part4 from '../CSS/images/fourPart.svg'
 import part5 from '../CSS/images/fivePart.svg'
 import part6 from '../CSS/images/sixPart.svg'
 import git from '../CSS/images/github.png'
-import linked from '../CSS/images/Linkedin.png'
+import linked from '../CSS/images/Linkedin2.png'
 import { logout } from '../../store/session';
 
 import '../CSS/HomePage.css';
@@ -44,7 +44,8 @@ const HomePage = () => {
             <nav className='NavBar-Container'>
                 <div className='NavBar-buttons'>
                 <div><NavLink exact to='/'><img alt='home' className='home-logo' src={HomeLogo}/></NavLink></div>
-                <div className='meet-us' onClick={handleMeetUp}>Meet Us</div>
+                    <div className='meet-us' onClick={handleMeetUp}>Meet Us</div>
+                    <div className='our-repo'><a href='https://github.com/lynnettenguyen/notDiscord'>Github Repo</a></div>
                 {user && (<button className='logout-button-top' onClick={onLogout}>Logout</button>)}
                 {!user && (<div><NavLink className='login-button' to='/login'>Login</NavLink></div>)}
                 </div>
@@ -73,7 +74,7 @@ const HomePage = () => {
             </span>
         </div>
         </div>
-        <div className='HomePage-4th-part'>
+        {/* <div className='HomePage-4th-part'>
             <div className='HomePage-bottom-inner'>
             <span className='HomePage-inner-span'>
                 <h1>Where hanging out is easy</h1>
@@ -103,7 +104,7 @@ const HomePage = () => {
                 </span>
             </span>
             <img alt='home' src={part6}/>
-        </div>
+        </div> */}
         <div className='HomePage-bottom-div'>
             <div className='HomePage-bottom-upper-contianer'>
                 <div className='HomePage-bottom-name'>

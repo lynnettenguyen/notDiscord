@@ -41,6 +41,11 @@ span {
     font-weight: bold;
 }
 
+.our-repo {
+    color: white;
+    font-weight: bold;
+}
+
 .meet-us:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -236,7 +241,7 @@ h1 {
     align-items: center;
     max-width: 1180px;
     width: 50%;
-    padding-top: 3em;
+    padding-top: 4em;
     color: white;
     font-weight: bold;
     box-sizing: border-box;
