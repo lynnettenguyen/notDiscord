@@ -134,7 +134,6 @@
     flex-direction: column;
 }
 
-
 .channel-section-header {
     display: flex;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
@@ -180,14 +179,15 @@
 }
 
 .user-profile-container {
-    padding-top: 5px;
+    padding-top: 13px;
     position: absolute;
-    width: 100%;
+    width: 271px;
     bottom: 0;
     background-color: #2F3136;
-    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-top: 0.1em solid rgba(128, 128, 128, 0.212);
+    left: 0
 }
-
 
 /* MIDDLE CONTAINER COMPONENTS*/
 .ServerPage-middle-container {
