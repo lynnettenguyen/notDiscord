@@ -142,9 +142,9 @@ const DirectChat = ({ directChatId, recipientId }) => {
           <div className='channel-messages'>
             {user && msgState?.map((message, i) => (
               <>
-                <div className='channel-messages-inner' key={i}>
+                <div className='channel-messages-inner new' key={i}>
                   {/* {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && message.created_at && */}
-                  {(msgState[i - 1]?.created_at, message.created_at, i) && message.created_at &&
+                  {message.created_at &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
@@ -159,13 +159,13 @@ const DirectChat = ({ directChatId, recipientId }) => {
             ))}
             {messages?.map((message, i) => `${directChatId}` === message.direct_chat_id && (
               <>
-                <div className='channel-messages-inner' key={i}>
+                <div className='channel-messages-inner old' key={i}>
                   {messages[i - 1]?.sender_id !== message.sender_id &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
-                    <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
+                      <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
                       <div className='chat-date'>Today at {date}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>
