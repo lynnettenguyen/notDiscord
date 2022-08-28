@@ -9,6 +9,16 @@ import '../CSS/DirectChat.css';
 let socket;
 
 const DirectChat = ({ directChatId, recipientId }) => {
+  const users = useSelector(state => Object.values(state.users))
+  const user = useSelector((state) => state.session.user);
+  const [currChat, setCurrChat] = useState(currentChatId)
+  const [messages, setMessages] = useState([]);
+  const [chatInput, setChatInput] = useState("");
+  const [date, setDate] = useState(new Date());
+
+
+
+
   const messageRef = useRef(null)
 
   const scrollBottom = () => {
@@ -24,13 +34,6 @@ const DirectChat = ({ directChatId, recipientId }) => {
     currentChatId = currentChat[0]?.id
     scrollBottom()
   }
-
-  const users = useSelector(state => state.users)
-  const user = useSelector((state) => state.session.user);
-  const [currChat, setCurrChat] = useState(currentChatId)
-  const [messages, setMessages] = useState([]);
-  const [chatInput, setChatInput] = useState("");
-  const [date, setDate] = useState(new Date());
 
 
   useEffect(() => {
@@ -129,12 +132,12 @@ const DirectChat = ({ directChatId, recipientId }) => {
         <div className='channel-messages-outer'>
           <div className='noServer-main-middle-header'>
             <div>
-              <img className='noServer-middle-profile' src={users[recipientId]?.profile_pic} alt='profile' />
+              <img className='noServer-middle-profile' src={users[recipientId - 1]?.profile_pic} alt='profile' />
             </div>
             <div className='noServer-username-middle'>
-              {users[recipientId]?.username}
+              {users[recipientId - 1]?.username}
             </div>
-            <div className='noServer-caption-middle'>This is the beginning of your direct message history with @{users[recipientId]?.username}</div>
+            <div className='noServer-caption-middle'>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
           </div>
           <div className='channel-messages'>
             {user && msgState?.map((message, i) => (

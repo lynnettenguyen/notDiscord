@@ -17,11 +17,11 @@ export const getUsers = () => async (dispatch) => {
 }
 
 
-const singleServerReducer = (state = {}, action) => {
-    let newState = {}
+const userSortedReducer = (state = {}, action) => {
+    let newState = []
     switch (action.type) {
       case GET_ALL_USERS: {
-        for (let user of action.users) newState[user.id] = user
+        newState = [...action.users]
         return newState
       }
 
@@ -30,4 +30,4 @@ const singleServerReducer = (state = {}, action) => {
     }
   }
 
-  export default singleServerReducer;
+  export default userSortedReducer;
