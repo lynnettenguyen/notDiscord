@@ -118,7 +118,6 @@ const ChannelPage = ({ channelId }) => {
             {users && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {/* {(msgState[i - 1]?.created_at, message.created_at, i) && */}
                   {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>

@@ -49,6 +49,27 @@ export const getDirectMessages = (directChatId) => async (dispatch) => {
   }
 }
 
+
+export const addDirectMessage = (directMessageData) => async (dispatch) => {
+  const { sender_id, direct_chat_id, content } = directMessageData
+
+  const response = await fetch(`/api/direct/${direct_chat_id}/messages`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      sender_id,
+      direct_chat_id,
+      content
+    })
+  })
+
+  if (response.ok) {
+    const message = await response.json();
+    dispatch(createDirectMessage(message))
+    return message;
+  }
+}
+
 export const updateDirectMessage = (directMessageData) => async (dispatch) => {
   const { message_id, sender_id, direct_chat_id, content } = directMessageData
 
@@ -68,6 +89,7 @@ export const updateDirectMessage = (directMessageData) => async (dispatch) => {
     return message;
   }
 }
+
 
 
 export const removeDirectMessage = (direct_chat_id, message_id) => async (dispatch) => {

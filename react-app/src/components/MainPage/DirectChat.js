@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
 import { getDirectChats } from '../../store/directChat';
-import { getDirectMessages } from '../../store/directMessages';
+import { addDirectMessage, getDirectMessages } from '../../store/directMessages';
 
 import '../CSS/DirectChat.css';
 
@@ -21,6 +21,8 @@ const DirectChat = ({ directChatId, recipientId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
 
+  console.log("MESSSAGE STATE", msgState)
+
   let currentChat = useSelector(state => state.directMessages.directChat)
   let currentChatId;
   if (currentChat) {
@@ -38,8 +40,10 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
   useEffect(() => {
     socket = io();
-    socket.on('direct_chat', (chat) => {
-      setMessages((messages) => [...messages, chat]);
+    socket.on('direct_chat', async (chat) => {
+      // setMessages((messages) => [...messages, chat]);
+      await dispatch(getDirectMessages(directChatId))
+      console.log("TEST", test)
       scrollBottom()
     });
 
@@ -88,7 +92,18 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
   const sendChat = (e) => {
     e.preventDefault();
-    socket.emit('direct_chat', { user: user.username, sender_id: user.id, recipient_id: recipientId, direct_chat_id: `${directChatId}`, content: chatInput });
+    // socket.emit('direct_chat', { user: user.username, sender_id: user.id, recipient_id: recipientId, direct_chat_id: `${directChatId}`, content: chatInput });
+
+    const messageData = {
+      sender_id: user.id,
+      direct_chat_id: directChatId,
+      content: chatInput
+    }
+
+    console.log("MESSAGE DATA", messageData)
+
+    dispatch(addDirectMessage(messageData))
+
     setChatInput("");
   };
 
@@ -111,19 +126,19 @@ const DirectChat = ({ directChatId, recipientId }) => {
   }
 
 
-  // const checkPost = (date, prevDate, i) => {
-  //   const oldDate = new Date(date)
-  //   const newDate = new Date(prevDate)
-  //   const difference = newDate - oldDate
-  //   if (i === 0) {
-  //     return true
-  //   }
-  //   if (difference > 180000) {
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
+  const checkPost = (date, prevDate, i) => {
+    const oldDate = new Date(date)
+    const newDate = new Date(prevDate)
+    const difference = newDate - oldDate
+    if (i === 0) {
+      return true
+    } else return false
+    // if (difference > 180000) {
+    //   return true
+    // } else {
+    //   return false
+    // }
+  }
 
 
   return (
@@ -143,13 +158,13 @@ const DirectChat = ({ directChatId, recipientId }) => {
             {user && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {/* {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && message.created_at && */}
                   {(msgState[i - 1]?.created_at, message.created_at, i) && message.created_at &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
-                      <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
+                    <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
+                    <div>!!!!!!!!!!! {message.sender_id} !!!!!!!!!!!!!!</div>
                       <div className='chat-date'>{checkDay(message.created_at)}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>
@@ -157,7 +172,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                 </div>
               </>
             ))}
-            {messages?.map((message, i) => `${directChatId}` === message.direct_chat_id && (
+            {/* {messages?.map((message, i) => `${directChatId}` === message.direct_chat_id && (
               <>
                 <div className='channel-messages-inner' key={i}>
                   {messages[i - 1]?.sender_id !== message.sender_id &&
@@ -165,14 +180,14 @@ const DirectChat = ({ directChatId, recipientId }) => {
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
-                    <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
+                      <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
                       <div className='chat-date'>Today at {date}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-new-message" />
                 </div>
               </>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

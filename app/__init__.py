@@ -113,14 +113,14 @@ def handle_chat(data):
 @socketio.on('direct_chat')
 def handle_direct_chat(data):
 
-    direct_message = DirectMessage(
-        sender_id=data['sender_id'],
-        direct_chat_id = data['direct_chat_id'],
-        content=data['content']
-    )
+    # direct_message = DirectMessage(
+    #     sender_id=data['sender_id'],
+    #     direct_chat_id = data['direct_chat_id'],
+    #     content=data['content']
+    # )
 
-    db.session.add(direct_message)
-    db.session.commit()
+    # db.session.add(direct_message)
+    # db.session.commit()
     emit('direct_chat', data, broadcast=True)
 
 

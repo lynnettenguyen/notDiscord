@@ -74,7 +74,7 @@ def get_direct_messages(direct_chat_id):
 
 
 # create direct message
-@direct_chats.route('/<int:direct_chat_id>', methods=['POST'])
+@direct_chats.route('/<int:direct_chat_id>/messages', methods=['POST'])
 @login_required
 def create_direct_message(direct_chat_id):
   form = MessageForm()
