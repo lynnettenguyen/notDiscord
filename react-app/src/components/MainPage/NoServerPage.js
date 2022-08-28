@@ -20,7 +20,7 @@ import friendsGrey from '../CSS/images/friends-grey.svg'
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session)
-    const users = useSelector(state => Object.values(state.users))
+    const users = useSelector(state => state.users.userArr)
     const directChats = useSelector(state => Object.values(state.directChat))
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
