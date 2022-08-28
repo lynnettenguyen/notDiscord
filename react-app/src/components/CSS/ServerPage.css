@@ -65,6 +65,10 @@
     height: 100%;
 }
 
+.channels-main {
+    overflow: hidden auto;
+}
+
 .channels-header {
     width: 240px;
 }
@@ -118,7 +122,7 @@
 }
 
 .serverPage-server-channels-outer {
-    padding-top:5px ;
+    padding-top: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     height: 82.5%;
@@ -127,7 +131,7 @@
 
 .serverPage-server-channels-outer::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .server-channels {
     display: flex;
