@@ -11,11 +11,13 @@ import serverDefault from '../CSS/images/server_default.png'
 import '../CSS/ServerNav.css'
 
 
-const ServerNav = ({setDirectChatId, setShowFriends }) => {
+const ServerNav = ({ setDirectChatId, setShowFriends }) => {
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
+  const server = useSelector(state => state.server)
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
+
 
   useEffect(() => {
     dispatch(listAllServers())
@@ -23,7 +25,6 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
   }, [dispatch, isLoaded]);
 
   const handleServerClick = async (serverId) => {
-
     if (serverId === 0) {
       dispatch(resetServer())
     } else {
@@ -31,41 +32,42 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
       await dispatch(getOneServer(serverId))
       await dispatch(getChannels(serverId))
       await dispatch(getUsers())
-      .then(() => setIsLoaded(true))
+        .then(() => setIsLoaded(true))
     }
   };
+
 
   return (
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null); setShowFriends(false)}} />
-        <div className='line-break'>------</div>
+          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null); setShowFriends(false) }} />
+          <div className='line-break'>------</div>
         </div>
         <div className='serverNav-all-servers-outer'>
-        {servers?.map((server, i) => {
-          return (
-            <div key={i} >
-              <div className='server-img-outer'>
-                {
-                server.server_pic ?
-                  <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div> :
-                  <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div>
+          {servers?.map((server, i) => {
+            return (
+              <div key={i} >
+                <div className='server-img-outer'>
+                  {
+                    server.server_pic ?
+                      <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div> :
+                      <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div>
                   }
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
         </div>
 
         <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
         </div>
-          {showModalCreate && (
-            <Modal onClose={() => setShowModalCreate(false)}>
-              <ServerForm setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
-            </Modal>
-          )}
+        {showModalCreate && (
+          <Modal onClose={() => setShowModalCreate(false)}>
+            <ServerForm setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
+          </Modal>
+        )}
       </div>
     </>
   )

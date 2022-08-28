@@ -20,14 +20,25 @@ const MainPage = () => {
 
     let generalChannelId;
 
-    if (channels) generalChannelId = Object.keys(channels)[0]
+
+    const [channelOn, setChannelOn] = useState(generalChannelId)
+
 
     useEffect(() => {
         dispatch(getUsers())
         dispatch(getDirectChats())
         dispatch(getOneServer(id))
+
+        if (channels) {
+            generalChannelId = Object.keys(channels)[0]
+            setChannelOn(generalChannelId)
+        }
+
     }, [dispatch])
 
+    console.log(channelOn)
+    console.log(generalChannelId)
+    
     return (
         <div id='main-application'>
             <div className='main-server-container'>
