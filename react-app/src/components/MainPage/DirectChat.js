@@ -10,7 +10,7 @@ let socket;
 const DirectChat = ({ directChatId, recipientId }) => {
   const messageRef = useRef(null)
 
-   const scrollBottom = () => {
+  const scrollBottom = () => {
     if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
   }
   const dispatch = useDispatch();
@@ -141,10 +141,14 @@ const DirectChat = ({ directChatId, recipientId }) => {
             {user && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
-                    <div className='chat-username'>{user[message.sender_id]?.username}</div>
-                    <div className='chat-date'>{message.created_at ? checkDay(message.created_at) : ""}</div>
-                  </div>)}
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
+                    (<div className='chat-header'>
+                      <div className='chat-profile-outer'>
+                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                      </div>
+                      <div className='chat-username'>{user.username}</div>
+                      <div className='chat-date'>{message.created_at ? checkDay(message.created_at) : ""}</div>
+                    </div>)}
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-bottom-message" />
                 </div>
@@ -153,10 +157,14 @@ const DirectChat = ({ directChatId, recipientId }) => {
             {messages?.map((message, i) => `${directChatId}` === message.direct_chat_id && (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {messages[i - 1]?.sender_id !== message.sender_id && (<div className='chat-header'>
-                    <div className='chat-username'>{message.user}</div>
-                    <div className='chat-date'>Today at {date}</div>
-                  </div>)}
+                  {messages[i - 1]?.sender_id !== message.sender_id &&
+                    (<div className='chat-header'>
+                      <div className='chat-profile-outer'>
+                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                      </div>
+                      <div className='chat-username'>{user.username}</div>
+                      <div className='chat-date'>Today at {date}</div>
+                    </div>)}
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-new-message" />
                 </div>

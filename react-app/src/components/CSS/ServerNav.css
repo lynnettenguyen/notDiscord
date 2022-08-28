@@ -32,7 +32,7 @@
 .serverNav-all-servers-outer{
   margin-top: 8px;
   overflow: hidden auto;
-  height: 350px;
+  height: auto;
 }
 
 .serverNav-all-servers-outer::-webkit-scrollbar {
