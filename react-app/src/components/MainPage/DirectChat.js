@@ -25,7 +25,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
     scrollBottom()
   }
 
-  const users = useSelector(state => Object.values(state.users))
+  const users = useSelector(state => state.users)
   const user = useSelector((state) => state.session.user);
   const [currChat, setCurrChat] = useState(currentChatId)
   const [messages, setMessages] = useState([]);
@@ -145,7 +145,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
-                      <div className='chat-username'>{user.username}</div>
+                      <div className='chat-username'>{users[message.sender_id].username}</div>
                       <div className='chat-date'>{checkDay(message.created_at)}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>
