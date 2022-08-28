@@ -15,39 +15,46 @@ const MainPage = () => {
 
     const id = Object.keys(server)[0]
 
+    const [generalChannelId, setGeneralChannelId] = useState(channels ? Object.keys(channels)[0] : "")
+
     const [directChatId, setDirectChatId] = useState()
     const [showFriends, setShowFriends] = useState(false)
-
-    let generalChannelId;
-
-
-    const [channelOn, setChannelOn] = useState(generalChannelId)
+    const [channelName, setChannelName] = useState(channels ? channels[generalChannelId]?.name : "general")
+    const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "")
 
 
     useEffect(() => {
         dispatch(getUsers())
         dispatch(getDirectChats())
         dispatch(getOneServer(id))
-        if (channels) {
-            generalChannelId = Object.keys(channels)[0]
-            setChannelOn(generalChannelId)
-        }
+
     }, [dispatch])
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getDirectChats())
     })
 
+    useEffect(() => {
+
+        if (channels) {
+            setGeneralChannelId(Object.keys(channels)[0])
+            setChannelName(channels[generalChannelId]?.name)
+            setChannelTopic(channels[generalChannelId]?.topic)
+        }
+
+    }, [server])
+
+    console.log(generalChannelId)
 
     return (
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} />
+                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                 </div>
                 <div className='main-middle-container'>
                     {channels ? (
-                        <ServerPage id={id} generalChannelId={generalChannelId} />
+                        <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
                     )}

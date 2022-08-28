@@ -12,7 +12,7 @@ import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
 
-const ServerPage = ({ id, generalChannelId }) => {
+const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, setChannelName, channelTopic, setChannelTopic }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => state.userSorted)
     const channels = useSelector(state => Object.values(state.server.channels))
@@ -25,9 +25,6 @@ const ServerPage = ({ id, generalChannelId }) => {
     const [showSection, setShowSection] = useState()
     const [showChannels, setShowChannels] = useState(true)
     const [editActive, setEditActive] = useState(false)
-    const [channelName, setChannelName] = useState()
-    const [channelTopic, setChannelTopic] = useState()
-
 
 
     useEffect(() => {
@@ -47,7 +44,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
-                    {channelId && <div className='noServer-nav'>
+                    {channelName && <div className='noServer-nav'>
                         <img src={hashtag} alt='hashtag' className='noServer-icon-at' />
                         <div>{channelName}</div>
                         <div className='serverPage-channel-name-topic'>{channelTopic}</div>
@@ -77,7 +74,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                             <div className='channels-main'>
                                 {channels?.map((channel, i) => {
                                     return (
-                                        <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic) }}>
+                                        <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id); setGeneralChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic) }}>
                                             <div className='channel-section-header' onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
                                                 <div className='channel-section-left'>
                                                     <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
@@ -93,7 +90,7 @@ const ServerPage = ({ id, generalChannelId }) => {
                                     )
                                 })}
                             </div> : <>
-                                {channels?.length > 0 && (<div className='channels-main'>
+                                {generalChannelId && (<div className='channels-main'>
                                     <div className='server-channels' onClick={() => { setChannelId(channelsObj[channelId]?.id) }}>
                                         <div className='channel-section-header' onMouseOver={() => { setShowSection(channelsObj[channelId]?.id) }} onMouseLeave={() => setShowSection(0)}>
                                             <div className='channel-section-left'>
