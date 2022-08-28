@@ -21,6 +21,7 @@ const singleServerReducer = (state = {}, action) => {
     let newState = {}
     switch (action.type) {
       case GET_ALL_USERS: {
+        newState['userArr'] = action.users
         for (let user of action.users) newState[user.id] = user
         return newState
       }
