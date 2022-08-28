@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DirectChat from './DirectChat'
+import UserProfile from './UserProfile';
 import { createDirectChat, removeDirectChat } from '../../store/directChat';
+import { findDirectChat } from '../../store/directMessages';
 import wumpus from '../CSS/images/wumpus.svg'
 import messageBubbleGrey from '../CSS/images/message-bubble-grey.svg'
 import messageBubbleWhite from '../CSS/images/message-bubble-white.svg'
@@ -11,7 +13,6 @@ import at from '../CSS/images/@-symbol.svg'
 
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
-import { findDirectChat } from '../../store/directMessages';
 
 import friendsWhite from '../CSS/images/friends-white.svg'
 import friendsGrey from '../CSS/images/friends-grey.svg'
@@ -118,6 +119,9 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                     </div>
                                 )
                         })}
+                    </div>
+                    <div className='noServer-user-profile-container'>
+                        <UserProfile />
                     </div>
                 </div>
                 {directChatId ? (
