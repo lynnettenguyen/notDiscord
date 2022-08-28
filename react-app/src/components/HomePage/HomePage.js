@@ -117,9 +117,9 @@ const HomePage = () => {
                     <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='https://github.com/samanthaweglinski'>GitHub</a></div>
                 </div>
                 <div className='HomePage-bottom-name'>
-                    YOUR NAME HERE
-                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='YOUR URL HERE'>LinkedIn</a></div>
-                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='YOUR URL HERE'>GitHub</a></div>
+                    Lynnette Nguyen
+                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/lynnettenguyen/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/lynnettenguyen'>GitHub</a></div>
                 </div>
                 <div className='HomePage-bottom-name'>
                     YOUR NAME HERE
