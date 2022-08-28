@@ -12,6 +12,7 @@ const MainPage = () => {
     const dispatch = useDispatch()
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
+    const user = useSelector(state=> state.session.user)
 
     const id = Object.keys(server)[0]
 
@@ -35,16 +36,15 @@ const MainPage = () => {
     })
 
     useEffect(() => {
-
         if (channels) {
             setGeneralChannelId(Object.keys(channels)[0])
             setChannelName(channels[generalChannelId]?.name)
             setChannelTopic(channels[generalChannelId]?.topic)
         }
+        console.log('CHANNELS', channels)
 
     }, [server])
 
-    console.log(generalChannelId)
 
     return (
         <div id='main-application'>
@@ -53,7 +53,7 @@ const MainPage = () => {
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                 </div>
                 <div className='main-middle-container'>
-                    {channels ? (
+                    {user & channels ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
