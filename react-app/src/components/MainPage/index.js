@@ -41,8 +41,6 @@ const MainPage = () => {
             setChannelName(channels[generalChannelId]?.name)
             setChannelTopic(channels[generalChannelId]?.topic)
         }
-        console.log('CHANNELS', channels)
-
     }, [server])
 
 
@@ -53,7 +51,7 @@ const MainPage = () => {
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                 </div>
                 <div className='main-middle-container'>
-                    {user & channels ? (
+                    {channels ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
