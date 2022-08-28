@@ -61,7 +61,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
         <Modal onClose={() => setShowModal(false)}>
           <div className='edit-server-modal-container'>
             <form onSubmit={handleSubmit} className="block">
-              <section>
+              {/* <section> */}
                 <div>
                   <div className='edit-server-modal-server-name'>
                     <label className='edit-server-modal-main-label'>EDIT SERVER</label>
@@ -89,10 +89,10 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
                   </div>
                 </div>
                 <div className='edit-server-buttons-container'>
-                  <button onClick={() => setShowModal(false)} className='edit-server-modal-cancel-button'>Cancel</button>
+                  <button onClick={() => {setShowModal(false); setShowDropdown(false)}} className='edit-server-modal-cancel-button'>Cancel</button>
                   <button type="submit" className='edit-server-modal-submit-button'>Update Server</button>
                 </div>
-              </section>
+              {/* </section> */}
             </form>
           </div>
         </Modal>

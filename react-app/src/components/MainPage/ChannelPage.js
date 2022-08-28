@@ -65,7 +65,6 @@ const ChannelPage = ({ channelId }) => {
 
     }
     func()
-
     scrollBottom()
   }, [channelId])
 
