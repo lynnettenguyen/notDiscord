@@ -141,13 +141,13 @@ const DirectChat = ({ directChatId, recipientId }) => {
             {user && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && message.created_at &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
                       <div className='chat-username'>{user.username}</div>
-                      <div className='chat-date'>{message.created_at ? checkDay(message.created_at) : ""}</div>
+                      <div className='chat-date'>{checkDay(message.created_at)}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-bottom-message" />
