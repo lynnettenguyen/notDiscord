@@ -15,7 +15,7 @@ import '../CSS/EditServerForm.css'
 
 const ServerPage = ({ id, generalChannelId }) => {
     const server = useSelector(state => state.server[id])
-    const users = useSelector(state => Object.values(state.users))
+    const users = useSelector(state => state.users.userArr)
     const channels = useSelector(state => Object.values(state.server.channels))
     const channelsObj = useSelector(state => state.server.channels)
     const [isLoaded, setIsLoaded] = useState(false)
