@@ -17,14 +17,12 @@ const UserProfile = () => {
   return (
     <div className="current-user-profile">
       <div className="user-pfp-outer">
-        <img src={user?.profile_pic} alt='user-pfp-inner' className='current-user-profile-pic'></img>
+        <div className="profile-pic-container"><img src={user?.profile_pic} alt='user-pfp-inner' className='current-user-profile-pic'/></div>
         <div className="username-outer">
           {user?.username}
         </div>
       </div>
-      <div className="logout-button-outer">
         <div className="logout-icon fa-solid fa-right-from-bracket" onClick={onLogout} />
-      </div>
     </div>
   )
 };

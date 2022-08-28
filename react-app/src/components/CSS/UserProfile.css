@@ -3,8 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 236px;
-  /* position: absolute; */
+  width: 100%;
 }
 
 .user-pfp-outer {
@@ -12,12 +11,16 @@
   align-items: center;
 }
 
-.current-user-profile-pic {
+.profile-pic-container {
   height: 38px;
   width: 38px;
-  border-radius: 50%;
-  display: flex;
   padding-left: 15px;
+}
+
+.current-user-profile-pic {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 }
 
 .username-outer {
@@ -27,10 +30,7 @@
 
 .logout-icon {
   font-size: 15px;
-}
-
-.logout-button-outer {
-  display: flex;
+  margin-right: 15px;
 }
 
 .logout-icon:hover {
