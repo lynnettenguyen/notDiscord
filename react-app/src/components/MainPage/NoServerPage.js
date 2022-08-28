@@ -38,7 +38,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     })
 
     const displayDirectChat = (chatId, userId) => {
-        dispatch(findDirectChat(chatId))
+        if (directChatId !== chatId) dispatch(findDirectChat(chatId))
         setDirectChatId(chatId)
         setRecipientId(userId)
         setUserChat(users[userId - 1]?.username)
@@ -77,7 +77,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     return (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name'>
+                <div className='noServerPage-name'>
                 </div>
                 <div className='ServerPage-channel-name'>
                     {!directChatId && !showFriends && <div className='noServer-nav'>!Discord</div>}

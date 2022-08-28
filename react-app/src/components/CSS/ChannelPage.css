@@ -22,28 +22,43 @@
   }
 
   .channel-messages {
-    display: flexbox;
-    flex-direction: column;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     color: white;
-    height: 100%;
-    justify-content: flex-end;
-    vertical-align: baseline;
-    margin-top: auto;
+    margin-left: 10px;
   }
 
   .channel-messages-outer {
-    overflow-y: scroll;
+    overflow-y: auto;
+  }
+
+  .chat-message {
+    margin-left: 45px;
   }
 
   .chat-header {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .chat-profile-outer {
+    position: relative;
+  }
+
+  .channel-chat-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: absolute;
+    left: -8px;
   }
 
   .chat-username {
     color: white;
     font-family: WhitneyBold, Arial, Helvetica, sans-serif;
+    margin-left: 45px;
+    padding: 5px 0;
   }
 
   .chat-date {
@@ -52,7 +67,7 @@
     color: #A3A6AA;
     font-size: 12px;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
-    padding-left: 10px;
+    padding: 8px 10px;
   }
 
   .chat-input {

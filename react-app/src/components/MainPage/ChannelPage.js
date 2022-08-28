@@ -35,35 +35,39 @@ const ChannelPage = ({ channelId }) => {
     });
   }, []);
 
+
   useEffect(() => {
     if (channelId) {
       setCurrChannel(channelId)
+      scrollBottom()
     }
 
     setChatInput('')
   }, [channelId])
+
 
   useEffect(() => {
     const newDate = new Date()
     const time = newDate.toLocaleString([], { timeStyle: 'short' });
     setDate(time)
 
+    scrollBottom()
   }, [messages]);
 
   useEffect(() => {
     const func = async () => {
-        setMessages([])
-        if (!channelId) {
-          await dispatch(getChannelMessages(channels[0].id))
-        } else {
-          await dispatch(getChannelMessages(channelId))
-        }
+      setMessages([])
+      if (!channelId) {
+        await dispatch(getChannelMessages(channels[0].id))
+      } else {
+        await dispatch(getChannelMessages(channelId))
+      }
 
     }
     func()
 
     scrollBottom()
-  }, [channelId, messages])
+  }, [channelId])
 
 
   const updateChatInput = (e) => {
@@ -115,10 +119,14 @@ const ChannelPage = ({ channelId }) => {
             {users && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
-                    <div className='chat-username'>{users[message.user_id]?.username}</div>
-                    <div className='chat-date'>{checkDay(message.created_at)}</div>
-                  </div>)}
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
+                    (<div className='chat-header'>
+                      <div className='chat-profile-outer'>
+                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                      </div>
+                      <div className='chat-username'>{users[message.user_id]?.username}</div>
+                      <div className='chat-date'>{checkDay(message.created_at)}</div>
+                    </div>)}
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-bottom-message" />
                 </div>
@@ -127,11 +135,15 @@ const ChannelPage = ({ channelId }) => {
             {messages?.map((message, i) => `${channelId}` === message.channel_id && (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {messages[i - 1]?.user_id !== message.user_id && (<div className='chat-header'>
-                    <div className='chat-username'>{message.user}</div>
-                    <div className='chat-date'>Today at {date}</div>
-                  </div>)}
-                  <div className='chat-message'>{message.content}</div>
+                  {messages[i - 1]?.user_id !== message.user_id &&
+                    (<div className='chat-header'>
+                      <div className='chat-profile-outer'>
+                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                      </div>
+                      <div className='chat-username'>{message.user}</div>
+                      <div className='chat-date'>Today at {date}</div>
+                    </div>)}
+                  <div className={`chat-message c${i}`}>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-new-message" />
                 </div>
               </>

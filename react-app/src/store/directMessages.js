@@ -93,9 +93,8 @@ const directMessagesReducer = (state = {}, action) => {
       return newState;
     }
     case LOAD_DIRECT_MESSAGES: {
-      action.directMessages.forEach((message, i) => {
-        newState[i] = message
-      })
+      newState = { ...state }
+      action.directMessages.map(message => newState[message.id] = message)
       return newState
     }
     case CREATE_DIRECT_MESSAGE: {

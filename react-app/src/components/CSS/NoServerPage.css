@@ -11,6 +11,16 @@
   height: 100%;
 }
 
+.noServerPage-name {
+  display: flex;
+  justify-content: space-between;
+  width: 271px;
+  background-color: #2F3136;
+  font-family: GintoNormal, Arial, Helvetica, sans-serif;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
 .wumpus-image {
   height: 13em;
 }
@@ -29,7 +39,7 @@
 }
 
 .noServer-left-scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .noServer-left-scroll::-webkit-scrollbar-track {
@@ -99,8 +109,8 @@
 }
 
 .dc-left-profile {
-  height: 38px;
-  width: 38px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
 }
 
@@ -177,7 +187,7 @@
 }
 
 .main-friends-list {
-  overflow: hidden scroll;
+  overflow: hidden auto;
   height: 100%;
   width: 92%;
 }
