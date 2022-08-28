@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
+import { getDirectChats } from '../../store/directChat';
 import { getDirectMessages } from '../../store/directMessages';
 
 import '../CSS/DirectChat.css';
@@ -40,10 +41,8 @@ const DirectChat = ({ directChatId, recipientId }) => {
     });
 
     return (() => {
-      setMessages([])
       socket.disconnect();
     });
-
   }, []);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
     }
 
     setChatInput("")
-  }, [directChatId])
+  }, [directChatId, messages])
 
 
   useEffect(() => {
@@ -146,7 +145,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                       <div className='chat-profile-outer'>
                         <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
-                      <div className='chat-username'>{message.user}</div>
+                      <div className='chat-username'>{user.username}</div>
                       <div className='chat-date'>{checkDay(message.created_at)}</div>
                     </div>)}
                   <div className='chat-message'>{message.content}</div>

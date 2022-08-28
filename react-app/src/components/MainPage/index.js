@@ -28,17 +28,17 @@ const MainPage = () => {
         dispatch(getUsers())
         dispatch(getDirectChats())
         dispatch(getOneServer(id))
-
         if (channels) {
             generalChannelId = Object.keys(channels)[0]
             setChannelOn(generalChannelId)
         }
-
     }, [dispatch])
 
-    console.log(channelOn)
-    console.log(generalChannelId)
-    
+    useEffect(()=>{
+        dispatch(getDirectChats())
+    })
+
+
     return (
         <div id='main-application'>
             <div className='main-server-container'>

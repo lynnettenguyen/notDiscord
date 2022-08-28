@@ -93,7 +93,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                             <div className='noServer-friends-left' onClick={() => { setShowFriends(true); setDirectChatId(null) }} onMouseOver={() => setFriendIconHeader(friendsWhite)} onMouseLeave={() => setFriendIconHeader(friendsGrey)}><img src={friendIconHeader} alt='friends' className='noServer-icon-nav' />Friends</div>
                             <div className='dm-header'>DIRECT MESSAGES</div>
                         </div>
-                        {directChats?.map((directChat, i) => {
+                        {directChats?.reverse().map((directChat, i) => {
                             if (currentUser.user.id === directChat.recipient_id) {
                                 return (
                                     <div key={i} className='direct-chat-recipient' onClick={() => { displayDirectChat(directChat.id, directChat.sender_id) }}>
