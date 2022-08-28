@@ -48,14 +48,15 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
 
     const uniqueUsersInChat = new Set(allUsersInChat)
 
-    const newDirectChat = (recipientId) => {
+    const newDirectChat = async (recipientId) => {
 
         const chatData = {
             sender_id: currentUser.user.id,
             recipient_id: recipientId
         }
 
-        dispatch(createDirectChat(chatData))
+        const response = await dispatch(createDirectChat(chatData))
+        if (response) setDirectChatId(response.id - 1)
     }
 
     const openDirectChat = (recipientId) => {
@@ -119,9 +120,9 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                                     </div>
                                 )
                         })}
-                    <div className='user-profile-container'>
-                        <UserProfile />
-                    </div>
+                        <div className='user-profile-container'>
+                            <UserProfile />
+                        </div>
                     </div>
                 </div>
                 {directChatId ? (
