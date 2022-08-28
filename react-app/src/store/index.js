@@ -4,6 +4,7 @@ import session from './session';
 import servers from './servers';
 import server from './server';
 import users from './users';
+import userSorted from './userSorted'
 import channelMessages from './channelMessages'
 import directChat from './directChat'
 import directMessages from './directMessages'
@@ -11,6 +12,7 @@ import directMessages from './directMessages'
 const rootReducer = combineReducers({
   session,
   users,
+  userSorted,
   servers,
   server,
   channelMessages,

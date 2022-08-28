@@ -20,7 +20,8 @@ import friendsGrey from '../CSS/images/friends-grey.svg'
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session)
-    const users = useSelector(state => state.users.userArr)
+    const users = useSelector(state => Object.values(state.users))
+    const userSorted = useSelector(state => state.userSorted)
     const directChats = useSelector(state => Object.values(state.directChat))
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
@@ -30,7 +31,6 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const [messageBubble, setMessageBubble] = useState(messageBubbleGrey)
     const [friendIconHeader, setFriendIconHeader] = useState(friendsGrey)
     const [deleteOption, setDeleteOption] = useState(0)
-
 
     const allUsersInChat = []
     directChats.forEach(chat => {
@@ -131,7 +131,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 ) : showFriends ? (
                     <div className='ServerPage-middle-container'>
                         <div className='main-friends-list'>
-                            {users?.map((user, i) => {
+                            {userSorted?.map((user, i) => {
                                 if (!uniqueUsersInChat.has(user.id)) {
                                     return (
                                         <div className='friends-users-outer'>
