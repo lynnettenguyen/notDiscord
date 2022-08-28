@@ -57,7 +57,7 @@ const ServerNav = ({setDirectChatId, setShowFriends }) => {
           )
         })}
         </div>
-        
+
         <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
         </div>
