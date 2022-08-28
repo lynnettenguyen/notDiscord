@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChannel, removeChannel, editChannel } from '../../store/server';
+import { addChannel, removeChannel, editChannel } from '../../store/servers';
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 // import deleteBin from '../CSS/images/delete-server-bin.svg'
 
-const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
-  const channels = useSelector(state => state.server.channels)
+const ChannelForm = ({ serverId, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
+  const channels = useSelector(state => state.servers.channels)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
@@ -17,7 +17,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     e.preventDefault()
 
     const channelData = {
-      server_id: id,
+      server_id: serverId,
       name,
       topic
     }
@@ -36,7 +36,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
 
     const channelData = {
       id: channelId,
-      server_id: id,
+      server_id: serverId,
       name: nameEdit,
       topic: topicEdit
     }
@@ -52,7 +52,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
   }
 
   const handleChannelDelete = (id, channelId) => {
-    dispatch(removeChannel(id, channelId))
+    dispatch(removeChannel(serverId, channelId))
     setShowEditChannel(false)
     setShowModal(false)
   }
@@ -97,7 +97,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                       <div className='bottom-channel-section'>
                         <button type='submit' className='channel-update-button'>Update</button>
                         <div className='delete-channel-outer'>
-                          <button className='channel-delete-button' onClick={() => handleChannelDelete(id, channelId)}><span className='delete-name'>Delete</span>
+                          <button className='channel-delete-button' onClick={() => handleChannelDelete(serverId, channelId)}><span className='delete-name'>Delete</span>
                             {/* <img src={deleteBin} className='delete-channel-bin' alt='delete' /> */}
                           </button>
                         </div>

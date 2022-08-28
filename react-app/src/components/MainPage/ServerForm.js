@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addServer } from '../../store/servers';
-import { getChannels, getOneServer, } from '../../store/server';
+import { addServer, listAllServers } from '../../store/servers';
+import { getChannels } from '../../store/servers';
 import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
 
-const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
+const ServerForm = ({ setServerId, setShowModalCreate, showModalCreate }) => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -24,18 +24,24 @@ const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
     }
 
     const response = await dispatch(addServer(serverData))
-    await dispatch(getOneServer(response.id))
+    // await dispatch(getOneServer(response.id))
     await dispatch(getUsers())
+    await dispatch(listAllServers())
     await dispatch(getChannels(response.id))
+    setServerId(response.id)
 
     setShowModalCreate(false)
   }
+
+  // useEffect(() => {
+  //    dispatch(listAllServers())
+  // }, [])
 
   return (
     <>
 
       <div className='server-form-outer'>
-        <button className='close-modal' onClick={()=>setShowModalCreate(false)}><i className="fa-thin fa-x"/></button>
+        <button className='close-modal' onClick={() => setShowModalCreate(false)}><i className="fa-thin fa-x" /></button>
         <form onSubmit={handleSubmit} className={page < 1 ? "flex" : "hidden"}>
           {page === 0 &&
             <section className={page === 1 ? "flex" : "hidden"}>

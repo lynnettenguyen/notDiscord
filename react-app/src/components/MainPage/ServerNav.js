@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { allServers, listAllServers } from '../../store/servers';
-import { getChannels, getOneServer, resetServer } from '../../store/server';
+import { listAllServers } from '../../store/servers';
+import { getChannels, resetServer } from '../../store/servers';
 import { getUsers } from '../../store/users';
 import { Modal } from '../context/Modal';
 import ServerForm from './ServerForm'
@@ -10,10 +10,10 @@ import serverDefault from '../CSS/images/server_default.png'
 
 import '../CSS/ServerNav.css'
 
-const ServerNav = ({ setDirectChatId, setShowFriends}) => {
+const ServerNav = ({setServerId, setDirectChatId, setShowFriends}) => {
   const dispatch = useDispatch();
-  const servers = useSelector(allServers);
-  const server = useSelector(state => state.server)
+  const servers = useSelector(state => Object.values(state.servers));
+  // const server = useSelector(state => state.server)
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
 
@@ -27,12 +27,19 @@ const ServerNav = ({ setDirectChatId, setShowFriends}) => {
       dispatch(resetServer())
     } else {
       setIsLoaded(false)
-      await dispatch(getOneServer(serverId))
+      // await dispatch(getOneServer(serverId))
+      setServerId(serverId)
+      console.log(serverId)
+      await dispatch(listAllServers())
       await dispatch(getChannels(serverId))
       await dispatch(getUsers())
         .then(() => setIsLoaded(true))
     }
   };
+
+  console.log("servers", servers)
+
+
 
   return (
     <>
@@ -42,7 +49,7 @@ const ServerNav = ({ setDirectChatId, setShowFriends}) => {
           <div className='line-break'>------</div>
         </div>
         <div className='serverNav-all-servers-outer'>
-          {servers?.map((server, i) => {
+          {servers?.slice(0, -1).map((server, i) => {
             return (
               <div key={i} >
                 <div className='server-img-outer'>
@@ -62,7 +69,7 @@ const ServerNav = ({ setDirectChatId, setShowFriends}) => {
         </div>
         {showModalCreate && (
           <Modal onClose={() => setShowModalCreate(false)}>
-            <ServerForm setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
+            <ServerForm setServerId={setServerId} setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
           </Modal>
         )}
       </div>

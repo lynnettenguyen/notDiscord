@@ -4,17 +4,18 @@ import '../CSS/MainPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
-import { getOneServer } from '../../store/server';
+// import { getOneServer } from '../../store/servers';
 import { getDirectChats } from '../../store/directChat';
 import { getUsers } from '../../store/users';
 
 const MainPage = () => {
     const dispatch = useDispatch()
-    const server = useSelector(state => state.server)
+    // const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
     const user = useSelector(state=> state.session.user)
 
-    const id = Object.keys(server)[0]
+    // const id = Object.keys(server)[0]
+    const [serverId, setServerId] = useState()
 
     const [generalChannelId, setGeneralChannelId] = useState(channels ? Object.keys(channels)[0] : "")
 
@@ -24,10 +25,12 @@ const MainPage = () => {
     const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "")
 
 
+
+
     useEffect(() => {
         dispatch(getUsers())
         dispatch(getDirectChats())
-        dispatch(getOneServer(id))
+        // dispatch(getOneServer(id))
 
     }, [dispatch])
 
@@ -41,18 +44,18 @@ const MainPage = () => {
             setChannelName(channels[generalChannelId]?.name)
             setChannelTopic(channels[generalChannelId]?.topic)
         }
-    }, [server])
+    }, [])
 
 
     return (
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
+                    <ServerNav setServerId={setServerId} setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                 </div>
                 <div className='main-middle-container'>
                     {channels ? (
-                        <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
+                        <ServerPage serverId={serverId} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
                     )}

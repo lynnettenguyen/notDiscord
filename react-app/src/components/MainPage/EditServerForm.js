@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteServer, updateServer } from '../../store/servers';
+import { deleteServer, listAllServers, updateServer } from '../../store/servers';
 import { Modal } from '../context/Modal';
-import { getChannels, getOneServer, resetServer } from '../../store/server';
+import { getChannels, resetServer } from '../../store/servers';
 import greyPencil from '../CSS/images/edit-server-pencil.svg'
 import whitePencil from '../CSS/images/edit-server-pencil-white.svg'
 import redBin from '../CSS/images/delete-server-bin.svg'
 import whiteBin from '../CSS/images/delete-server-bin-white.svg'
 import "../CSS/EditServerForm.css"
 
-const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
+const EditServerForm = ({ setShowDropdown, serverId, setIsLoaded }) => {
   const dispatch = useDispatch()
-  const server = useSelector(state => state.server[id])
-  const serverPic = useSelector(state => state.server[id].server_pic)
+  const server = useSelector(state => state.servers[serverId])
+  const serverPic = useSelector(state => state.servers[serverId].server_pic)
   const [showModal, setShowModal] = useState(false)
   const [name, setName] = useState(`${server.name}`)
   const [server_pic, setServerPic] = useState(serverPic)
@@ -20,7 +20,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
   const [bin, setBin] = useState(redBin)
 
   const handleDelete = async () => {
-    const response = await dispatch(deleteServer(id))
+    const response = await dispatch(deleteServer(serverId))
 
     setShowDropdown(false)
     setIsLoaded(false)
@@ -34,7 +34,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
     e.preventDefault()
 
     const serverData = {
-      id,
+      id: serverId,
       name,
       server_pic
     }
@@ -42,8 +42,9 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
     const response = await dispatch(updateServer(serverData))
 
     if (response) {
-      await dispatch(getOneServer(id))
-      await dispatch(getChannels(id))
+      // await dispatch(getOneServer(serverId))
+      await dispatch(listAllServers(serverId))
+      await dispatch(getChannels(serverId))
       setShowModal(false)
       setShowDropdown(false)
     }

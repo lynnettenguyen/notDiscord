@@ -6,11 +6,11 @@ import '../CSS/ChannelPage.css';
 
 let socket;
 
-const ChannelPage = ({ channelId }) => {
+const ChannelPage = ({ serverId, channelId }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.channelMessages));
-  const channels = useSelector(state => Object.values(state.server.channels));
-  const channel = useSelector(state => state.server.channels)
+  const channels = useSelector(state => Object.values(state.servers.channels));
+  const channel = useSelector(state => state.servers.channels)
   const users = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
   const [currChannel, setCurrChannel] = useState(channels[0].id)

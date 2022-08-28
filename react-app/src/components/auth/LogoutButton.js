@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { resetServer } from '../../store/server';
+import { resetServer } from '../../store/servers';
 import { logout } from '../../store/session';
 import '../CSS/HomePage.css'
 

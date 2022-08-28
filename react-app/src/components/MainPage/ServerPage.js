@@ -12,11 +12,16 @@ import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
 
-const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, setChannelName, channelTopic, setChannelTopic }) => {
-    const server = useSelector(state => state.server[id])
+const ServerPage = ({ serverId, generalChannelId, setGeneralChannelId, channelName, setChannelName, channelTopic, setChannelTopic }) => {
+    const server = useSelector(state => state.servers[serverId])
+
     const users = useSelector(state => state.userSorted)
-    const channelsObj = useSelector(state => state.server.channels)
-    const channels = useSelector(state => Object.values(state.server.channels))
+    const channelsObj = useSelector(state => state.servers.channels)
+
+    let channels;
+    if (channelsObj) {
+        channels = Object.values(channelsObj)
+    }
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
     const [channelId, setChannelId] = useState()
@@ -26,6 +31,9 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
     const [showChannels, setShowChannels] = useState(true)
     const [editActive, setEditActive] = useState(false)
 
+    console.log('serverId', serverId)
+    console.log("SERVER", server)
+    console.log('CHANNELS OBJ', channelsObj)
 
     useEffect(() => {
         if (channels) {
@@ -51,7 +59,7 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                     </div>}
                 </div>
                 <div className='ServerPage-NavBar-buttons'></div>
-                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} serverId={serverId} setIsLoaded={setIsLoaded} />)}
             </div>
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
@@ -64,7 +72,7 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                             <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
+                                    <ChannelForm serverId={serverId} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
                                 </Modal>
                             )}
                         </div>
@@ -114,7 +122,7 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                 </div>
                 {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
+                        <ChannelPage serverId={serverId} generalChannelId={generalChannelId} channelId={channelId} />
                     </div> :
                     <div className='no-text-channel-middle-container'>
                         <div><img src={noChannels} alt='no channels' /></div>
