@@ -21,6 +21,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session)
     const users = useSelector(state => Object.values(state.users))
+    const userSorted = useSelector(state => state.userSorted)
     const directChats = useSelector(state => Object.values(state.directChat))
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
@@ -130,7 +131,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 ) : showFriends ? (
                     <div className='ServerPage-middle-container'>
                         <div className='main-friends-list'>
-                            {users?.map((user, i) => {
+                            {userSorted?.map((user, i) => {
                                 if (!uniqueUsersInChat.has(user.id)) {
                                     return (
                                         <div className='friends-users-outer'>
