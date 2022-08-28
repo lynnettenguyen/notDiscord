@@ -125,7 +125,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                     </div>
                 </div>
                 {directChatId ? (
-                    <div className='ServerPage-middle-container'>
+                    <div className='ServerPage-middle-container-direct-chat'>
                         <DirectChat directChatId={directChatId} recipientId={recipientId} />
                     </div>
                 ) : showFriends ? (

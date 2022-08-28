@@ -15,13 +15,13 @@
 
 /* NAV BAR COMPONENTS*/
 .ServerPage-NavBar {
-    width: 100%;
     display: flex;
-    background-color: #36393F;
     flex-direction: row;
-    border: 1px solid #2C2F33;
-    color: white;
+    width: 100%;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    color: white;
+    border: 1px solid #2C2F33;
+    background-color: #36393F;
 }
 
 .ServerPage-name:hover {
@@ -32,10 +32,10 @@
     display: flex;
     justify-content: space-between;
     width: 271px;
-    background-color: #2F3136;
-    font-family: GintoNormal, Arial, Helvetica, sans-serif;
     padding: 15px;
     box-sizing: border-box;
+    background-color: #2F3136;
+    font-family: GintoNormal, Arial, Helvetica, sans-serif;
 }
 
 .ServerPage-name:hover {
@@ -212,11 +212,9 @@
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
     overflow-x: hidden;
     box-sizing: border-box;
-    padding: 1rem 18.5rem 2rem 1rem;
-    scrollbar-color: #2F3136;
+    padding: 1rem 18.5rem 5rem 1rem;
     position: relative;
     justify-content: flex-end;
-    padding-bottom: 5em;
 }
 
 .no-text-channel-middle-container {
