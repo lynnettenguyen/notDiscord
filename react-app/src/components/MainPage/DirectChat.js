@@ -8,6 +8,11 @@ import '../CSS/DirectChat.css';
 let socket;
 
 const DirectChat = ({ directChatId, recipientId }) => {
+  const messageRef = useRef(null)
+
+   const scrollBottom = () => {
+    if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+  }
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
 
@@ -16,6 +21,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
   if (currentChat) {
     currentChat = Object.values(currentChat)
     currentChatId = currentChat[0]?.id
+    scrollBottom()
   }
 
   const users = useSelector(state => Object.values(state.users))
@@ -25,20 +31,12 @@ const DirectChat = ({ directChatId, recipientId }) => {
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
 
-  console.log("DIRECT CHAT ID", directChatId)
-  console.log("CURRENT CHAT", currentChat)
-  console.log("CURRENT CHAT ID", currentChatId)
-
-  const messageRef = useRef(null)
-
-  const scrollBottom = () => {
-    if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
-  }
 
   useEffect(() => {
     socket = io();
     socket.on('direct_chat', (chat) => {
       setMessages((messages) => [...messages, chat]);
+      scrollBottom()
     });
 
     return (() => {
@@ -141,24 +139,28 @@ const DirectChat = ({ directChatId, recipientId }) => {
           </div>
           <div className='channel-messages'>
             {user && msgState?.map((message, i) => (
-              <div className='channel-messages-inner' key={i}>
-                {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
-                  <div className='chat-username'>{user[message.sender_id]?.username}</div>
-                  <div className='chat-date'>{message.created_at ? checkDay(message.created_at) : ""}</div>
-                </div>)}
-                <div className='chat-message'>{message.content}</div>
-                <div ref={messageRef} className="scroll-to-bottom-message" />
-              </div>
+              <>
+                <div className='channel-messages-inner' key={i}>
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && (<div className='chat-header'>
+                    <div className='chat-username'>{user[message.sender_id]?.username}</div>
+                    <div className='chat-date'>{message.created_at ? checkDay(message.created_at) : ""}</div>
+                  </div>)}
+                  <div className='chat-message'>{message.content}</div>
+                  <div ref={messageRef} className="scroll-to-bottom-message" />
+                </div>
+              </>
             ))}
             {messages?.map((message, i) => `${directChatId}` === message.direct_chat_id && (
-              <div className='channel-messages-inner' key={i}>
-                {messages[i - 1]?.sender_id !== message.sender_id && (<div className='chat-header'>
-                  <div className='chat-username'>{message.user}</div>
-                  <div className='chat-date'>Today at {date}</div>
-                </div>)}
-                <div className='chat-message'>{message.content}</div>
-                <div ref={messageRef} className="scroll-to-new-message" />
-              </div>
+              <>
+                <div className='channel-messages-inner' key={i}>
+                  {messages[i - 1]?.sender_id !== message.sender_id && (<div className='chat-header'>
+                    <div className='chat-username'>{message.user}</div>
+                    <div className='chat-date'>Today at {date}</div>
+                  </div>)}
+                  <div className='chat-message'>{message.content}</div>
+                  <div ref={messageRef} className="scroll-to-new-message" />
+                </div>
+              </>
             ))}
           </div>
         </div>
