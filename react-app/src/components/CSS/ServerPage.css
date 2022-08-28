@@ -127,7 +127,7 @@
     overflow: hidden scroll;
 }
 
-.serverPage-server-channels-outer::-webkit-scrollbar { 
+.serverPage-server-channels-outer::-webkit-scrollbar {
     display: none;
   }
 
@@ -183,9 +183,11 @@
 
 .user-profile-container {
     padding-top: 5px;
-    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
     background-color: #2F3136;
-    /* background-color: #282B2F; */
+    margin-bottom: 2em;
 }
 
 

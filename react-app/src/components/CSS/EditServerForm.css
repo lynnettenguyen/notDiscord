@@ -30,7 +30,8 @@
     color: white;
 }
 
-.edit-server-modal-server-label, .edit-server-modal-image-label {
+.edit-server-modal-server-label,
+.edit-server-modal-image-label {
     font-family: GintoNormal, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #B9BBBE;
@@ -64,22 +65,30 @@
     cursor: pointer;
 }
 
-.edit-server-modal-server-name, .edit-server-modal-server-image {
+.edit-server-modal-server-name,
+.edit-server-modal-server-image {
     display: flex;
     flex-direction: column;
     padding: 10px;
     font-family: WhitneyMedium, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
-.edit-server-modal-input-server-name-outer, .edit-server-modal-input-server-image-outer {
+.edit-server-modal-input-server-name-outer,
+.edit-server-modal-input-server-image-outer {
     background-color: #202225;
-    margin: 8px 0 18px 18px;
+    margin: 8px 0 0 18px;
     border-radius: 3px;
     padding: 8px;
     width: 428px;
 }
 
-.edit-server-modal-input-server-name, .edit-server-modal-input-server-image {
+.edit-server-modal-input-server-name:focus,
+.edit-server-modal-input-server-image:focus {
+    color: white;
+}
+
+.edit-server-modal-input-server-name,
+.edit-server-modal-input-server-image {
     background: none;
     border: none;
     align-items: center;
@@ -87,6 +96,7 @@
     font-size: 18px;
     color: #7c8085;
     font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+    width: 100%;
 }
 
 
@@ -98,6 +108,7 @@
     font-size: 15px;
     color: white;
     margin-right: 18px;
+    cursor: pointer;
 }
 
 .edit-server-modal-submit-button {
@@ -111,6 +122,10 @@
     cursor: pointer;
     margin: 10px 0;
     border-radius: 3px;
+}
+
+.edit-server-modal-submit-button:hover {
+    opacity: .8;
 }
 
 .edit-server-button:hover {

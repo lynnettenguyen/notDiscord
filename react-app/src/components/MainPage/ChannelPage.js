@@ -61,9 +61,8 @@ const ChannelPage = ({ channelId }) => {
 
     }
     func()
-
     scrollBottom()
-  }, [channelId, messages])
+  }, [channelId])
 
 
   const updateChatInput = (e) => {
