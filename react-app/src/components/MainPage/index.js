@@ -21,7 +21,7 @@ const MainPage = () => {
     const [showFriends, setShowFriends] = useState(false)
     const [channelName, setChannelName] = useState(channels ? channels[generalChannelId]?.name : "general")
     const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "")
-
+    const [channelActive, setChannelActive] = useState(false)
 
     useEffect(() => {
         const func = async () => {
@@ -46,11 +46,11 @@ const MainPage = () => {
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
+                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} setChannelActive={setChannelActive} />
                 </div>
                 <div className='main-middle-container'>
                     {channels ? (
-                        <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
+                        <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
                     )}

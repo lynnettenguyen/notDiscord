@@ -12,7 +12,7 @@ import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
 
-const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, setChannelName, channelTopic, setChannelTopic }) => {
+const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => state.userSorted)
     const channelsObj = useSelector(state => state.server.channels)
@@ -24,6 +24,7 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
     const [showEditChannel, setShowEditChannel] = useState(false)
     const [showSection, setShowSection] = useState()
     const [showChannels, setShowChannels] = useState(true)
+    const [showChannelId, setShowChannelId] = useState(false)
     const [editActive, setEditActive] = useState(false)
 
 
@@ -44,7 +45,7 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
-                    {channelName && <div className='noServer-nav'>
+                    {channelId && <div className='noServer-nav'>
                         <img src={hashtag} alt='hashtag' className='noServer-icon-at' />
                         <div>{channelName}</div>
                         <div className='serverPage-channel-name-topic'>{channelTopic}</div>
@@ -74,8 +75,8 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                             <div className='channels-main'>
                                 {channels?.map((channel, i) => {
                                     return (
-                                        <div key={i} className='server-channels' onClick={() => { setChannelId(channel.id); setGeneralChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic) }}>
-                                            <div className='channel-section-header' onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
+                                        <div key={i} className={channelId === channel.id && channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channel.id); setGeneralChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic); setChannelActive(true); setShowChannelId(true) }}>
+                                            <div className={channelId === channel.id && channelActive ? 'channel-section-header-active' : 'channel-section-header'} onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
                                                 <div className='channel-section-left'>
                                                     <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
                                                     <div className='channel-name'>{channel.name}</div>
@@ -90,9 +91,9 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                                     )
                                 })}
                             </div> : <>
-                                {generalChannelId && (<div className='channels-main'>
-                                    <div className='server-channels' onClick={() => { setChannelId(channelsObj[channelId]?.id) }}>
-                                        <div className='channel-section-header' onMouseOver={() => { setShowSection(channelsObj[channelId]?.id) }} onMouseLeave={() => setShowSection(0)}>
+                                {generalChannelId && showChannelId && (<div className='channels-main'>
+                                    <div className={channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channelsObj[channelId]?.id) }}>
+                                        <div className={channelActive ? 'channel-section-header-active' : 'channel-section-header'} onMouseOver={() => { setShowSection(channelsObj[channelId]?.id) }} onMouseLeave={() => setShowSection(0)}>
                                             <div className='channel-section-left'>
                                                 <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
                                                 <div className='channel-name'>{channelsObj[channelId]?.name}</div>
@@ -116,10 +117,12 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                     <div className='ServerPage-middle-container'>
                         <ChannelPage id={id} generalChannelId={generalChannelId} channelId={channelId} />
                     </div> :
-                    <div className='no-text-channel-middle-container'>
-                        <div><img src={noChannels} alt='no channels' /></div>
-                        <div className='no-text-header'>NO TEXT CHANNELS</div>
-                        <div className='no-text-caption'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
+                    <div className='ServerPage-middle-container-noText'>
+                        <div className='no-text-channel-middle-container'>
+                            <div><img src={noChannels} alt='no channels' /></div>
+                            <div className='no-text-header'>NO TEXT CHANNELS</div>
+                            <div className='no-text-caption'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
+                        </div>
                     </div>
                 }
                 <div className='ServerPage-right-container'>
