@@ -27,8 +27,8 @@ notDiscord is a full-stack clone of [Discord](https://discord.com/). Users can s
 
 ## Wiki Links:
 * [notDiscord Wiki](https://github.com/lynnettenguyen/notDiscord/wiki)
-* [Database Schema](https://github.com/lynnettenguyen/notDiscord/wiki/!Discord#database-schema)
-* [Feature List](https://github.com/lynnettenguyen/notDiscord/wiki/Features-List)
+* [Database Schema](https://github.com/lynnettenguyen/notDiscord/wiki/Database-Schema)
+* [Features List](https://github.com/lynnettenguyen/notDiscord/wiki/Features-List)
 * [User Stories](https://github.com/lynnettenguyen/notDiscord/wiki/User-Stories)
 
 ## Features
