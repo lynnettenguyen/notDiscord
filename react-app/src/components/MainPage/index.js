@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ServerNav from './ServerNav';
-import '../CSS/MainPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
-import { getOneServer } from '../../store/server';
 import { getDirectChats } from '../../store/directChat';
+import { getChannels, getOneServer } from '../../store/server';
 import { getUsers } from '../../store/users';
+import '../CSS/MainPage.css';
 
 const MainPage = () => {
     const dispatch = useDispatch()
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
-    const user = useSelector(state=> state.session.user)
 
     const id = Object.keys(server)[0]
 
@@ -25,15 +24,14 @@ const MainPage = () => {
 
 
     useEffect(() => {
-        dispatch(getUsers())
-        dispatch(getDirectChats())
-        dispatch(getOneServer(id))
-
+        const func = async () => {
+            await dispatch(getUsers())
+            await dispatch(getDirectChats())
+            await dispatch(getOneServer(id))
+            await dispatch(getChannels(id))
+        }
+        func()
     }, [dispatch])
-
-    useEffect(() => {
-        dispatch(getDirectChats())
-    })
 
     useEffect(() => {
         if (channels) {
