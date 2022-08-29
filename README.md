@@ -1,6 +1,14 @@
-# Flask React Project
+# notDiscord
+[Try the site live here](https://not-discord-app.herokuapp.com/)
 
-This is the starter for the Flask React project.
+## Technologies Used
+- React 
+- Redux 
+- SQLAlchemy
+- Javascript 
+- Python
+- HTML
+- CSS  
 
 ## Getting started
 1. Clone this repository (only this branch)
