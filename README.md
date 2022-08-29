@@ -1,18 +1,21 @@
 # notDiscord
 [Try the site live here!](https://not-discord-app.herokuapp.com/)
+![Screen Shot 2022-08-28 at 6 28 31 PM](https://user-images.githubusercontent.com/32751992/187105320-977f5259-28b2-4dc8-b8b1-89f771cec32a.png)
 
-Description of notDiscord here
+notDiscord is a full-stack clone of [Discord](https://discord.com/). Users can create an account and send direct messages to other users, create servers and server channels, and live chat in server channels. Users can also customize their profile picture, server information and channel name/topic. 
 
 ## Technologies Used
+- Socketio
 - React 
 - Redux 
 - SQLAlchemy
+- Flask
 - Javascript 
 - Python
 - HTML
 - CSS  
 
-Important Links of the Project:
+## Wiki Links of the Project:
 * [notDiscord Wiki](https://github.com/lynnettenguyen/notDiscord/wiki)
 * [Database Schema](https://github.com/lynnettenguyen/notDiscord/wiki/!Discord#database-schema)
 * [Feature List](https://github.com/lynnettenguyen/notDiscord/wiki/Features-List)
@@ -20,7 +23,7 @@ Important Links of the Project:
 
 ## Features
 
-- Loads User Data upon login (Servers, Friends, and Direct Messages)
+- Loads User Data upon login (Servers, Users, and Direct Messages)
 ![friends](https://user-images.githubusercontent.com/32751992/187104032-fbaccdad-cdc6-4ce9-be62-084f65cd1d66.png)
 
 - Create a Server
