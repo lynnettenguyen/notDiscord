@@ -4,15 +4,14 @@ import '../CSS/MainPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
-import { getOneServer } from '../../store/server';
 import { getDirectChats } from '../../store/directChat';
+import { getChannels, getOneServer } from '../../store/server';
 import { getUsers } from '../../store/users';
 
 const MainPage = () => {
     const dispatch = useDispatch()
     const server = useSelector(state => state.server)
     const channels = useSelector(state => state.server.channels)
-    const user = useSelector(state=> state.session.user)
 
     const id = Object.keys(server)[0]
 
@@ -25,15 +24,14 @@ const MainPage = () => {
 
 
     useEffect(() => {
-        dispatch(getUsers())
-        dispatch(getDirectChats())
-        dispatch(getOneServer(id))
-
+        const func = async () => {
+            await dispatch(getUsers()).then(()=>console.log('GET USERS - index.js'))
+            await dispatch(getDirectChats()).then(()=>console.log('GET CHATS - index.js'))
+            await dispatch(getOneServer(id)).then(()=>console.log('GET SERVER - index.js'))
+            await dispatch(getChannels(id)).then(()=>console.log('GET CHANNELS - index.js'))
+        }
+        func()
     }, [dispatch])
-
-    useEffect(() => {
-        dispatch(getDirectChats())
-    })
 
     useEffect(() => {
         if (channels) {
@@ -41,8 +39,6 @@ const MainPage = () => {
             setChannelName(channels[generalChannelId]?.name)
             setChannelTopic(channels[generalChannelId]?.topic)
         }
-        console.log('CHANNELS', channels)
-
     }, [server])
 
 
@@ -53,7 +49,7 @@ const MainPage = () => {
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                 </div>
                 <div className='main-middle-container'>
-                    {user & channels ? (
+                    {channels ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
