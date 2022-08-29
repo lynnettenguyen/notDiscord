@@ -22,7 +22,7 @@ const UserProfile = () => {
           {user?.username}
         </div>
       </div>
-        <div className="logout-icon fa-solid fa-right-from-bracket" onClick={onLogout} />
+        <div className="logout-icon" onClick={onLogout}>Log Out &nbsp;<i className="fa-solid fa-right-from-bracket" /></div>
     </div>
   )
 };
