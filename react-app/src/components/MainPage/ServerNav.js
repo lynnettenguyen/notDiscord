@@ -27,9 +27,9 @@ const ServerNav = ({ setDirectChatId, setShowFriends}) => {
       dispatch(resetServer())
     } else {
       setIsLoaded(false)
-      await dispatch(getOneServer(serverId)).then(()=>console.log('GET SERVER - ServerNav.js'))
-      await dispatch(getChannels(serverId)).then(()=>console.log('GET CHANNELS - ServerNav.js'))
-      await dispatch(getUsers()).then(()=>console.log('GET USERS - ServerNav.js'))
+      await dispatch(getOneServer(serverId))
+      await dispatch(getChannels(serverId))
+      await dispatch(getUsers())
         .then(() => setIsLoaded(true))
     }
   };

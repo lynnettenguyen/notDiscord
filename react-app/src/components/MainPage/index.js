@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ServerNav from './ServerNav';
-import '../CSS/MainPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getDirectChats } from '../../store/directChat';
 import { getChannels, getOneServer } from '../../store/server';
 import { getUsers } from '../../store/users';
+import '../CSS/MainPage.css';
 
 const MainPage = () => {
     const dispatch = useDispatch()
@@ -25,10 +25,10 @@ const MainPage = () => {
 
     useEffect(() => {
         const func = async () => {
-            await dispatch(getUsers()).then(()=>console.log('GET USERS - index.js'))
-            await dispatch(getDirectChats()).then(()=>console.log('GET CHATS - index.js'))
-            await dispatch(getOneServer(id)).then(()=>console.log('GET SERVER - index.js'))
-            await dispatch(getChannels(id)).then(()=>console.log('GET CHANNELS - index.js'))
+            await dispatch(getUsers())
+            await dispatch(getDirectChats())
+            await dispatch(getOneServer(id))
+            await dispatch(getChannels(id))
         }
         func()
     }, [dispatch])
