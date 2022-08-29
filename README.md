@@ -1,6 +1,8 @@
 # notDiscord
 [Try the site live here!](https://not-discord-app.herokuapp.com/)
 
+Description of notDiscord here
+
 ## Technologies Used
 - React 
 - Redux 
@@ -18,16 +20,26 @@ Important Links of the Project:
 
 ## Features
 
-- Real time messaging using Socket IO
-- Loads User Data upon login (Servers, Channels, Direct Messages)
+- Loads User Data upon login (Servers, Friends, and Direct Messages)
+![friends](https://user-images.githubusercontent.com/32751992/187104032-fbaccdad-cdc6-4ce9-be62-084f65cd1d66.png)
+
 - Create a Server
+![create-a-server](https://user-images.githubusercontent.com/32751992/187103617-dfc1f7e5-55a3-4ab6-bdc6-80df504192f3.png)
+
 - Create a Channel in a Server
+![create-channel](https://user-images.githubusercontent.com/32751992/187103690-b157d9da-76a0-4e5e-9c90-758f2de1cc0d.png)
+
 - Edit a Server (Change name and delete)
+![edit-server](https://user-images.githubusercontent.com/32751992/187103718-06568870-17a0-418e-845c-d5af74ec2adc.png)
+
 - Edit a Channel (Change name and delete)
-- Persistent channel history
-- Channel messaging
-- Private messaging
-- Timestamps for messages
+![edit-channel](https://user-images.githubusercontent.com/32751992/187103748-3059e012-c45c-4ecc-9fc6-d065931fe6df.png)
+
+- Live Channel Messaging using Socketio
+![persistent-chat](https://user-images.githubusercontent.com/32751992/187103821-6e2e4928-5de6-4fdb-b572-75e6cb55c3e6.png)
+
+- Live Private Messaging using Socketio
+![live-chat](https://user-images.githubusercontent.com/32751992/187103549-d5f8f255-c34b-49cb-9db4-cc65c0144103.png)
 
 
 ## Getting started
