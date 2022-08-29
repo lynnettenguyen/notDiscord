@@ -42,7 +42,8 @@ notDiscord is a full-stack clone of [Discord](https://discord.com/). Users can s
 ![MainPage](https://user-images.githubusercontent.com/98368183/187111832-235ed38d-9194-4bea-8c13-61ce77de1730.png)
 
 #### Create a New Direct Message with Other Users
-![newDM](https://user-images.githubusercontent.com/98368183/187112121-dd704c1b-931c-4feb-a520-29e81c1de188.png)
+![newDM](https://user-images.githubusercontent.com/98368183/187114921-463e8781-ce94-45db-96c2-b89aae1eeb5f.png)
+
 
 #### Live Direct Messaging with Other Users via SocketIO
 ![liveDM](https://user-images.githubusercontent.com/98368183/187112029-06b842b3-5dc3-4d47-9e74-a31db927b661.png)
