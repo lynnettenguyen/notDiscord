@@ -64,7 +64,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
               {/* <section> */}
                 <div>
                   <div className='edit-server-modal-server-name'>
-                    <label className='edit-server-modal-main-label'>EDIT SERVER</label>
+                    <label className='edit-server-modal-main-label'>Edit Server</label>
                     <label className='edit-server-modal-server-label'>SERVER NAME</label>
                     <div className='edit-server-modal-input-server-name-outer'>
                       <input

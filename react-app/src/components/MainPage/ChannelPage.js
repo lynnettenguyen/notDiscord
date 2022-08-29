@@ -75,7 +75,7 @@ const ChannelPage = ({ channelId }) => {
 
   const sendChat = (e) => {
     e.preventDefault();
-    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput });
+    socket.emit('chat', { user: user.username, user_id: user.id, channel_id: `${channelId}`, content: chatInput, profile_pic: user.profile_pic });
     setChatInput("");
   };
 
@@ -99,15 +99,15 @@ const ChannelPage = ({ channelId }) => {
   const checkPost = (date, prevDate, i) => {
     const oldDate = new Date(date)
     const newDate = new Date(prevDate)
-    const difference = newDate - oldDate
+    // const difference = newDate - oldDate
     if (i === 0) {
       return true
     }
-    if (difference > 180000) {
-      return true
-    } else {
-      return false
-    }
+    // if (difference > 180000) {
+    //   return true
+    // } else {
+    //   return false
+    // }
   }
 
   return users && (
@@ -118,14 +118,15 @@ const ChannelPage = ({ channelId }) => {
             {users && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) &&
-                    (<div className='chat-header'>
+                  {/* {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && */}
+                  {/* {(msgState[i - 1]?.created_at, message.created_at, i) && */}
+                    <div className='chat-header'>
                       <div className='chat-profile-outer'>
-                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                      <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
                       <div className='chat-username'>{users[message.user_id]?.username}</div>
                       <div className='chat-date'>{checkDay(message.created_at)}</div>
-                    </div>)}
+                    </div>
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-bottom-message" />
                 </div>
@@ -137,7 +138,7 @@ const ChannelPage = ({ channelId }) => {
                   {messages[i - 1]?.user_id !== message.user_id &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
-                        <img src={user.profile_pic} alt='profile' className='channel-chat-profile' />
+                        <img src={message.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
                       <div className='chat-username'>{message.user}</div>
                       <div className='chat-date'>Today at {date}</div>
