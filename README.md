@@ -1,5 +1,5 @@
 # notDiscord
-[Try the site live here](https://not-discord-app.herokuapp.com/)
+[Try the site live here!](https://not-discord-app.herokuapp.com/)
 
 ## Technologies Used
 - React 
@@ -9,6 +9,26 @@
 - Python
 - HTML
 - CSS  
+
+Important Links of the Project:
+* [notDiscord Wiki](https://github.com/lynnettenguyen/notDiscord/wiki)
+* [Database Schema](https://github.com/lynnettenguyen/notDiscord/wiki/!Discord#database-schema)
+* [Feature List](https://github.com/lynnettenguyen/notDiscord/wiki/Features-List)
+* [User Stories](https://github.com/lynnettenguyen/notDiscord/wiki/User-Stories)
+
+## Features
+
+- Real time messaging using Socket IO
+- Loads User Data upon login (Servers, Channels, Direct Messages)
+- Create a Server
+- Create a Channel in a Server
+- Edit a Server (Change name and delete)
+- Edit a Channel (Change name and delete)
+- Persistent channel history
+- Channel messaging
+- Private messaging
+- Timestamps for messages
+
 
 ## Getting started
 1. Clone this repository (only this branch)
