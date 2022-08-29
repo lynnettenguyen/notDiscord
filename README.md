@@ -2,7 +2,7 @@
 
 ![notDiscord](https://user-images.githubusercontent.com/98368183/187108293-c0a43893-4b02-4e59-92d5-b819b628afe6.png)
 
-[notDiscord Live Site!](https://not-discord-app.herokuapp.com/)
+Live Site: [notDiscord](https://not-discord-app.herokuapp.com/)
 
 notDiscord is a full-stack clone of [Discord](https://discord.com/). Users can send direct messages to other users, create servers and server channels, and live chat in server channels. Users can also customize server information and channel name/topic. 
 
