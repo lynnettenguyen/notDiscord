@@ -91,7 +91,7 @@ const ServerPage = ({ id, generalChannelId, setGeneralChannelId, channelName, se
                                     )
                                 })}
                             </div> : <>
-                                {generalChannelId && showChannelId && (<div className='channels-main'>
+                                {showChannelId && channelsObj[channelId]?.name && (<div className='channels-main'>
                                     <div className={channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channelsObj[channelId]?.id) }}>
                                         <div className={channelActive ? 'channel-section-header-active' : 'channel-section-header'} onMouseOver={() => { setShowSection(channelsObj[channelId]?.id) }} onMouseLeave={() => setShowSection(0)}>
                                             <div className='channel-section-left'>
