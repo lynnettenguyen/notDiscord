@@ -55,9 +55,7 @@ const SignUpForm = () => {
   };
 
   const updateProfilePic = (e) => {
-    console.log('etargetvalue', e.target.value)
     setProfilePic(e.target.value);
-    console.log('profilepic', profile_pic)
   };
 
   if (user) {
