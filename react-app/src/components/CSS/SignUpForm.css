@@ -81,7 +81,7 @@
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .form-button:hover {
@@ -91,7 +91,7 @@
 #navLink-login {
   cursor: pointer;
   font-family: WhitneyBold, Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bolder;
   color: #00AFF4;
 }
