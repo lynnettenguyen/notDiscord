@@ -51,7 +51,16 @@ span {
     text-decoration: underline;
 }
 
-.login-button,
+.login-button {
+    padding: .6em 1em;
+    background-color: white;
+    border-radius: 2em;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-family: WhitneyLight, 'Helvetica Neue√', 'Helvetica', 'Arial', 'sans-serif';
+}
+
 .logout-button-top {
     padding: .8em 1.1em;
     background-color: white;
@@ -66,7 +75,6 @@ span {
     height: 2.5em;
     z-index: 2;
 }
-
 
 
 /* ---------- Background ---------- */
@@ -158,7 +166,7 @@ h1 {
     z-index: 1;
 }
 
-.HomePage-text > h1 {
+.HomePage-text>h1 {
     font-size: 56px;
     margin: 0;
     padding-top: 3em;
@@ -229,9 +237,6 @@ h1 {
 }
 
 
-
-
-
 /* ---------- Bottom ---------- */
 
 .HomePage-bottom-upper-contianer {
@@ -247,8 +252,10 @@ h1 {
     box-sizing: border-box;
 }
 
-.HomePage-bottom-name {
+.bottom-name {
     color: #3051F2;
+    font-family: WhitneyBook, Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
 .HomePage-LinkedIn,

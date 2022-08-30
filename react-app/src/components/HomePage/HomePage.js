@@ -5,11 +5,11 @@ import HomeLogo from '../CSS/images/notDiscord.png'
 import leftImage from '../CSS/images/svgexport-5.svg'
 import rightImage from '../CSS/images/svgexport-6.svg'
 import part3 from '../CSS/images/threePart.svg'
-import part4 from '../CSS/images/fourPart.svg'
-import part5 from '../CSS/images/fivePart.svg'
-import part6 from '../CSS/images/sixPart.svg'
+// import part4 from '../CSS/images/fourPart.svg'
+// import part5 from '../CSS/images/fivePart.svg'
+// import part6 from '../CSS/images/sixPart.svg'
 import git from '../CSS/images/github.png'
-import linked from '../CSS/images/Linkedin2.png'
+import linked from '../CSS/images/linkedin.png'
 import { logout } from '../../store/session';
 
 import '../CSS/HomePage.css';
@@ -23,7 +23,7 @@ const HomePage = () => {
     const [needLogin, setNeedLogin] = useState(false)
     const dispatch = useDispatch()
     const onLogout = async (e) => {
-      await dispatch(logout());
+        await dispatch(logout());
     };
 
     const enterServers = () => {
@@ -35,46 +35,46 @@ const HomePage = () => {
     }
 
     const handleMeetUp = () => {
-        window.scrollTo(0,100000000000000000000)
+        window.scrollTo(0, 100000000000000000000)
     }
 
     return (
         <div className='HomePage-container'>
-        <div className='HomePage-background'/>
+            <div className='HomePage-background' />
             <nav className='NavBar-Container'>
                 <div className='NavBar-buttons'>
-                <div><NavLink exact to='/'><img alt='home' className='home-logo' src={HomeLogo}/></NavLink></div>
+                    <div><NavLink exact to='/'><img alt='home' className='home-logo' src={HomeLogo} /></NavLink></div>
                     <div className='meet-us' onClick={handleMeetUp}>Meet Us</div>
                     <div className='our-repo'><a href='https://github.com/lynnettenguyen/notDiscord'>Github Repo</a></div>
-                {user && (<button className='logout-button-top' onClick={onLogout}>Logout</button>)}
-                {!user && (<div><NavLink className='login-button' to='/login'>Login</NavLink></div>)}
+                    {user && (<button className='logout-button-top' onClick={onLogout}>Logout</button>)}
+                    {!user && (<div><NavLink className='login-button' to='/login'>Login</NavLink></div>)}
                 </div>
             </nav>
-        <div className='HomePage-heading-container'>
-            <img alt='home' src={leftImage} className='HomePage-left-image'/>
-            <div className='HomePage-text'>
-                <h1>IMAGINE A PLACE...</h1>
-                <span className='HomePage-opening-text'>
-                    ...where you can belong to a school club, a gaming group, or a worldwide art community. <br/>
-                    Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.
-                </span>
-                {!needLogin && (<div className='enter-servers-button' onClick={enterServers}>Open !Discord in your browser</div>)}
-                {needLogin && (<AltLogin />)}
+            <div className='HomePage-heading-container'>
+                <img alt='home' src={leftImage} className='HomePage-left-image' />
+                <div className='HomePage-text'>
+                    <h1>IMAGINE A PLACE...</h1>
+                    <span className='HomePage-opening-text'>
+                        ...where you can belong to a school club, a gaming group, or a worldwide art community. <br />
+                        Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.
+                    </span>
+                    {!needLogin && (<div className='enter-servers-button' onClick={enterServers}>Open !Discord in your browser</div>)}
+                    {needLogin && (<AltLogin />)}
+                </div>
+                <img alt='home' src={rightImage} className='HomePage-right-image' />
             </div>
-            <img alt='home' src={rightImage} className='HomePage-right-image'/>
-        </div>
-        <div className='HomePage-3rd-part'>
-            <div className='HomePage-bottom-inner'>
-            <img alt='home' src={part3}/>
-            <span className='HomePage-inner-span'>
-                <h1>Create an invite-only place where you belong</h1>
-                <span>
-                Discord servers are organized into topic-based channels where you can collaborate, share, and just talk about your day without clogging up a group chat.
-                </span>
-            </span>
-        </div>
-        </div>
-        {/* <div className='HomePage-4th-part'>
+            <div className='HomePage-3rd-part'>
+                <div className='HomePage-bottom-inner'>
+                    <img alt='home' src={part3} />
+                    <span className='HomePage-inner-span'>
+                        <h1>Create an invite-only place where you belong</h1>
+                        <span>
+                            Discord servers are organized into topic-based channels where you can collaborate, share, and just talk about your day without clogging up a group chat.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            {/* <div className='HomePage-4th-part'>
             <div className='HomePage-bottom-inner'>
             <span className='HomePage-inner-span'>
                 <h1>Where hanging out is easy</h1>
@@ -105,40 +105,40 @@ const HomePage = () => {
             </span>
             <img alt='home' src={part6}/>
         </div> */}
-        <div className='HomePage-bottom-div'>
-            <div className='HomePage-bottom-upper-contianer'>
-                <div className='HomePage-bottom-name'>
-                    Ben Durham
-                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='https://www.linkedin.com/in/ben-durham-5ab74997/'>LinkedIn</a></div>
-                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='https://github.com/oorazugoku'>GitHub</a></div>
-                </div>
-                <div className='HomePage-bottom-name'>
-                    Samantha Weglinski
-                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='https://www.linkedin.com/in/samanthaweglinski/'>LinkedIn</a></div>
-                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='https://github.com/samanthaweglinski'>GitHub</a></div>
-                </div>
-                <div className='HomePage-bottom-name'>
-                    Lynnette Nguyen
+            <div className='HomePage-bottom-div'>
+                <div className='HomePage-bottom-upper-contianer'>
+                    <div className='HomePage-bottom-name'>
+                        <div className='bottom-name'>Ben Durham</div>
+                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/ben-durham-5ab74997/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/oorazugoku'>GitHub</a></div>
+                    </div>
+                    <div className='HomePage-bottom-name'>
+                        <div className='bottom-name'>Samantha Weglinski</div>
+                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/samanthaweglinski/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/samanthaweglinski'>GitHub</a></div>
+                    </div>
+                    <div className='HomePage-bottom-name'>
+                        <div className='bottom-name'>Lynnette Nguyen</div>
                         <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/lynnettenguyen/'>LinkedIn</a></div>
                         <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/lynnettenguyen'>GitHub</a></div>
+                    </div>
+                    <div className='HomePage-bottom-name'>
+                        <div className='bottom-name'>Antony Pizarro</div>
+                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>
+                    </div>
                 </div>
-                <div className='HomePage-bottom-name'>
-                    Antony Pizarro
-                    <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked}/><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
-                    <div className='HomePage-GitHub'><img className='HomePage-logos' src={git}/><a href='https://github.com/apizarro23'>GitHub</a></div>
+                <div className='bottom-divider' />
+                <div className='bottom-nav-container'>
+                    <div className='left'>
+                        <NavLink to='/'><img alt='home' className='home-logo' src={HomeLogo} /></NavLink>
+                    </div>
+                    <div className='right'>
+                        {user && (<button className='logout-button-bottom' onClick={onLogout}>Logout</button>)}
+                        {!user && (<NavLink className='signup-button' to='/register'>Signup</NavLink>)}
+                    </div>
                 </div>
             </div>
-            <div className='bottom-divider'/>
-            <div className='bottom-nav-container'>
-                <div className='left'>
-                    <NavLink to='/'><img alt='home' className='home-logo' src={HomeLogo}/></NavLink>
-                </div>
-                <div className='right'>
-                {user && (<button className='logout-button-bottom' onClick={onLogout}>Logout</button>)}
-                    {!user && (<NavLink className='signup-button' to='/register'>Signup</NavLink>)}
-                </div>
-            </div>
-        </div>
         </div>
     )
 }

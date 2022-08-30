@@ -7,8 +7,8 @@ import { findDirectChat } from '../../store/directMessages';
 import wumpus from '../CSS/images/wumpus.svg'
 import messageBubbleGrey from '../CSS/images/message-bubble-grey.svg'
 import messageBubbleWhite from '../CSS/images/message-bubble-white.svg'
-import whiteX from '../CSS/images/white-x.svg'
-import greyX from '../CSS/images/grey-x.svg'
+// import whiteX from '../CSS/images/white-x.svg'
+// import greyX from '../CSS/images/grey-x.svg'
 import at from '../CSS/images/@-symbol.svg'
 
 import '../CSS/NoServerPage.css';
@@ -25,7 +25,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const directChats = useSelector(state => Object.values(state.directChat))
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
-    const [close, setClose] = useState(greyX)
+    // const [close, setClose] = useState(greyX)
     const [messageHover, setMessageHover] = useState(false)
     const [selectUser, setSelectUser] = useState()
     const [messageBubble, setMessageBubble] = useState(messageBubbleGrey)

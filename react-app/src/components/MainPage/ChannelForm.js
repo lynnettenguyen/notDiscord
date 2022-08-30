@@ -11,7 +11,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
   const [nameEdit, setNameEdit] = useState(`${channels[channelId]?.name}`)
-  const [topicEdit, setTopicEdit] = useState(`${channels[channelId]?.topic}`)
+  const [topicEdit, setTopicEdit] = useState(channels[channelId]?.topic ? `${channels[channelId]?.topic}` : "")
 
   const handleCreateChannel = async (e) => {
     e.preventDefault()
@@ -98,7 +98,6 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                         <button type='submit' className='channel-update-button'>Update</button>
                         <div className='delete-channel-outer'>
                           <button className='channel-delete-button' onClick={() => handleChannelDelete(id, channelId)}><span className='delete-name'>Delete</span>
-                            {/* <img src={deleteBin} className='delete-channel-bin' alt='delete' /> */}
                           </button>
                         </div>
                       </div>
@@ -166,7 +165,6 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
             </div>
           </div>
         </>
-
       }
     </>
   )

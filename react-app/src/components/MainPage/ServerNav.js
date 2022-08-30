@@ -10,7 +10,7 @@ import serverDefault from '../CSS/images/server_default.png'
 
 import '../CSS/ServerNav.css'
 
-const ServerNav = ({ setDirectChatId, setShowFriends}) => {
+const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGeneralChannelId }) => {
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
   const server = useSelector(state => state.server)
@@ -32,6 +32,8 @@ const ServerNav = ({ setDirectChatId, setShowFriends}) => {
       await dispatch(getUsers())
         .then(() => setIsLoaded(true))
     }
+    setChannelActive(false)
+    setGeneralChannelId(null)
   };
 
   return (
@@ -44,7 +46,7 @@ const ServerNav = ({ setDirectChatId, setShowFriends}) => {
         <div className='serverNav-all-servers-outer'>
           {servers?.map((server, i) => {
             return (
-              <div key={i} >
+              <div key={i}>
                 <div className='server-img-outer'>
                   {
                     server.server_pic ?

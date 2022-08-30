@@ -144,12 +144,33 @@
 .server-channels {
     display: flex;
     flex-direction: column;
+        margin: 5px 2px;
+}
+
+.server-channels-active {
+    display: flex;
+    flex-direction: column;
+    background-color: #42464D;
+    border-radius: 3px;
+        margin: 5px 2px;
 }
 
 .channel-section-header {
     display: flex;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     color: #96989d;
+    justify-content: space-between;
+    font-size: 16px;
+    height: 22px;
+    margin: 5px 2px;
+    padding-left: 2px;
+    box-sizing: border-box;
+}
+
+.channel-section-header-active {
+    display: flex;
+    font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
+    color: white;
     justify-content: space-between;
     font-size: 16px;
     height: 22px;
@@ -217,15 +238,21 @@
     justify-content: flex-end;
 }
 
+.ServerPage-middle-container-noText {
+    width: 100%;
+    background-color: #36393F;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 10rem 18.5rem 5rem 1rem;
+}
+
 .no-text-channel-middle-container {
-    width: 70%;
+    color: #b0b0b2;
     display: flex;
     flex-direction: column;
-    color: #b0b0b2;
-    justify-content: center;
     align-items: center;
-    background-color: #36393F;
     font-family: WhitneyLight, 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    overflow: hidden;
 }
 
 .no-text-header {
