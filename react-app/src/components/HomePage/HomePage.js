@@ -6,8 +6,8 @@ import HomeLogo from '../CSS/images/notDiscord.png'
 import leftImage from '../CSS/images/svgexport-5.svg'
 import rightImage from '../CSS/images/svgexport-6.svg'
 import part3 from '../CSS/images/threePart.svg'
-import git from '../CSS/images/github.png'
-import linked from '../CSS/images/linkedin.png'
+import git from '../CSS/images/github-logo.png'
+import linked from '../CSS/images/linked-in-logo.png'
 import { logout } from '../../store/session';
 import '../CSS/HomePage.css';
 // import part4 from '../CSS/images/fourPart.svg'
@@ -107,23 +107,23 @@ const HomePage = () => {
                 <div className='HomePage-bottom-upper-contianer'>
                     <div className='HomePage-bottom-name'>
                         <div className='bottom-name'>Ben Durham</div>
-                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/ben-durham-5ab74997/'>LinkedIn</a></div>
-                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/oorazugoku'>GitHub</a></div>
+                        <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/ben-durham-5ab74997/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/oorazugoku'>GitHub</a></div>
                     </div>
                     <div className='HomePage-bottom-name'>
                         <div className='bottom-name'>Samantha Weglinski</div>
-                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/samanthaweglinski/'>LinkedIn</a></div>
-                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/samanthaweglinski'>GitHub</a></div>
+                        <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/samanthaweglinski/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/samanthaweglinski'>GitHub</a></div>
                     </div>
                     <div className='HomePage-bottom-name'>
                         <div className='bottom-name'>Lynnette Nguyen</div>
-                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/lynnettenguyen/'>LinkedIn</a></div>
-                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/lynnettenguyen'>GitHub</a></div>
+                        <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/lynnettenguyen/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/lynnettenguyen'>GitHub</a></div>
                     </div>
                     <div className='HomePage-bottom-name'>
                         <div className='bottom-name'>Antony Pizarro</div>
-                        <div className='HomePage-LinkedIn'><img className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
-                        <div className='HomePage-GitHub'><img className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>
+                        <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/antony-pizarro/'>LinkedIn</a></div>
+                        <div className='HomePage-GitHub'><img alt='social icon' className='HomePage-logos' src={git} /><a href='https://github.com/apizarro23'>GitHub</a></div>
                     </div>
                 </div>
                 <div className='bottom-divider' />
