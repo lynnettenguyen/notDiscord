@@ -119,14 +119,13 @@ const ChannelPage = ({ channelId }) => {
               <>
                 <div className='channel-messages-inner' key={i}>
                   {/* {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && */}
-                  {/* {(msgState[i - 1]?.created_at, message.created_at, i) && */}
-                    <div className='chat-header'>
-                      <div className='chat-profile-outer'>
+                  <div className='chat-header'>
+                    <div className='chat-profile-outer'>
                       <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />
-                      </div>
-                      <div className='chat-username'>{users[message.user_id]?.username}</div>
-                      <div className='chat-date'>{checkDay(message.created_at)}</div>
                     </div>
+                    <div className='chat-username'>{users[message.user_id]?.username}</div>
+                    <div className='chat-date'>{checkDay(message.created_at)}</div>
+                  </div>
                   <div className='chat-message'>{message.content}</div>
                   <div ref={messageRef} className="scroll-to-bottom-message" />
                 </div>
