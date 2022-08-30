@@ -1,5 +1,6 @@
 from app.models import db, DirectChat
 
+
 def seed_direct_chats():
     direct_chats = [
       DirectChat(
@@ -34,10 +35,12 @@ def seed_direct_chats():
         )
     ]
 
+
     for chat in direct_chats:
       db.session.add(chat)
 
     db.session.commit()
+
 
 def undo_direct_chats():
     db.session.execute('TRUNCATE direct_chats RESTART IDENTITY CASCADE;')

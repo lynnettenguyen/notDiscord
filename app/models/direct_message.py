@@ -1,5 +1,6 @@
 from .db import db
 
+
 class DirectMessage(db.Model):
     __tablename__ = 'direct_messages'
 
@@ -11,6 +12,7 @@ class DirectMessage(db.Model):
 
     sender = db.relationship("User")
     direct_chat_messages = db.relationship("DirectChat", back_populates='messages')
+
 
     def to_dict(self):
         return {

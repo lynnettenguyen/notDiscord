@@ -11,7 +11,6 @@ import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
-
 const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId }) => {
     const server = useSelector(state => state.server[id])
     const users = useSelector(state => state.userSorted)
@@ -26,7 +25,6 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
     const [showChannels, setShowChannels] = useState(true)
     const [showChannelId, setShowChannelId] = useState(false)
     const [editActive, setEditActive] = useState(false)
-
 
     useEffect(() => {
         if (channels) {

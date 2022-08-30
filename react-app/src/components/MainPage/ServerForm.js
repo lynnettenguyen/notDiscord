@@ -6,8 +6,7 @@ import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
-
-const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
+const ServerForm = ({ setShowModalCreate }) => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -33,7 +32,6 @@ const ServerForm = ({ setShowModalCreate, showModalCreate }) => {
 
   return (
     <>
-
       <div className='server-form-outer'>
         <button className='close-modal' onClick={()=>setShowModalCreate(false)}><i className="fa-thin fa-x"/></button>
         <form onSubmit={handleSubmit} className={page < 1 ? "flex" : "hidden"}>

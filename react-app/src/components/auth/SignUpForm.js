@@ -5,6 +5,9 @@ import { signUp } from '../../store/session';
 import "../CSS/SignUpForm.css"
 
 const SignUpForm = () => {
+  const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
   const blue = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/blue.png'
   const green = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/green.png'
   const lightBlue = 'https://res.cloudinary.com/dv3qturtv/image/upload/v1661582933/light-blue.png'
@@ -24,9 +27,6 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [profile_pic, setProfilePic] = useState(randomPfp)
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
-
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -118,26 +118,26 @@ const SignUpForm = () => {
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
+              required
             />
           </div>
           <div className='form-section'>
-          <div className='form-label'>
+            <div className='form-label'>
               <label>PROFILE PIC</label>
-          </div>
+            </div>
             <input
               type='text'
               className='form-input'
               name='profile_pic'
               onChange={updateProfilePic}
               value={profile_pic}
-              required={true}
+              required
             />
           </div>
           <div className='signup-errors'>
             {errors.map((error, ind) => (
               <li className='signup-errors-inner' key={ind}>{error.split(":")[1]}</li>
-              ))}
+            ))}
           </div>
           <div className='form-button-outer'>
             <button className='form-button' type='submit'>Continue</button>

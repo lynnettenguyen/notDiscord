@@ -96,19 +96,19 @@ const ChannelPage = ({ channelId }) => {
     }
   }
 
-  const checkPost = (date, prevDate, i) => {
-    const oldDate = new Date(date)
-    const newDate = new Date(prevDate)
+  // const checkPost = (date, prevDate, i) => {
+  //   const oldDate = new Date(date)
+  //   const newDate = new Date(prevDate)
     // const difference = newDate - oldDate
-    if (i === 0) {
-      return true
-    }
+    // if (i === 0) {
+    //   return true
+    // }
     // if (difference > 180000) {
     //   return true
     // } else {
     //   return false
     // }
-  }
+  // }
 
   return users && (
     <>

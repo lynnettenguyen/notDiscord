@@ -2,20 +2,18 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DirectChat from './DirectChat'
 import UserProfile from './UserProfile';
-import { createDirectChat, removeDirectChat } from '../../store/directChat';
+import { createDirectChat } from '../../store/directChat';
 import { findDirectChat } from '../../store/directMessages';
 import wumpus from '../CSS/images/wumpus.svg'
 import messageBubbleGrey from '../CSS/images/message-bubble-grey.svg'
 import messageBubbleWhite from '../CSS/images/message-bubble-white.svg'
-// import whiteX from '../CSS/images/white-x.svg'
-// import greyX from '../CSS/images/grey-x.svg'
-import at from '../CSS/images/@-symbol.svg'
-
-import '../CSS/NoServerPage.css';
-import '../CSS/ServerPage.css';
-
 import friendsWhite from '../CSS/images/friends-white.svg'
 import friendsGrey from '../CSS/images/friends-grey.svg'
+import at from '../CSS/images/@-symbol.svg'
+import '../CSS/NoServerPage.css';
+import '../CSS/ServerPage.css';
+// import whiteX from '../CSS/images/white-x.svg'
+// import greyX from '../CSS/images/grey-x.svg'
 
 const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
     const dispatch = useDispatch()
@@ -25,12 +23,12 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     const directChats = useSelector(state => Object.values(state.directChat))
     const [recipientId, setRecipientId] = useState()
     const [userChat, setUserChat] = useState()
-    // const [close, setClose] = useState(greyX)
     const [messageHover, setMessageHover] = useState(false)
     const [selectUser, setSelectUser] = useState()
     const [messageBubble, setMessageBubble] = useState(messageBubbleGrey)
     const [friendIconHeader, setFriendIconHeader] = useState(friendsGrey)
     const [deleteOption, setDeleteOption] = useState(0)
+    // const [close, setClose] = useState(greyX)
 
     const allUsersInChat = []
     directChats.forEach(chat => {

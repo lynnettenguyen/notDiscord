@@ -4,6 +4,7 @@ from app.models import db, ChannelMessage
 from app.forms import MessageForm
 from .auth_routes import validation_errors_to_error_messages
 
+
 channel_messages = Blueprint('channel_messages', __name__)
 
 

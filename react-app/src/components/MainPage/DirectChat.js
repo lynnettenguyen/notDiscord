@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
-import { getDirectChats } from '../../store/directChat';
 import { getDirectMessages } from '../../store/directMessages';
 
 import '../CSS/DirectChat.css';
@@ -9,10 +8,6 @@ import '../CSS/DirectChat.css';
 let socket;
 
 const DirectChat = ({ directChatId, recipientId }) => {
-
-
-
-
   const messageRef = useRef(null)
 
   const scrollBottom = () => {
@@ -20,8 +15,8 @@ const DirectChat = ({ directChatId, recipientId }) => {
   }
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.directMessages));
-
   let currentChat = useSelector(state => state.directMessages.directChat)
+
   let currentChatId;
   if (currentChat) {
     currentChat = Object.values(currentChat)
@@ -85,13 +80,11 @@ const DirectChat = ({ directChatId, recipientId }) => {
     setChatInput(e.target.value);
   };
 
-
   const sendChat = (e) => {
     e.preventDefault();
     socket.emit('direct_chat', { user: user.username, sender_id: user.id, recipient_id: recipientId, direct_chat_id: `${directChatId}`, content: chatInput, profile_pic: user.profile_pic });
     setChatInput("");
   };
-
 
   const checkDay = (date) => {
     const today = new Date()
@@ -110,7 +103,6 @@ const DirectChat = ({ directChatId, recipientId }) => {
     }
   }
 
-
   // const checkPost = (date, prevDate, i) => {
   //   const oldDate = new Date(date)
   //   const newDate = new Date(prevDate)
@@ -124,7 +116,6 @@ const DirectChat = ({ directChatId, recipientId }) => {
   //     return false
   //   }
   // }
-
 
   return (
     <>

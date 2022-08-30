@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteServer, updateServer } from '../../store/servers';
 import { Modal } from '../context/Modal';
+import { deleteServer, updateServer } from '../../store/servers';
 import { getChannels, getOneServer, resetServer } from '../../store/server';
 import greyPencil from '../CSS/images/edit-server-pencil.svg'
 import whitePencil from '../CSS/images/edit-server-pencil-white.svg'
@@ -61,7 +61,6 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
         <Modal onClose={() => setShowModal(false)}>
           <div className='edit-server-modal-container'>
             <form onSubmit={handleSubmit} className="block">
-              {/* <section> */}
                 <div>
                   <div className='edit-server-modal-server-name'>
                     <label className='edit-server-modal-main-label'>Edit Server</label>
@@ -92,7 +91,6 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
                   <button onClick={() => {setShowModal(false); setShowDropdown(false)}} className='edit-server-modal-cancel-button'>Cancel</button>
                   <button type="submit" className='edit-server-modal-submit-button'>Update Server</button>
                 </div>
-              {/* </section> */}
             </form>
           </div>
         </Modal>

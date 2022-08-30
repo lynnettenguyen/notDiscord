@@ -31,9 +31,9 @@ function App() {
     <ModalProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/servers'>
+          <ProtectedRoute exact path='/servers'>
             <MainPage />
-          </Route>
+          </ProtectedRoute>
           <Route exact path='/'>
             <HomePage />
           </Route>
@@ -43,12 +43,6 @@ function App() {
           <Route exact path='/register'>
             <SignUpForm />
           </Route>
-          <ProtectedRoute path='/users' exact={true} >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId' exact={true} >
-            <User />
-          </ProtectedRoute>
         </Switch>
       </BrowserRouter>
     </ModalProvider>
