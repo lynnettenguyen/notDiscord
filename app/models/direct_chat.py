@@ -1,5 +1,6 @@
 from .db import db
 
+
 class DirectChat(db.Model):
     __tablename__ = 'direct_chats'
     __table_args__ = (db.UniqueConstraint('sender_id', 'recipient_id'),)
@@ -11,6 +12,7 @@ class DirectChat(db.Model):
     sender = db.relationship("User", back_populates='dm_sender', foreign_keys=[sender_id])
     recipient = db.relationship("User", back_populates='dm_recipient', foreign_keys=[recipient_id])
     messages = db.relationship('DirectMessage', cascade='all, delete')
+
 
     def to_dict(self):
         return {

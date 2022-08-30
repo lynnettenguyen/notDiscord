@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory, Redirect } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
+import AltLogin from '../auth/AltLogin';
 import HomeLogo from '../CSS/images/notDiscord.png'
 import leftImage from '../CSS/images/svgexport-5.svg'
 import rightImage from '../CSS/images/svgexport-6.svg'
 import part3 from '../CSS/images/threePart.svg'
-// import part4 from '../CSS/images/fourPart.svg'
-// import part5 from '../CSS/images/fivePart.svg'
-// import part6 from '../CSS/images/sixPart.svg'
 import git from '../CSS/images/github.png'
 import linked from '../CSS/images/linkedin.png'
 import { logout } from '../../store/session';
-
 import '../CSS/HomePage.css';
-import AltLogin from '../auth/AltLogin';
-
+// import part4 from '../CSS/images/fourPart.svg'
+// import part5 from '../CSS/images/fivePart.svg'
+// import part6 from '../CSS/images/sixPart.svg'
 
 
 const HomePage = () => {
@@ -22,7 +20,7 @@ const HomePage = () => {
     const user = useSelector(state => state.session.user);
     const [needLogin, setNeedLogin] = useState(false)
     const dispatch = useDispatch()
-    const onLogout = async (e) => {
+    const onLogout = async () => {
         await dispatch(logout());
     };
 
@@ -45,7 +43,7 @@ const HomePage = () => {
                 <div className='NavBar-buttons'>
                     <div><NavLink exact to='/'><img alt='home' className='home-logo' src={HomeLogo} /></NavLink></div>
                     <div className='meet-us' onClick={handleMeetUp}>Meet Us</div>
-                    <div className='our-repo'><a href='https://github.com/lynnettenguyen/notDiscord'>Github Repo</a></div>
+                    <div className='our-repo'><a href='https://github.com/lynnettenguyen/notDiscord'>Github</a></div>
                     {user && (<button className='logout-button-top' onClick={onLogout}>Logout</button>)}
                     {!user && (<div><NavLink className='login-button' to='/login'>Login</NavLink></div>)}
                 </div>

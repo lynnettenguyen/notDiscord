@@ -16,13 +16,11 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password))
-    // .then(()=> history.push('/servers'))
-    .catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
     if (data) {
-      // setErrors(data);
       setErrors(['Email and/or password could not be validated'])
     } else {
       history.push('/servers')
@@ -59,7 +57,6 @@ const LoginForm = () => {
               type='email'
               value={email}
               onChange={updateEmail}
-              required
             />
           </div>
           <div className='form-section'>
@@ -72,7 +69,6 @@ const LoginForm = () => {
               type='password'
               value={password}
               onChange={updatePassword}
-              required
             />
           </div>
           <div className='login-errors'>

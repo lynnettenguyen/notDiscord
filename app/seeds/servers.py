@@ -1,5 +1,6 @@
 from app.models import db, Server
 
+
 def seed_servers():
     demo_servers = [
       Server(
@@ -19,10 +20,12 @@ def seed_servers():
         ),
     ]
 
+
     for server in demo_servers:
       db.session.add(server)
 
     db.session.commit()
+
 
 def undo_servers():
     db.session.execute('TRUNCATE servers RESTART IDENTITY CASCADE;')

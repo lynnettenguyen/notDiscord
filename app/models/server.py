@@ -1,5 +1,6 @@
 from .db import db
 
+
 class Server(db.Model):
     __tablename__ = 'servers'
 
@@ -10,6 +11,7 @@ class Server(db.Model):
 
     user = db.relationship("User", back_populates='servers')
     channels = db.relationship("Channel", back_populates='server', cascade="all, delete")
+
 
     def to_dict(self):
         return {

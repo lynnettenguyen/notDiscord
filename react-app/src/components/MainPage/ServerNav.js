@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Modal } from '../context/Modal';
 import { allServers, listAllServers } from '../../store/servers';
 import { getChannels, getOneServer, resetServer } from '../../store/server';
 import { getUsers } from '../../store/users';
-import { Modal } from '../context/Modal';
 import ServerForm from './ServerForm'
 import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
-
 import '../CSS/ServerNav.css'
 
 const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGeneralChannelId }) => {
@@ -58,13 +57,12 @@ const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGener
             )
           })}
         </div>
-
         <div className='add-server-outer' onClick={() => { setShowModalCreate(true) }}>
           <div className='fas fa-plus add-server-icon' />
         </div>
         {showModalCreate && (
           <Modal onClose={() => setShowModalCreate(false)}>
-            <ServerForm setShowModalCreate={setShowModalCreate} showModalCreate={showModalCreate} />
+            <ServerForm setShowModalCreate={setShowModalCreate} />
           </Modal>
         )}
       </div>

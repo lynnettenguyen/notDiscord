@@ -6,12 +6,13 @@ import '../CSS/HomePage.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
-  const onLogout = async (e) => {
+
+  const onLogout = async () => {
     await dispatch(logout());
     await dispatch(resetServer());
   };
 
-  return <button className='logout-button-bottom' onClick={onLogout}>Logout</button>;
+  return <button className='logout-button-bottom' onClick={onLogout}>Logout</button>
 };
 
 export default LogoutButton;

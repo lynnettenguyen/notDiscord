@@ -1,5 +1,6 @@
 from app.models import db, Channel
 
+
 def seed_channels():
     demo_channels = [
       Channel(
@@ -40,10 +41,12 @@ def seed_channels():
         ),
     ]
 
+
     for channel in demo_channels:
       db.session.add(channel)
 
     db.session.commit()
+
 
 def undo_channels():
     db.session.execute('TRUNCATE channels RESTART IDENTITY CASCADE;')

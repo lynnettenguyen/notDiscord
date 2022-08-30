@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ServerNav from './ServerNav';
 import { useDispatch, useSelector } from 'react-redux';
+import ServerNav from './ServerNav';
 import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getDirectChats } from '../../store/directChat';
@@ -40,7 +40,6 @@ const MainPage = () => {
             setChannelTopic(channels[generalChannelId]?.topic)
         }
     }, [server])
-
 
     return (
         <div id='main-application'>

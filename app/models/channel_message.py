@@ -1,5 +1,6 @@
 from .db import db
 
+
 class ChannelMessage(db.Model):
     __tablename__ = 'channel_messages'
 
@@ -11,6 +12,7 @@ class ChannelMessage(db.Model):
 
     user = db.relationship("User", back_populates='channel_messages_sent')
     channel = db.relationship("Channel", back_populates='channel_messages')
+
 
     def to_dict(self):
         return {
