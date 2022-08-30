@@ -5,8 +5,6 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import HomePage from './components/HomePage/HomePage'
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import '../src/components/CSS/fonts.css'
 import MainPage from './components/MainPage';
 import { ModalProvider } from './components/context/Modal';
