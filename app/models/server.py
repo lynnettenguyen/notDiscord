@@ -20,3 +20,8 @@ class Server(db.Model):
             'name': self.name,
             'server_pic': self.server_pic
         }
+
+    def to_dict_id(self):
+        return {
+            'id': self.id
+        }

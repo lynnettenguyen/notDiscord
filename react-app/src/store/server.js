@@ -108,8 +108,8 @@ const singleServerReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {
     case FIND_SERVER: {
-      newState[action.server.id] = action.server
-      newState['channels'] = {}
+      let server = {}
+      newState[action.server[0].id] = action.server[0]
       return newState
     }
     case SERVER_RESET: {
