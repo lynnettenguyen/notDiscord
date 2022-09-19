@@ -52,7 +52,7 @@ const MainPage = () => {
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} />
                 </div>
                 <div className='main-middle-container'>
-                    {loaded ? (
+                    {channels ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
