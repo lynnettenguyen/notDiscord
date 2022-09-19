@@ -103,19 +103,19 @@ const DirectChat = ({ directChatId, recipientId }) => {
     }
   }
 
-  // const checkPost = (date, prevDate, i) => {
-  //   const oldDate = new Date(date)
-  //   const newDate = new Date(prevDate)
-  //   const difference = newDate - oldDate
-  //   if (i === 0) {
-  //     return true
-  //   }
-  //   if (difference > 180000) {
-  //     return true
-  //   } else {
-  //     return false
-  //   }
-  // }
+  const checkPost = (date, prevDate, i) => {
+    const oldDate = new Date(date)
+    const newDate = new Date(prevDate)
+    const difference = newDate - oldDate
+    if (i === 0) {
+      return true
+    }
+    if (difference > 180000) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   return (
     <>
@@ -134,8 +134,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
             {user && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner new' key={i}>
-                  {/* {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && message.created_at && */}
-                  {message.created_at &&
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && msgState[i]?.user_id !== msgState[i - 1]?.user_id && message.created_at &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={users[message.sender_id - 1]?.profile_pic} alt='profile' className='channel-chat-profile' />

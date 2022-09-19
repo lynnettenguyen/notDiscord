@@ -17,11 +17,12 @@ const MainPage = () => {
 
     const [generalChannelId, setGeneralChannelId] = useState(channels ? Object.keys(channels)[0] : "")
 
-    const [directChatId, setDirectChatId] = useState()
-    const [showFriends, setShowFriends] = useState(false)
-    const [channelName, setChannelName] = useState(channels ? channels[generalChannelId]?.name : "general")
-    const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "")
-    const [channelActive, setChannelActive] = useState(false)
+    const [directChatId, setDirectChatId] = useState();
+    const [showFriends, setShowFriends] = useState(false);
+    const [channelName, setChannelName] = useState(channels ? channels[generalChannelId]?.name : "general");
+    const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "");
+    const [channelActive, setChannelActive] = useState(false);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const func = async () => {
@@ -33,11 +34,14 @@ const MainPage = () => {
         func()
     }, [dispatch])
 
+
+
     useEffect(() => {
         if (channels) {
             setGeneralChannelId(Object.keys(channels)[0])
             setChannelName(channels[generalChannelId]?.name)
             setChannelTopic(channels[generalChannelId]?.topic)
+            setLoaded(true)
         }
     }, [server])
 
@@ -48,7 +52,7 @@ const MainPage = () => {
                     <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} />
                 </div>
                 <div className='main-middle-container'>
-                    {channels ? (
+                    {loaded ? (
                         <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
