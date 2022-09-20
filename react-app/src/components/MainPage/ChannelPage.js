@@ -97,18 +97,24 @@ const ChannelPage = ({ channelId }) => {
     }
   }
 
-  const checkPost = (date, prevDate, i) => {
-    const oldDate = new Date(date)
-    const newDate = new Date(prevDate)
+  const checkPost = (prev, curr, i, prevId, currId) => {
+    const oldDate = new Date(prev)
+    const newDate = new Date(curr)
+    let result;
     const difference = newDate - oldDate
     if (i === 0) {
-      return true
-    }
-    if (difference > 180000) {
-      return true
+      result = true
+    } else if (prevId !== currId) {
+      result = true
+      if (!currId) result = false
     } else {
-      return false
+      if (difference > 180000) {
+        result = true
+      } else {
+        result =  false
+      }
     }
+    return result
   }
 
   return users && (
@@ -119,15 +125,15 @@ const ChannelPage = ({ channelId }) => {
             {users && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                {i == 0 &&
+                {/* {i == 0 &&
                   (<div className='chat-header'>
                     <div className='chat-profile-outer'>
                       <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />
                     </div>
                     <div className='chat-username'>{users[message.user_id]?.username}</div>
                     <div className='chat-date'>{checkDay(message.created_at)}</div>
-                  </div>)}
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && msgState[i]?.user_id === msgState[i - 1]?.user_id &&
+                  </div>)} */}
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i,msgState[i - 1]?.user_id, message?.user_id) &&
                   (<div className='chat-header'>
                     <div className='chat-profile-outer'>
                       <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />

@@ -52,6 +52,7 @@
     margin-right: 10px;
     position: absolute;
     left: -8px;
+    top: .4em;
   }
 
   .chat-username {
@@ -102,4 +103,8 @@
   .chat-input-form {
     width: 100%;
     padding: 10px;
+  }
+
+  .chat-header {
+    margin-top: 15px;
   }
