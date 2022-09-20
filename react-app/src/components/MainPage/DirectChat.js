@@ -90,16 +90,23 @@ const DirectChat = ({ directChatId, recipientId }) => {
     const today = new Date()
     const newDate = new Date(date)
     const time = newDate.toLocaleTimeString([], { timeStyle: 'short' })
-    const todayDay = today.getDay()
-    const dateDay = newDate.getDay()
 
-    if (todayDay - dateDay === 0) {
+    const todayYear = today.getFullYear()
+    const dateYear = newDate.getFullYear()
+
+    const todayMonth = today.getMonth()
+    const dateMonth = newDate.getMonth()
+
+    const todayDay = today.getDate()
+    const dateDay = newDate.getDate()
+
+    if (todayYear !== dateYear || todayMonth !== dateMonth) {
+      const result = newDate.toLocaleDateString()
+      return result
+    } else if (todayDay - dateDay === 0) {
       return `Today at ${time}`
     } else if (todayDay - dateDay === 1) {
       return `Yesterday at ${time}`
-    } else {
-      const result = newDate.toLocaleDateString()
-      return result
     }
   }
 
