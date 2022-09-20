@@ -39,7 +39,7 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
     return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server.name}
+                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server[0].name}
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
