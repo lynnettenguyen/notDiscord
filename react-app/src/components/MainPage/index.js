@@ -22,7 +22,6 @@ const MainPage = () => {
     const [channelName, setChannelName] = useState(channels ? channels[generalChannelId]?.name : "general");
     const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "");
     const [channelActive, setChannelActive] = useState(false);
-    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const func = async () => {
@@ -41,7 +40,6 @@ const MainPage = () => {
             setGeneralChannelId(Object.keys(channels)[0])
             setChannelName(channels[generalChannelId]?.name)
             setChannelTopic(channels[generalChannelId]?.topic)
-            setLoaded(true)
         }
     }, [server])
 
