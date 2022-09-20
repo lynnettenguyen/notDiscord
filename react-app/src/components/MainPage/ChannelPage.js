@@ -119,7 +119,15 @@ const ChannelPage = ({ channelId }) => {
             {users && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner' key={i}>
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && msgState[i]?.user_id !== msgState[i - 1]?.user_id &&
+                {i == 0 &&
+                  (<div className='chat-header'>
+                    <div className='chat-profile-outer'>
+                      <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />
+                    </div>
+                    <div className='chat-username'>{users[message.user_id]?.username}</div>
+                    <div className='chat-date'>{checkDay(message.created_at)}</div>
+                  </div>)}
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && msgState[i]?.user_id === msgState[i - 1]?.user_id &&
                   (<div className='chat-header'>
                     <div className='chat-profile-outer'>
                       <img src={users[message.user_id]?.profile_pic} alt='profile' className='channel-chat-profile' />

@@ -131,10 +131,18 @@ const DirectChat = ({ directChatId, recipientId }) => {
             <div className='noServer-caption-middle'>This is the beginning of your direct message history with @{users[recipientId - 1]?.username}</div>
           </div>
           <div className='channel-messages'>
-            {user && msgState?.map((message, i) => (
+            {user && msgState.length > 0 && msgState?.map((message, i) => (
               <>
                 <div className='channel-messages-inner new' key={i}>
-                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && msgState[i]?.user_id !== msgState[i - 1]?.user_id && message.created_at &&
+                {/* {i === 0 &&
+                    (<div className='chat-header'>
+                      <div className='chat-profile-outer'>
+                        <img src={users[message.sender_id - 1]?.profile_pic} alt='profile' className='channel-chat-profile' />
+                      </div>
+                      <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
+                      <div className='chat-date'>{checkDay(message.created_at)}</div>
+                    </div>)} */}
+                  {checkPost(msgState[i - 1]?.created_at, message.created_at, i) && msgState[i]?.user_id === msgState[i - 1]?.user_id && message.created_at &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
                         <img src={users[message.sender_id - 1]?.profile_pic} alt='profile' className='channel-chat-profile' />
