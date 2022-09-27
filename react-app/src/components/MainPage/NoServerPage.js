@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DirectChat from './DirectChat'
 import UserProfile from './UserProfile';
-import { createDirectChat } from '../../store/directChat';
+import { createDirectChat, getDirectChats } from '../../store/directChat';
 import { findDirectChat } from '../../store/directMessages';
 import wumpus from '../CSS/images/wumpus.svg'
 import messageBubbleGrey from '../CSS/images/message-bubble-grey.svg'
@@ -12,23 +12,27 @@ import friendsGrey from '../CSS/images/friends-grey.svg'
 import at from '../CSS/images/@-symbol.svg'
 import '../CSS/NoServerPage.css';
 import '../CSS/ServerPage.css';
+import { setShowFriends } from '../../store/showFriends';
+import { getUsers } from '../../store/users';
 // import whiteX from '../CSS/images/white-x.svg'
 // import greyX from '../CSS/images/grey-x.svg'
 
-const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFriends }) => {
-    const dispatch = useDispatch()
-    const currentUser = useSelector(state => state.session)
-    const users = useSelector(state => Object.values(state.users))
-    const userSorted = useSelector(state => state.userSorted)
-    const directChats = useSelector(state => Object.values(state.directChat))
-    const [recipientId, setRecipientId] = useState()
-    const [userChat, setUserChat] = useState()
-    const [messageHover, setMessageHover] = useState(false)
-    const [selectUser, setSelectUser] = useState()
-    const [messageBubble, setMessageBubble] = useState(messageBubbleGrey)
-    const [friendIconHeader, setFriendIconHeader] = useState(friendsGrey)
-    const [deleteOption, setDeleteOption] = useState(0)
-    // const [close, setClose] = useState(greyX)
+const NoServerPage = () => {
+    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session);
+    const users = useSelector(state => Object.values(state.users));
+    const userSorted = useSelector(state => state.userSorted);
+    const directChats = useSelector(state => Object.values(state.directChat));
+    const [recipientId, setRecipientId] = useState();
+    const [userChat, setUserChat] = useState();
+    const [messageHover, setMessageHover] = useState(false);
+    const [selectUser, setSelectUser] = useState();
+    const [messageBubble, setMessageBubble] = useState(messageBubbleGrey);
+    const [friendIconHeader, setFriendIconHeader] = useState(friendsGrey);
+    const [deleteOption, setDeleteOption] = useState(0);
+    const showFriends = useSelector(state => state.showFriends);
+    const [loaded, setLoaded] = useState(false);
+    const [directChatId, setDirectChatId] = useState();
 
     const allUsersInChat = []
     directChats.forEach(chat => {
@@ -36,29 +40,32 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
         allUsersInChat.push(chat.sender_id)
     })
 
+    useEffect(()=> {
+        dispatch(getUsers())
+        dispatch(getDirectChats()).then(()=>setLoaded(true))
+    }, [dispatch])
+
     const displayDirectChat = (chatId, userId) => {
         if (directChatId !== chatId) dispatch(findDirectChat(chatId))
         setDirectChatId(chatId)
         setRecipientId(userId)
         setUserChat(users[userId - 1]?.username)
-        setShowFriends(false)
+        dispatch(setShowFriends(false))
     }
 
     const uniqueUsersInChat = new Set(allUsersInChat)
 
     const newDirectChat = async (recipientId) => {
-
         const chatData = {
             sender_id: currentUser.user.id,
             recipient_id: recipientId
         }
-
         dispatch(createDirectChat(chatData))
     }
 
     const openDirectChat = (recipientId) => {
         setRecipientId(recipientId)
-        setShowFriends(false)
+        dispatch(setShowFriends(false))
 
         let check = false
         directChats.forEach(chat => {
@@ -73,7 +80,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
     //     dispatch(removeDirectChat(directChatId))
     // }
 
-    return (
+    return loaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
                 <div className='noServerPage-name'>
@@ -88,7 +95,7 @@ const NoServerPage = ({ directChatId, setDirectChatId, showFriends, setShowFrien
                 <div className='ServerPage-left-container'>
                     <div className='noServer-left-scroll'>
                         <div className='noServer-channel-header'>
-                            <div className='noServer-friends-left' onClick={() => { setShowFriends(true); setDirectChatId(null) }} onMouseOver={() => setFriendIconHeader(friendsWhite)} onMouseLeave={() => setFriendIconHeader(friendsGrey)}><img src={friendIconHeader} alt='friends' className='noServer-icon-nav' />Friends</div>
+                            <div className='noServer-friends-left' onClick={() => { dispatch(setShowFriends(true)); setDirectChatId(null) }} onMouseOver={() => setFriendIconHeader(friendsWhite)} onMouseLeave={() => setFriendIconHeader(friendsGrey)}><img src={friendIconHeader} alt='friends' className='noServer-icon-nav' />Friends</div>
                             <div className='dm-header'>DIRECT MESSAGES</div>
                         </div>
                         {directChats?.reverse().map((directChat, i) => {

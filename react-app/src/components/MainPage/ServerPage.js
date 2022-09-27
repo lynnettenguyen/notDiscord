@@ -11,8 +11,8 @@ import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
-const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId }) => {
-    const server = useSelector(state => Object.values(state.server));
+const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId }) => {
+    const server = useSelector(state => state.server.server);
     const users = useSelector(state => state.userSorted);
     const channelsObj = useSelector(state => state.server.channels);
     const channels = useSelector(state => Object.values(state.server?.channels));
@@ -50,7 +50,7 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
                     </div>}
                 </div>
                 <div className='ServerPage-NavBar-buttons'></div>
-                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={server.id} setIsLoaded={setIsLoaded} />)}
             </div>
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
@@ -63,7 +63,7 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
                             <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
+                                    <ChannelForm id={server?.id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
                                 </Modal>
                             )}
                         </div>
@@ -113,7 +113,7 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
                 </div>
                 {channels?.length > 0 && generalChannelId ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={id} channelId={channelId} />
+                        <ChannelPage id={server.id} channelId={channelId} />
                     </div> : <>
                         {channels?.length > 0 ?
                             <div className='ServerPage-middle-container-noText'></div> :

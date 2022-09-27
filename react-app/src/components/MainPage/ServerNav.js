@@ -8,13 +8,17 @@ import ServerForm from './ServerForm'
 import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
 import '../CSS/ServerNav.css'
+import { setShowFriends } from '../../store/showFriends';
+import { useHistory } from 'react-router-dom';
 
-const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGeneralChannelId }) => {
+const ServerNav = ({ setDirectChatId, setChannelActive, setGeneralChannelId }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const servers = useSelector(allServers);
   const server = useSelector(state => state.server)
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
+
 
   useEffect(() => {
     dispatch(listAllServers())
@@ -30,16 +34,21 @@ const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGener
       await dispatch(getChannels(serverId))
       await dispatch(getUsers())
         .then(() => setIsLoaded(true))
-    }
-    setChannelActive(false)
-    setGeneralChannelId(null)
+        history?.push('/')
+      }
+    // setChannelActive(false)
+    // setGeneralChannelId(null)
+    // setDirectChatId(null)
+    dispatch(setShowFriends(false))
+    // history.push('/noServer')
+
   };
 
   return (
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null); setShowFriends(false) }} />
+          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => handleServerClick(0)} />
           <div className='line-break'>------</div>
         </div>
         <div className='serverNav-all-servers-outer'>

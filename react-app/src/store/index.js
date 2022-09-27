@@ -4,10 +4,11 @@ import session from './session';
 import servers from './servers';
 import server from './server';
 import users from './users';
-import userSorted from './userSorted'
-import channelMessages from './channelMessages'
-import directChat from './directChat'
-import directMessages from './directMessages'
+import userSorted from './userSorted';
+import channelMessages from './channelMessages';
+import directChat from './directChat';
+import directMessages from './directMessages';
+import showFriends from './showFriends';
 
 const rootReducer = combineReducers({
   session,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   server,
   channelMessages,
   directChat,
-  directMessages
+  directMessages,
+  showFriends
 });
 
 

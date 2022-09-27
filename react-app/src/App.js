@@ -9,6 +9,8 @@ import '../src/components/CSS/fonts.css'
 import MainPage from './components/MainPage';
 import { ModalProvider } from './components/context/Modal';
 import { authenticate } from './store/session';
+import NoServerPage from './components/MainPage/NoServerPage';
+import ServerNav from './components/MainPage/ServerNav';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,10 +29,14 @@ function App() {
 
   return (
     <ModalProvider>
+      <ServerNav/>
       <BrowserRouter>
         <Switch>
           <ProtectedRoute exact path='/servers'>
             <MainPage />
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/noServer'>
+            <NoServerPage />
           </ProtectedRoute>
           <Route exact path='/'>
             <HomePage />

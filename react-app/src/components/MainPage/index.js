@@ -10,15 +10,14 @@ import '../CSS/MainPage.css';
 
 const MainPage = () => {
     const dispatch = useDispatch()
-    const server = useSelector(state => state.server)
+    const server = useSelector(state => state.server.server)
     const channels = useSelector(state => state.server.channels)
 
-    const id = Object.keys(server)[0]
+    const id = server?.id
 
     const [generalChannelId, setGeneralChannelId] = useState(channels ? Object.keys(channels)[0] : "")
 
     const [directChatId, setDirectChatId] = useState();
-    const [showFriends, setShowFriends] = useState(false);
     const [channelName, setChannelName] = useState(channels ? channels[generalChannelId]?.name : "general");
     const [channelTopic, setChannelTopic] = useState(channels ? channels[generalChannelId]?.topic : "");
     const [channelActive, setChannelActive] = useState(false);
@@ -47,14 +46,10 @@ const MainPage = () => {
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} />
+                    {/* <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} /> */}
                 </div>
                 <div className='main-middle-container'>
-                    {channels ? (
-                        <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />
-                    ) : (
-                        <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
-                    )}
+                    <ServerPage id={id} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId} channelName={channelName} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />
                 </div>
             </div>
         </div>

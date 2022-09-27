@@ -26,7 +26,7 @@ const HomePage = () => {
 
     const enterServers = () => {
         if (user) {
-            history.push('/servers')
+            history.push('/noServer')
         } else {
             setNeedLogin(true)
         }
