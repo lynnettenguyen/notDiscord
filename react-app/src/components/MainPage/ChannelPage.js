@@ -14,7 +14,7 @@ const ChannelPage = ({ channelId }) => {
   const channel = useSelector(state => state.server.channels)
   const users = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
-  const [currChannel, setCurrChannel] = useState(channels[0].id)
+  const [currChannel, setCurrChannel] = useState(channels[0]?.id)
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
@@ -123,6 +123,14 @@ const ChannelPage = ({ channelId }) => {
     }
     return result
   }
+
+
+
+
+
+
+
+
 
   return users && (
     <>

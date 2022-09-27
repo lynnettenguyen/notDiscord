@@ -59,7 +59,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/servers' />;
+    return <Redirect to='/noServer' />;
   }
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import UserProfile from './UserProfile';
 import EditServerForm from './EditServerForm'
@@ -10,12 +10,16 @@ import editGear from '../CSS/images/edit-channel-gear.svg'
 import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
+import { useHistory } from 'react-router-dom';
+import { getChannels } from '../../store/server';
 
-const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId }) => {
-    const server = useSelector(state => state.server.server);
+const ServerPage = ({ generalChannelId, setGeneralChannelId }) => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const server = useSelector(state => state.server);
+    const serverId = server.id;
     const users = useSelector(state => state.userSorted);
     const channelsObj = useSelector(state => state.server.channels);
-    const channels = useSelector(state => Object.values(state.server?.channels));
     const [isLoaded, setIsLoaded] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const [channelId, setChannelId] = useState();
@@ -25,12 +29,23 @@ const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic
     const [showChannels, setShowChannels] = useState(true);
     const [showChannelId, setShowChannelId] = useState(false);
     const [editActive, setEditActive] = useState(false);
+    const [channelName, setChannelName] = useState(channelsObj ? channelsObj[generalChannelId]?.name : "general");
+    const [channelTopic, setChannelTopic] = useState(channelsObj ? channelsObj[generalChannelId]?.topic : "");
+    const [channelActive, setChannelActive] = useState(false);
+    const [channels, setChannels] = useState([])
 
     useEffect(() => {
-        if (channels) {
-            setIsLoaded(true)
-        }
-    }, [isLoaded, channels])
+        if (channelsObj) setChannels(Object.values(server?.channels))
+    }, [])
+
+
+    useEffect(()=>{
+        dispatch(getChannels(serverId)).then(()=> setIsLoaded(true))
+    }, [serverId])
+
+    useEffect(()=>{
+        if (Object.values(server).length === 0) history.push('/noServer')
+    }, [])
 
     const editServer = () => {
         setShowDropdown(!showDropdown)
@@ -39,13 +54,13 @@ const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic
     return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server[0].name}
+                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server.server.name}
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
                     {channelId && <div className='noServer-nav'>
                         <img src={hashtag} alt='hashtag' className='noServer-icon-at' />
-                        <div>{channelName ? channelName : "Select a Channel to Start Chatting!"}</div>
+                        <div>{channelsObj[channelId]?.name}</div>
                         <div className='serverPage-channel-name-topic'>{channelTopic}</div>
                     </div>}
                 </div>
@@ -63,13 +78,12 @@ const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic
                             <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm id={server?.id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
+                                    <ChannelForm channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
                                 </Modal>
                             )}
                         </div>
                     </div>
                     <div className='serverPage-server-channels-outer'>
-                        {showChannels ?
                             <div className='channels-main'>
                                 {channels?.map((channel, i) => {
                                     return (
@@ -88,35 +102,16 @@ const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic
                                         </div>
                                     )
                                 })}
-                            </div> : <>
-                                {showChannelId && channelsObj[channelId]?.name && (<div className='channels-main'>
-                                    <div className={channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channelsObj[channelId]?.id) }}>
-                                        <div className={channelActive ? 'channel-section-header-active' : 'channel-section-header'} onMouseOver={() => { setShowSection(channelsObj[channelId]?.id) }} onMouseLeave={() => setShowSection(0)}>
-                                            <div className='channel-section-left'>
-                                                <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
-                                                <div className='channel-name'>{channelsObj[channelId]?.name}</div>
-                                            </div>
-                                            <div className='edit-channel-button'>
-                                                <img src={editGear} alt='edit' className={channelsObj[channelId]?.id === showSection ? 'channel-edit-gear' : 'channel-edit-gear-hidden'}
-                                                    onClick={() => { setShowModal(true); setShowEditChannel(true) }}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>)}
-                            </>
-                        }
+                            </div>
                     </div>
                     <div className='user-profile-container'>
                         <UserProfile />
                     </div>
                 </div>
-                {channels?.length > 0 && generalChannelId ?
+                {channels?.length > 0 ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={server.id} channelId={channelId} />
+                        <ChannelPage id={serverId} channelId={channelId} />
                     </div> : <>
-                        {channels?.length > 0 ?
-                            <div className='ServerPage-middle-container-noText'></div> :
                             <div className='ServerPage-middle-container-noText'>
                                 <div className='no-text-channel-middle-container'>
                                     <div><img src={noChannels} alt='no channels' /></div>
@@ -124,7 +119,7 @@ const ServerPage = ({ channelName, setChannelName, channelTopic, setChannelTopic
                                     <div className='no-text-caption'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
                                 </div>
                             </div>
-                        }
+
                     </>
                 }
                 <div className='ServerPage-right-container'>

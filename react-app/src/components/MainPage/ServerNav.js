@@ -15,33 +15,32 @@ const ServerNav = ({ setDirectChatId, setChannelActive, setGeneralChannelId }) =
   const dispatch = useDispatch();
   const history = useHistory();
   const servers = useSelector(allServers);
-  const server = useSelector(state => state.server)
-  const [isLoaded, setIsLoaded] = useState(false);
+  const server = useSelector(state => state.server.server)
   const [showModalCreate, setShowModalCreate] = useState(false)
-
 
   useEffect(() => {
     dispatch(listAllServers())
-      .then(() => setIsLoaded(true))
-  }, [dispatch, isLoaded]);
+  }, [dispatch]);
 
   const handleServerClick = async (serverId) => {
     if (serverId === 0) {
       dispatch(resetServer())
+      history.push('/noServer')
     } else {
-      setIsLoaded(false)
+
       await dispatch(getOneServer(serverId))
       await dispatch(getChannels(serverId))
       await dispatch(getUsers())
-        .then(() => setIsLoaded(true))
-        history?.push('/')
+        .then(() => {
+
+          history.push('/servers')
+        })
       }
     // setChannelActive(false)
     // setGeneralChannelId(null)
     // setDirectChatId(null)
     dispatch(setShowFriends(false))
     // history.push('/noServer')
-
   };
 
   return (

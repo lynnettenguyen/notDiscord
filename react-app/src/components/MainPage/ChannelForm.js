@@ -5,8 +5,9 @@ import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 // import deleteBin from '../CSS/images/delete-server-bin.svg'
 
-const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
+const ChannelForm = ({ setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
   const channels = useSelector(state => state.server.channels)
+  const server = useSelector(state => state.server.server)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
@@ -17,7 +18,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     e.preventDefault()
 
     const channelData = {
-      server_id: id,
+      server_id: server.id,
       name,
       topic
     }
@@ -36,7 +37,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
 
     const channelData = {
       id: channelId,
-      server_id: id,
+      server_id: server.id,
       name: nameEdit,
       topic: topicEdit
     }
@@ -51,8 +52,8 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     setShowModal(false)
   }
 
-  const handleChannelDelete = (id, channelId) => {
-    dispatch(removeChannel(id, channelId))
+  const handleChannelDelete = (channelId) => {
+    dispatch(removeChannel(server.id, channelId))
     setShowEditChannel(false)
     setShowModal(false)
   }
@@ -97,7 +98,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                       <div className='bottom-channel-section'>
                         <button type='submit' className='channel-update-button'>Update</button>
                         <div className='delete-channel-outer'>
-                          <button className='channel-delete-button' onClick={() => handleChannelDelete(id, channelId)}><span className='delete-name'>Delete</span>
+                          <button className='channel-delete-button' onClick={() => handleChannelDelete(channelId)}><span className='delete-name'>Delete</span>
                           </button>
                         </div>
                       </div>

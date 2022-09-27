@@ -29,7 +29,7 @@ const AltLogin = () => {
     if (data) {
       setErrors(['Email and/or password could not be validated'])
     } else {
-      history.push('/servers')
+      history.push('/noServer')
     }
   };
 
@@ -41,7 +41,7 @@ const AltLogin = () => {
       go = false
       setEmail('')
       dispatch(login('demo@aa.io', 'password'))
-        .then(() => history.push('/servers'))
+        .then(() => history.push('/noServer'))
     }
     if (go) {
       users.forEach(user => {

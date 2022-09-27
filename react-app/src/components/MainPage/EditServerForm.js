@@ -11,8 +11,8 @@ import "../CSS/EditServerForm.css"
 
 const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
   const dispatch = useDispatch()
-  const server = useSelector(state => state.server[id])
-  const serverPic = useSelector(state => state.server[id].server_pic)
+  const server = useSelector(state => state.server.server)
+  const serverPic = useSelector(state => state.server.server.server_pic)
   const [showModal, setShowModal] = useState(false)
   const [name, setName] = useState(`${server.name}`)
   const [server_pic, setServerPic] = useState(serverPic)

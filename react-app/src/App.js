@@ -29,8 +29,8 @@ function App() {
 
   return (
     <ModalProvider>
-      <ServerNav/>
       <BrowserRouter>
+        <ServerNav/>
         <Switch>
           <ProtectedRoute exact path='/servers'>
             <MainPage />

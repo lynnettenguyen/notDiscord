@@ -23,7 +23,7 @@ const LoginForm = () => {
     if (data) {
       setErrors(['Email and/or password could not be validated'])
     } else {
-      history.push('/servers')
+      history.push('/noServer')
     }
   };
 
