@@ -47,7 +47,7 @@ const MainPage = () => {
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelName={setChannelName} channelTopic={channelTopic} setChannelTopic={setChannelTopic} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} />
+                    <ServerNav setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} />
                 </div>
                 <div className='main-middle-container'>
                     {channels ? (

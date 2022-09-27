@@ -124,7 +124,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
       if (difference > 180000) {
         result = true
       } else {
-        result =  false
+        result = false
       }
     }
     return result
@@ -181,7 +181,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
       </div>
       <div className="directChat-messages-input">
         <form onSubmit={sendChat} className='chat-input-form'>
-          <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message #`} />
+          <input value={chatInput} onChange={updateChatInput} className="chat-input" placeholder={`Message @${users[recipientId - 1].username}`} />
           <button className='chat-button' type="submit"></button>
         </form>
       </div>
