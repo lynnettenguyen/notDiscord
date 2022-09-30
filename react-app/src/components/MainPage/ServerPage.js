@@ -11,7 +11,7 @@ import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
-const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId, currChannel, setCurrChannel }) => {
+const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId }) => {
 
     const servers = useSelector(state => state.servers)
     const server = useSelector(state => Object.values(state.server));
@@ -117,7 +117,7 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                 </div>
                 {channels?.length > 0 && generalChannelId ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={id} channelId={channelId} setCurrChannel={setCurrChannel} channelName={channelName} />
+                        <ChannelPage id={id} channelId={channelId} channelName={channelName} />
                     </div> : <>
                         {channels?.length > 0 ?
                             <div className='ServerPage-middle-container-noText'></div> :

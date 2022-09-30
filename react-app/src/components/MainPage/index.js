@@ -15,7 +15,6 @@ const MainPage = () => {
     const dispatch = useDispatch()
     const [generalChannelId, setGeneralChannelId] = useState()
     const [channelId, setChannelId] = useState();
-    const [currChannel, setCurrChannel] = useState()
     const [directChatId, setDirectChatId] = useState();
     const [showFriends, setShowFriends] = useState(false);
     const [channelName, setChannelName] = useState("general");
@@ -25,7 +24,6 @@ const MainPage = () => {
     useEffect(() => {
         dispatch(listAllServers())
         setChannelId(generalChannelId)
-        setCurrChannel(generalChannelId)
         dispatch(getOneServer(selectedServer))
         dispatch(getUsers())
         dispatch(getDirectChats())
@@ -45,7 +43,7 @@ const MainPage = () => {
                             id={selectedServer} setSelectedServer={setSelectedServer} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId}
                             channelId={channelId} setChannelId={setChannelId}
                             channelName={channelName} setChannelName={setChannelName}
-                            channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} currChannel={currChannel} setCurrChannel={setCurrChannel} />
+                            channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />
                     ) : (
                         <NoServerPage directChatId={directChatId} setDirectChatId={setDirectChatId} showFriends={showFriends} setShowFriends={setShowFriends} />
                     )}
