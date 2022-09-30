@@ -13,7 +13,6 @@ import { listAllServers } from '../../store/servers';
 const MainPage = () => {
     const [selectedServer, setSelectedServer] = useState(0)
     const dispatch = useDispatch()
-    const [generalChannelId, setGeneralChannelId] = useState()
     const [channelId, setChannelId] = useState();
     const [directChatId, setDirectChatId] = useState();
     const [showFriends, setShowFriends] = useState(false);
@@ -23,24 +22,23 @@ const MainPage = () => {
 
     useEffect(() => {
         dispatch(listAllServers())
-        setChannelId(generalChannelId)
         dispatch(getOneServer(selectedServer))
         dispatch(getUsers())
         dispatch(getDirectChats())
         dispatch(getChannels(selectedServer))
 
-    }, [dispatch, generalChannelId, selectedServer])
+    }, [dispatch, channelId, selectedServer])
 
     return (
         <div id='main-application'>
             <div className='main-server-container'>
                 <div className='main-left-container'>
-                    <ServerNav setSelectedServer={setSelectedServer} setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelActive={setChannelActive} setGeneralChannelId={setGeneralChannelId} setChannelName={setChannelName} setChannelTopic={setChannelTopic} />
+                    <ServerNav setSelectedServer={setSelectedServer} setDirectChatId={setDirectChatId} setShowFriends={setShowFriends} setChannelActive={setChannelActive} setChannelId={setChannelId} setChannelName={setChannelName} setChannelTopic={setChannelTopic} />
                 </div>
                 <div className='main-middle-container'>
                     {selectedServer !== 0 ? (
                         <ServerPage
-                            id={selectedServer} setSelectedServer={setSelectedServer} generalChannelId={generalChannelId} setGeneralChannelId={setGeneralChannelId}
+                            id={selectedServer} setSelectedServer={setSelectedServer} 
                             channelId={channelId} setChannelId={setChannelId}
                             channelName={channelName} setChannelName={setChannelName}
                             channelTopic={channelTopic} setChannelTopic={setChannelTopic} channelActive={channelActive} setChannelActive={setChannelActive} />

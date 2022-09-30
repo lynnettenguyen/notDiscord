@@ -9,14 +9,11 @@ import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
 import '../CSS/ServerNav.css'
 
-const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChannelActive, setGeneralChannelId, setChannelName, setChannelTopic }) => {
+const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChannelActive, setChannelId, setChannelName, setChannelTopic }) => {
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
-
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
-
-
 
   useEffect(() => {
     dispatch(listAllServers())
@@ -29,12 +26,12 @@ const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChan
 
     if (serverId === 0) {
       dispatch(resetServer())
-      setGeneralChannelId(null)
+      setChannelId(null)
       setDirectChatId(null)
       setShowFriends(false)
     } else {
       setIsLoaded(false)
-      setGeneralChannelId(channel.id)
+      setChannelId(channel.id)
       setChannelName(channel.name)
       setChannelTopic(channel.topic)
       setChannelActive(true)
@@ -72,7 +69,7 @@ const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChan
         </div>
         {showModalCreate && (
           <Modal onClose={() => setShowModalCreate(false)}>
-            <ServerForm setShowModalCreate={setShowModalCreate} setSelectedServer={setSelectedServer} setGeneralChannelId={setGeneralChannelId} setChannelName={setChannelName} setChannelTopic={setChannelTopic} />
+            <ServerForm setShowModalCreate={setShowModalCreate} setSelectedServer={setSelectedServer} setChannelName={setChannelName} setChannelTopic={setChannelTopic} setChannelId={setChannelId} />
           </Modal>
         )}
       </div>

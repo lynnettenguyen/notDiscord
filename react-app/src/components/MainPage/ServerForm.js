@@ -6,7 +6,7 @@ import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
-const ServerForm = ({ setShowModalCreate, setSelectedServer, setGeneralChannelId, setChannelName, setChannelTopic }) => {
+const ServerForm = ({ setShowModalCreate, setSelectedServer, setChannelId, setChannelName, setChannelTopic }) => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -30,7 +30,7 @@ const ServerForm = ({ setShowModalCreate, setSelectedServer, setGeneralChannelId
 
       const serverResponse = await dispatch(getOneServer(response.id))
       if (serverResponse) {
-        setGeneralChannelId(Object.values(serverResponse[0].channels)[0].id)
+        setChannelId(Object.values(serverResponse[0].channels)[0].id)
         setChannelName("general")
         setChannelTopic("")
       }
