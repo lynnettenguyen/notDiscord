@@ -41,7 +41,6 @@ notDiscord is a full-stack clone of [Discord](https://discord.com/). Users can s
 #### Create a New Direct Message with Other Users
 ![newDM](https://user-images.githubusercontent.com/98368183/187114921-463e8781-ce94-45db-96c2-b89aae1eeb5f.png)
 
-
 #### Live Direct Messaging with Other Users via SocketIO
 ![liveDM](https://user-images.githubusercontent.com/98368183/187112029-06b842b3-5dc3-4d47-9e74-a31db927b661.png)
 
@@ -54,14 +53,14 @@ notDiscord is a full-stack clone of [Discord](https://discord.com/). Users can s
 #### Edit a Server's Name or Delete the Server
 ![editServer](https://user-images.githubusercontent.com/98368183/187112324-7b99cb95-701f-4d82-acb6-d169fd91c37b.png)
 
+#### Live Channel Messaging via Socketio
+![](https://user-images.githubusercontent.com/98368183/193368054-2adf0c8d-c4cc-4d07-9026-80fe3e58ea09.png)
+
 #### Create New Channels within Servers
 ![createChannel](https://user-images.githubusercontent.com/98368183/187112354-4eeec79f-1e5c-4610-85e8-dc9fedf52675.png)
 
 #### Edit a Channel's Name or Topic
 ![editChannel](https://user-images.githubusercontent.com/98368183/187112358-8da0b2e7-9c09-4fab-aa1e-cbef73626933.png)
-
-#### Live Channel Messaging via Socketio
-![liveCM](https://user-images.githubusercontent.com/98368183/187111761-c651752b-094a-4b51-b3f9-7f2e7369ce54.png)
 
 ## Steps to clone locally:
 1. Clone this repository:
