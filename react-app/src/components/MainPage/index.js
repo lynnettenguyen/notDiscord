@@ -5,6 +5,7 @@ import ServerPage from './ServerPage';
 import NoServerPage from './NoServerPage';
 import { getDirectChats } from '../../store/directChat';
 import { getOneServer } from '../../store/server';
+import { getChannels } from '../../store/channels';
 import { getUsers } from '../../store/users';
 import '../CSS/MainPage.css';
 import { listAllServers } from '../../store/servers';
@@ -26,12 +27,12 @@ const MainPage = () => {
     const [channelTopic, setChannelTopic] = useState("");
     const [channelActive, setChannelActive] = useState(false);
 
-    console.log('selected server', selectedServer)
-    console.log('GENERAL CHANNEL', generalChannelId)
-    console.log('CHANNEL ID', channelId)
-    console.log(currChannel, 'CURRENT CHANNEL')
-    console.log(channelName, 'CHANNEL NAME')
-    console.log(channelTopic, 'CHANNEL TOPIC')
+    // console.log('selected server', selectedServer)
+    // console.log('GENERAL CHANNEL', generalChannelId)
+    // console.log('CHANNEL ID', channelId)
+    // console.log(currChannel, 'CURRENT CHANNEL')
+    // console.log(channelName, 'CHANNEL NAME')
+    // console.log(channelTopic, 'CHANNEL TOPIC')
 
     useEffect(() => {
         dispatch(listAllServers())
@@ -41,6 +42,7 @@ const MainPage = () => {
         dispatch(getOneServer(selectedServer))
         dispatch(getUsers())
         dispatch(getDirectChats())
+        dispatch(getChannels(selectedServer))
 
 
     }, [dispatch, generalChannelId, selectedServer])
