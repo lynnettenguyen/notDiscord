@@ -38,11 +38,11 @@ const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChan
       setGeneralChannelId(channel.id)
       setChannelName(channel.name)
       setChannelTopic(channel.topic)
+      setChannelActive(true)
       await dispatch(getOneServer(serverId))
       await dispatch(getUsers())
         .then(() => setIsLoaded(true))
     }
-    setChannelActive(false)
   };
 
 
