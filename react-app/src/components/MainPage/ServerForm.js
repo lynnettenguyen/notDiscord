@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addServer } from '../../store/servers';
-import { getChannels, getOneServer, } from '../../store/server';
+import {  getOneServer, } from '../../store/server';
+// import { getChannels, getOneServer, } from '../../store/server';
 import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
@@ -25,7 +26,7 @@ const ServerForm = ({ setShowModalCreate }) => {
     const response = await dispatch(addServer(serverData))
     await dispatch(getOneServer(response.id))
     await dispatch(getUsers())
-    await dispatch(getChannels(response.id))
+    // await dispatch(getChannels(response.id))
 
     setShowModalCreate(false)
   }

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import { deleteServer, updateServer } from '../../store/servers';
-import { getChannels, getOneServer, resetServer } from '../../store/server';
+import { getOneServer, resetServer } from '../../store/server';
+// import { getChannels, getOneServer, resetServer } from '../../store/server';
 import greyPencil from '../CSS/images/edit-server-pencil.svg'
 import whitePencil from '../CSS/images/edit-server-pencil-white.svg'
 import redBin from '../CSS/images/delete-server-bin.svg'
@@ -43,7 +44,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
 
     if (response) {
       await dispatch(getOneServer(id))
-      await dispatch(getChannels(id))
+      // await dispatch(getChannels(id))
       setShowModal(false)
       setShowDropdown(false)
     }

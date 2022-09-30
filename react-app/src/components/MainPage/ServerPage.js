@@ -11,14 +11,18 @@ import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
-const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId }) => {
+const ServerPage = ({ id, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId, currChannel, setCurrChannel }) => {
+    const servers = useSelector(state => state.servers)
     const server = useSelector(state => Object.values(state.server));
     const users = useSelector(state => state.userSorted);
-    const channelsObj = useSelector(state => state.server.channels);
-    const channels = useSelector(state => Object.values(state.server?.channels));
+
+
+    const channelsObj = server.channels
+    const channels = servers[id]?.channels
+
+
     const [isLoaded, setIsLoaded] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
-    const [channelId, setChannelId] = useState();
     const [showModal, setShowModal] = useState(false);
     const [showEditChannel, setShowEditChannel] = useState(false);
     const [showSection, setShowSection] = useState();
@@ -39,13 +43,13 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
     return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server[0].name}
+                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server[0]?.name}
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
                     {channelId && <div className='noServer-nav'>
                         <img src={hashtag} alt='hashtag' className='noServer-icon-at' />
-                        <div>{channelName ? channelName : "Select a Channel to Start Chatting!"}</div>
+                        <div>{channelName}</div>
                         <div className='serverPage-channel-name-topic'>{channelTopic}</div>
                     </div>}
                 </div>
@@ -113,7 +117,7 @@ const ServerPage = ({ id, channelName, setChannelName, channelTopic, setChannelT
                 </div>
                 {channels?.length > 0 && generalChannelId ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={id} channelId={channelId} />
+                        <ChannelPage id={id} channelId={channelId} currChannel={currChannel} setCurrChannel={setCurrChannel} />
                     </div> : <>
                         {channels?.length > 0 ?
                             <div className='ServerPage-middle-container-noText'></div> :

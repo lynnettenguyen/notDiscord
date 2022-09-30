@@ -23,7 +23,14 @@ def all_servers():
 
       channels = db.session.query(Channel).filter(Channel.server_id == server_id)
 
+      # channel_dict = {}
+
+      # for channel in channels:
+      #   channel_dict[channel.to_dict()['id']] = channel.to_dict()
+
+      # server['channels'] = channel_dict
       server['channels'] = [channel.to_dict() for channel in channels]
+
       server_details.append(server)
 
 
@@ -41,7 +48,13 @@ def server_by_id(server_id):
   if server is not None:
     server_details = []
     server = server.to_dict()
-    server['channels'] = [channel.to_dict() for channel in channels]
+
+    channel_dict = {}
+
+    for channel in channels:
+      channel_dict[channel.to_dict()['id']] = channel.to_dict()
+
+    server['channels'] = channel_dict
 
   server_details.append(server)
 

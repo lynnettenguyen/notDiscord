@@ -10,11 +10,6 @@ const findServer = (server) => ({
   server
 })
 
-const getChannelsAction = (channels) => ({
-  type: GET_CHANNELS,
-  channels
-})
-
 export const resetServer = () => ({
   type: SERVER_RESET
 })
@@ -40,17 +35,8 @@ export const getOneServer = (id) => async (dispatch) => {
   if (response.ok) {
     const server = await response.json();
     dispatch(findServer(server))
+    console.log("---------------------_", server[0])
     return server;
-  }
-}
-
-export const getChannels = (id) => async (dispatch) => {
-  const response = await fetch(`/api/servers/${id}/channels`);
-
-  if (response.ok) {
-    const channels = await response.json();
-    dispatch(getChannelsAction(channels))
-    return channels;
   }
 }
 
@@ -108,17 +94,10 @@ const singleServerReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {
     case FIND_SERVER: {
-      newState[action.server.id] = action.server
-      newState['channels'] = {}
+      newState[action.server[0].id] = action.server[0]
       return newState
     }
     case SERVER_RESET: {
-      return newState
-    }
-    case GET_CHANNELS: {
-      let channels = {}
-      newState = { ...state, channels }
-      action.channels.map(channel => newState.channels[channel.id] = channel)
       return newState
     }
     case CREATE_CHANNELS: {
