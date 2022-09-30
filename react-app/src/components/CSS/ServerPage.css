@@ -36,6 +36,7 @@
     box-sizing: border-box;
     background-color: #2F3136;
     font-family: GintoNormal, Arial, Helvetica, sans-serif;
+    word-break: break-all;
 }
 
 .ServerPage-name:hover {
@@ -49,6 +50,7 @@
     border: none;
     color: white;
     margin-top: 3px;
+    padding: 0 2px;
 }
 
 .serverPage-channel-name-topic {
@@ -157,7 +159,7 @@
     margin: 5px 2px;
 }
 
-.channel-section-header {
+.channel-section-header, .channel-section-header-active{
     display: flex;
     font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
     color: #96989d;
@@ -171,16 +173,7 @@
 }
 
 .channel-section-header-active {
-    display: flex;
-    font-family: WhitneyMedium, Arial, Helvetica, sans-serif;
-    color: white;
-    justify-content: space-between;
-    font-size: 16px;
-    height: 22px;
-    margin: 5px 2px;
-    padding-left: 2px;
-    box-sizing: border-box;
-    cursor: pointer;
+    overflow: hidden;
 }
 
 .channel-section-header:hover {
@@ -204,7 +197,7 @@
 }
 
 .edit-channel-button {
-    padding-right: 8px;
+    padding: 2px 8px 0 0;
 }
 
 .channel-edit-gear {

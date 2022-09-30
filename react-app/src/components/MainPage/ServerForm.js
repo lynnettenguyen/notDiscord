@@ -85,6 +85,7 @@ const ServerForm = ({ setShowModalCreate, setSelectedServer, setChannelId, setCh
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        maxLength={40}
                       />
                     </div>
                   </div>
