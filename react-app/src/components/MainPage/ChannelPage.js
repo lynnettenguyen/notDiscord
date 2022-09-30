@@ -9,13 +9,9 @@ let socket;
 const ChannelPage = ({ id, channelId, channelName }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.channelMessages));
-  const msgObj = useSelector(state => state.channelMessages)
-
   const servers = useSelector(state => state.servers)
-
   const users = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
-
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
@@ -26,8 +22,6 @@ const ChannelPage = ({ id, channelId, channelName }) => {
     if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
   }
 
-  // console.log(channelId)
-
   useEffect(() => {
     socket = io();
     socket.on('chat', (chat) => {
@@ -37,15 +31,17 @@ const ChannelPage = ({ id, channelId, channelName }) => {
       setMessages([])
       socket.disconnect();
     });
+
   }, []);
+
+  useEffect(() => {
+    setChatInput('')
+  }, [channelId])
 
 
   useEffect(() => {
     scrollBottom()
-
-    setChatInput('')
-  }, [channelId])
-
+  })
 
   useEffect(() => {
     const newDate = new Date()
@@ -63,7 +59,6 @@ const ChannelPage = ({ id, channelId, channelName }) => {
       } else {
         await dispatch(getChannelMessages(channelId))
       }
-
     }
     func()
     scrollBottom()

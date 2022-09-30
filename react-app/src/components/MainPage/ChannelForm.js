@@ -24,14 +24,12 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
     }
 
     const response = await (dispatch(addChannel(channelData)))
-
     if (response) {
       setChannelId(response.id)
       setChannelName(name)
       setChannelTopic(topic)
       dispatch(listAllServers())
     }
-
     setShowModal(false)
   }
 
@@ -53,7 +51,6 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
       setChannelTopic(topicEdit)
       dispatch(listAllServers())
     }
-
     setShowEditChannel(false)
     setShowModal(false)
   }
@@ -94,6 +91,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                         className='channel-name-input'
                         onChange={(e) => setNameEdit(e.target.value)}
                         required
+                        maxLength={20}
                       />
                     </div>
                     <div>
@@ -105,6 +103,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                           value={topicEdit}
                           onChange={(e) => setTopicEdit(e.target.value)}
                           required
+                          maxLength={80}
                         />
                       </div>
                       <div className='bottom-channel-section'>
@@ -146,15 +145,14 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                       <div className='channel-form-hash-outer'>
                         <img src={hashtag} className='channel-form-hash' alt='hashtag' />
                       </div>
-                      <div>
                         <input
                           placeholder='channel-name'
                           className='channel-name-input'
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           required
+                          maxLength={20}
                         />
-                      </div>
                     </div>
                     <div>
                       <div><label className='channel-form-label'>CHANNEL TOPIC</label></div>
@@ -165,6 +163,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                           className='channel-topic-input'
                           onChange={(e) => setTopic(e.target.value)}
                           required
+                          maxLength={80}
                         />
                       </div>
                       <div className='bottom-channel-section'>

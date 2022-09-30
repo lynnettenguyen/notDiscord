@@ -25,7 +25,6 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
   const users = useSelector(state => Object.values(state.users))
   const user = useSelector((state) => state.session.user);
-  const [currChat, setCurrChat] = useState(currentChatId)
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());
@@ -43,13 +42,8 @@ const DirectChat = ({ directChatId, recipientId }) => {
   }, []);
 
   useEffect(() => {
-    if (directChatId) {
-      setCurrChat(directChatId)
-    }
-
     setChatInput("")
   }, [directChatId, messages])
-
 
   useEffect(() => {
     const newDate = new Date()
@@ -58,7 +52,6 @@ const DirectChat = ({ directChatId, recipientId }) => {
 
     scrollBottom()
   }, [messages]);
-
 
   useEffect(() => {
     const func = async () => {

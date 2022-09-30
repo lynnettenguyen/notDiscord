@@ -63,36 +63,37 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded, setSelectedServer })
         <Modal onClose={() => setShowModal(false)}>
           <div className='edit-server-modal-container'>
             <form onSubmit={handleSubmit} className="block">
-                <div>
-                  <div className='edit-server-modal-server-name'>
-                    <label className='edit-server-modal-main-label'>Edit Server</label>
-                    <label className='edit-server-modal-server-label'>SERVER NAME</label>
-                    <div className='edit-server-modal-input-server-name-outer'>
-                      <input
-                        name='name'
-                        className='edit-server-modal-input-server-name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className='edit-server-modal-server-image'>
-                    <label className='edit-server-modal-image-label'>SERVER IMAGE</label>
-                    <div className='edit-server-modal-input-server-image-outer'>
-                      <input
-                        name='server_pic'
-                        className='edit-server-modal-input-server-image'
-                        placeholder='https://image.url'
-                        value={server_pic}
-                        onChange={(e) => setServerPic(e.target.value)}
-                      />
-                    </div>
+              <div>
+                <div className='edit-server-modal-server-name'>
+                  <label className='edit-server-modal-main-label'>Edit Server</label>
+                  <label className='edit-server-modal-server-label'>SERVER NAME</label>
+                  <div className='edit-server-modal-input-server-name-outer'>
+                    <input
+                      name='name'
+                      className='edit-server-modal-input-server-name'
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      maxLength={40}
+                    />
                   </div>
                 </div>
-                <div className='edit-server-buttons-container'>
-                  <button onClick={() => {setShowModal(false); setShowDropdown(false)}} className='edit-server-modal-cancel-button'>Cancel</button>
-                  <button type="submit" className='edit-server-modal-submit-button'>Update Server</button>
+                <div className='edit-server-modal-server-image'>
+                  <label className='edit-server-modal-image-label'>SERVER IMAGE</label>
+                  <div className='edit-server-modal-input-server-image-outer'>
+                    <input
+                      name='server_pic'
+                      className='edit-server-modal-input-server-image'
+                      placeholder='https://image.url'
+                      value={server_pic}
+                      onChange={(e) => setServerPic(e.target.value)}
+                    />
+                  </div>
                 </div>
+              </div>
+              <div className='edit-server-buttons-container'>
+                <button onClick={() => { setShowModal(false); setShowDropdown(false) }} className='edit-server-modal-cancel-button'>Cancel</button>
+                <button type="submit" className='edit-server-modal-submit-button'>Update Server</button>
+              </div>
             </form>
           </div>
         </Modal>
