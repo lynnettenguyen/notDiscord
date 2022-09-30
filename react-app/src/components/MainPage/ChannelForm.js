@@ -27,6 +27,8 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
 
     if (response) {
       setChannelId(response.id)
+      setChannelName(name)
+      setChannelTopic(topic)
       dispatch(listAllServers())
     }
 
@@ -59,6 +61,8 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
   const handleChannelDelete = () => {
     const response = dispatch(removeChannel(id, channelId))
     if (response) {
+      setChannelName("")
+      setChannelTopic("")
       dispatch(listAllServers())
       setShowEditChannel(false)
       setShowModal(false)

@@ -48,7 +48,7 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                 </div>
                 <div className='ServerPage-channel-name'>
                     {channelId && <div className='noServer-nav'>
-                        <img src={hashtag} alt='hashtag' className='noServer-icon-at' />
+                       {channelName?.length >0 && <img src={hashtag} alt='hashtag' className='noServer-icon-at' />}
                         <div>{channelName}</div>
                         <div className='serverPage-channel-name-topic'>{channelTopic}</div>
                     </div>}
