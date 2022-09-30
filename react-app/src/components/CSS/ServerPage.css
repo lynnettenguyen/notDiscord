@@ -165,6 +165,7 @@
     margin: 5px 2px;
     padding-left: 2px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .channel-section-header-active {
@@ -177,6 +178,7 @@
     margin: 5px 2px;
     padding-left: 2px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .channel-section-header:hover {
