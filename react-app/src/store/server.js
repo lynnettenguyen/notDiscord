@@ -16,7 +16,6 @@ export const getOneServer = (id) => async (dispatch) => {
   if (response.ok) {
     const server = await response.json();
     dispatch(findServer(server))
-    console.log("---------------------_", server[0])
     return server;
   }
 }
