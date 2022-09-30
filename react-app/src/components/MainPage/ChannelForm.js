@@ -66,6 +66,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
       dispatch(listAllServers())
       setShowEditChannel(false)
       setShowModal(false)
+      setChannelId(null)
     }
   }
 
