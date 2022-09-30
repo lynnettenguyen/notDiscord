@@ -22,12 +22,12 @@ const editServer = (server) => ({
 
 const deleteServerAction = (serverId) => ({
   type: DELETE_SERVER,
-    serverId
+  serverId
 })
 
 export const listAllServers = () => async (dispatch) => {
   const response = await fetch(`/api/servers`);
-  
+
   if (response.ok) {
     const servers = await response.json();
     dispatch(listServers(servers))
@@ -79,7 +79,6 @@ export const deleteServer = (id) => async (dispatch) => {
     return server;
   }
 }
-
 
 const serverReducer = (state = {}, action) => {
   let newState = {}

@@ -22,7 +22,6 @@ const rootReducer = combineReducers({
   directMessages
 });
 
-
 let enhancer;
 
 if (process.env.NODE_ENV === 'production') {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import { allServers, listAllServers } from '../../store/servers';
-// import { getChannels, getOneServer, resetServer } from '../../store/server';
 import { getOneServer, resetServer } from '../../store/server';
 import { getUsers } from '../../store/users';
 import ServerForm from './ServerForm'

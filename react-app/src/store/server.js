@@ -21,7 +21,6 @@ export const getOneServer = (id) => async (dispatch) => {
   }
 }
 
-
 const singleServerReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {

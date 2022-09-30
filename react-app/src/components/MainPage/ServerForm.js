@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addServer, listAllServers } from '../../store/servers';
 import {  getOneServer, } from '../../store/server';
-// import { getChannels, getOneServer, } from '../../store/server';
 import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"

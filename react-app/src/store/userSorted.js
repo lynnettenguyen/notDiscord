@@ -1,8 +1,8 @@
 const GET_ALL_USERS = 'servers/GET_ALL_USERS'
 
 const getUsersAction = (users) => ({
-    type: GET_ALL_USERS,
-    users
+  type: GET_ALL_USERS,
+  users
 })
 
 
@@ -16,18 +16,16 @@ export const getUsers = () => async (dispatch) => {
   }
 }
 
-
 const userSortedReducer = (state = {}, action) => {
-    let newState = []
-    switch (action.type) {
-      case GET_ALL_USERS: {
-        newState = [...action.users]
-        return newState
-      }
-
-      default:
-        return state;
+  let newState = []
+  switch (action.type) {
+    case GET_ALL_USERS: {
+      newState = [...action.users]
+      return newState
     }
+    default:
+      return state;
   }
+}
 
-  export default userSortedReducer;
+export default userSortedReducer;

@@ -2,7 +2,6 @@ const LOAD_DIRECT_CHATS = '/directChat/LOAD_DIRECT_CHATS'
 const ADD_DIRECT_CHAT = '/directChat/ADD_DIRECT_CHAT'
 const DELETE_DIRECT_CHAT = '/directChat/DELETE_DIRECT_CHAT'
 
-
 export const loadDirectChats = (chats) => ({
   type: LOAD_DIRECT_CHATS,
   chats

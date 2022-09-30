@@ -81,7 +81,6 @@ export const removeChannelMessage = (channel_id, channel_message_id) => async (d
   }
 }
 
-
 const channelMessagesReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {

@@ -33,7 +33,6 @@ export const getChannels = (id) => async (dispatch) => {
   }
 }
 
-
 export const addChannel = (channelData) => async (dispatch) => {
   const { server_id, name, topic } = channelData
   const response = await fetch(`/api/servers/${server_id}/channels`, {

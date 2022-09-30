@@ -82,7 +82,6 @@ export const removeDirectMessage = (direct_chat_id, message_id) => async (dispat
   }
 }
 
-
 const directMessagesReducer = (state = {}, action) => {
   let newState = {}
   switch (action.type) {

@@ -117,7 +117,7 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                 </div>
                 {channels?.length > 0 && generalChannelId ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={id} channelId={channelId} currChannel={currChannel} setCurrChannel={setCurrChannel} />
+                        <ChannelPage id={id} channelId={channelId} setCurrChannel={setCurrChannel} channelName={channelName} />
                     </div> : <>
                         {channels?.length > 0 ?
                             <div className='ServerPage-middle-container-noText'></div> :
