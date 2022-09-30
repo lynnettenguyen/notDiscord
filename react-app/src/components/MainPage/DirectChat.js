@@ -99,7 +99,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
     const todayDay = today.getDate()
     const dateDay = newDate.getDate()
 
-    if (todayYear !== dateYear || todayMonth !== dateMonth) {
+    if (todayYear !== dateYear || todayMonth !== dateMonth || todayDay - dateDay > 1) {
       const result = newDate.toLocaleDateString()
       return result
     } else if (todayDay - dateDay === 0) {
