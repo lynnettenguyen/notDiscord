@@ -6,7 +6,7 @@ import '../CSS/ChannelPage.css';
 
 let socket;
 
-const ChannelPage = ({ id, channelId, setCurrChannel, channelName }) => {
+const ChannelPage = ({ id, channelId, channelName }) => {
   const dispatch = useDispatch();
   const msgState = useSelector(state => Object.values(state.channelMessages));
   const msgObj = useSelector(state => state.channelMessages)
@@ -26,6 +26,8 @@ const ChannelPage = ({ id, channelId, setCurrChannel, channelName }) => {
     if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
   }
 
+  console.log(channelId)
+
   useEffect(() => {
     socket = io();
     socket.on('chat', (chat) => {
@@ -39,10 +41,7 @@ const ChannelPage = ({ id, channelId, setCurrChannel, channelName }) => {
 
 
   useEffect(() => {
-    if (channelId) {
-      setCurrChannel(channelId)
-      scrollBottom()
-    }
+    scrollBottom()
 
     setChatInput('')
   }, [channelId])

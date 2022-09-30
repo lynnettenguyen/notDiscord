@@ -5,6 +5,7 @@
     overflow-y: auto;
     height: 100%;
     justify-content: flex-end;
+    width: 98%;
   }
 
   .channel-messages-outer::-webkit-scrollbar {
@@ -33,6 +34,8 @@
 
   .chat-message {
     margin-left: 45px;
+    padding-bottom: 6px;
+    overflow-wrap: break-word;
   }
 
   .chat-header {

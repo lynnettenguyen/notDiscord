@@ -11,7 +11,7 @@ import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
-const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId, currChannel, setCurrChannel }) => {
+const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive }) => {
 
     const servers = useSelector(state => state.servers)
     const server = useSelector(state => Object.values(state.server));
@@ -48,7 +48,7 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                 </div>
                 <div className='ServerPage-channel-name'>
                     {channelId && <div className='noServer-nav'>
-                       {channelName?.length >0 && <img src={hashtag} alt='hashtag' className='noServer-icon-at' />}
+                        {channelName?.length > 0 && <img src={hashtag} alt='hashtag' className='noServer-icon-at' />}
                         <div>{channelName}</div>
                         <div className='serverPage-channel-name-topic'>{channelTopic}</div>
                     </div>}
@@ -77,7 +77,7 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                             <div className='channels-main'>
                                 {channels?.map((channel, i) => {
                                     return (
-                                        <div key={i} className={channelId === channel.id && channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic); setChannelActive(true); setShowChannelId(true); setGeneralChannelId(channel.id) }}>
+                                        <div key={i} className={channelId === channel.id && channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic); setChannelActive(true); setShowChannelId(true) }}>
                                             <div className={channelId === channel.id && channelActive ? 'channel-section-header-active' : 'channel-section-header'} onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
                                                 <div className='channel-section-left'>
                                                     <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
@@ -115,9 +115,9 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                         <UserProfile />
                     </div>
                 </div>
-                {channels?.length > 0 && generalChannelId ?
+                {channels?.length > 0 && channelId ?
                     <div className='ServerPage-middle-container'>
-                        <ChannelPage id={id} channelId={channelId} setCurrChannel={setCurrChannel} channelName={channelName} />
+                        <ChannelPage id={id} channelId={channelId} channelName={channelName} />
                     </div> : <>
                         {channels?.length > 0 ?
                             <div className='ServerPage-middle-container-noText'></div> :
