@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChannel, removeChannel, editChannel, getChannels, updateChannel } from '../../store/channels';
+import { addChannel, removeChannel, updateChannel } from '../../store/channels';
 import { listAllServers } from '../../store/servers';
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 // import deleteBin from '../CSS/images/delete-server-bin.svg'
 
-const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
+const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel, setChannelName, setChannelTopic }) => {
   const channels = useSelector(state => state.channels)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
   const [nameEdit, setNameEdit] = useState(channels[channelId]?.name)
   const [topicEdit, setTopicEdit] = useState(channels[channelId]?.topic)
-
-  console.log(nameEdit)
-
 
   const handleCreateChannel = async (e) => {
     e.preventDefault()
@@ -50,6 +47,8 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
 
     if (response) {
       setChannelId(response.id)
+      setChannelName(nameEdit)
+      setChannelTopic(topicEdit)
       dispatch(listAllServers())
     }
 

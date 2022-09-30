@@ -73,7 +73,7 @@ const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChan
         </div>
         {showModalCreate && (
           <Modal onClose={() => setShowModalCreate(false)}>
-            <ServerForm setShowModalCreate={setShowModalCreate} />
+            <ServerForm setShowModalCreate={setShowModalCreate} setSelectedServer={setSelectedServer} setGeneralChannelId={setGeneralChannelId} setChannelName={setChannelName} setChannelTopic={setChannelTopic} />
           </Modal>
         )}
       </div>

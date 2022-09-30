@@ -20,7 +20,7 @@ const ChannelPage = ({ id, channelId, currChannel, setCurrChannel }) => {
 
   const users = useSelector(state => state.users);
   const user = useSelector((state) => state.session.user);
-  // const [currChannel, setCurrChannel] = useState(channelId)
+
   const [messages, setMessages] = useState([]);
   const [chatInput, setChatInput] = useState("");
   const [date, setDate] = useState(new Date());

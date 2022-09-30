@@ -11,16 +11,13 @@ import noChannels from '../CSS/images/no-text-channels.svg'
 import '../CSS/ServerPage.css';
 import '../CSS/EditServerForm.css'
 
-const ServerPage = ({ id, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId, currChannel, setCurrChannel }) => {
+const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelName, setChannelName, channelTopic, setChannelTopic, channelActive, setChannelActive, generalChannelId, setGeneralChannelId, currChannel, setCurrChannel }) => {
+
     const servers = useSelector(state => state.servers)
     const server = useSelector(state => Object.values(state.server));
     const users = useSelector(state => state.userSorted);
-
-
-    const channelsObj = server.channels
+    const channelsObj = server[0]?.channels
     const channels = servers[id]?.channels
-
-
     const [isLoaded, setIsLoaded] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -38,12 +35,15 @@ const ServerPage = ({ id, channelId, setChannelId, channelName, setChannelName, 
 
     const editServer = () => {
         setShowDropdown(!showDropdown)
+
+        if (showDropdown) setEditActive(false)
+        else setEditActive(true)
     }
 
     return isLoaded && (
         <div className='ServerPage-container'>
             <div className='ServerPage-NavBar'>
-                <div className='ServerPage-name' onClick={() => { editServer(); setEditActive(!editActive) }}>{server[0]?.name}
+                <div className='ServerPage-name' onClick={() => { editServer() }}>{server[0]?.name}
                     <button className={editActive ? 'server-name-button fa-solid fa-x' : 'server-name-button fa-solid fa-angle-down'}></button>
                 </div>
                 <div className='ServerPage-channel-name'>
@@ -54,7 +54,7 @@ const ServerPage = ({ id, channelId, setChannelId, channelName, setChannelName, 
                     </div>}
                 </div>
                 <div className='ServerPage-NavBar-buttons'></div>
-                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} />)}
+                {showDropdown && (<EditServerForm setShowDropdown={setShowDropdown} id={id} setIsLoaded={setIsLoaded} setSelectedServer={setSelectedServer} />)}
             </div>
             <div className='ServerPage-content-container'>
                 <div className='ServerPage-left-container'>
@@ -67,7 +67,7 @@ const ServerPage = ({ id, channelId, setChannelId, channelName, setChannelName, 
                             <div className='add-channel-icon fa-solid fa-plus' onClick={() => { setShowModal(true) }} />
                             {showModal && (
                                 <Modal onClose={() => { setShowModal(false); setShowEditChannel(false) }}>
-                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} />
+                                    <ChannelForm id={id} channelId={channelId} setShowModal={setShowModal} showEditChannel={showEditChannel} setShowEditChannel={setShowEditChannel} setChannelId={setChannelId} setChannelName={setChannelName} setChannelTopic={setChannelTopic} />
                                 </Modal>
                             )}
                         </div>
