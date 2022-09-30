@@ -14,7 +14,6 @@ import '../CSS/HomePage.css';
 // import part5 from '../CSS/images/fivePart.svg'
 // import part6 from '../CSS/images/sixPart.svg'
 
-
 const HomePage = () => {
     const history = useHistory()
     const user = useSelector(state => state.session.user);

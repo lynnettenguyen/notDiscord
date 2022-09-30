@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from "socket.io-client";
 import { getDirectMessages } from '../../store/directMessages';
-
 import '../CSS/DirectChat.css';
 
 let socket;

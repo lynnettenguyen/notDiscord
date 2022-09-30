@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChannel, removeChannel, editChannel } from '../../store/server';
+import { addChannel, removeChannel, updateChannel } from '../../store/channels';
+import { listAllServers } from '../../store/servers';
 import '../CSS/ChannelForm.css'
 import hashtag from '../CSS/images/channel-hashtag.svg'
 // import deleteBin from '../CSS/images/delete-server-bin.svg'
 
-const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel }) => {
-  const channels = useSelector(state => state.server.channels)
+const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelId, setShowEditChannel, setChannelName, setChannelTopic }) => {
+  const channels = useSelector(state => state.channels)
   const dispatch = useDispatch()
   const [name, setName] = useState("")
   const [topic, setTopic] = useState("")
-  const [nameEdit, setNameEdit] = useState(`${channels[channelId]?.name}`)
-  const [topicEdit, setTopicEdit] = useState(channels[channelId]?.topic ? `${channels[channelId]?.topic}` : "")
+  const [nameEdit, setNameEdit] = useState(channels[channelId]?.name)
+  const [topicEdit, setTopicEdit] = useState(channels[channelId]?.topic)
 
   const handleCreateChannel = async (e) => {
     e.preventDefault()
@@ -26,6 +27,9 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
 
     if (response) {
       setChannelId(response.id)
+      setChannelName(name)
+      setChannelTopic(topic)
+      dispatch(listAllServers())
     }
 
     setShowModal(false)
@@ -41,20 +45,28 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
       topic: topicEdit
     }
 
-    const response = await (dispatch(editChannel(channelData)))
+    const response = await (dispatch(updateChannel(channelData)))
 
     if (response) {
       setChannelId(response.id)
+      setChannelName(nameEdit)
+      setChannelTopic(topicEdit)
+      dispatch(listAllServers())
     }
 
     setShowEditChannel(false)
     setShowModal(false)
   }
 
-  const handleChannelDelete = (id, channelId) => {
-    dispatch(removeChannel(id, channelId))
-    setShowEditChannel(false)
-    setShowModal(false)
+  const handleChannelDelete = () => {
+    const response = dispatch(removeChannel(id, channelId))
+    if (response) {
+      setChannelName("")
+      setChannelTopic("")
+      dispatch(listAllServers())
+      setShowEditChannel(false)
+      setShowModal(false)
+    }
   }
 
   return (
@@ -97,7 +109,7 @@ const ChannelForm = ({ id, setShowModal, showEditChannel, channelId, setChannelI
                       <div className='bottom-channel-section'>
                         <button type='submit' className='channel-update-button'>Update</button>
                         <div className='delete-channel-outer'>
-                          <button className='channel-delete-button' onClick={() => handleChannelDelete(id, channelId)}><span className='delete-name'>Delete</span>
+                          <button type='button' className='channel-delete-button' onClick={handleChannelDelete}><span className='delete-name'>Delete</span>
                           </button>
                         </div>
                       </div>

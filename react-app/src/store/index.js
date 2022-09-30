@@ -8,6 +8,7 @@ import userSorted from './userSorted'
 import channelMessages from './channelMessages'
 import directChat from './directChat'
 import directMessages from './directMessages'
+import channels from './channels'
 
 const rootReducer = combineReducers({
   session,
@@ -15,11 +16,11 @@ const rootReducer = combineReducers({
   userSorted,
   servers,
   server,
+  channels,
   channelMessages,
   directChat,
   directMessages
 });
-
 
 let enhancer;
 

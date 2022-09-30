@@ -2,44 +2,54 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 import { allServers, listAllServers } from '../../store/servers';
-import { getChannels, getOneServer, resetServer } from '../../store/server';
+import { getOneServer, resetServer } from '../../store/server';
 import { getUsers } from '../../store/users';
 import ServerForm from './ServerForm'
 import discordHome from '../CSS/images/lightpurple.png'
 import serverDefault from '../CSS/images/server_default.png'
 import '../CSS/ServerNav.css'
 
-const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGeneralChannelId }) => {
+const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChannelActive, setGeneralChannelId, setChannelName, setChannelTopic }) => {
   const dispatch = useDispatch();
   const servers = useSelector(allServers);
-  const server = useSelector(state => state.server)
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModalCreate, setShowModalCreate] = useState(false)
+
+
 
   useEffect(() => {
     dispatch(listAllServers())
       .then(() => setIsLoaded(true))
   }, [dispatch, isLoaded]);
 
-  const handleServerClick = async (serverId) => {
+  const handleServerClick = async (serverId, channel) => {
+
+    setSelectedServer(serverId)
+
     if (serverId === 0) {
       dispatch(resetServer())
+      setGeneralChannelId(null)
+      setDirectChatId(null)
+      setShowFriends(false)
     } else {
       setIsLoaded(false)
+      setGeneralChannelId(channel.id)
+      setChannelName(channel.name)
+      setChannelTopic(channel.topic)
+      setChannelActive(true)
       await dispatch(getOneServer(serverId))
-      await dispatch(getChannels(serverId))
       await dispatch(getUsers())
         .then(() => setIsLoaded(true))
     }
-    setChannelActive(false)
-    setGeneralChannelId(null)
   };
+
 
   return (
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => { handleServerClick(0); setDirectChatId(null); setShowFriends(false) }} />
+          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => handleServerClick(0)} />
           <div className='line-break'>------</div>
         </div>
         <div className='serverNav-all-servers-outer'>
@@ -49,8 +59,8 @@ const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGener
                 <div className='server-img-outer'>
                   {
                     server.server_pic ?
-                      <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div> :
-                      <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(server.id)}> </div>
+                      <div style={{ backgroundImage: `url(${server.server_pic})` }} className='server-img' onClick={() => handleServerClick(server.id, server.channels[0])}> </div> :
+                      <div style={{ backgroundImage: `url(${serverDefault})` }} className='server-img' onClick={() => handleServerClick(server.id, server.channels[0])}> </div>
                   }
                 </div>
               </div>
@@ -62,7 +72,7 @@ const ServerNav = ({ setDirectChatId, setShowFriends, setChannelActive, setGener
         </div>
         {showModalCreate && (
           <Modal onClose={() => setShowModalCreate(false)}>
-            <ServerForm setShowModalCreate={setShowModalCreate} />
+            <ServerForm setShowModalCreate={setShowModalCreate} setSelectedServer={setSelectedServer} setGeneralChannelId={setGeneralChannelId} setChannelName={setChannelName} setChannelTopic={setChannelTopic} />
           </Modal>
         )}
       </div>

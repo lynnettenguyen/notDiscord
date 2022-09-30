@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addServer } from '../../store/servers';
-import { getChannels, getOneServer, } from '../../store/server';
+import { addServer, listAllServers } from '../../store/servers';
+import {  getOneServer, } from '../../store/server';
 import { getUsers } from '../../store/users';
 import handIcon from '../CSS/images/create-server-icon.svg'
 import "../CSS/ServerForm.css"
 
-const ServerForm = ({ setShowModalCreate }) => {
+const ServerForm = ({ setShowModalCreate, setSelectedServer, setGeneralChannelId, setChannelName, setChannelTopic }) => {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch()
 
@@ -23,11 +23,21 @@ const ServerForm = ({ setShowModalCreate }) => {
     }
 
     const response = await dispatch(addServer(serverData))
-    await dispatch(getOneServer(response.id))
-    await dispatch(getUsers())
-    await dispatch(getChannels(response.id))
 
-    setShowModalCreate(false)
+    if (response) {
+      setSelectedServer(response.id)
+      await dispatch(listAllServers())
+
+      const serverResponse = await dispatch(getOneServer(response.id))
+      if (serverResponse) {
+        setGeneralChannelId(Object.values(serverResponse[0].channels)[0].id)
+        setChannelName("general")
+        setChannelTopic("")
+      }
+
+      await dispatch(getUsers())
+      setShowModalCreate(false)
+    }
   }
 
   return (

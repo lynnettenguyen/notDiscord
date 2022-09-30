@@ -12,17 +12,53 @@ servers = Blueprint('servers', __name__)
 @login_required
 # list all servers
 def all_servers():
-  servers = [server.to_dict() for server in Server.query.all()]
+  servers = Server.query.all()
+
+  server_details = []
+
+  if servers is not None:
+    for server in servers:
+      server_id = server.to_dict()['id']
+      server = server.to_dict()
+
+      channels = db.session.query(Channel).filter(Channel.server_id == server_id)
+
+      # channel_dict = {}
+
+      # for channel in channels:
+      #   channel_dict[channel.to_dict()['id']] = channel.to_dict()
+
+      # server['channels'] = channel_dict
+      server['channels'] = [channel.to_dict() for channel in channels]
+
+      server_details.append(server)
+
+
   # return {'servers': servers} # returns an object {servers: [{},{}]}
-  return jsonify(servers) # returns an array [{},{}]
+  return jsonify(server_details) # returns an array [{},{}]
 
 
 @servers.route("/<int:server_id>")
 @login_required
 # get server by id
 def server_by_id(server_id):
-  server = Server.query.get(server_id)
-  return jsonify(server.to_dict())
+  server = db.session.query(Server).get(server_id)
+  channels = db.session.query(Channel).filter(Channel.server_id == server_id)
+
+  if server is not None:
+    server_details = []
+    server = server.to_dict()
+
+    channel_dict = {}
+
+    for channel in channels:
+      channel_dict[channel.to_dict()['id']] = channel.to_dict()
+
+    server['channels'] = channel_dict
+
+  server_details.append(server)
+
+  return jsonify(server_details)
 
 
 @servers.route("", methods=['POST'])

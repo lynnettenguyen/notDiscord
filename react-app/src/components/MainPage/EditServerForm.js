@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
-import { deleteServer, updateServer } from '../../store/servers';
-import { getChannels, getOneServer, resetServer } from '../../store/server';
+import { deleteServer, listAllServers, updateServer } from '../../store/servers';
+import { getOneServer, resetServer } from '../../store/server';
+// import { getChannels, getOneServer, resetServer } from '../../store/server';
 import greyPencil from '../CSS/images/edit-server-pencil.svg'
 import whitePencil from '../CSS/images/edit-server-pencil-white.svg'
 import redBin from '../CSS/images/delete-server-bin.svg'
 import whiteBin from '../CSS/images/delete-server-bin-white.svg'
 import "../CSS/EditServerForm.css"
 
-const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
+const EditServerForm = ({ setShowDropdown, id, setIsLoaded, setSelectedServer }) => {
   const dispatch = useDispatch()
   const server = useSelector(state => state.server[id])
   const serverPic = useSelector(state => state.server[id].server_pic)
@@ -26,6 +27,7 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
     setIsLoaded(false)
 
     if (response) {
+      setSelectedServer(0)
       dispatch(resetServer())
     }
   }
@@ -42,11 +44,11 @@ const EditServerForm = ({ setShowDropdown, id, setIsLoaded }) => {
     const response = await dispatch(updateServer(serverData))
 
     if (response) {
+      dispatch(listAllServers())
       await dispatch(getOneServer(id))
-      await dispatch(getChannels(id))
-      setShowModal(false)
-      setShowDropdown(false)
     }
+    setShowModal(false)
+    setShowDropdown(false)
   }
 
   return (
