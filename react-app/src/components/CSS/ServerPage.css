@@ -144,7 +144,9 @@
 .server-channels {
     display: flex;
     flex-direction: column;
-        margin: 5px 2px;
+    margin: 5px 2px;
+    box-sizing: border-box;
+    width: 98.5%;
 }
 
 .server-channels-active {
@@ -152,7 +154,7 @@
     flex-direction: column;
     background-color: #42464D;
     border-radius: 3px;
-        margin: 5px 2px;
+    margin: 5px 2px;
 }
 
 .channel-section-header {
