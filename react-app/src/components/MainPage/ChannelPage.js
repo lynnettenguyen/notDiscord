@@ -26,7 +26,7 @@ const ChannelPage = ({ id, channelId, channelName }) => {
     if (messageRef.current) messageRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
   }
 
-  console.log(channelId)
+  // console.log(channelId)
 
   useEffect(() => {
     socket = io();

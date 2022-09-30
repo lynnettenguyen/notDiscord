@@ -27,6 +27,10 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
     const [showChannelId, setShowChannelId] = useState(false);
     const [editActive, setEditActive] = useState(false);
 
+    useEffect(()=> {
+        setShowChannelId(true)
+    }, [])
+
     useEffect(() => {
         if (channels) {
             setIsLoaded(true)
@@ -77,7 +81,7 @@ const ServerPage = ({ id, setSelectedServer, channelId, setChannelId, channelNam
                             <div className='channels-main'>
                                 {channels?.map((channel, i) => {
                                     return (
-                                        <div key={i} className={channelId === channel.id && channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic); setChannelActive(true); setShowChannelId(true) }}>
+                                        <div key={i} className={channelId === channel.id && channelActive ? 'server-channels-active' : 'server-channels'} onClick={() => { setChannelId(channel.id); setChannelName(channel.name); setChannelTopic(channel.topic); setChannelActive(true); setShowChannelId(true)}}>
                                             <div className={channelId === channel.id && channelActive ? 'channel-section-header-active' : 'channel-section-header'} onMouseOver={() => { setShowSection(channel.id) }} onMouseLeave={() => setShowSection(0)}>
                                                 <div className='channel-section-left'>
                                                     <div className='channel-hash-icon'><img src={hashtag} alt='hash' className='channel-hash-img' /></div>
