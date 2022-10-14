@@ -86,7 +86,7 @@ const AltLogin = () => {
             </div>
             <input
               name='email'
-              placeholder='Login with your Email...               or type "demo"'
+              placeholder='Login with your email...             or type "demo"'
               className='alt-form-input'
               type='text'
               value={email}

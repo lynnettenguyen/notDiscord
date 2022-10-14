@@ -46,7 +46,7 @@ const ServerNav = ({ setSelectedServer, setDirectChatId, setShowFriends, setChan
     <>
       <div className='main-serverNav'>
         <div className='home-icon-outer'>
-          <img alt='home-icon' src={discordHome} className='home-icon' onClick={() => handleServerClick(0)} />
+          <img alt='home-icon' src="https://res.cloudinary.com/dv3qturtv/image/upload/v1665718494/discord_home.png" className='home-icon' onClick={() => handleServerClick(0)} />
           <div className='line-break'>------</div>
         </div>
         <div className='serverNav-all-servers-outer'>

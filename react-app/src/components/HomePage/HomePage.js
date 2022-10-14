@@ -103,7 +103,7 @@ const HomePage = () => {
             <img alt='home' src={part6}/>
         </div> */}
             <div className='HomePage-bottom-div'>
-                <div className='HomePage-bottom-upper-contianer'>
+                <div className='HomePage-bottom-upper-container'>
                     <div className='HomePage-bottom-name'>
                         <div className='bottom-name'>Ben Durham</div>
                         <div className='HomePage-LinkedIn'><img alt='social icon' className='HomePage-logos' src={linked} /><a href='https://www.linkedin.com/in/ben-durham-5ab74997/'>LinkedIn</a></div>
