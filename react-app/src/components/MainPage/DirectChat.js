@@ -142,7 +142,7 @@ const DirectChat = ({ directChatId, recipientId }) => {
                   {checkPost(msgState[i - 1]?.created_at, message?.created_at, i, msgState[i - 1]?.sender_id, message?.sender_id) &&
                     (<div className='chat-header'>
                       <div className='chat-profile-outer'>
-                        <img src={users[message.sender_id - 1]?.profile_pic} alt='profile3333' className='channel-chat-profile' />
+                        <img src={users[message.sender_id - 1]?.profile_pic} alt='profile' className='channel-chat-profile' />
                       </div>
                       <div className='chat-username'>{users[message.sender_id - 1]?.username}</div>
                       <div className='chat-date'>{checkDay(message.created_at)}</div>
